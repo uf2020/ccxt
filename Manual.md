@@ -238,6 +238,27 @@ The set of all possible legacy API endpoints differs from market to market. Most
 
 ## Unified API
 
+The unified ccxt API is the subset of methods common among the markets. It currently contains the following methods:
+- `loadProducts ()`
+- `fetchProducts ()`
+- `fetchOrderBook (symbol)`
+- `fetchTrades (symbol)`
+- `fetchTicker (symbol)`
+- `order (symbol, side, amount[, price[, params]])`
+- `trade (symbol, side, amount[, price[, params]])`
+- `buy (symbol, amount[, price[, params]])`
+- `sell (symbol, amount[, price[, params]])`
+- `createOrder (symbol, side, amount[, price[, params]])`
+- `createBuyOrder (symbol, amount[, price[, params]])`
+- `createSellOrder (symbol, amount[, price[, params]])`
+- `createLimitOrder (symbol, side, amount, price, params])`
+- `createMarketOrder (symbol, side, amount[, params])`
+- `createLimitBuyOrder (symbol, amount, price[, params])`
+- `createLimitSellOrder (symbol, amount, price[, params])`
+- `createMarketBuyOrder (symbol, amount[, params])`
+- `createMarketSellOrder (symbol, amount[, params])`
+- `cancelOrder (id)`
+
 # Market Data
 
 ```
