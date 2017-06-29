@@ -109,6 +109,8 @@ Each market has a default id. The id is not used for anything, it's a string lit
 
 - `market.timeout / market['timeout'] / $market->timeout`: A timeout for a request-response roundtrip (default timeout is 10 seconds).
 
+- `market.rateLimit / market['rateLimit'] / $market->rateLimit`: A request rate limit in milliseconds. Specifies the required minimal delay between two consequent HTTP requests to the same market. This parameter is not used for now (reserved for future).
+
 - `market.verbose / market['verbose'] / $market->verbose`: A boolean flag indicating whether to log HTTP requests to stdout (verbose flag is false by default).
 
 - `market.products / market['products'] / $market->products`: An associative array of products indexed by trading pair or symbol. Market products should be loaded prior to accessing this property. Products are unavailable until you call the `loadProduct() / load_products()` method on market instance.
@@ -203,25 +205,46 @@ $reloadedProducts = $bitfinex->load_products (true); // force HTTP reload = true
 var_dump ($bitfinex->products['XRP/BTC']);
 ```
 
-# Endpoints
+# API Methods / Endpoints
 
-Each market exposes a set of exchange API methods. Each method of the API is called an *endpoint*. Endpoints are HTTP URLs for querying various types of information. All endpoints return JSON in response to client requests. Usually, there is an endpoint for getting a list of products from an exchange market, an endpoint for retrieving an order book for a particular product, an endpoint for retrieving trade history, endpoints for placing and cancelling orders, for money deposit and withdrawal, etc... Basically every kind of action you could perform within a particular market has a separate endpoint URL offered by exchange API.
+Each exchange market offers a set of API methods. Each method of the API is called an *endpoint*. Endpoints are HTTP URLs for querying various types of information. All endpoints return JSON in response to client requests. Usually, there is an endpoint for getting a list of products from an exchange market, an endpoint for retrieving an order book for a particular product, an endpoint for retrieving trade history, endpoints for placing and cancelling orders, for money deposit and withdrawal, etc... Basically every kind of action you could perform within a particular market has a separate endpoint URL offered by exchange API.
 
 Because the set of methods differs from market to market, the ccxt library implements the following:
-- a legacy public and private API for all possible URLs and methods
+- a public and private API for all possible URLs and methods
 - a unified API supporting a subset of common methods
 
-## Legacy API
+The endpoint URLs are predefined in the `market['api'] / $market->api` property for each market. You don't have to override it, unless you are implementing a new market API (at least you should know what you're doing). 
 
-The legacy endpoint URLs are predefined in the `market['api'] / $market->api` property for each market. You don't have to override it, unless you are implementing a new market API (at least you should know what you're doing). 
+The endpoint definition is a list of all API URLs exposed by a market. This list get converted to callable instance methods upon market instantiation. Each URL in the API endpoint list get a corresponding callable method. For example, if a market offers an HTTP GET URL for querying prices like `https://example.com/public/quotes`, it is converted to a method named `example.publicGetQuotes () / $example->publicGetQuotes ()`. This is done automatically for all markets, therefore the ccxt library supports all possible URLs offered by crypto exchanges.
 
-The endpoint definition is a simple schema or a list of all API URLs exposed by a market. This list get converted to callable instance methods upon market instantiation. Each URL in the API endpoint list get a corresponding callable method. For example, if a market offers an HTTP GET URL for querying prices like `https://example.com/public/quotes`, it gets converted to a method named `example.publicGetQuotes () / $example->publicGetQuotes ()`. This is done automatically for all markets, therefore the ccxt library supports all possible URLs offered by crypto exchanges.
+## Public / Private API
 
-### Public And Private API
+API URLs are usually grouped into two sets of methods called a *public API* for market data and a *private API* for trading and account access. These groups of API methods are usually prefixed with a word 'public' or 'private'. Most exchanges have a public and a private API.
 
-Legacy endpoint URLs are usually grouped into two sets of methods called a *public API* for market data and a *private API* for trading and account access. These groups of API methods are usually prefixed with a word 'public' or 'private'. Most of exchanges have that exact same grouping. 
+A public API is used to access market data. Public APIs usually do not require any authentication whatsoever. Most markets provide market data to public. With the ccxt library anyone can access market data out of the box without having to register with the markets and without setting up account keys and passwords.
 
-Some exchanges offer the same logic under different names. For example, a public API is also often called *market data*, *basic*, *market*, *mapi*, *api*, *price*, etc... All of them mean a set of methods for accessing data available to public. A private API is also often called *trading*, *trade*, *tapi*, *exchange*, *account*, etc... A few exchanges also expose a merchant API which is often called *merchant*, *ecapi* (for e-commerce)...
+Public APIs include the following: 
+- instruments/trading pairs
+- price feeds (exchange rates)
+- order books
+- trade history
+- tickers
+- OHLC(V) for charting
+- other public endpoints
+
+For trading with private API you need to obtain API keys from/to exchange markets. It often means registering with exchange markets and creating API keys with your account. Most exchanges require personal info or identification. Some kind of verification may be necessary as well. If you want to trade you need to register yourself, this library will not create accounts or API keys for you. Some exchange APIs expose interface methods for registering an account from within the code itself, but most of exchanges don't. You have to sign up and create API keys with their websites.
+
+Private APIs allow the following:
+- manage personal account info
+- query account balances
+- trade by making market and limit orders
+- deposit and withdraw fiat and crypto funds
+- query personal orders
+- get ledger history
+- transfer funds between accounts
+- use merchant services
+
+Some exchanges offer the same logic under different names. For example, a public API is also often called *market data*, *basic*, *market*, *mapi*, *api*, *price*, etc... All of them mean a set of methods for accessing data available to public. A private API is also often called *trading*, *trade*, *tapi*, *exchange*, *account*, etc... A few exchanges also expose a merchant API which is often called *merchant*, *ecapi* (for e-commerce).
 
 To get a list of all available methods with a market instance, you can simply do the following:
 
@@ -231,23 +254,25 @@ print (dir (ccxt.hitbtc ()))        # Python
 var_dump (new \ccxt\okcoinusd ()); // PHP
 ```
 
-In Python and PHP all API endpoint methods are synchronous. In JavaScript all API methods are asynchronous and return Promises that resolve with a decoded JSON object. Therefore there are two styles for JavaScript code structuring – callbacks and async/await.
+In Python and PHP all API methods are synchronous. In JavaScript all methods are asynchronous and return Promises that resolve with a decoded JSON object. Therefore there are two styles for JavaScript code structuring – callbacks and async/await.
 
 ```JavaScript
 // JavaScript
 
 // callback style
-bitfinex.publicGetSymbolsDetails ().then (products => { // nested codeflow
+bitfinex.publicGetSymbolsDetails ().then (products => {
+    // → nested codeflow
     let symbol = products[0]['pair']
     bitfinex.publicGetPubtickerSymbol ({ symbol }).then (ticker => {
+        // → nested codeflow
         console.log (bitfinex.id, symbol, ticker)
     })
 })
 
 // async / await style
 (async () => {
-    // linear codeflow
-    let pairs = await kraken.publicGetAssetPairs ()
+    // ↓ linear codeflow
+    let pairs = await kraken.publicGetAssetPairs () 
     let symbols = Object.keys (pairs['result'])
     let symbol = symbols[0]
     let ticker = await kraken.publicGetTicker ({ pair: symbol })
@@ -255,7 +280,11 @@ bitfinex.publicGetSymbolsDetails ().then (products => { // nested codeflow
 })
 ```
 
-All legacy API methods return a decoded JSON response from the exchange markets, untouched.
+## Returned JSON Objects
+
+All public and private API methods return raw decoded JSON objects in response from the exchange markets, as is, untouched. The unified API returns JSON-decoded objects in a common format and structure.
+
+## Passing Parameters To API Methods
 
 The set of all possible legacy API endpoints differs from market to market. Most of methods accept a single associative array (or a Python dict) of key-value parameters. The params are passed as follows:
 
