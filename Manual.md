@@ -6,6 +6,12 @@
 
 The ccxt library is a collection of available crypto exchange markets or market classes. Each *market* implements the public and private API for a particular crypto exchange. All markets are derived from the base Market class and share a set of common methods. To access a particular market from ccxt library you need to create an instance of corresponding market class. Supported markets are updated frequently and new markets are added regularly.
 
+- [Exchange Markets](#exchange-markets)
+- [Products](#products)
+- [API Methods / Endpoints](#endpoints)
+- [Market Data](#market-data)
+- [Trading](#trading)
+
 # Exchange Markets
 
 Below is a list of currently supported cryptocurrency exchanges:
