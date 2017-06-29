@@ -107,7 +107,9 @@ Each market has a default id. The id is not used for anything, it's a string lit
 
 # Products
 
-Each market is a place for trading some kinds of valuables. Sometimes they are called with various different terms like instruments, symbols, trading pairs, currencies, tokens, stocks, commodities, contracts, etc, but they all mean the same – a trading pair, a symbol, a financial instrument or some kind of *product*. In terms of the ccxt library, every market trades products within itself. Also, the set of products differs from market to market opening possibilities for cross-market and cross-product arbitrage.
+Each market is a place for trading some kinds of valuables. Sometimes they are called with various different terms like instruments, symbols, trading pairs, currencies, tokens, stocks, commodities, contracts, etc, but they all mean the same – a trading pair, a symbol, a financial instrument or some kind of *product*. 
+
+In terms of the ccxt library, every market trades products within itself. Also, the set of products differs from market to market opening possibilities for cross-market and cross-product arbitrage.
 
 Each product is an associative array with the following keys:
 - `product['id']`. The string or numeric ID of the product or trade instrument within the market. Product ids are used to identify products and trading pairs with different markets.
@@ -145,7 +147,9 @@ var_dump ($huobi->id, $products);
 var_dump ($huobi->id, $symbols);
 ```
 
-The loadProducts / load_products is also a dirty method with a side effect of saving the array of products on the market instance. You only need to call it once per market. All subsequent calls to the same method will return the locally saved (cached) array of products. When market products are loaded, you can then access product information any time via the `market.products / market['products'] / $market->products` property. This property contains an associative array of products indexed by symbol. If you need to force reload the list of products after you have them loaded already, pass the reload = true flag to the same method again.
+The loadProducts / load_products is also a dirty method with a side effect of saving the array of products on the market instance. You only need to call it once per market. All subsequent calls to the same method will return the locally saved (cached) array of products.
+
+When market products are loaded, you can then access product information any time via the `market.products / market['products'] / $market->products` property. This property contains an associative array of products indexed by symbol. If you need to force reload the list of products after you have them loaded already, pass the reload = true flag to the same method again.
 
 ```JavaScript
 // JavaScript
