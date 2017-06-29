@@ -209,7 +209,7 @@ Each market exposes a set of exchange API methods. Each method of the API is cal
 
 Because the set of methods differs from market to market, the ccxt library implements the following:
 - a legacy public and private API for all possible URLs and methods
-- a unified API supporting a common subset of methods
+- a unified API supporting a subset of common methods
 
 ## Legacy API
 
