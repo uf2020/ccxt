@@ -76,24 +76,24 @@ $bitfinex2 = new \ccxt\bitfinex (array ('id' => 'bitfinex2'));
 
 Every market has a set of properties and methods which can be overridden upon construction (with JavaScript) or by subclassing (with Python and PHP). Among common market members are:
 
-- `market['id']` / `$market->id`.
+- `market.id` / `market['id']` / `$market->id`.
 Each market has a default id. The id is not used for anything, it's a string literal for user-land market instance identification purposes. You can have multiple links to the same exchange market and differentiate them by ids. Default ids are all lowercase and correspond to market names.
 
-- `market['name']` / `$market->name`. This is a string literal containing the human-readable market name.
+- `market.name` / `market['name']` / `$market->name`. This is a string literal containing the human-readable market name.
 
-- `market['countries']` / `$market->countries`. A string literal or an array of string literals of 2-symbol ISO country codes, where the exchange is operating from.
+- `market.countries` / `market['countries']` / `$market->countries`. A string literal or an array of string literals of 2-symbol ISO country codes, where the exchange is operating from.
 
-- `market['urls']['api']` / `$market->urls['api']`. The single string literal base URL for API calls or an associative array of separate URLs for private and public APIs.
+- `market.urls['name']` / `market['urls']['api']` / `$market->urls['api']`. The single string literal base URL for API calls or an associative array of separate URLs for private and public APIs.
 
-- `market['urls']['www']` / `$market->urls['www']`. The main HTTP website URL.
+- `market.urls['www']` / `market['urls']['www']` / `$market->urls['www']`. The main HTTP website URL.
 
-- `market['urls']['doc']` / `$market->urls['doc']`. A single string URL link to original documentation for exchange API on their website or an array of links to docs.
+- `market.urls['doc']` / `market['urls']['doc']` / `$market->urls['doc']`. A single string URL link to original documentation for exchange API on their website or an array of links to docs.
 
-- `market['version']` / `$market->version`. A string literal containing version identifier for current exchange market API. The version is often used in constructing the API URL. Do not override it unless you are implementing your own new crypto market class.
+- `market.version` / `market['version']` / `$market->version`. A string literal containing version identifier for current exchange market API. The version is often used in constructing the API URL. Do not override it unless you are implementing your own new crypto market class.
 
-- `market['api']` / `$market->api`. An associative array containing a definition of all API endpoints exposed by a crypto exchange. The API definition is used by ccxt to automatically construct callable instance methods for each available endpoint.
+- `market.api` / `market['api']` / `$market->api`. An associative array containing a definition of all API endpoints exposed by a crypto exchange. The API definition is used by ccxt to automatically construct callable instance methods for each available endpoint.
 
-- `market['timeout']` / `$market->timeout`. A timeout for a request-response roundtrip.
+- `market.timeout` / `market['timeout']` / `$market->timeout`. A timeout for a request-response roundtrip.
 
 # Products
 
@@ -104,7 +104,36 @@ Each product is an associative array with the following keys:
 - `product['symbol']`. An uppercase string code representation of a particular trading pair or instrument. This is usually written as `BaseCurrency/QuoteCurrency` with a slash as in `BTC/USD`, `LTC/CNY` or `ETH/EUR`, etc. Product symbols are used to identify products within the ccxt library.
 - `product['base']`. An uppercase string code of base fiat or crypto currency.
 - `product['quote']`. An uppercase string code of quoted fiat or crypto currency.
-- `product['info']`. An associative array of non-common market properties, including fees, rates, limits and other general product information. This array is different for each particular market product, its contents depend on which market you are referring to.
+- `product['info']`. An associative array of non-common market properties, including fees, rates, limits and other general product information. The internal info array is different for each particular market product, its contents depend on which market you are referring to.
+
+In most cases you are required to load the list of products and trading symbols for a particular market prior to accessing other market API methods. In order to load products call the `loadProducts()` / `load_products()` method on a market instance.
+
+```JavaScript
+// JavaScript
+let kraken = new ccxt.kraken ()
+let products = await kraken.load_products ()
+let symbols = Object.keys (products)
+console.log (kraken.id, products)
+console.log (kraken.id, symbols)
+```
+
+```Python
+# Python
+okcoin = ccxt.okcoinusd ()
+products = okcoin.load_products ()
+symbols = products.keys ()
+print (okcoin.id, products)
+print (okcoin.id, symbols)
+```
+
+```PHP
+// PHP
+$huobi = new \ccxt\huobi ();
+$products = $huobi.load_products ();
+$symbols = array_keys ($products);
+var_dump ($huobi->id, $products);
+var_dump ($huobi->id, $symbols);
+```
 
 # Endpoints
 
