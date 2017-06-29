@@ -1,6 +1,4 @@
-# Supported Exchange Markets
-
-The list of all supported cryptocurrency exchange markets and trading APIs:
+The list of all cryptocurrency exchange markets and trading APIs supported in ccxt library:
 
 | id          | name                                         | doc                                                            | countries                   |   
 |-------------|----------------------------------------------|----------------------------------------------------------------|-----------------------------|
