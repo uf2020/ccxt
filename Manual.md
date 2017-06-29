@@ -104,7 +104,7 @@ Each product is an associative array with the following keys:
 - `product['symbol']`. An uppercase string code representation of a particular trading pair or instrument. This is usually written as `BaseCurrency/QuoteCurrency` with a slash as in `BTC/USD`, `LTC/CNY` or `ETH/EUR`, etc. Product symbols are used to identify products within the ccxt library.
 - `product['base']`. An uppercase string code of base fiat or crypto currency.
 - `product['quote']`. An uppercase string code of quoted fiat or crypto currency.
-- `product['info']`. An associative array of non-common market properties, including fees, rates, limits and other general product information. The internal info array is different for each particular market product, its contents depend on which market you are referring to.
+- `product['info']`. An associative array of non-common market properties, including fees, rates, limits and other general product information. The internal info array is different for each particular market product, its contents depend on the exchange market.
 
 In most cases you are required to load the list of products and trading symbols for a particular market prior to accessing other market API methods. In order to load products call the `loadProducts()` / `load_products()` method on a market instance.
 
