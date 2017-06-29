@@ -56,6 +56,8 @@ Below is a list of currently supported cryptocurrency exchanges:
 | yobit       | [YoBit](https://www.yobit.net)               | [API](https://www.yobit.net/en/api/)                           | Russia                      |   
 | zaif        | [Zaif](https://zaif.jp)                      | [API](https://corp.zaif.jp/api-docs)                           | Japan                       | 
 
+## Instantiation
+
 To connect to an exchange market and start trading you need to instantiate a market class instance from ccxt library. A market can be instantiated like so:
 
 ```JavaScript
@@ -81,6 +83,8 @@ $bitfinex1 = new \ccxt\bitfinex (array ('id' => 'bitfinex1'));
 $bitfinex2 = new \ccxt\bitfinex (array ('id' => 'bitfinex2'));
 
 ```
+
+## Market Structure
 
 Every market has a set of properties and methods most of which can be overridden upon construction (with JavaScript) or by subclassing (with Python and PHP). Among common market members are:
 
@@ -113,12 +117,16 @@ Each market is a place for trading some kinds of valuables. Sometimes they are c
 
 In terms of the ccxt library, every market trades products within itself. Also, the set of products differs from market to market opening possibilities for cross-market and cross-product arbitrage.
 
+## Product Structure
+
 Each product is an associative array with the following keys:
 - `product['id']`. The string or numeric ID of the product or trade instrument within the market. Product ids are used to identify products and trading pairs with different markets.
 - `product['symbol']`. An uppercase string code representation of a particular trading pair or instrument. This is usually written as `BaseCurrency/QuoteCurrency` with a slash as in `BTC/USD`, `LTC/CNY` or `ETH/EUR`, etc. Product symbols are used to identify products within the ccxt library.
 - `product['base']`. An uppercase string code of base fiat or crypto currency.
 - `product['quote']`. An uppercase string code of quoted fiat or crypto currency.
 - `product['info']`. An associative array of non-common market properties, including fees, rates, limits and other general product information. The internal info array is different for each particular market product, its contents depend on the exchange market.
+
+## Loading Products
 
 In most cases you are required to load the list of products and trading symbols for a particular market prior to accessing other market API methods. In order to load products call the `loadProducts()` / `load_products()` method on a market instance. It returns an associative array of products indexed by trading symbol.
 
@@ -148,6 +156,8 @@ $symbols = array_keys ($products);
 var_dump ($huobi->id, $products);
 var_dump ($huobi->id, $symbols);
 ```
+
+## Product Cache And Force Reloading
 
 The loadProducts / load_products is also a dirty method with a side effect of saving the array of products on the market instance. You only need to call it once per market. All subsequent calls to the same method will return the locally saved (cached) array of products.
 
@@ -195,11 +205,19 @@ var_dump ($bitfinex->products['XRP/BTC']);
 
 Each market exposes a set of exchange API methods. Each method of the API is called an *endpoint*. Endpoints are HTTP URLs for querying various types of information. All endpoints return JSON in response to client requests. Usually, there is an endpoint for getting a list of products from an exchange market, an endpoint for retrieving an order book for a particular product, an endpoint for retrieving trade history, endpoints for placing and cancelling orders, for money deposit and withdrawal, etc... Basically every kind of action you could perform within a particular market has a separate endpoint URL offered by the exchange API.
 
-The endpoint definition is predefined in the `market['api'] / $market->api` property for each market. You don't have to override it, unless you are implementing a new market API (at least you should know what you're doing). 
+Now, because the set of methods differs from market to market, the ccxt library implements the following:
+- a legacy public and private API for each market supporting all possible URLs and methods
+- a unified API supporting a common subset of methods
+
+## Legacy API
+
+The legacy endpoint definition is predefined in the `market['api'] / $market->api` property for each market. You don't have to override it, unless you are implementing a new market API (at least you should know what you're doing). 
 
 The endpoint definition is a simple schema or a list of all API URLs exposed by a market. This list get converted to callable instance methods upon market instantiation. Each URL in the API endpoint list get a corresponding callable method. For example, if a market offers an HTTP GET URL for querying prices like `https://example.com/public/quotes`, it get converted to a method named `example.publicGetQuotes () / $example->publicGetQuotes ()`. This is done automatically for all markets, therefore this ccxt library supports all possible URLs offered by crypto exchanges.
 
-API endpoint URLs are usually grouped into two sets of methods called a *public API* for market data and a *private API* for trading and account access. These groups of API methods are usually prefixed with a word 'public' or 'private'. Most of exchanges have the exact same grouping. 
+### Public And Private API
+
+Legacy endpoint URLs are usually grouped into two sets of methods called a *public API* for market data and a *private API* for trading and account access. These groups of API methods are usually prefixed with a word 'public' or 'private'. Most of exchanges have that exact same grouping. 
 
 Some exchanges offer the same logic under different names. For example, a public API is also often called *market data*, *basic*, *market*, *mapi*, *api*, *price*, etc... All of them mean a set of methods for accessing data available to public. A private API is also often called *trading*, *trade*, *tapi*, *exchange*, *account*, etc... A few exchanges also expose a merchant API which is often called *merchant*, *ecapi* (for e-commerce)...
 
@@ -213,7 +231,9 @@ print (dir (ccxt.hitbtc ())) # Python
 ```PHP
 var_dump (new \ccxt\okcoinusd ()); // PHP
 ```
-## Legacy API
+
+The set of all possible legacy API endpoints differs from market to market. Most of methods accept a single associative array (or a Python dict) of key-value parameters and return a decoded JSON response from the exchange market. All legacy API methods return the result as is, untouched.
+
 ## Unified API
 
 # Market Data
