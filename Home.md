@@ -7,7 +7,7 @@ Welcome to the ccxt wiki!
   - [Python](https://github.com/kroitor/ccxt/wiki/Install#python)
   - [PHP](https://github.com/kroitor/ccxt/wiki/Install#php)
   - [Web Browsers](https://github.com/kroitor/ccxt/wiki/Install#web-browsers)
-- User Manual
+- [User Manual](https://github.com/kroitor/ccxt/wiki/Manual)
   - Architecture Overview
   - Exchange Markets
   - Products
