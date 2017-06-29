@@ -77,12 +77,14 @@ okcoin2 = ccxt.okcoinusd ({ 'id': 'okcoin2' })
 
 ```PHP
 // PHP
+date_default_timezone_set ('UTC');
 include 'ccxt.php';
 $market = new \ccxt\bitfinex (); // default id
 $bitfinex1 = new \ccxt\bitfinex (array ('id' => 'bitfinex1'));
 $bitfinex2 = new \ccxt\bitfinex (array ('id' => 'bitfinex2'));
-
 ```
+
+Note, that ccxt library in PHP uses builtin UTC/GMT time functions, therefore you are required to set date.timezone in your php.ini or call [date_default_timezone_set](http://php.net/manual/en/function.date-default-timezone-set.php)() function before using the PHP version of the library. The recommended timezone setting is `"UTC"`.
 
 ## Market Structure
 
