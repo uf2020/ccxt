@@ -193,9 +193,28 @@ var_dump ($bitfinex->products['XRP/BTC']);
 
 # Endpoints
 
+Each market exposes a set of exchange API methods. Each method of the API is called an *endpoint*. Endpoints are HTTP URLs for querying various types of information. All endpoints return JSON in response to client requests. Usually, there is an endpoint for getting a list of products from an exchange market, an endpoint for retrieving an order book for a particular product, an endpoint for retrieving trade history, endpoints for placing and cancelling orders, for money deposit and withdrawal, etc... Basically every kind of action you could perform within a particular market has a separate endpoint URL offered by the exchange API.
+
+The endpoint definition is predefined in the `market['api'] / $market->api` property for each market. You don't have to override it, unless you are implementing a new market API (at least you should know what you're doing). 
+
+The endpoint definition is a simple schema or a list of all API URLs exposed by a market. This list get converted to callable instance methods upon market instantiation. Each URL in the API endpoint list get a corresponding callable method. For example, if a market offers an HTTP GET URL for querying prices like `https://example.com/public/quotes`, it get converted to a method named `example.publicGetQuotes () / $example->publicGetQuotes ()`. This is done automatically for all markets, therefore this ccxt library supports all possible URLs offered by crypto exchanges.
+
+API endpoint URLs are usually grouped into two sets of methods called a *public API* for market data and a *private API* for trading and account access. These groups of API methods are usually prefixed with a word 'public' or 'private'. Most of exchanges have the exact same grouping. 
+
+Some exchanges offer the same logic under different names. For example, a public API is also often called *market data*, *basic*, *market*, *mapi*, *api*, *price*, etc... All of them mean a set of methods for accessing data available to public. A private API is also often called *trading*, *trade*, *tapi*, *exchange*, *account*, etc... A few exchanges also expose a merchant API which is often called *merchant*, *ecapi* (for e-commerce)...
+
+To get a list of all available methods with a market instance, you can simply do the following:
+```JavaScript
+console.log (new ccxt.kraken ()) // JavaScript
 ```
-UNDER CONSTRUCTION
+```Python
+print (dir (ccxt.kraken ())) # Python
 ```
+```PHP
+var_dump (new \ccxt\kraken ()); // PHP
+```
+## Legacy API
+## Unified API
 
 # Market Data
 
