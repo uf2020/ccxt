@@ -244,6 +244,7 @@ The unified ccxt API is the subset of methods common among the markets. It curre
 - `fetchOrderBook (symbol)`
 - `fetchTrades (symbol)`
 - `fetchTicker (symbol)`
+- `fetchBalance ()`
 - `order (symbol, side, amount[, price[, params]])`
 - `trade (symbol, side, amount[, price[, params]])`
 - `buy (symbol, amount[, price[, params]])`
