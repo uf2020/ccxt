@@ -208,10 +208,10 @@ To get a list of all available methods with a market instance, you can simply do
 console.log (new ccxt.kraken ()) // JavaScript
 ```
 ```Python
-print (dir (ccxt.kraken ())) # Python
+print (dir (ccxt.hitbtc ())) # Python
 ```
 ```PHP
-var_dump (new \ccxt\kraken ()); // PHP
+var_dump (new \ccxt\okcoinusd ()); // PHP
 ```
 ## Legacy API
 ## Unified API
