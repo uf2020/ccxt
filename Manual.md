@@ -54,7 +54,7 @@ Below is a list of currently supported cryptocurrency exchanges:
 | yobit      | [YoBit](https://www.yobit.net)               | Russia                      |   
 | zaif       | [Zaif](https://zaif.jp)                      | Japan                       |   
 
-A market can be instantiated like so:
+To connect to an exchange market and start trading you need to instantiate a market class instance from ccxt library. A market can be instantiated like so:
 
 ```JavaScript
 // JavaScript
