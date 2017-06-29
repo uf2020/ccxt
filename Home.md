@@ -8,9 +8,9 @@ Welcome to the ccxt wiki!
   - [PHP](https://github.com/kroitor/ccxt/wiki/Install#php)
   - [Web Browsers](https://github.com/kroitor/ccxt/wiki/Install#web-browsers)
 - [User Manual](https://github.com/kroitor/ccxt/wiki/Manual)
-  - Architecture Overview
-  - Exchange Markets
-  - Products
+  - [Architecture Overview](https://github.com/kroitor/ccxt/wiki/Manual#overview)
+  - [Exchange Markets](https://github.com/kroitor/ccxt/wiki/Manual#exchange-markets)
+  - [Products](https://github.com/kroitor/ccxt/wiki/Manual#products)
   - Endpoints
   - Market Data
   - Trading
