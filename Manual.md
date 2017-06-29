@@ -83,13 +83,11 @@ Each market has a default id. The id is not used for anything, it's a string lit
 
 - `market['countries']` / `$market->countries`. A string literal or an array of string literals of 2-symbol ISO country codes, where the exchange is operating from.
 
-- `market['urls']` / `$market->urls`.
+- `market['urls']['api']` / `$market->urls['api']`. The single string literal base URL for API calls or an associative array of separate URLs for private and public APIs.
 
-  - `market['urls']['api']` / `$market->urls['api']`. The single string literal base URL for API calls or an associative array of separate URLs for private and public APIs.
+- `market['urls']['www']` / `$market->urls['www']`. The main HTTP website URL.
 
-  - `market['urls']['www']` / `$market->urls['www']`. The main HTTP website URL.
-
-  - `market['urls']['doc']` / `$market->urls['doc']`. A single string URL link to original documentation for exchange API on their website or an array of links to docs.
+- `market['urls']['doc']` / `$market->urls['doc']`. A single string URL link to original documentation for exchange API on their website or an array of links to docs.
 
 - `market['version']` / `$market->version`. A string literal containing version identifier for current exchange market API. The version is often used in constructing the API URL. Do not override it unless you are implementing your own new crypto market class.
 
