@@ -15,14 +15,19 @@ Welcome to the ccxt wiki!
   - Market Data
   - Trading
 - Usage Examples
-  - Trading Pairs
-  - Orderbook
-  - Market Price
-  - Fetching Price Tickers And Volumes
-  - Querying Trades And Transactions
-  - Placing Market and Limit Orders
-  - Cancelling Orders
-  - Fetching Balance
+  - Public API
+    - Loading Trading Pairs
+    - Querying Orderbooks And Market Prices
+    - Fetching Price Tickers And Volumes
+    - Querying Public Trades / Transactions
+  - Private API
+    - Placing Market and Limit Orders (Trading)
+    - Cancelling Orders
+    - Fetching Balances
+    - Querying Open And Closed Orders
+    - Querying Ledgers And Executions
+    - Creating Deposit Addresses
+    - Submitting Withdrawal Requests
 - API Reference
   - ...
 
