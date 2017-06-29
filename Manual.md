@@ -351,7 +351,7 @@ UNDER CONSTRUCTION
 
 The default nonce is a 32-bit Unix Timestamp (seconds since epoch January 1, 1970).
 
-In case you need to reset the nonce it is much easier to create another pair of keys for using with private APIs. If you are unable to create new keys for some reasons (due to lack of permissions or whatever) – you can still override the nonce by providing a `nonce` parameter to the market constructor or by setting it explicitly on a market object (in JavaScript) or by subclassing and overriding the nonce function on a particular market (in Python / PHP).
+In case you need to reset the nonce it is much easier to create another pair of keys for using with private APIs. If you are unable to create new keys for some reasons (due to lack of permissions or whatever) – you can still override the nonce by providing a `nonce` parameter to the market constructor and by setting it explicitly on a market object (in JavaScript) or by subclassing and overriding the nonce function of a particular market class (in Python / PHP).
 
 ```JavaScript
 // JavaScript
