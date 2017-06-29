@@ -58,6 +58,7 @@ To check if you have requires modules enabled in your PHP installation, type `ph
 Note, that ccxt library uses builtin UTC/GMT time functions, therefore you are required to set date.timezone in your php.ini or call [date_default_timezone_set](http://php.net/manual/en/function.date-default-timezone-set.php)() function before using the ccxt library in PHP. The recommended timezone setting is `"UTC"`.
 
 ```PHP
+date_default_timezone_set ('UTC');
 include "ccxt.php";
 $market = new \cxxt\kraken ();
 ```
