@@ -91,3 +91,13 @@ Add links to CryptoJS components and ccxt to your HTML page code:
     document.addEventListener ('DOMContentLoaded', () => console.log (ccxt))
 </script>
 ```
+
+### CORS (Access-Control-Allow-Origin)
+
+CORS is [Cross-Origin Resource Sharing](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). When accessing a market HTTP REST API from browser with ccxt library you may get a warning or an exception, saying `No 'Access-Control-Allow-Origin' header is present on the requested resource`. That means that the exchange market admins haven't enabled access to their API from arbitrary web browser pages. You can still use the ccxt library from your browser via a CORS-proxy, which is very easy to install.
+
+#### CORS Proxy
+
+```
+UNDER CONSTRUCTION
+```
