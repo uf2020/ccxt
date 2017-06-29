@@ -224,23 +224,59 @@ Legacy endpoint URLs are usually grouped into two sets of methods called a *publ
 Some exchanges offer the same logic under different names. For example, a public API is also often called *market data*, *basic*, *market*, *mapi*, *api*, *price*, etc... All of them mean a set of methods for accessing data available to public. A private API is also often called *trading*, *trade*, *tapi*, *exchange*, *account*, etc... A few exchanges also expose a merchant API which is often called *merchant*, *ecapi* (for e-commerce)...
 
 To get a list of all available methods with a market instance, you can simply do the following:
-```JavaScript
-console.log (new ccxt.kraken ()) // JavaScript
+
 ```
-```Python
-print (dir (ccxt.hitbtc ())) # Python
-```
-```PHP
+console.log (new ccxt.kraken ())   // JavaScript
+print (dir (ccxt.hitbtc ()))        # Python
 var_dump (new \ccxt\okcoinusd ()); // PHP
 ```
 
-The set of all possible legacy API endpoints differs from market to market. Most of methods accept a single associative array (or a Python dict) of key-value parameters and return a decoded JSON response from the exchange market. All legacy API methods return the result as is, untouched.
+In Python and PHP all API endpoint methods are synchronous. In JavaScript all API methods are asynchronous and return Promises that resolve with a decoded JSON object. Therefore there are two styles for JavaScript code structuring – callbacks and async/await.
+
+```JavaScript
+// JavaScript
+
+// callback style
+bitfinex.publicGetSymbolsDetails ().then (products => { // nested codeflow
+    let symbol = products[0]['pair']
+    bitfinex.publicGetPubtickerSymbol ({ symbol }).then (ticker => {
+        console.log (bitfinex.id, symbol, ticker)
+    })
+})
+
+// async / await style
+(async () => {
+    // linear codeflow
+    let pairs = await kraken.publicGetAssetPairs ()
+    let symbols = Object.keys (pairs['result'])
+    let symbol = symbols[0]
+    let ticker = await kraken.publicGetTicker ({ pair: symbol })
+    console.log (kraken.id, symbol, ticker)
+})
+```
+
+All legacy API methods return a decoded JSON response from the exchange markets, untouched.
+
+The set of all possible legacy API endpoints differs from market to market. Most of methods accept a single associative array (or a Python dict) of key-value parameters. The params are passed as follows:
+
+```
+bitso.publicGetTicker ({ book: 'eth_mxn' })            // JavaScript
+zaif.api_get_ticker_pair ({ 'pair': 'btc_jpy' })        # Python
+$luno->public_get_ticker (array ('pair' => 'XBTIDR')); // PHP
+```
+
+For a full list of accepted method parameters for each market, please consult [API docs](#exchange-markets).
+
+### Naming Conventions
+
 
 ## Unified API
 
 The unified ccxt API is the subset of methods common among the markets. It currently contains the following methods:
-- `loadProducts ()`
-- `fetchProducts ()`
+- `fetchProducts ()`: Fetches a list of all available products from a market and returns an abstracted JSON-decoded response, an array of products. Some markets do not have means for obtaining a list of products via their online API, for those the list of products is hardcoded.
+
+- `loadProducts ([reload])`: If products have not been loaded
+
 - `fetchOrderBook (symbol)`
 - `fetchTrades (symbol)`
 - `fetchTicker (symbol)`
