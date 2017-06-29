@@ -182,6 +182,7 @@ var_dump (array_keys ($bitfinex->products)); // output a short list of product s
 var_dump ($bitfinex->products['XRP/USD']); // output single product details
 $bitfinex->load_products (); // return a locally cached version, no reload
 $reloadedProducts = $bitfinex->load_products (true); // force HTTP reload = true
+var_dump ($bitfinex->products['XRP/BTC']);
 ```
 
 # Endpoints
