@@ -279,12 +279,16 @@ The unified ccxt API is the subset of methods common among the markets. It curre
 
 - `fetchProducts ()`: Fetches a list of all available products from a market and returns an abstracted JSON-decoded response, an array of products. Some markets do not have means for obtaining a list of products via their online API, for those the list of products is hardcoded.
 
-- `loadProducts ([reload])`: Loads the list of products and caches it with the market instance. Returns cached products if loaded already, unless the reload = true flag is forced. 
+- `loadProducts ([reload])`: Loads the list of products and caches it with the market instance. Returns cached products if loaded already, unless the `reload = true` flag is forced. 
 
-- `fetchOrderBook (symbol)`
-- `fetchTrades (symbol)`
-- `fetchTicker (symbol)`
-- `fetchBalance ()`
+- `fetchOrderBook (symbol)`: Fetch an order book for a particular product trading symbol.
+
+- `fetchTrades (symbol)`: Fetch recent trades for a particular trading symbol.
+
+- `fetchTicker (symbol)`: Fetch latest ticker data by trading symbol.
+
+- `fetchBalance ()`: Fetch Balance.
+
 - `order (symbol, side, amount[, price[, params]])`
 - `trade (symbol, side, amount[, price[, params]])`
 - `buy (symbol, amount[, price[, params]])`
