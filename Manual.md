@@ -284,7 +284,7 @@ bitfinex.publicGetSymbolsDetails ().then (products => {
 
 ## Returned JSON Objects
 
-All public and private API methods return raw decoded JSON objects in response from the exchange markets, as is, untouched. The unified API returns JSON-decoded objects in a common format and structure.
+All public and private API methods return raw decoded JSON objects in response from the exchange markets, as is, untouched. The unified API returns JSON-decoded objects in a common format and structured uniformly across all markets.
 
 ## Passing Parameters To API Methods
 
