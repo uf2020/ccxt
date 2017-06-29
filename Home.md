@@ -13,7 +13,14 @@ Welcome to the ccxt wiki!
   - [Products](https://github.com/kroitor/ccxt/wiki/Manual#products)
   - [Endpoints](https://github.com/kroitor/ccxt/wiki/Manual#endpoints)
   - Market Data
+    - Order Books
+    - Price Tickers
+    - OHLC(V) Price Data
+    - Public Trades
   - Trading
+    - Account / Balance
+    - Orders / Executions
+    - ...
 - Usage Examples
   - Public API
     - Loading Trading Pairs
