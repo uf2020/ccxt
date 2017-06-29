@@ -2,11 +2,11 @@ Welcome to the ccxt wiki!
 ```diff
 - the ccxt documentation is under heavy development right now
 ```
-- Install
-  - Node.js
-  - Python
-  - PHP
-  - Web Browsers
+- [Install](https://github.com/kroitor/ccxt/wiki/Install)
+  - [Node.js](https://github.com/kroitor/ccxt/wiki/Install#nodejs)
+  - [Python](https://github.com/kroitor/ccxt/wiki/Install#python)
+  - [PHP](https://github.com/kroitor/ccxt/wiki/Install#php)
+  - [Web Browsers](https://github.com/kroitor/ccxt/wiki/Install#web-browsers)
 - User Manual
   - Architecture Overview
   - Exchange Markets
