@@ -80,26 +80,30 @@ $bitfinex2 = new \ccxt\bitfinex (array ('id' => 'bitfinex2'));
 
 ```
 
-Every market has a set of properties and methods which can be overridden upon construction (with JavaScript) or by subclassing (with Python and PHP). Among common market members are:
+Every market has a set of properties and methods most of which can be overridden upon construction (with JavaScript) or by subclassing (with Python and PHP). Among common market members are:
 
 - `market.id` / `market['id']` / `$market->id`.
 Each market has a default id. The id is not used for anything, it's a string literal for user-land market instance identification purposes. You can have multiple links to the same exchange market and differentiate them by ids. Default ids are all lowercase and correspond to market names.
 
-- `market.name` / `market['name']` / `$market->name`. This is a string literal containing the human-readable market name.
+- `market.name / market['name'] / $market->name`: This is a string literal containing the human-readable market name.
 
-- `market.countries` / `market['countries']` / `$market->countries`. A string literal or an array of string literals of 2-symbol ISO country codes, where the exchange is operating from.
+- `market.countries / market['countries'] / $market->countries`: A string literal or an array of string literals of 2-symbol ISO country codes, where the exchange is operating from.
 
-- `market.urls['name']` / `market['urls']['api']` / `$market->urls['api']`. The single string literal base URL for API calls or an associative array of separate URLs for private and public APIs.
+- `market.urls['name'] / market['urls']['api'] / $market->urls['api']`: The single string literal base URL for API calls or an associative array of separate URLs for private and public APIs.
 
-- `market.urls['www']` / `market['urls']['www']` / `$market->urls['www']`. The main HTTP website URL.
+- `market.urls['www'] / market['urls']['www'] / $market->urls['www']`: The main HTTP website URL.
 
-- `market.urls['doc']` / `market['urls']['doc']` / `$market->urls['doc']`. A single string URL link to original documentation for exchange API on their website or an array of links to docs.
+- `market.urls['doc'] / market['urls']['doc'] / $market->urls['doc']`: A single string URL link to original documentation for exchange API on their website or an array of links to docs.
 
-- `market.version` / `market['version']` / `$market->version`. A string literal containing version identifier for current exchange market API. The version is often used in constructing the API URL. Do not override it unless you are implementing your own new crypto market class.
+- `market.version / market['version'] / $market->version`: A string literal containing version identifier for current exchange market API. The version is often used in constructing the API URL. Do not override it unless you are implementing your own new crypto market class.
 
-- `market.api` / `market['api']` / `$market->api`. An associative array containing a definition of all API endpoints exposed by a crypto exchange. The API definition is used by ccxt to automatically construct callable instance methods for each available endpoint.
+- `market.api / market['api'] / $market->api`: An associative array containing a definition of all API endpoints exposed by a crypto exchange. The API definition is used by ccxt to automatically construct callable instance methods for each available endpoint.
 
-- `market.timeout` / `market['timeout']` / `$market->timeout`. A timeout for a request-response roundtrip.
+- `market.timeout / market['timeout'] / $market->timeout`: A timeout for a request-response roundtrip (default timeout is 10 seconds).
+
+- `market.verbose / market['verbose'] / $market->verbose`: A boolean flag indicating whether to log HTTP requests to stdout (verbose flag is false by default).
+
+- `market.products / market['products'] / $market->products`: An associative array of products indexed by trading pair or symbol. Market products should be loaded prior to accessing this property. Products are unavailable until you call the `loadProduct() / load_products()` method on market instance.
 
 # Products
 
@@ -112,7 +116,7 @@ Each product is an associative array with the following keys:
 - `product['quote']`. An uppercase string code of quoted fiat or crypto currency.
 - `product['info']`. An associative array of non-common market properties, including fees, rates, limits and other general product information. The internal info array is different for each particular market product, its contents depend on the exchange market.
 
-In most cases you are required to load the list of products and trading symbols for a particular market prior to accessing other market API methods. In order to load products call the `loadProducts()` / `load_products()` method on a market instance.
+In most cases you are required to load the list of products and trading symbols for a particular market prior to accessing other market API methods. In order to load products call the `loadProducts()` / `load_products()` method on a market instance. It returns an associative array of products indexed by trading symbol.
 
 ```JavaScript
 // JavaScript
@@ -139,6 +143,45 @@ $products = $huobi.load_products ();
 $symbols = array_keys ($products);
 var_dump ($huobi->id, $products);
 var_dump ($huobi->id, $symbols);
+```
+
+The loadProducts / load_products is also a dirty method with a side effect of saving the array of products on the market instance. You only need to call it once per market. All subsequent calls to the same method will return the locally saved (cached) array of products. When market products are loaded, you can then access product information any time via the `market.products / market['products'] / $market->products` property. This property contains an associative array of products indexed by symbol. If you need to force reload the list of products after you have them loaded already, pass the reload = true flag to the same method again.
+
+```JavaScript
+// JavaScript
+(async () => {
+    let kraken = new ccxt.kraken ({ verbose: true }) // log HTTP requests
+    await kraken.load_products () // request products
+    console.log (kraken.id, kraken.products) // output a full list of all loaded products
+    console.log (Object.keys (kraken.products)) // output a short list of product symbols
+    console.log (kraken.products['BTC/USD']) // output single product details
+    await kraken.load_products () // return a locally cached version, no reload
+    let reloadedProducts = await kraken.load_products (true) // force HTTP reload = true
+    console.log (reloadedProducts['ETH/BTC'])
+}) ()
+```
+
+```Python
+# Python
+poloniex = ccxt.poloniex ({ 'verbose': True }) # log HTTP requests
+poloniex.load_products () # request products
+print (poloniex.id, poloniex.products) # output a full list of all loaded products
+print (poloniex.products.keys ()) # output a short list of product symbols
+print (poloniex.products['BTC/ETH']) # output single product details
+poloniex.load_products () # return a locally cached version, no reload
+reloadedProducts = poloniex.load_products (True) # force HTTP reload = True
+print (reloadedProducts['ETH/ZEC'])
+```
+
+```PHP
+// PHP
+$bitfinex = new \ccxt\bitfinex (array ('verbose' => true)); // log HTTP requests
+$bitfinex.load_products (); // request products
+var_dump ($bitfinex->id, $bitfinex->products); // output a full list of all loaded products
+var_dump (array_keys ($bitfinex->products)); // output a short list of product symbols
+var_dump ($bitfinex->products['XRP/USD']); // output single product details
+$bitfinex->load_products (); // return a locally cached version, no reload
+$reloadedProducts = $bitfinex->load_products (true); // force HTTP reload = true
 ```
 
 # Endpoints
