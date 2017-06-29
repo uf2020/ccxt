@@ -2,7 +2,7 @@ Welcome to the ccxt wiki!
 ```diff
 - the ccxt documentation is under heavy development right now
 ```
-- Installation
+- Install
   - Node.js
   - Python
   - PHP
