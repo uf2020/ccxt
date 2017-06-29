@@ -226,9 +226,9 @@ A public API is used to access market data. Public APIs usually do not require a
 Public APIs include the following: 
 - instruments/trading pairs
 - price feeds (exchange rates)
-- order books
-- trade history
-- tickers
+- order books (L1, L2, L3...)
+- trade history (closed orders, transactions, executions)
+- tickers (spot / 24h price)
 - OHLC(V) for charting
 - other public endpoints
 
@@ -238,8 +238,10 @@ Private APIs allow the following:
 - manage personal account info
 - query account balances
 - trade by making market and limit orders
-- deposit and withdraw fiat and crypto funds
-- query personal orders
+- create deposit addresses and fund accounts
+- request withdrawal of fiat and crypto funds
+- query personal open / closed orders
+- query positions in margin/leverage trading
 - get ledger history
 - transfer funds between accounts
 - use merchant services
@@ -340,6 +342,51 @@ UNDER CONSTRUCTION
 ```
 
 # Trading
+
+```
+UNDER CONSTRUCTION
+```
+
+## Overriding The Nonce
+
+The default nonce is a 32-bit Unix Timestamp (seconds since epoch January 1, 1970).
+
+In case you need to reset the nonce it is much easier to create another pair of keys for using with private APIs. If you are unable to create new keys for some reasons (due to lack of permissions or whatever) – you can still override the nonce by providing a `nonce` parameter to the market constructor or by setting it explicitly on a market object (in JavaScript) or by subclassing and overriding the nonce function on a particular market (in Python / PHP).
+
+```JavaScript
+// JavaScript
+let nonce = 1
+// A: nonce redefined in constructor parameters
+let kraken1 = new ccxt.kraken ({ nonce: () => nonce++ }) 
+// B: nonce redefined explicitly
+let kraken2 = new ccxt.kraken ()
+kraken2.nonce = function () { return nonce++ } // uses same nonce as kraken1
+// C: nonce redefined by calling this.milliseconds
+let kraken3 = new ccxt.kraken ({
+    nonce: function () { return this.milliseconds () },
+})
+```
+
+```Python
+# Python
+class MyKraken (ccxt.kraken):
+    n = 1
+    def nonce (self):
+        return self.n += 1
+mykraken = MyKraken ()
+```
+
+```PHP
+// PHP
+class MyOKCoinUSD extends \ccxt\okcoinusd {
+    public function __construct ($options = array ()) {
+        parent::__construct (array_merge (array ('i' => 1), $options));
+    }
+    public function nonce () {
+        return $this->i++;
+    }
+}
+```
 
 ```
 UNDER CONSTRUCTION
