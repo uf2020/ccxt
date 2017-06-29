@@ -11,7 +11,7 @@ Welcome to the ccxt wiki!
   - [Architecture Overview](https://github.com/kroitor/ccxt/wiki/Manual#overview)
   - [Exchange Markets](https://github.com/kroitor/ccxt/wiki/Manual#exchange-markets)
   - [Products](https://github.com/kroitor/ccxt/wiki/Manual#products)
-  - Endpoints
+  - [Endpoints](https://github.com/kroitor/ccxt/wiki/Manual#endpoints)
   - Market Data
   - Trading
 - Usage Examples
