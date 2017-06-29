@@ -205,10 +205,10 @@ var_dump ($bitfinex->products['XRP/BTC']);
 
 # Endpoints
 
-Each market exposes a set of exchange API methods. Each method of the API is called an *endpoint*. Endpoints are HTTP URLs for querying various types of information. All endpoints return JSON in response to client requests. Usually, there is an endpoint for getting a list of products from an exchange market, an endpoint for retrieving an order book for a particular product, an endpoint for retrieving trade history, endpoints for placing and cancelling orders, for money deposit and withdrawal, etc... Basically every kind of action you could perform within a particular market has a separate endpoint URL offered by the exchange API.
+Each market exposes a set of exchange API methods. Each method of the API is called an *endpoint*. Endpoints are HTTP URLs for querying various types of information. All endpoints return JSON in response to client requests. Usually, there is an endpoint for getting a list of products from an exchange market, an endpoint for retrieving an order book for a particular product, an endpoint for retrieving trade history, endpoints for placing and cancelling orders, for money deposit and withdrawal, etc... Basically every kind of action you could perform within a particular market has a separate endpoint URL offered by exchange API.
 
-Now, because the set of methods differs from market to market, the ccxt library implements the following:
-- a legacy public and private API for each market supporting all possible URLs and methods
+Because the set of methods differs from market to market, the ccxt library implements the following:
+- a legacy public and private API for all possible URLs and methods
 - a unified API supporting a common subset of methods
 
 ## Legacy API
