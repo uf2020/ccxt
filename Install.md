@@ -1,6 +1,4 @@
-# Install
-
-This library is shipped as a single-file (all-in-one module) implementation with minimalistic dependencies and requirements.
+The ccxt library is shipped as a single-file (all-in-one module) implementation with minimalistic dependencies and requirements.
 
 The main file is:
 - `ccxt.js` in JavaScript ([ccxt for Node.js](http://npmjs.com/package/ccxt) and web browsers)
