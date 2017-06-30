@@ -114,7 +114,25 @@ Each market has a default id. The id is not used for anything, it's a string lit
 
 - `market.verbose / market['verbose'] / $market->verbose`: A boolean flag indicating whether to log HTTP requests to stdout (verbose flag is false by default).
 
-- `market.products / market['products'] / $market->products`: An associative array of products indexed by trading pair or symbol. Market products should be loaded prior to accessing this property. Products are unavailable until you call the `loadProduct() / load_products()` method on market instance.
+- `market.products / market['products'] / $market->products`: An associative array of products indexed by trading pair or symbol. Market products should be loaded prior to accessing this property. Products are unavailable until you call the `loadProduct() / load_products()` method on a market instance.
+
+## Rate Limit
+
+Most markets impose what is called a *rate limit*. Exchanges will remember and track your user credentials and your IP address and will not allow you to query the API too frequently. They balance their load and control traffic congestion to protect API servers from (D)DOS and misuse. Most markets allow **up to 1 or 2 requests per second**. Markets may temporarily restrict your access to their exchange API or ban you for some period of time if you are too aggressive with your requests.
+
+```
+UNDER CONSTRUCTION
+```
+
+## Cloudflare DDOS Protection
+
+Some markets are DDOS-protected by [Cloudflare](https://www.cloudflare.com). Your IP can get temporarily blocked during periods of high load. Sometimes they even restrict whole countries and regions. In that case their servers usually return a page that states a HTTP 40x error or runs an AJAX test of your browser and delays the reload of the page for several seconds. Then your browser/fingerprint is granted access temporarily and gets added to a whitelist or receives a HTTP cookie for further use. 
+
+If you encounter Cloudflare DDOS protection errors and cannot reach a particular exchange market then try later or ask the exchange support to add you to a whitelist. 
+
+```
+UNDER CONSTRUCTION
+```
 
 # Products
 
