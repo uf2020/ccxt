@@ -126,7 +126,7 @@ Most markets allow **up to 1 or 2 requests per second**. Markets may temporarily
 UNDER CONSTRUCTION
 ```
 
-## Cloudflare DDoS Protection
+## DDoS Protection By Cloudflare
 
 Some markets are [DDoS](https://en.wikipedia.org/wiki/Denial-of-service_attack)-protected by [Cloudflare](https://www.cloudflare.com). Your IP can get temporarily blocked during periods of high load. Sometimes they even restrict whole countries and regions. In that case their servers usually return a page that states a HTTP 40x error or runs an AJAX test of your browser and delays the reload of the page for several seconds. Then your browser/fingerprint is granted access temporarily and gets added to a whitelist or receives a HTTP cookie for further use. 
 
