@@ -279,7 +279,7 @@ bitfinex.publicGetSymbolsDetails ().then (products => {
     let symbol = symbols[0]
     let ticker = await kraken.publicGetTicker ({ pair: symbol })
     console.log (kraken.id, symbol, ticker)
-})
+}) ()
 ```
 
 ## Returned JSON Objects
@@ -298,7 +298,19 @@ $luno->public_get_ticker (array ('pair' => 'XBTIDR')); // PHP
 
 For a full list of accepted method parameters for each market, please consult [API docs](#exchange-markets).
 
-### Naming Conventions
+### API Method Naming Conventions
+
+A market method name is a concatenated string consisting of type (public or private), HTTP method (GET, POST, PUT, DELETE) and endpoint URL path like in the following examples:
+
+| Method Name                  | Base API URL                   | Endpoint URL                   |
+|------------------------------|--------------------------------|--------------------------------|
+| publicGetIdOrderbook         | https://bitbay.net/API/Public  | {id}/orderbook                 |
+| publicGetPairs               | https://bitlish.com/api        | pairs                          |
+| publicGetJsonMarketTicker    | https://www.bitmarket.net      | json/{market}/ticker           |
+| privateGetUserMargin         | https://bitmex.com             | user/margin                    |
+| privatePostTrade             | https://btc-x.is/api           | trade                          |
+| tapiCancelOrder              | https://yobit.net              | tapi/CancelOrder               |
+| ...                          | ...                            | ...                            |
 
 ```
 UNDER CONSTRUCTION
@@ -310,7 +322,7 @@ The unified ccxt API is the subset of methods common among the markets. It curre
 
 - `fetchProducts ()`: Fetches a list of all available products from a market and returns an abstracted JSON-decoded response, an array of products. Some markets do not have means for obtaining a list of products via their online API, for those the list of products is hardcoded.
 
-- `loadProducts ([reload])`: Loads the list of products and caches it with the market instance. Returns cached products if loaded already, unless the `reload = true` flag is forced. 
+- `loadProducts ([reload])`: Loads the list of products indexed by symbol and caches it with the market instance. Returns cached products if loaded already, unless the `reload = true` flag is forced. 
 
 - `fetchOrderBook (symbol)`: Fetch an order book for a particular product trading symbol.
 
