@@ -318,7 +318,7 @@ UNDER CONSTRUCTION
 
 ## Unified API
 
-The unified ccxt API is the subset of methods common among the markets. It currently contains the following methods:
+The unified ccxt API is a subset of methods common among the markets. It currently contains the following methods:
 
 - `fetchProducts ()`: Fetches a list of all available products from a market and returns an abstracted JSON-decoded response, an array of products. Some markets do not have means for obtaining a list of products via their online API, for those the list of products is hardcoded.
 
