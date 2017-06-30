@@ -1,6 +1,6 @@
 The list of all cryptocurrency exchange markets and trading APIs supported in ccxt library:
 
-| id          | name                                         | doc                                                            | countries                   |   
+| id          | name                                         | docs                                                           | countries                   |   
 |-------------|----------------------------------------------|----------------------------------------------------------------|-----------------------------|
 | _1broker    | [1Broker](https://1broker.com)               | [API](https://1broker.com/?c=en/content/api-documentation)     | US                          |   
 | _1btcxe     | [1BTCXE](https://1btcxe.com)                 | [API](https://1btcxe.com/api-docs.php)                         | Panama                      |   
@@ -22,6 +22,7 @@ The list of all cryptocurrency exchange markets and trading APIs supported in cc
 | exmo        | [EXMO](https://exmo.me)                      | [API](https://exmo.me/ru/api_doc)                              | Spain, Russia               |   
 | fybse       | [FYB-SE](https://www.fybse.se)               | [API](http://docs.fyb.apiary.io)                               | Sweden                      |   
 | fybsg       | [FYB-SG](https://www.fybsg.com)              | [API](http://docs.fyb.apiary.io)                               | Singapore                   |   
+| gdax        | [GDAX](https://www.gdax.com)                 | [API](https://docs.gdax.com)                                   | US                          |   
 | hitbtc      | [HitBTC](https://hitbtc.com)                 | [API](https://hitbtc.com/api)                                  | Hong Kong                   |   
 | huobi       | [Huobi](https://www.huobi.com)               | [API](https://github.com/huobiapi/API_Docs_en/wiki)            | China                       |   
 | jubi        | [jubi.com](https://www.jubi.com)             | [API](https://www.jubi.com/help/api.html)                      | China                       |   
@@ -36,4 +37,4 @@ The list of all cryptocurrency exchange markets and trading APIs supported in cc
 | vaultoro    | [Vaultoro](https://www.vaultoro.com)         | [API](https://api.vaultoro.com)                                | Switzerland                 |   
 | virwox      | [VirWoX](https://www.virwox.com)             | [API](https://www.virwox.com/developers.php)                   | Austria                     |   
 | yobit       | [YoBit](https://www.yobit.net)               | [API](https://www.yobit.net/en/api/)                           | Russia                      |   
-| zaif        | [Zaif](https://zaif.jp)                      | [API](https://corp.zaif.jp/api-docs)                           | Japan                       | 
+| zaif        | [Zaif](https://zaif.jp)                      | [API](https://corp.zaif.jp/api-docs)                           | Japan                       |   
