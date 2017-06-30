@@ -119,7 +119,7 @@ Each market has a default id. The id is not used for anything, it's a string lit
 
 ## Rate Limit
 
-Exchange markets usually impose what is called a *rate limit*. Exchanges will remember and track your user credentials and your IP address and will not allow you to query the API too frequently. They balance their load and control traffic congestion to protect API servers from (D)DOS and misuse.
+Exchange markets usually impose what is called a *rate limit*. Exchanges will remember and track your user credentials and your IP address and will not allow you to query the API too frequently. They balance their load and control traffic congestion to protect API servers from (D)DoS and misuse.
 
 Most markets allow **up to 1 or 2 requests per second**. Markets may temporarily restrict your access to their exchange API or ban you for some period of time if you are too aggressive with your requests.
 
