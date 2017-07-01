@@ -334,7 +334,7 @@ A market method name is a concatenated string consisting of type (public or priv
 | tapiCancelOrder              | https://yobit.net              | tapi/CancelOrder               |
 | ...                          | ...                            | ...                            |
 
-The ccxt library supports both camelcase notation (preferred in JavaScript) and underscore notation (preferred in Python and PHP), therefore all methods can be called in either notation or coding style in any language. Both of these notations work in JavaScript/Python/PHP:
+The ccxt library supports both camelcase notation (preferred in JavaScript) and underscore notation (preferred in Python and PHP), therefore all methods can be called in either notation or coding style in any language. Both of these notations work in JavaScript, Python and PHP:
 
 ```
 market.methodName ()  // camelcase pseudocode
