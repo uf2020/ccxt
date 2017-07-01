@@ -375,6 +375,81 @@ The unified ccxt API is a subset of methods common among the markets. It current
 UNDER CONSTRUCTION
 ```
 
+## Order Books
+
+```
+UNDER CONSTRUCTION
+```
+
+## Price Tickers
+
+A price ticker contains statistics for a particular product/symbol for some period of time in recent past, usually last 24 hours. The structure of a ticker is as follows:
+
+```
+{
+    details:   { the original non-modified unparsed reply from exchange market API server },
+    timestamp:   int (64-bit Unix Timestamp in milliseconds since Epoch 1 Jan 1970)
+    datetime:    ISO8601 datetime string with milliseconds
+    high:        float (highest price)
+    low:         float (lowest price)
+    bid:         float (current bid (buy) price)
+    ask:         float (current ask (sell) price)
+    vwap:        float (volume weighed average price)
+    open:        float (open price),
+    first:       float (price of first trade),
+    last:        float (price of last trade),
+    change:      float (percentage change),
+    average:     float (average),
+    baseVolume:  float (volume of base currency),
+    quoteVolume: float (volume of quote currency),
+}
+```
+
+Timestamp and datetime are both Universal Time Coordinated (UTC).
+To get the ticker data from exchange market call the `market.fetchTicker (productOrSymbol) / market.fetch_ticker (product_or_symbol)`:
+
+```JavaScript
+// JavaScript
+(async () => {
+    console.log (await (market.fetchTicker ('BTC/USD'))) // ticker for BTC/USD
+    let symbols = Object.keys (market.products) 
+    let random = Math.floor ((Math.random () * symbols.length)) - 1
+    console.log (market.fetchTicker (symbols[random])) // ticker for a random symbol
+}) ()
+```
+
+```Python
+# Python
+import random
+print (market.fetch_ticker ('LTC/ZEC')) # ticker for LTC/ZEC
+symbols = market.products.keys ()
+print (market.fetch_ticker (random.choice (symbols))) # ticker for a random symbol
+```
+
+```PHP
+// PHP (don't forget to set your timezone properly!)
+var_dump ($market->fetch_ticker ('ETH/CNY')); // ticker for ETH/CNY
+$symbols = array_keys ($market->products);
+$random = rand () % count ($symbols);
+var_dump ($market->fetch_ticker ($symbols[$random])); // ticker for a random symbol
+```
+
+```
+UNDER CONSTRUCTION
+```
+
+## OHLC(V) Candlestick Charts
+
+```
+UNDER CONSTRUCTION
+```
+
+## Trades, Orders, Executions, Transactions
+
+```
+UNDER CONSTRUCTION
+```
+
 # Trading
 
 ```
