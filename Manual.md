@@ -142,7 +142,9 @@ UNDER CONSTRUCTION
 
 Each market is a place for trading some kinds of valuables. Sometimes they are called with various different terms like instruments, symbols, trading pairs, currencies, tokens, stocks, commodities, contracts, etc, but they all mean the same – a trading pair, a symbol, a financial instrument or some kind of *product*. 
 
-In terms of the ccxt library, every market trades products within itself. The set of products differs from market to market opening possibilities for cross-market and cross-product arbitrage. A product is usually a pair of traded crypto and/or fiat currencies. Some markets and exchange services offer trading various derivatives (like future contracts and options) and also have [dark pools](https://en.wikipedia.org/wiki/Dark_pool), [OTC](https://en.wikipedia.org/wiki/Over-the-counter_(finance)) (over-the-counter deals), merchant APIs and much more.
+In terms of the ccxt library, every market trades products within itself. The set of products differs from market to market opening possibilities for cross-market and cross-product arbitrage. A product is usually a pair of traded crypto and/or fiat currencies. 
+
+Some markets and exchange services offer trading various derivatives (like future contracts and options) and also have [dark pools](https://en.wikipedia.org/wiki/Dark_pool), [OTC](https://en.wikipedia.org/wiki/Over-the-counter_(finance)) (over-the-counter deals), merchant APIs and much more.
 
 ## Product Structure
 
@@ -185,11 +187,13 @@ var_dump ($huobi->id, $symbols);
 
 ## Product Ids And Symbols
 
-Product ids are used during the REST request-response process to reference trading pairs withing markets. Because a product id for a  traded pair of valuables differs from market to market, product ids are unique per exchange and cannot be used across markets. For example the BTC/USD pair/product has different ids on various popular markets, like btcusd, BTCUSD, XBTUSD, btc/usd, 137 (number id), BTC/USD, Btc/Usd, tBTCUSD, XXBTZUSD. You don't have to remember or use product ids, they are used only for internal HTTP request-response purposes inside market implementations.
+Product ids are used during the REST request-response process to reference trading pairs withing markets. Because a product id for a  traded pair of valuables differs from market to market, product ids are unique per exchange and cannot be used across markets. For example, the BTC/USD pair/product may have different ids on various popular markets, like btcusd, BTCUSD, XBTUSD, btc/usd, 137 (number id), BTC/USD, Btc/Usd, tBTCUSD, XXBTZUSD. You don't need to remember or use product ids, they are there only for internal HTTP request-response purposes inside market implementations.
 
-The ccxt library abstracts uncommon product ids to common product symbols. Symbols are not the same as product ids. Symbols are standardized to a common format. Every product is referenced by a corresponding symbol. Symbols are common across markets which makes them suitable for arbitrage and many other things. In terms of ccxt library a symbol is an uppercase literal name of a pair of traded currencies with a slash in between. A currency is usually a code of three or four uppercase letters , like BTC, USD, GBP, DOGE, etc. Some markets have exotic currencies with longer names. Examples of a symbol are: BTC/USD, DOGE/LTC, ETH/EUR, DASH/XRP, BTC/CNY, ZEC/XMR, ETH/JPY.
+The ccxt library abstracts uncommon product ids to symbols, standardized to a common format. Symbols are not the same as product ids. Every product is referenced by a corresponding symbol. Symbols are common across markets which makes them suitable for arbitrage and many other things.
 
- Products are indexed by symbols. The base market class has builtin methods for accessing products by symbols.
+A symbol is an uppercase literal name of a pair of traded currencies with a slash in between. A currency is usually a code of three or four uppercase letters, like BTC, USD, GBP, DOGE, etc. Some markets have exotic currencies with longer names. Examples of a symbol are: BTC/USD, DOGE/LTC, ETH/EUR, DASH/XRP, BTC/CNY, ZEC/XMR, ETH/JPY.
+
+Products are indexed by symbols. The base market class has builtin methods for accessing products by symbols.
 
 ```JavaScript
 // JavaScript
@@ -269,7 +273,9 @@ var_dump ($bitfinex->products['XRP/BTC']);
 
 # API Methods / Endpoints
 
-Each exchange market offers a set of API methods. Each method of the API is called an *endpoint*. Endpoints are HTTP URLs for querying various types of information. All endpoints return JSON in response to client requests. Usually, there is an endpoint for getting a list of products from an exchange market, an endpoint for retrieving an order book for a particular product, an endpoint for retrieving trade history, endpoints for placing and cancelling orders, for money deposit and withdrawal, etc... Basically every kind of action you could perform within a particular market has a separate endpoint URL offered by exchange API.
+Each exchange market offers a set of API methods. Each method of the API is called an *endpoint*. Endpoints are HTTP URLs for querying various types of information. All endpoints return JSON in response to client requests. 
+
+Usually, there is an endpoint for getting a list of products from an exchange market, an endpoint for retrieving an order book for a particular product, an endpoint for retrieving trade history, endpoints for placing and cancelling orders, for money deposit and withdrawal, etc... Basically every kind of action you could perform within a particular market has a separate endpoint URL offered by exchange API.
 
 Because the set of methods differs from market to market, the ccxt library implements the following:
 - a public and private API for all possible URLs and methods
@@ -509,7 +515,9 @@ UNDER CONSTRUCTION
 
 The default nonce is a 32-bit Unix Timestamp (seconds since epoch January 1, 1970).
 
-In case you need to reset the nonce it is much easier to create another pair of keys for using with private APIs. If you are unable to create new keys for some reasons (due to lack of permissions or whatever) – you can still override the nonce by providing a `nonce` parameter to the market constructor and by setting it explicitly on a market object (in JavaScript) or by subclassing and overriding the nonce function of a particular market class (in Python / PHP).
+In case you need to reset the nonce it is much easier to create another pair of keys for using with private APIs. In some cases you are unable to create new keys due to lack of permissions or whatever. If that happens you can still override the nonce. 
+
+In Javascript you can override the nonce by providing a `nonce` parameter to the market constructor or by setting it explicitly on a market object:
 
 ```JavaScript
 // JavaScript
@@ -524,6 +532,8 @@ let kraken3 = new ccxt.kraken ({
     nonce: function () { return this.milliseconds () },
 })
 ```
+
+In Python and PHP you can do the same by subclassing and overriding nonce function of a particular market class:
 
 ```Python
 # Python
