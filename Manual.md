@@ -290,9 +290,9 @@ The endpoint definition is a list of all API URLs exposed by a market. This list
 
 ## Public/Private API
 
-API URLs are usually grouped into two sets of methods called a *public API* for market data and a *private API* for trading and account access. These groups of API methods are usually prefixed with a word 'public' or 'private'. Most exchanges have a public and a private API.
+API URLs are often grouped into two sets of methods called a *public API* for market data and a *private API* for trading and account access. These groups of API methods are usually prefixed with a word 'public' or 'private'.
 
-A public API is used to access market data. Public APIs usually do not require any authentication whatsoever. Most markets provide market data to public. With the ccxt library anyone can access market data out of the box without having to register with the markets and without setting up account keys and passwords.
+A public API is used to access market data and does not require any authentication whatsoever. Most markets provide market data openly to all (under their rate limit). With the ccxt library anyone can access market data out of the box without having to register with the markets and without setting up account keys and passwords.
 
 Public APIs include the following: 
 - instruments/trading pairs
