@@ -328,10 +328,10 @@ In Python and PHP all API methods are synchronous. In JavaScript all methods are
 // callback style
 bitfinex.publicGetSymbolsDetails ().then (products => {
     // → nested codeflow
-    let symbol = products[0]['pair']
-    bitfinex.publicGetPubtickerSymbol ({ symbol }).then (ticker => {
+    let productId = products[0]['pair']
+    bitfinex.publicGetPubtickerSymbol ({ symbol: productId }).then (ticker => {
         // → nested codeflow
-        console.log (bitfinex.id, symbol, ticker)
+        console.log (bitfinex.id, productId, ticker)
     })
 })
 
@@ -339,10 +339,10 @@ bitfinex.publicGetSymbolsDetails ().then (products => {
 (async () => {
     // ↓ linear codeflow
     let pairs = await kraken.publicGetAssetPairs () 
-    let symbols = Object.keys (pairs['result'])
-    let symbol = symbols[0]
-    let ticker = await kraken.publicGetTicker ({ pair: symbol })
-    console.log (kraken.id, symbol, ticker)
+    let productIds = Object.keys (pairs['result'])
+    let productId = productIds[0]
+    let ticker = await kraken.publicGetTicker ({ pair: productId })
+    console.log (kraken.id, productId, ticker)
 }) ()
 ```
 
@@ -352,7 +352,7 @@ All public and private API methods return raw decoded JSON objects in response f
 
 ## Passing Parameters To API Methods
 
-The set of all possible legacy API endpoints differs from market to market. Most of methods accept a single associative array (or a Python dict) of key-value parameters. The params are passed as follows:
+The set of all possible API endpoints differs from market to market. Most of methods accept a single associative array (or a Python dict) of key-value parameters. The params are passed as follows:
 
 ```
 bitso.publicGetTicker ({ book: 'eth_mxn' })            // JavaScript
