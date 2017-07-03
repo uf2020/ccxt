@@ -130,7 +130,7 @@ UNDER CONSTRUCTION
 
 ## DDoS Protection By Cloudflare
 
-Some markets are [DDoS](https://en.wikipedia.org/wiki/Denial-of-service_attack)-protected by [Cloudflare](https://www.cloudflare.com). Your IP can get temporarily blocked during periods of high load. Sometimes they even restrict whole countries and regions. In that case their servers usually return a page that states a HTTP 40x error or runs an AJAX test of your browser and delays the reload of the page for several seconds. Then your browser/fingerprint is granted access temporarily and gets added to a whitelist or receives a HTTP cookie for further use. 
+Some markets are [DDoS](https://en.wikipedia.org/wiki/Denial-of-service_attack)-protected by [Cloudflare](https://www.cloudflare.com). Your IP can get temporarily blocked during periods of high load. Sometimes they even restrict whole countries and regions. In that case their servers usually return a page that states a HTTP 40x error or runs an AJAX test of your browser / captcha test and delays the reload of the page for several seconds. Then your browser/fingerprint is granted access temporarily and gets added to a whitelist or receives a HTTP cookie for further use. 
 
 If you encounter Cloudflare DDOS protection errors and cannot reach a particular exchange market then try later or ask the exchange support to add you to a whitelist. 
 
@@ -238,7 +238,7 @@ Because the set of methods differs from market to market, the ccxt library imple
 
 The endpoint URLs are predefined in the `market['api'] / $market->api` property for each market. You don't have to override it, unless you are implementing a new market API (at least you should know what you're doing). 
 
-The endpoint definition is a list of all API URLs exposed by a market. This list get converted to callable instance methods upon market instantiation. Each URL in the API endpoint list get a corresponding callable method. For example, if a market offers an HTTP GET URL for querying prices like `https://example.com/public/quotes`, it is converted to a method named `example.publicGetQuotes () / $example->publicGetQuotes ()`. This is done automatically for all markets, therefore the ccxt library supports all possible URLs offered by crypto exchanges.
+The endpoint definition is a list of all API URLs exposed by a market. This list gets converted to callable instance methods upon market instantiation. Each URL in the API endpoint list gets a corresponding callable method. For example, if a market offers an HTTP GET URL for querying prices like `https://example.com/public/quotes`, it is converted to a method named `example.publicGetQuotes () / $example->publicGetQuotes ()`. This is done automatically for all markets, therefore the ccxt library supports all possible URLs offered by crypto exchanges.
 
 ## Public / Private API
 
