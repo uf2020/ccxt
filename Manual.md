@@ -10,7 +10,7 @@ The ccxt library implements full public and private HTTP REST APIs for all excha
 
 - [Exchange Markets](#exchange-markets)
 - [Products](#products)
-- [API Methods/Endpoints](#api-methods-endpoints)
+- [API Methods / Endpoints](#api-methods--endpoints)
 - [Market Data](#market-data)
 - [Trading](#trading)
 
