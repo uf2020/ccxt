@@ -10,7 +10,7 @@ The ccxt library implements full public and private HTTP REST APIs for all excha
 
 - [Exchange Markets](#exchange-markets)
 - [Products](#products)
-- [API Methods / Endpoints](#api-methods-endpoints)
+- [API Methods/Endpoints](#api-methods-endpoints)
 - [Market Data](#market-data)
 - [Trading](#trading)
 
@@ -272,7 +272,7 @@ $reloadedProducts = $bitfinex->load_products (true); // force HTTP reload = true
 var_dump ($bitfinex->products['XRP/BTC']);
 ```
 
-# API Methods / Endpoints
+# API Methods/Endpoints
 
 Each exchange market offers a set of API methods. Each method of the API is called an *endpoint*. Endpoints are HTTP URLs for querying various types of information. All endpoints return JSON in response to client requests. 
 
@@ -286,7 +286,7 @@ The endpoint URLs are predefined in the `market['api'] / $market->api` property 
 
 The endpoint definition is a list of all API URLs exposed by a market. This list gets converted to callable instance methods upon market instantiation. Each URL in the API endpoint list gets a corresponding callable method. For example, if a market offers an HTTP GET URL for querying prices like `https://example.com/public/quotes`, it is converted to a method named `example.publicGetQuotes () / $example->publicGetQuotes ()`. This is done automatically for all markets, therefore the ccxt library supports all possible URLs offered by crypto exchanges.
 
-## Public / Private API
+## Public/Private API
 
 API URLs are usually grouped into two sets of methods called a *public API* for market data and a *private API* for trading and account access. These groups of API methods are usually prefixed with a word 'public' or 'private'. Most exchanges have a public and a private API.
 
@@ -431,7 +431,7 @@ The unified ccxt API is a subset of methods common among the markets. It current
 UNDER CONSTRUCTION
 ```
 
-## Order Book / Market Depth
+## Order Book/Market Depth
 
 Markets expose information on open orders with bid (buy) and ask (sell) prices, volumes and other data. Usually there is a separate endpoint for querying current state (stack frame) of the *order book* for a particular product. An order book is also often called *market depth*. The order book information is used in the decision making process. 
 
