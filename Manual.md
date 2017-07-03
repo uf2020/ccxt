@@ -194,7 +194,7 @@ The ccxt library abstracts uncommon product ids to common product symbols. Symbo
 ```JavaScript
 // JavaScript
 (async () => {
-    await market.loadProducts ()
+    console.log (await market.loadProducts ())
     let btcusd1 = market.products['BTC/USD'] // get product structure by symbol
     let btcusd2 = market.product ('BTC/USD') // get product structure by symbol
     let btcusdId = market.productId ('BTC/USD') // get product id by symbol
@@ -205,7 +205,7 @@ The ccxt library abstracts uncommon product ids to common product symbols. Symbo
 
 ```Python
 # Python
-market.load_products ()
+print (market.load_products ())
 etheur1 = market.products['ETH/EUR'] # get product structure by symbol
 etheur2 = market.product ('ETH/EUR') # get product structure by symbol
 etheurId = market.product_id ('BTC/USD') # get product id by symbol
@@ -215,7 +215,7 @@ print (market.id, symbols) # print all symbols
 
 ```PHP
 // PHP
-$market->load_products ();
+$var_dump (market->load_products ());
 etheur1 = $market->products['ETH/EUR']; // get product structure by symbol
 etheur2 = $market->product ('ETH/EUR'); // get product structure by symbol
 etheurId = $market->product_id ('BTC/USD'); // get product id by symbol
