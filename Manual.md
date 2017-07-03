@@ -272,7 +272,7 @@ $reloadedProducts = $bitfinex->load_products (true); // force HTTP reload = true
 var_dump ($bitfinex->products['XRP/BTC']);
 ```
 
-# API Methods/Endpoints
+# API Methods / Endpoints
 
 Each exchange market offers a set of API methods. Each method of the API is called an *endpoint*. Endpoints are HTTP URLs for querying various types of information. All endpoints return JSON in response to client requests. 
 
@@ -431,7 +431,7 @@ The unified ccxt API is a subset of methods common among the markets. It current
 UNDER CONSTRUCTION
 ```
 
-## Order Book/Market Depth
+## Order Book / Market Depth
 
 Markets expose information on open orders with bid (buy) and ask (sell) prices, volumes and other data. Usually there is a separate endpoint for querying current state (stack frame) of the *order book* for a particular product. An order book is also often called *market depth*. The order book information is used in the decision making process. 
 
