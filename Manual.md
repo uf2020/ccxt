@@ -142,13 +142,13 @@ UNDER CONSTRUCTION
 
 Each market is a place for trading some kinds of valuables. Sometimes they are called with various different terms like instruments, symbols, trading pairs, currencies, tokens, stocks, commodities, contracts, etc, but they all mean the same – a trading pair, a symbol, a financial instrument or some kind of *product*. 
 
-In terms of the ccxt library, every market trades products within itself. Also, the set of products differs from market to market opening possibilities for cross-market and cross-product arbitrage.
+In terms of the ccxt library, every market trades products within itself. The set of products differs from market to market opening possibilities for cross-market and cross-product arbitrage. A product is usually a pair of traded crypto and/or fiat currencies. Some markets and exchange services offer trading various derivatives (like future contracts and options) and also have [dark pools](https://en.wikipedia.org/wiki/Dark_pool), [OTC](https://en.wikipedia.org/wiki/Over-the-counter_(finance)) (over-the-counter deals), merchant APIs and much more.
 
 ## Product Structure
 
 Each product is an associative array with the following keys:
-- `product['id']`. The string or numeric ID of the product or trade instrument within the market. Product ids are used to identify products and trading pairs with different markets.
-- `product['symbol']`. An uppercase string code representation of a particular trading pair or instrument. This is usually written as `BaseCurrency/QuoteCurrency` with a slash as in `BTC/USD`, `LTC/CNY` or `ETH/EUR`, etc. Product symbols are used to identify products within the ccxt library.
+- `product['id']`. The string or numeric ID of the product or trade instrument within the market. Product ids are used inside markets internally to identify products and trading pairs during the request/response process.
+- `product['symbol']`. An uppercase string code representation of a particular trading pair or instrument. This is usually written as `BaseCurrency/QuoteCurrency` with a slash as in `BTC/USD`, `LTC/CNY` or `ETH/EUR`, etc. Product symbols are used to reference products within the ccxt library.
 - `product['base']`. An uppercase string code of base fiat or crypto currency.
 - `product['quote']`. An uppercase string code of quoted fiat or crypto currency.
 - `product['info']`. An associative array of non-common market properties, including fees, rates, limits and other general product information. The internal info array is different for each particular market product, its contents depend on the exchange market.
@@ -161,9 +161,8 @@ In most cases you are required to load the list of products and trading symbols 
 // JavaScript
 let kraken = new ccxt.kraken ()
 let products = await kraken.load_products ()
-let symbols = Object.keys (products)
 console.log (kraken.id, products)
-console.log (kraken.id, symbols)
+
 ```
 
 ```Python
@@ -182,6 +181,46 @@ $products = $huobi.load_products ();
 $symbols = array_keys ($products);
 var_dump ($huobi->id, $products);
 var_dump ($huobi->id, $symbols);
+```
+
+## Product Ids And Symbols
+
+Product ids are used during the REST request-response process to reference trading pairs withing markets. Because a product id for a  traded pair of valuables differs from market to market, product ids are unique per exchange and cannot be used across markets. For example the BTC/USD pair/product has different ids on various popular markets, like btcusd, BTCUSD, XBTUSD, btc/usd, 137 (number id), BTC/USD, Btc/Usd, tBTCUSD, XXBTZUSD. You don't have to remember or use product ids, they are used only for internal HTTP request-response purposes inside market implementations.
+
+The ccxt library abstracts uncommon product ids to common product symbols. Symbols are not the same as product ids. Symbols are standardized to a common format. Every product is referenced by a corresponding symbol. Symbols are common across markets which makes them suitable for arbitrage and many other things. In terms of ccxt library a symbol is an uppercase literal name of a pair of traded currencies with a slash in between. A currency is usually a code of three or four uppercase letters , like BTC, USD, GBP, DOGE, etc. Some markets have exotic currencies with longer names. Examples of a symbol are: BTC/USD, DOGE/LTC, ETH/EUR, DASH/XRP, BTC/CNY, ZEC/XMR, ETH/JPY.
+
+ Products are indexed by symbols. The base market class has builtin methods for accessing products by symbols.
+
+```JavaScript
+// JavaScript
+(async () => {
+    await market.loadProducts ()
+    let btcusd1 = market.products['BTC/USD'] // get product structure by symbol
+    let btcusd2 = market.product ('BTC/USD') // get product structure by symbol
+    let btcusdId = market.productId ('BTC/USD') // get product id by symbol
+    let symbols = Object.keys (market.products)
+    console.log (market.id, symbols) // print all symbols
+})
+```
+
+```Python
+# Python
+market.load_products ()
+etheur1 = market.products['ETH/EUR'] # get product structure by symbol
+etheur2 = market.product ('ETH/EUR') # get product structure by symbol
+etheurId = market.product_id ('BTC/USD') # get product id by symbol
+symbols = market.products.keys ()
+print (market.id, symbols) # print all symbols
+```
+
+```PHP
+// PHP
+$market->load_products ();
+etheur1 = $market->products['ETH/EUR']; // get product structure by symbol
+etheur2 = $market->product ('ETH/EUR'); // get product structure by symbol
+etheurId = $market->product_id ('BTC/USD'); // get product id by symbol
+$symbols = array_keys ($market->products);
+var_dump ($market->id, $symbols); // print all symbols
 ```
 
 ## Product Cache And Force Reloading
