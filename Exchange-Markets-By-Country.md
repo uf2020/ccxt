@@ -63,3 +63,4 @@ The ccxt library currently supports the following cryptocurrency exchange market
 |US               | ![okcoinusd](https://user-images.githubusercontent.com/1294454/27766791-89ffb502-5ee5-11e7-8a5b-c5950b68ac65.jpg)   | okcoinusd   | [OKCoin USD](https://www.okcoin.com)         | v1   | [API](https://www.okcoin.com/rest_getStarted.html)            |
 |US               | ![poloniex](https://user-images.githubusercontent.com/1294454/27766817-e9456312-5ee6-11e7-9b3c-b628ca5626a5.jpg)    | poloniex    | [Poloniex](https://poloniex.com)             | *    | [API](https://poloniex.com/support/api/)                      |
 |Vietnam          | ![quoine](https://user-images.githubusercontent.com/1294454/27766844-9615a4e8-5ee8-11e7-8814-fcd004db8cdd.jpg)      | quoine      | [QUOINE](https://www.quoine.com)             | 2    | [API](https://developers.quoine.com)                          |
+
