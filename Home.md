@@ -17,8 +17,8 @@ Welcome to the ccxt wiki!
     - [Price Tickers](https://github.com/kroitor/ccxt/wiki/Manual#price-tickers)
     - OHLC(V) Candlestick Charts
     - Public Trades And Closed Orders
-  - Trading
-    - Account / Balance
+  - [Trading](https://github.com/kroitor/ccxt/wiki/Manual#trading)
+    - [Account Balance](https://github.com/kroitor/ccxt/wiki/Manual#account-balance)
     - Private Orders / Executions
     - ...
 - Usage Examples

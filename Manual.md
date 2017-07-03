@@ -544,6 +544,7 @@ for symbol in market.products:
 foreach ($market->products as $symbol => $product)
     var_dump ($market->fetch_trades ($symbol));
 ```
+
 ```
 UNDER CONSTRUCTION
 ```
@@ -552,6 +553,25 @@ UNDER CONSTRUCTION
 
 ```
 UNDER CONSTRUCTION
+```
+
+## Account Balance
+
+```JavaScript
+// JavaScript
+(async () => {
+    console.log (await market.fetchBalance ())
+}) ()
+```
+
+```Python
+# Python
+print (market.fetch_balance ())
+```
+
+```PHP
+// PHP
+var_dump ($market->fetch_balance ());
 ```
 
 ## Overriding The Nonce
