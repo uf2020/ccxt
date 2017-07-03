@@ -223,7 +223,7 @@ $symbols = array_keys ($market->products);
 var_dump ($market->id, $symbols); // print all symbols
 ```
 
-## Product Cache And Force Reloading
+## Product Cache Force Reload
 
 The loadProducts / load_products is also a dirty method with a side effect of saving the array of products on the market instance. You only need to call it once per market. All subsequent calls to the same method will return the locally saved (cached) array of products.
 
