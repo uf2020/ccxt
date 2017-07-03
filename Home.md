@@ -13,8 +13,8 @@ Welcome to the ccxt wiki!
   - [Products](https://github.com/kroitor/ccxt/wiki/Manual#products)
   - [Endpoints](https://github.com/kroitor/ccxt/wiki/Manual#endpoints)
   - [Market Data](https://github.com/kroitor/ccxt/wiki/Manual#market-data)
-    - Order Books / Market Depth
-    - Price Tickers
+    - [Order Books / Market Depth](https://github.com/kroitor/ccxt/wiki/Manual#order-book-market-depth)
+    - [Price Tickers](https://github.com/kroitor/ccxt/wiki/Manual#price-tickers)
     - OHLC(V) Candlestick Charts
     - Public Trades And Closed Orders
   - Trading
