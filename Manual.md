@@ -161,46 +161,47 @@ In most cases you are required to load the list of products and trading symbols 
 
 ```JavaScript
 // JavaScript
-let kraken = new ccxt.kraken ()
-let products = await kraken.load_products ()
-console.log (kraken.id, products)
-
+(async () => {
+    let kraken = new ccxt.kraken ()
+    let products = await kraken.load_products ()
+    console.log (kraken.id, products)
+}) ()
 ```
 
 ```Python
 # Python
 okcoin = ccxt.okcoinusd ()
 products = okcoin.load_products ()
-symbols = products.keys ()
 print (okcoin.id, products)
-print (okcoin.id, symbols)
 ```
 
 ```PHP
 // PHP
 $huobi = new \ccxt\huobi ();
 $products = $huobi.load_products ();
-$symbols = array_keys ($products);
 var_dump ($huobi->id, $products);
-var_dump ($huobi->id, $symbols);
 ```
 
 ## Product Ids And Symbols
 
-Product ids are used during the REST request-response process to reference trading pairs withing markets. Because a product id for a  traded pair of valuables differs from market to market, product ids are unique per exchange and cannot be used across markets. For example, the BTC/USD pair/product may have different ids on various popular markets, like btcusd, BTCUSD, XBTUSD, btc/usd, 137 (number id), BTC/USD, Btc/Usd, tBTCUSD, XXBTZUSD. You don't need to remember or use product ids, they are there only for internal HTTP request-response purposes inside market implementations.
+Product ids are used during the REST request-response process to reference trading pairs withing markets. The set of product ids is unique per exchange and cannot be used across markets. For example, the BTC/USD pair/product may have different ids on various popular markets, like btcusd, BTCUSD, XBTUSD, btc/usd, 137 (numeric id), BTC/USD, Btc/Usd, tBTCUSD, XXBTZUSD. You don't need to remember or use product ids, they are there for internal HTTP request-response purposes inside market implementations.
 
 The ccxt library abstracts uncommon product ids to symbols, standardized to a common format. Symbols are not the same as product ids. Every product is referenced by a corresponding symbol. Symbols are common across markets which makes them suitable for arbitrage and many other things.
 
-A symbol is an uppercase literal name of a pair of traded currencies with a slash in between. A currency is usually a code of three or four uppercase letters, like BTC, USD, GBP, DOGE, etc. Some markets have exotic currencies with longer names. Examples of a symbol are: BTC/USD, DOGE/LTC, ETH/EUR, DASH/XRP, BTC/CNY, ZEC/XMR, ETH/JPY.
+A symbol is an uppercase string literal name for a pair of traded currencies with a slash in between. A currency is a code of three or four uppercase letters, like BTC, ETH, USD, GBP, CNY, LTC, JPY, DOGE, RUB, ZEC, XRP, XMR, etc. Some markets have exotic currencies with longer names. The first currency before the slash is usually called *base currency*, and the one after the slash is called *quote currency*.  Examples of a symbol are: BTC/USD, DOGE/LTC, ETH/EUR, DASH/XRP, BTC/CNY, ZEC/XMR, ETH/JPY.
 
-Products are indexed by symbols. The base market class has builtin methods for accessing products by symbols.
+There is a bit of term ambiguity across various markets. Some exchanges call products as *markets*, whereas other exchanges call symbols as *products*. In terms of the ccxt library, exchanges are the same as markets. Each exchange market contains and trades one or more products. Each product has an id and a symbol. Most symbols are pairs of base currency and quote currency.
+
+```Markets → Products → Symbols → Currencies```
+
+Product structures are indexed by symbols. The base market class has builtin methods for accessing products by symbols. Most API methods require a symbol to be passed in their first parameter. You are often required to specify a symbol when querying current prices, making orders, etc. Most of the time users will be working with product symbols.
 
 ```JavaScript
 // JavaScript
 (async () => {
     console.log (await market.loadProducts ())
     let btcusd1 = market.products['BTC/USD'] // get product structure by symbol
-    let btcusd2 = market.product ('BTC/USD') // get product structure by symbol
+    let btcusd2 = market.product ('BTC/USD') // same result in a slightly different way
     let btcusdId = market.productId ('BTC/USD') // get product id by symbol
     let symbols = Object.keys (market.products)
     console.log (market.id, symbols) // print all symbols
@@ -211,7 +212,7 @@ Products are indexed by symbols. The base market class has builtin methods for a
 # Python
 print (market.load_products ())
 etheur1 = market.products['ETH/EUR'] # get product structure by symbol
-etheur2 = market.product ('ETH/EUR') # get product structure by symbol
+etheur2 = market.product ('ETH/EUR') # same result in a slightly different way
 etheurId = market.product_id ('BTC/USD') # get product id by symbol
 symbols = market.products.keys ()
 print (market.id, symbols) # print all symbols
@@ -221,7 +222,7 @@ print (market.id, symbols) # print all symbols
 // PHP
 $var_dump (market->load_products ());
 etheur1 = $market->products['ETH/EUR']; // get product structure by symbol
-etheur2 = $market->product ('ETH/EUR'); // get product structure by symbol
+etheur2 = $market->product ('ETH/EUR'); // same result in a slightly different way
 etheurId = $market->product_id ('BTC/USD'); // get product id by symbol
 $symbols = array_keys ($market->products);
 var_dump ($market->id, $symbols); // print all symbols
@@ -432,8 +433,26 @@ UNDER CONSTRUCTION
 
 ## Order Books / Market Depth
 
+Markets usually expose open orders with bid (buy) and ask (sell) prices, volumes and other data. Often there is a separate endpoint for querying current state (stack frame) of the order book for a particular market (symbol).
+
+```JavaScript
+// JavaScript
+(async () => {
+    for (symbol in market.products)
+        console.log (await market.fetchOrderBook (symbol))
+}) ()
 ```
-UNDER CONSTRUCTION
+
+```Python
+# Python
+for symbol in market.products:
+    print (market.fetch_order_book (symbol))
+```
+
+```PHP
+// PHP
+foreach ($market->products as $symbol => $product)
+    var_dump ($market->fetch_order_book ($symbol));
 ```
 
 ## Price Tickers
@@ -501,6 +520,25 @@ UNDER CONSTRUCTION
 
 ## Trades, Orders, Executions, Transactions
 
+```JavaScript
+// JavaScript
+(async () => {
+    for (symbol in market.products)
+        console.log (await market.fetchTrades (symbol))
+}) ()
+```
+
+```Python
+# Python
+for symbol in market.products:
+    print (market.fetch_trades (symbol))
+```
+
+```PHP
+// PHP
+foreach ($market->products as $symbol => $product)
+    var_dump ($market->fetch_trades ($symbol));
+```
 ```
 UNDER CONSTRUCTION
 ```
