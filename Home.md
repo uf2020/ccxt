@@ -12,8 +12,8 @@ Welcome to the ccxt wiki!
   - [Exchange Markets](https://github.com/kroitor/ccxt/wiki/Manual#exchange-markets)
   - [Products](https://github.com/kroitor/ccxt/wiki/Manual#products)
   - [Endpoints](https://github.com/kroitor/ccxt/wiki/Manual#endpoints)
-  - Market Data
-    - Order Books / Open Orders
+  - [Market Data](https://github.com/kroitor/ccx/wiki/Manual#market-data)
+    - Order Books / Market Depth
     - Price Tickers
     - OHLC(V) Candlestick Charts
     - Public Trades And Closed Orders

@@ -59,6 +59,8 @@ Below is a list of currently supported cryptocurrency exchanges:
 |![yobit](https://user-images.githubusercontent.com/1294454/27766910-cdcbfdae-5eea-11e7-9859-03fea873272d.jpg)       | yobit       | [YoBit](https://www.yobit.net)               | 3   | [API](https://www.yobit.net/en/api/)                           | Russia                                  |
 |![zaif](https://user-images.githubusercontent.com/1294454/27766927-39ca2ada-5eeb-11e7-972f-1b4199518ca6.jpg)        | zaif        | [Zaif](https://zaif.jp)                      | 1   | [API](https://corp.zaif.jp/api-docs)                           | Japan                                   |
 
+Besides making basic market and limit orders, some exchanges offer leverage (margin) trading, various derivatives (like future contracts and options) and also have [dark pools](https://en.wikipedia.org/wiki/Dark_pool), [OTC](https://en.wikipedia.org/wiki/Over-the-counter_(finance)) (over-the-counter trading), merchant APIs and much more.
+
 ## Instantiation
 
 To connect to an exchange market and start trading you need to instantiate a market class instance from ccxt library. A market can be instantiated like so:
@@ -106,7 +108,7 @@ Each market has a default id. The id is not used for anything, it's a string lit
 
 - `market.urls['doc'] / market['urls']['doc'] / $market->urls['doc']`: A single string URL link to original documentation for exchange API on their website or an array of links to docs.
 
-- `market.version / market['version'] / $market->version`: A string literal containing version identifier for current exchange market API. The version is often used in constructing the API URL. Do not override it unless you are implementing your own new crypto market class.
+- `market.version / market['version'] / $market->version`: A string literal containing version identifier for current exchange market API. The version is often used in constructing the API URL. The version identifier is a usually a numeric string starting with a letter 'v' in some cases, like v1.1. Do not override it unless you are implementing your own new crypto market class.
 
 - `market.api / market['api'] / $market->api`: An associative array containing a definition of all API endpoints exposed by a crypto exchange. The API definition is used by ccxt to automatically construct callable instance methods for each available endpoint.
 
@@ -143,8 +145,6 @@ UNDER CONSTRUCTION
 Each market is a place for trading some kinds of valuables. Sometimes they are called with various different terms like instruments, symbols, trading pairs, currencies, tokens, stocks, commodities, contracts, etc, but they all mean the same – a trading pair, a symbol, a financial instrument or some kind of *product*. 
 
 In terms of the ccxt library, every market trades products within itself. The set of products differs from market to market opening possibilities for cross-market and cross-product arbitrage. A product is usually a pair of traded crypto and/or fiat currencies. 
-
-Some markets and exchange services offer trading various derivatives (like future contracts and options) and also have [dark pools](https://en.wikipedia.org/wiki/Dark_pool), [OTC](https://en.wikipedia.org/wiki/Over-the-counter_(finance)) (over-the-counter deals), merchant APIs and much more.
 
 ## Product Structure
 
@@ -430,7 +430,7 @@ The unified ccxt API is a subset of methods common among the markets. It current
 UNDER CONSTRUCTION
 ```
 
-## Order Books
+## Order Books / Market Depth
 
 ```
 UNDER CONSTRUCTION
