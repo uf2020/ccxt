@@ -11,7 +11,7 @@ Welcome to the ccxt wiki!
   - [Architecture Overview](https://github.com/kroitor/ccxt/wiki/Manual#overview)
   - [Exchange Markets](https://github.com/kroitor/ccxt/wiki/Manual#exchange-markets)
   - [Products](https://github.com/kroitor/ccxt/wiki/Manual#products)
-  - [Endpoints](https://github.com/kroitor/ccxt/wiki/Manual#endpoints)
+  - [Endpoints](https://github.com/kroitor/ccxt/wiki/Manual#api-methods-endpoints)
   - [Market Data](https://github.com/kroitor/ccxt/wiki/Manual#market-data)
     - [Order Books / Market Depth](https://github.com/kroitor/ccxt/wiki/Manual#order-book-market-depth)
     - [Price Tickers](https://github.com/kroitor/ccxt/wiki/Manual#price-tickers)
