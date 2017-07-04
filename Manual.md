@@ -579,6 +579,16 @@ var_dump ($market->fetch_balance ());
 
 ## Placing Orders
 
+To place an order you will need the following information:
+
+- symbol, a string literal symbol of the product you wish to trade... 'BTC/USD', 'ZEC/ETH', 'DOGE/DASH', etc...
+- side, a string literal for the direction of your order, `"buy"` or `"sell"`. When you place a buy order you give quote currency and receive base currency. For example, buying 'BTC/USD' means that you will receive bitcoins for your dollars, baby. When you are selling 'BTC/USD' the outcome is the opposite and you receive dollars for bitcoins.
+- order type, a string literal, currently only `'market'` and `'limit'` orders are supported.
+- amount, how much of currency you want to trade. This usually refers to base currency of the trading pair symbol, though some markets require the amount in quote currency and a few of them require base or quote amount depending on the side of the order. See their API docs for details.
+- price, how much quote currency you are willing to pay for 1 lot of base currency (for limit orders only)
+
+Below is a set of generic methods for placing orders of all types and sides.
+
 ```
 market.order (symbol, side, amount[, price[, params]])
 market.trade (symbol, side, amount[, price[, params]])
@@ -596,6 +606,10 @@ market.create_sell_order (symbol, amount[, price[, params]])
 
 ### Market Price Orders
 
+Market price orders are also known as 'spot price' orders, 'instant' orders or simply 'market' orders. A market order gets executed immediately. The matching engine of the exchange closes the order (fulfills it) with one or more transactions from the top of the order book stack. 
+
+The exchange will close your market order for the best price available. You are not guaranteed though, that the order will be executed for the price you observe prior to placing your order. There can be a slight change of the price for the traded product while your order is being executed, also known as 'price slippage'. The price can slip because of networking roundtrip latency, high loads on the exchange, price volatility and other factors. When placing a market order you don't need to specify the price of the order.
+
 ```
 market.createMarketOrder (symbol, side, amount[, params])
 market.createMarketBuyOrder (symbol, amount[, params])
@@ -609,13 +623,13 @@ market.create_market_sell_order (symbol, amount[, params])
 ### Limit Orders
 
 ```
-createLimitOrder (symbol, side, amount, price, params])
-createLimitBuyOrder (symbol, amount, price[, params])
-createLimitSellOrder (symbol, amount, price[, params])
+market.createLimitOrder (symbol, side, amount, price, params])
+market.createLimitBuyOrder (symbol, amount, price[, params])
+market.createLimitSellOrder (symbol, amount, price[, params])
 
-create_limit_order (symbol, side, amount, price, params])
-create_limit_buy_order (symbol, amount, price[, params])
-create_limit_sell_order (symbol, amount, price[, params])
+market.create_limit_order (symbol, side, amount, price, params])
+market.create_limit_buy_order (symbol, amount, price[, params])
+market.create_limit_sell_order (symbol, amount, price[, params])
 
 ```
 
