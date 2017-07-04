@@ -646,7 +646,7 @@ var_dump ($market->fetch_balance ());
 
 To place an order you will need the following information:
 
-- `symbol`, a string literal symbol of the product you wish to trade, like 'BTC/USD', 'ZEC/ETH', 'DOGE/DASH', etc...
+- `symbol`, a string literal symbol of the product you wish to trade, like `BTC/USD`, `ZEC/ETH`, `DOGE/DASH`, etc...
 - `side`, a string literal for the direction of your order, `buy` or `sell`. When you place a buy order you give quote currency and receive base currency. For example, buying `BTC/USD` means that you will receive bitcoins for your dollars. When you are selling `BTC/USD` the outcome is the opposite and you receive dollars for your bitcoins.
 - `type`, a string literal type of order, ccxt currently supports `market` and `limit` orders
 - `amount`, how much of currency you want to trade. This usually refers to base currency of the trading pair symbol, though some markets require the amount in quote currency and a few of them require base or quote amount depending on the side of the order. See their API docs for details.
