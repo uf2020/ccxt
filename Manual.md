@@ -574,6 +574,48 @@ print (market.fetch_balance ())
 var_dump ($market->fetch_balance ());
 ```
 
+## Placing Orders
+
+```
+market.order (symbol, side, amount[, price[, params]])
+market.trade (symbol, side, amount[, price[, params]])
+market.buy (symbol, amount[, price[, params]])
+market.sell (symbol, amount[, price[, params]])
+
+market.createOrder (symbol, side, amount[, price[, params]])
+market.createBuyOrder (symbol, amount[, price[, params]])
+market.createSellOrder (symbol, amount[, price[, params]])
+
+market.create_order (symbol, side, amount[, price[, params]])
+market.create_buy_order (symbol, amount[, price[, params]])
+market.create_sell_order (symbol, amount[, price[, params]])
+```
+
+### Market Price Orders
+
+```
+market.createMarketOrder (symbol, side, amount[, params])
+market.createMarketBuyOrder (symbol, amount[, params])
+market.createMarketSellOrder (symbol, amount[, params])
+
+market.create_market_order (symbol, side, amount[, params])
+market.create_market_buy_order (symbol, amount[, params])
+market.create_market_sell_order (symbol, amount[, params])
+```
+
+### Limit Orders
+
+```
+createLimitOrder (symbol, side, amount, price, params])
+createLimitBuyOrder (symbol, amount, price[, params])
+createLimitSellOrder (symbol, amount, price[, params])
+
+create_limit_order (symbol, side, amount, price, params])
+create_limit_buy_order (symbol, amount, price[, params])
+create_limit_sell_order (symbol, amount, price[, params])
+
+```
+
 ## Overriding The Nonce
 
 The default nonce is a 32-bit Unix Timestamp (seconds since epoch January 1, 1970).
