@@ -189,7 +189,7 @@ var_dump ($huobi->id, $products);
 
 ## Product Ids And Symbols
 
-Product ids are used during the REST request-response process to reference trading pairs withing markets. The set of product ids is unique per exchange and cannot be used across markets. For example, the BTC/USD pair/product may have different ids on various popular markets, like btcusd, BTCUSD, XBTUSD, btc/usd, 137 (numeric id), BTC/USD, Btc/Usd, tBTCUSD, XXBTZUSD. You don't need to remember or use product ids, they are there for internal HTTP request-response purposes inside market implementations.
+Product ids are used during the REST request-response process to reference trading pairs within markets. The set of product ids is unique per exchange and cannot be used across markets. For example, the BTC/USD pair/product may have different ids on various popular markets, like btcusd, BTCUSD, XBTUSD, btc/usd, 137 (numeric id), BTC/USD, Btc/Usd, tBTCUSD, XXBTZUSD. You don't need to remember or use product ids, they are there for internal HTTP request-response purposes inside market implementations.
 
 The ccxt library abstracts uncommon product ids to symbols, standardized to a common format. Symbols are not the same as product ids. Every product is referenced by a corresponding symbol. Symbols are common across markets which makes them suitable for arbitrage and many other things.
 
