@@ -20,8 +20,11 @@ Welcome to the ccxt wiki!
     - OHLC(V) Candlestick Charts
     - Public Trades And Closed Orders
   - [Trading](https://github.com/kroitor/ccxt/wiki/Manual#trading)
-    - [Account Balance](https://github.com/kroitor/ccxt/wiki/Manual#account-balance)
+    - [API Keys Setup And Authentication](https://github.com/kroitor/ccxt/wiki/Manual#api-keys-setup-and-authentication)
+    - [Querying Account Balance](https://github.com/kroitor/ccxt/wiki/Manual#querying-account-balance)
     - [Placing Orders](https://github.com/kroitor/ccxt/wiki/Manual#placing-orders)
+      - [Market Orders](https://github.com/kroitor/ccxt/wiki/Manual#market-orders)
+      - [Limit Orders](https://github.com/kroitor/ccxt/wiki/Manual#limit-orders)
     - Cancelling Orders
     - Querying Personal Orders
     - Deposit
@@ -29,19 +32,6 @@ Welcome to the ccxt wiki!
     - [Overriding The Nonce](https://github.com/kroitor/ccxt/wiki/Manual#overriding-the-nonce)
     - ...
 - Usage Examples
-  - Public API
-    - Loading Trading Pairs
-    - Querying Orderbooks And Market Prices
-    - Fetching Price Tickers And Volumes
-    - Querying Public Trades / Transactions
-  - Private API
-    - Placing Market and Limit Orders (Trading)
-    - Cancelling Orders
-    - Fetching Balances
-    - Querying Open And Closed Orders
-    - Querying Ledgers And Executions
-    - Creating Deposit Addresses
-    - Submitting Withdrawal Requests
 - API Reference
   - ...
 

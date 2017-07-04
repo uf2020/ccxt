@@ -555,11 +555,77 @@ UNDER CONSTRUCTION
 
 # Trading
 
+## API Keys Setup And Authentication
+
+In order to be able to access your user account, perform algorithmic trading by placing market and limit orders, query balances, deposit and withdraw funds and so on, you need to obtain your API keys for authentication from each exchange market you want to trade with. They usually have it available on a separate tab or page within your user account settings.API keys are exchange-specific and cannnot be interchanged under any circumstances. 
+
+The API credentials usually include the following:
+
+- `market.apiKey`. This is your public API Key and/or Token. This part is *non-secret*, it is included in your request header or body and sent over the internet in open text to identify your request. It is often a string in Hex or Base64 encoding.
+- `market.secret`. This is your private key. Keep it secret, don't tell it to anybody. It used to sign your requests locally before sending them to exchanges. The secret key does not get sent over the internet in the request-response process and should not be published or emailed. It is used to generate a cryptographically strong signature, which in its turn gets sent with your public key to authenticate your identity.
+- `market.uid`. Some markets (not all of them) also generate a user id or *uid* for short. It can be a string or numeric literal. You should set it, if that is required by your exchange. See their docs for details.
+
+In order to create API keys find the API tab or button in your user settings on the exchange website. Then create your keys and copypaste them to your config file. Your config file permissions should be set appropriately, unreadable to anyone except owner. Remember to keep your secret key safe from unauthorized use, do not send or tell it to anybody. A leak of the secret key or a breach in security can cost you a fund loss.
+
+Note that your private requests will fail with an exception or error if you don't set up your API credentials before you start trading. To avoid string-escape side effects always write your credentials in single quotes, not double quotes (`'VERY_GOOD'`, `"VERY_BAD"`). To set up a market for trading, just assign the API credentials to an existing market instance or pass them to a market constructor upon instantiation, like so:
+
+```JavaScript
+// JavaScript
+
+const ccxt = require ('ccxt')
+
+// any time
+let kraken = new ccxt.kraken ()
+kraken.apiKey = 'YOUR_KRAKEN_API_KEY'
+kraken.secret = 'YOUR_KRAKEN_SECRET_KEY'
+
+// upon instantiation
+let okcoinusd = new ccxt.okcoinusd ({
+	apiKey: 'YOUR_OKCOIN_API_KEY',
+	secret: 'YOUR_OKCOIN_SECRET_KEY',
+})
+```
+
+```Python
+# Python
+
+import ccxt
+
+# any time
+bitfinex = ccxt.bitfinex ()
+bitfinex.apiKey = 'YOUR_BFX_API_KEY'
+bitfinex.secret = 'YOUR_BFX_SECRET'
+
+# upon instantiation
+hitbtc = ccxt.hitbtc ({
+	'apiKey': 'YOUR_HITBTC_API_KEY',
+	'secret': 'YOUR_HITBTC_SECRET_KEY',
+})
+```
+
+```PHP
+// PHP
+
+include 'ccxt.php'
+
+// any time
+$quoine = new \ccxt\quoine ();
+$quoine->apiKey = 'YOUR_QUOINE_API_KEY';
+$quoine->secret = 'YOUR_QUOINE_SECRET_KEY';
+
+// upon instantiation
+$zaif = new \ccxt\zaif (array (
+    'apiKey' => 'YOUR_ZAIF_API_KEY',
+    'secret' => 'YOUR_ZAIF_SECRET_KEY'
+));
+
+```
+
 ```
 UNDER CONSTRUCTION
 ```
 
-## Account Balance
+## Querying Account Balance
 
 ```JavaScript
 // JavaScript
@@ -582,11 +648,11 @@ var_dump ($market->fetch_balance ());
 
 To place an order you will need the following information:
 
-- symbol, a string literal symbol of the product you wish to trade... 'BTC/USD', 'ZEC/ETH', 'DOGE/DASH', etc...
-- side, a string literal for the direction of your order, `"buy"` or `"sell"`. When you place a buy order you give quote currency and receive base currency. For example, buying 'BTC/USD' means that you will receive bitcoins for your dollars, baby. When you are selling 'BTC/USD' the outcome is the opposite and you receive dollars for bitcoins.
-- order type, a string literal, currently only `'market'` and `'limit'` orders are supported.
-- amount, how much of currency you want to trade. This usually refers to base currency of the trading pair symbol, though some markets require the amount in quote currency and a few of them require base or quote amount depending on the side of the order. See their API docs for details.
-- price, how much quote currency you are willing to pay for 1 lot of base currency (for limit orders only)
+- `symbol`, a string literal symbol of the product you wish to trade, like 'BTC/USD', 'ZEC/ETH', 'DOGE/DASH', etc...
+- `side`, a string literal for the direction of your order, `buy` or `sell`. When you place a buy order you give quote currency and receive base currency. For example, buying `BTC/USD` means that you will receive bitcoins for your dollars. When you are selling `BTC/USD` the outcome is the opposite and you receive dollars for your bitcoins.
+- `type`, a string literal type of order, ccxt currently supports `market` and `limit` orders
+- `amount`, how much of currency you want to trade. This usually refers to base currency of the trading pair symbol, though some markets require the amount in quote currency and a few of them require base or quote amount depending on the side of the order. See their API docs for details.
+- `price`, how much quote currency you are willing to pay for a trade lot of base currency (for limit orders only)
 
 Below is a set of generic methods for placing orders of all types and sides. Some markets will allow to trade with limit orders only. See their docs for details.
 
@@ -605,9 +671,9 @@ market.create_buy_order (symbol, amount[, price[, params]])
 market.create_sell_order (symbol, amount[, price[, params]])
 ```
 
-### Market Price Orders
+### Market Orders
 
-Market price orders are also known as 'spot price' orders, 'instant' orders or simply 'market' orders. A market order gets executed immediately. The matching engine of the exchange closes the order (fulfills it) with one or more transactions from the top of the order book stack. 
+Market price orders are also known as *spot price orders*, *instant' orders* or simply *market orders*. A market order gets executed immediately. The matching engine of the exchange closes the order (fulfills it) with one or more transactions from the top of the order book stack. 
 
 The exchange will close your market order for the best price available. You are not guaranteed though, that the order will be executed for the price you observe prior to placing your order. There can be a slight change of the price for the traded product while your order is being executed, also known as 'price slippage'. The price can slip because of networking roundtrip latency, high loads on the exchange, price volatility and other factors. When placing a market order you don't need to specify the price of the order.
 
@@ -625,6 +691,8 @@ market.create_market_sell_order (symbol, amount[, params])
 
 ### Limit Orders
 
+Limit price orders are also known as *limit orders*. Some markets accept limit orders only.
+
 ```
 market.createLimitOrder (symbol, side, amount, price, params])
 market.createLimitBuyOrder (symbol, amount, price[, params])
@@ -636,9 +704,11 @@ market.create_limit_sell_order (symbol, amount, price[, params])
 
 ```
 
-## Overriding The Nonce
+## Nonce
 
 The default nonce is a 32-bit Unix Timestamp (seconds since epoch January 1, 1970).
+
+## Overriding The Nonce
 
 In case you need to reset the nonce it is much easier to create another pair of keys for using with private APIs. In some cases you are unable to create new keys due to lack of permissions or whatever. If that happens you can still override the nonce. 
 
