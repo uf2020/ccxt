@@ -567,7 +567,7 @@ The API credentials usually include the following:
 
 In order to create API keys find the API tab or button in your user settings on the exchange website. Then create your keys and copypaste them to your config file. Your config file permissions should be set appropriately, unreadable to anyone except owner. Remember to keep your secret key safe from unauthorized use, do not send or tell it to anybody. A leak of the secret key or a breach in security can cost you a fund loss.
 
-Note that your private requests will fail with an exception or error if you don't set up your API credentials before you start trading. To avoid string-escape side effects always write your credentials in single quotes, not double quotes (`'VERY_GOOD'`, `"VERY_BAD"`). To set up a market for trading, just assign the API credentials to an existing market instance or pass them to a market constructor upon instantiation, like so:
+To set up a market for trading, just assign the API credentials to an existing market instance or pass them to a market constructor upon instantiation, like so:
 
 ```JavaScript
 // JavaScript
@@ -620,6 +620,8 @@ $zaif = new \ccxt\zaif (array (
 ));
 
 ```
+
+Note that your private requests will fail with an exception or error if you don't set up your API credentials before you start trading. To avoid string-escape side effects always write your credentials in single quotes, not double quotes (`'VERY_GOOD'`, `"VERY_BAD"`). 
 
 ## Querying Account Balance
 
