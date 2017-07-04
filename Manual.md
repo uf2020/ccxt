@@ -555,9 +555,9 @@ UNDER CONSTRUCTION
 
 # Trading
 
-## API Keys Setup And Authentication
+In order to be able to access your user account, perform algorithmic trading by placing market and limit orders, query balances, deposit and withdraw funds and so on, you need to obtain your API keys for authentication from each exchange market you want to trade with. They usually have it available on a separate tab or page within your user account settings. API keys are exchange-specific and cannnot be interchanged under any circumstances.
 
-In order to be able to access your user account, perform algorithmic trading by placing market and limit orders, query balances, deposit and withdraw funds and so on, you need to obtain your API keys for authentication from each exchange market you want to trade with. They usually have it available on a separate tab or page within your user account settings.API keys are exchange-specific and cannnot be interchanged under any circumstances. 
+## API Keys Setup And Authentication
 
 The API credentials usually include the following:
 
@@ -619,10 +619,6 @@ $zaif = new \ccxt\zaif (array (
     'secret' => 'YOUR_ZAIF_SECRET_KEY'
 ));
 
-```
-
-```
-UNDER CONSTRUCTION
 ```
 
 ## Querying Account Balance
