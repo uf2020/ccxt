@@ -218,7 +218,7 @@ print (market.load_products ())
 etheur1 = market.products['ETH/EUR'] # get product structure by symbol
 etheur2 = market.product ('ETH/EUR') # same result in a slightly different way
 etheurId = market.product_id ('BTC/USD') # get product id by symbol
-symbols = market.products.keys ()
+symbols = list (market.products.keys ())
 print (market.id, symbols) # print all symbols
 ```
 
@@ -257,7 +257,7 @@ When market products are loaded, you can then access product information any tim
 poloniex = ccxt.poloniex ({ 'verbose': True }) # log HTTP requests
 poloniex.load_products () # request products
 print (poloniex.id, poloniex.products) # output a full list of all loaded products
-print (poloniex.products.keys ()) # output a short list of product symbols
+print (list (poloniex.products.keys ())) # output a short list of product symbols
 print (poloniex.products['BTC/ETH']) # output single product details
 poloniex.load_products () # return a locally cached version, no reload
 reloadedProducts = poloniex.load_products (True) # force HTTP reload = True
@@ -502,7 +502,7 @@ To get the ticker data from exchange market call the `market.fetchTicker (produc
 # Python
 import random
 print (market.fetch_ticker ('LTC/ZEC')) # ticker for LTC/ZEC
-symbols = market.products.keys ()
+symbols = list (market.products.keys ())
 print (market.fetch_ticker (random.choice (symbols))) # ticker for a random symbol
 ```
 
