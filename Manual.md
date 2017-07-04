@@ -142,7 +142,7 @@ UNDER CONSTRUCTION
 
 Some markets are [DDoS](https://en.wikipedia.org/wiki/Denial-of-service_attack)-protected by [Cloudflare](https://www.cloudflare.com). Your IP can get temporarily blocked during periods of high load. Sometimes they even restrict whole countries and regions. In that case their servers usually return a page that states a HTTP 40x error or runs an AJAX test of your browser / captcha test and delays the reload of the page for several seconds. Then your browser/fingerprint is granted access temporarily and gets added to a whitelist or receives a HTTP cookie for further use. 
 
-If you encounter Cloudflare DDOS protection errors and cannot reach a particular exchange market then try later or ask the exchange support to add you to a whitelist. 
+If you encounter Cloudflare DDoS protection errors and cannot reach a particular exchange market then try later or ask the exchange support to add you to a whitelist. **Try to stay under the rate limit to avoid being banned.**
 
 ```
 UNDER CONSTRUCTION
@@ -156,7 +156,7 @@ In terms of the ccxt library, every market trades products within itself. The se
 
 ## Product Structure
 
-Each product is an associative array with the following keys:
+Each product is an associative array (aka dictionary) with the following keys:
 - `product['id']`. The string or numeric ID of the product or trade instrument within the market. Product ids are used inside markets internally to identify products and trading pairs during the request/response process.
 - `product['symbol']`. An uppercase string code representation of a particular trading pair or instrument. This is usually written as `BaseCurrency/QuoteCurrency` with a slash as in `BTC/USD`, `LTC/CNY` or `ETH/EUR`, etc. Product symbols are used to reference products within the ccxt library.
 - `product['base']`. An uppercase string code of base fiat or crypto currency.
@@ -192,11 +192,11 @@ var_dump ($huobi->id, $products);
 
 ## Product Ids And Symbols
 
-Product ids are used during the REST request-response process to reference trading pairs within markets. The set of product ids is unique per exchange and cannot be used across markets. For example, the BTC/USD pair/product may have different ids on various popular markets, like btcusd, BTCUSD, XBTUSD, btc/usd, 137 (numeric id), BTC/USD, Btc/Usd, tBTCUSD, XXBTZUSD. You don't need to remember or use product ids, they are there for internal HTTP request-response purposes inside market implementations.
+Product ids are used during the REST request-response process to reference trading pairs within markets. The set of product ids is unique per exchange and cannot be used across markets. For example, the BTC/USD pair/product may have different ids on various popular markets, like `btcusd`, `BTCUSD`, `XBTUSD`, `btc/usd`, `42` (numeric id), `BTC/USD`, `Btc/Usd`, `tBTCUSD`, `XXBTZUSD`. You don't need to remember or use product ids, they are there for internal HTTP request-response purposes inside market implementations.
 
 The ccxt library abstracts uncommon product ids to symbols, standardized to a common format. Symbols are not the same as product ids. Every product is referenced by a corresponding symbol. Symbols are common across markets which makes them suitable for arbitrage and many other things.
 
-A symbol is an uppercase string literal name for a pair of traded currencies with a slash in between. A currency is a code of three or four uppercase letters, like BTC, ETH, USD, GBP, CNY, LTC, JPY, DOGE, RUB, ZEC, XRP, XMR, etc. Some markets have exotic currencies with longer names. The first currency before the slash is usually called *base currency*, and the one after the slash is called *quote currency*.  Examples of a symbol are: BTC/USD, DOGE/LTC, ETH/EUR, DASH/XRP, BTC/CNY, ZEC/XMR, ETH/JPY.
+A symbol is an uppercase string literal name for a pair of traded currencies with a slash in between. A currency is a code of three or four uppercase letters, like `BTC`, `ETH`, `USD`, `GBP`, `CNY`, `LTC`, `JPY`, `DOGE`, `RUB`, `ZEC`, `XRP`, `XMR`, etc. Some markets have exotic currencies with longer names. The first currency before the slash is usually called *base currency*, and the one after the slash is called *quote currency*.  Examples of a symbol are: `BTC/USD`, `DOGE/LTC`, `ETH/EUR`, `DASH/XRP`, `BTC/CNY`, `ZEC/XMR`, `ETH/JPY`.
 
 There is a bit of term ambiguity across various markets. Some exchanges call products as *markets*, whereas other exchanges call symbols as *products*. In terms of the ccxt library, exchanges are the same as markets. Each exchange market contains and trades one or more products. Each product has an id and a symbol. Most symbols are pairs of base currency and quote currency.
 
