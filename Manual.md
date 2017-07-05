@@ -458,7 +458,7 @@ orderbook: {
     	[ price, amount ],
     	...
     ],
-    'timestamp: 1499280391811, // Unix Timestamp in milliseconds (second * 1000)
+    'timestamp': 1499280391811, // Unix Timestamp in milliseconds (second * 1000)
     'datetime': '2017-07-05T18:47:14.692Z', // ISO8601 datetime string with milliseconds
 }
 ```
