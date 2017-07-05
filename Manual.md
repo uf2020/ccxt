@@ -443,7 +443,25 @@ UNDER CONSTRUCTION
 
 ## Order Book / Market Depth
 
-Markets expose information on open orders with bid (buy) and ask (sell) prices, volumes and other data. Usually there is a separate endpoint for querying current state (stack frame) of the *order book* for a particular product. An order book is also often called *market depth*. The order book information is used in the decision making process. 
+Markets expose information on open orders with bid (buy) and ask (sell) prices, volumes and other data. Usually there is a separate endpoint for querying current state (stack frame) of the *order book* for a particular product. An order book is also often called *market depth*. The order book information is used in the trading decision making process. 
+
+The structure of an order book is as follows:
+```JavaScript
+orderbook: {
+    'bids': [
+        [ price, amount ],
+        [ price, amount ],
+        ...
+    ],
+    'asks': [
+    	[ price, amount ],
+    	[ price, amount ],
+    	...
+    ],
+    'timestamp: 1499280391811, // Unix Timestamp in milliseconds (second * 1000)
+    'datetime': '2017-07-05T18:47:14.692Z', // ISO8601 datetime string with milliseconds
+}
+```
 
 Some exchanges return the stack of orders in various levels of details for analysis. It is either in full detail containing each and every order, or it is aggregated having slightly less detail where orders are grouped and merged by price and volume. The levels of detail or levels of order book aggregation are often number-labelled like L1, L2, L3... Having greater detail requires more traffic and bandwidth and is slower in general but gives a benefit of higher precision. Having less detail is usually faster, but may not be detailed enough in some very specific cases.
 
