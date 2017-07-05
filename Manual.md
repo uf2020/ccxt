@@ -449,22 +449,30 @@ Some exchanges return the stack of orders in various levels of details for analy
 
 ```JavaScript
 // JavaScript
+delay = 2000 // milliseconds = seconds * 1000
 (async () => {
-    for (symbol in market.products)
+    for (symbol in market.products) {
         console.log (await market.fetchOrderBook (symbol))
+        await new Promise (resolve => setTimeout (resolve, delay)) // rate limit
+    }
 }) ()
 ```
 
 ```Python
 # Python
+delay = 2 # seconds
 for symbol in market.products:
     print (market.fetch_order_book (symbol))
+    time.sleep (delay) # rate limit
 ```
 
 ```PHP
 // PHP
-foreach ($market->products as $symbol => $product)
+$delay = 2000000 // microseconds = seconds * 1000000
+foreach ($market->products as $symbol => $product) {
     var_dump ($market->fetch_order_book ($symbol));
+    usleep ($delay); // rate limit
+}
 ```
 
 ## Price Tickers
