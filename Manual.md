@@ -524,10 +524,8 @@ $orderbook = $market->fetch_order_book (array_keys ($market->products)[0]);
 $bid = count ($orderbook['bids']) ? $orderbook['bids'][0] : null;
 $ask = count ($orderbook['asks']) ? $orderbook['asks'][0] : null;
 $spread = ($bid && $ask) ? $ask - $bid : null;
-var_dump ($market->id, 'market price', array (
-	'bid' => $bid,
-	'ask' => $ask,
-	'spread' => $spread));
+$result = array ('bid' => $bid, 'ask' => $ask, 'spread' => $spread);
+var_dump ($market->id, 'market price', $result);
 ```
 
 ## Price Tickers
