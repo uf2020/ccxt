@@ -446,6 +446,7 @@ UNDER CONSTRUCTION
 Markets expose information on open orders with bid (buy) and ask (sell) prices, volumes and other data. Usually there is a separate endpoint for querying current state (stack frame) of the *order book* for a particular product. An order book is also often called *market depth*. The order book information is used in the trading decision making process. 
 
 The structure of an order book is as follows:
+
 ```JavaScript
 orderbook: {
     'bids': [
@@ -462,6 +463,8 @@ orderbook: {
     'datetime': '2017-07-05T18:47:14.692Z', // ISO8601 datetime string with milliseconds
 }
 ```
+
+Price and amount are floats. The bids array is sorted by price in descending order. The best (highest) bid price is the first element and the worst (lowest) bid price is the last element. The asks array is sorted by price in ascending order. The best (lowest) ask price is the first element and the worst (highest) ask price is the last element. Bid/ask arrays can be empty if there are no corresponding orders in the order book of an exchange.
 
 Some exchanges return the stack of orders in various levels of details for analysis. It is either in full detail containing each and every order, or it is aggregated having slightly less detail where orders are grouped and merged by price and volume. The levels of detail or levels of order book aggregation are often number-labelled like L1, L2, L3... Having greater detail requires more traffic and bandwidth and is slower in general but gives a benefit of higher precision. Having less detail is usually faster, but may not be detailed enough in some very specific cases.
 
@@ -491,6 +494,36 @@ foreach ($market->products as $symbol => $product) {
     var_dump ($market->fetch_order_book ($symbol));
     usleep ($delay); // rate limit
 }
+```
+
+### Market Price
+
+In order to get current best price (query market price) and calculate bidask spread take first elements from bid and ask, like so:
+
+```JavaScript
+// JavaScript
+let orderbook = market.fetchOrderBook (Object.keys (market.products)[0])
+let bid = orderbook.bids.length ? orderbook.bids[0] : undefined
+let ask = orderbook.asks.length ? orderbook.asks[0] : undefined
+let spread = (bid && ask) ? ask - bid : undefined
+console.log (market.id, 'market price', { bid, ask, spread })
+```
+
+```Python
+# Python
+orderbook = market.fetchOrderBook (Object.keys (market.products)[0])
+bid = orderbook.bids[0] if len (orderbook.bids) > 0 else None
+ask = orderbook.asks[0] if len (orderbook.asks) > 0 else None
+spread = (ask - bid) if (bid and ask) else None
+print (market.id, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+```
+
+```PHP
+orderbook = market.fetchOrderBook (Object.keys (market.products)[0])
+bid = count (orderbook.bids) ? orderbook.bids[0] : null;
+ask = count (orderbook.asks) ? orderbook.asks[0] : null;
+spread = (bid && ask) ? ask - bid : null;
+var_dump (market.id, 'market price', array ('bid' => bid, 'ask' => $ask, 'spread' => $spread));
 ```
 
 ## Price Tickers
