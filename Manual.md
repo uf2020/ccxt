@@ -503,8 +503,8 @@ In order to get current best price (query market price) and calculate bidask spr
 ```JavaScript
 // JavaScript
 let orderbook = market.fetchOrderBook (Object.keys (market.products)[0])
-let bid = orderbook.bids.length ? orderbook.bids[0] : undefined
-let ask = orderbook.asks.length ? orderbook.asks[0] : undefined
+let bid = orderbook.bids.length ? orderbook.bids[0][0] : undefined
+let ask = orderbook.asks.length ? orderbook.asks[0][0] : undefined
 let spread = (bid && ask) ? ask - bid : undefined
 console.log (market.id, 'market price', { bid, ask, spread })
 ```
@@ -512,8 +512,8 @@ console.log (market.id, 'market price', { bid, ask, spread })
 ```Python
 # Python
 orderbook = market.fetch_order_book (list (market.products.keys ()) [0])
-bid = orderbook['bids'][0] if len (orderbook['bids']) > 0 else None
-ask = orderbook['asks'][0] if len (orderbook['asks']) > 0 else None
+bid = orderbook['bids'][0][0] if len (orderbook['bids']) > 0 else None
+ask = orderbook['asks'][0][0] if len (orderbook['asks']) > 0 else None
 spread = (ask - bid) if (bid and ask) else None
 print (market.id, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
 ```
@@ -521,8 +521,8 @@ print (market.id, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
 ```PHP
 // PHP
 $orderbook = $market->fetch_order_book (array_keys ($market->products)[0]);
-$bid = count ($orderbook['bids']) ? $orderbook['bids'][0] : null;
-$ask = count ($orderbook['asks']) ? $orderbook['asks'][0] : null;
+$bid = count ($orderbook['bids']) ? $orderbook['bids'][0][0] : null;
+$ask = count ($orderbook['asks']) ? $orderbook['asks'][0][0] : null;
 $spread = ($bid && $ask) ? $ask - $bid : null;
 $result = array ('bid' => $bid, 'ask' => $ask, 'spread' => $spread);
 var_dump ($market->id, 'market price', $result);
