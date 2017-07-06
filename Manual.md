@@ -519,6 +519,7 @@ print (market.id, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
 ```
 
 ```PHP
+// PHP
 $orderbook = $market->fetch_order_book (array_keys ($market->products)[0]);
 $bid = count ($orderbook['bids']) ? $orderbook['bids'][0] : null;
 $ask = count ($orderbook['asks']) ? $orderbook['asks'][0] : null;
