@@ -697,7 +697,7 @@ $zaif = new \ccxt\zaif (array (
 
 ```
 
-Note that your private requests will fail with an exception or error if you don't set up your API credentials before you start trading. To avoid character escaping **always** write your credentials in single quotes, not double quotes (`'VERY_GOOD'`, `"VERY_BAD"`). 
+Note that your private requests will fail with an exception or error if you don't set up your API credentials before you start trading. To avoid character escaping **always write your credentials in single quotes**, not double quotes (`'VERY_GOOD'`, `"VERY_BAD"`). 
 
 ## Querying Account Balance
 
