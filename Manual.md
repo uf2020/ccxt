@@ -753,7 +753,7 @@ market.create_market_sell_order (symbol, amount[, params])
 
 ### Limit Orders
 
-Limit price orders are also known as *limit orders*. Some markets accept limit orders only. Limit orders require a price (rate per unit) to be submitted with the order.
+Limit price orders are also known as *limit orders*. Some markets accept limit orders only. Limit orders require a price (rate per unit) to be submitted with the order. The exchange will close limit orders if and only if market price reaches the desired level.
 
 ```
 market.createLimitOrder (symbol, side, amount, price, params])
