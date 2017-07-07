@@ -819,13 +819,11 @@ class MyKraken (ccxt.kraken):
     n = 1
     def nonce (self):
         return self.n += 1
-mykraken = MyKraken ()
 
 # B: milliseconds nonce
 class MyBitfinex (ccxt.bitfinex):
     def nonce (self):
         return self.milliseconds ()
-mybitfinex = MyBitfinex ()
 ```
 
 ```PHP
@@ -840,7 +838,6 @@ class MyOKCoinUSD extends \ccxt\okcoinusd {
         return $this->i++;
     }
 }
-$my_okcoinusd = new MyOKCoinUSD ();
 
 // B: milliseconds nonce
 class MyZaif extends \ccxt\zaif {
@@ -851,7 +848,7 @@ class MyZaif extends \ccxt\zaif {
         return $this->milliseconds ();
     }
 }
-$my_zaif = new MyZaif ();
+
 ```
 
 ```
