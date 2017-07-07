@@ -490,7 +490,7 @@ for symbol in market.products:
 
 ```PHP
 // PHP
-$delay = 2000000 // microseconds = seconds * 1000000
+$delay = 2000000; // microseconds = seconds * 1000000
 foreach ($market->products as $symbol => $product) {
     var_dump ($market->fetch_order_book ($symbol));
     usleep ($delay); // rate limit
