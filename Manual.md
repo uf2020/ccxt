@@ -786,7 +786,7 @@ market.create_limit_sell_order (symbol, amount, price[, params])
 
 ```UNDER CONSTRUCTION```
 
-## Funding
+## Funding Your Account
 
 ```UNDER CONSTRUCTION```
 
@@ -798,7 +798,7 @@ market.create_limit_sell_order (symbol, amount, price[, params])
 
 ```UNDER CONSTRUCTION```
 
-### Your Ledger
+### Ledger
 
 ```UNDER CONSTRUCTION```
 
