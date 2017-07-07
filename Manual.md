@@ -450,7 +450,7 @@ Markets expose information on open orders with bid (buy) and ask (sell) prices, 
 The structure of an order book is as follows:
 
 ```JavaScript
-orderbook: {
+{
     'bids': [
         [ price, amount ],
         [ price, amount ],
