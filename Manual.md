@@ -771,9 +771,13 @@ The default nonce is a 32-bit Unix Timestamp (seconds since epoch January 1, 197
 
 ## Overriding The Nonce
 
-In case you need to reset the nonce it is much easier to create another pair of keys for using with private APIs. In some cases you are unable to create new keys due to lack of permissions or whatever. If that happens you can still override the nonce. 
+In case you need to reset the nonce it is much easier to create another pair of keys for using with private APIs. In some cases you are unable to create new keys due to lack of permissions or whatever. If that happens you can still override the nonce. Base market class has the following methods for convenience:
 
-In Javascript you can override the nonce by providing a `nonce` parameter to the market constructor or by setting it explicitly on a market object:
+- market.seconds () // Unix Timestamp in seconds
+- market.milliseconds () // Unix Timestamp in milliseconds (1000 * seconds)
+- market.microseconds () // Unix Timestamp in microseconds (1000 * milliseconds)
+
+You can use methods listed above to override the nonce value. In Javascript you can override the nonce by providing a `nonce` parameter to the market constructor or by setting it explicitly on a market object:
 
 ```JavaScript
 // JavaScript
