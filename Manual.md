@@ -794,7 +794,6 @@ You can use methods listed above to override the nonce value. If you need to use
 ```JavaScript
 // JavaScript
 
-
 // A: custom nonce redefined in constructor parameters
 let nonce = 1
 let kraken1 = new ccxt.kraken ({ nonce: () => nonce++ }) 
