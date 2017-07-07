@@ -778,6 +778,30 @@ market.create_limit_buy_order (symbol, amount, price[, params])
 market.create_limit_sell_order (symbol, amount, price[, params])
 ```
 
+## Your Open And Closed Orders
+
+```UNDER CONSTRUCTION```
+
+## Your Trades And Executions
+
+```UNDER CONSTRUCTION```
+
+## Funding
+
+```UNDER CONSTRUCTION```
+
+### Deposit
+
+```UNDER CONSTRUCTION```
+
+### Withdraw 
+
+```UNDER CONSTRUCTION```
+
+### Your Ledger
+
+```UNDER CONSTRUCTION```
+
 ## Overriding The Nonce
 
 In case you need to reset the nonce it is much easier to create another pair of keys for using with private APIs. In some cases you are unable to create new keys due to lack of permissions or whatever. If that happens you can still override the nonce. Base market class has the following methods for convenience:
@@ -847,6 +871,4 @@ class MyZaif extends \ccxt\zaif {
 
 ```
 
-```
-UNDER CONSTRUCTION
-```
+```UNDER CONSTRUCTION```
