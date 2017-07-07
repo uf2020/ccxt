@@ -631,7 +631,7 @@ Authentication with all exchange markets is handled automatically if provided wi
 3. Sign the serialized params using HMAC-256/384/512 or MD5 with your secret key.
 4. Append the signature to HTTP header or body.
 
-This process may differ from market to market. Some markets may want the signature generated differently, some of them vary in header and body param names, values, formats and encodings, but the general pattern is the same for all of them. The authentication is already handled for you, so you don't need to perform any of those steps manually unless you are implementing a new market class. The only thing you need for trading is the actual API key pair.
+This process may differ from market to market. Some markets may want the signature in a different encoding, some of them vary in header and body param names and formats, but the general pattern is the same for all of them. The authentication is already handled for you, so you don't need to perform any of those steps manually unless you are implementing a new market class. The only thing you need for trading is the actual API key pair.
 
 ## API Keys Setup
 
