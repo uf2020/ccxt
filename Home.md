@@ -20,7 +20,8 @@ Welcome to the ccxt wiki!
     - OHLC(V) Candlestick Charts
     - Public Trades And Closed Orders
   - [Trading](https://github.com/kroitor/ccxt/wiki/Manual#trading)
-    - [API Keys Setup And Authentication](https://github.com/kroitor/ccxt/wiki/Manual#api-keys-setup-and-authentication)
+    - [Authentication](https://github.com/kroitor/ccxt/wiki/Manual#authentication)
+    - [API Keys Setup](https://github.com/kroitor/ccxt/wiki/Manual#api-keys-setup)
     - [Querying Account Balance](https://github.com/kroitor/ccxt/wiki/Manual#querying-account-balance)
     - [Placing Orders](https://github.com/kroitor/ccxt/wiki/Manual#placing-orders)
       - [Market Orders](https://github.com/kroitor/ccxt/wiki/Manual#market-orders)

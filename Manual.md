@@ -621,7 +621,18 @@ UNDER CONSTRUCTION
 
 In order to be able to access your user account, perform algorithmic trading by placing market and limit orders, query balances, deposit and withdraw funds and so on, you need to obtain your API keys for authentication from each exchange market you want to trade with. They usually have it available on a separate tab or page within your user account settings. API keys are exchange-specific and cannnot be interchanged under any circumstances.
 
-## API Keys Setup And Authentication
+## Authentication
+
+Authentication with all exchange markets is handled automatically if provided with proper API keys. The process of authentication usually goes through the following pattern:
+
+1. Generate new nonce. A nonce is an integer, usually a Unix Timestamp in seconds or milliseconds. The nonce should be unique to a particular request and constantly increasing, so that no two requests share the same nonce. Each next request should have greater nonce than the previous request. Nonce is usually appended to endpoint params for signing. 
+2. Append public apiKey and nonce to other endpoint params, if any, then serialize the whole thing for signing.
+3. Sign the whole string of params using HMAC-256/384/512 or MD5 with your secret key.
+4. Append the signature to HTTP header or body.
+
+This process may differ from market to market. Some markets may generate the signature differently but the general pattern is the same for all of them. The authentication is already handled for you, so you don't need to perform any of those steps manually unless you are implementing a new market class. The only thing you need for trading is the actual API key pair.
+
+## API Keys Setup
 
 The API credentials usually include the following:
 
