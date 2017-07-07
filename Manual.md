@@ -631,13 +631,13 @@ Authentication with all exchange markets is handled automatically if provided wi
 3. Sign the serialized params using HMAC-256/384/512 or MD5 with your secret key.
 4. Append the signature to HTTP header or body.
 
-This process may differ from market to market. Some markets may generate the signature differently but the general pattern is the same for all of them. The authentication is already handled for you, so you don't need to perform any of those steps manually unless you are implementing a new market class. The only thing you need for trading is the actual API key pair.
+This process may differ from market to market. Some markets may want the signature generated differently, some of them vary in header and body param names, values, formats and encodings, but the general pattern is the same for all of them. The authentication is already handled for you, so you don't need to perform any of those steps manually unless you are implementing a new market class. The only thing you need for trading is the actual API key pair.
 
 ## API Keys Setup
 
 The API credentials usually include the following:
 
-- `market.apiKey`. This is your public API Key and/or Token. This part is *non-secret*, it is included in your request header or body and sent over HTTPS in open text to identify your request. It is often a string in Hex or Base64 encoding.
+- `market.apiKey`. This is your public API Key and/or Token. This part is *non-secret*, it is included in your request header or body and sent over HTTPS in open text to identify your request. It is often a string in Hex or Base64 encoding or an UUID identifier.
 - `market.secret`. This is your private key. Keep it secret, don't tell it to anybody. It used to sign your requests locally before sending them to exchanges. The secret key does not get sent over the internet in the request-response process and should not be published or emailed. It is used to generate a cryptographically strong signature, which in its turn gets sent with your public key to authenticate your identity.
 - `market.uid`. Some markets (not all of them) also generate a user id or *uid* for short. It can be a string or numeric literal. You should set it, if that is explicitly required by your exchange. See their docs for details.
 
