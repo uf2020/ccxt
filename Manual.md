@@ -789,17 +789,21 @@ In case you need to reset the nonce it is much easier to create another pair of 
 - market.milliseconds () // Unix Timestamp in milliseconds (1000 * seconds)
 - market.microseconds () // Unix Timestamp in microseconds (1000 * milliseconds)
 
-You can use methods listed above to override the nonce value. In Javascript you can override the nonce by providing a `nonce` parameter to the market constructor or by setting it explicitly on a market object:
+You can use methods listed above to override the nonce value. If you need to use the same keypair from multiple instances simultaneously use closures or a common function to avoid nonce conflicts. In Javascript you can override the nonce by providing a `nonce` parameter to the market constructor or by setting it explicitly on a market object:
 
 ```JavaScript
 // JavaScript
+
+
+// A: custom nonce redefined in constructor parameters
 let nonce = 1
-// A: nonce redefined in constructor parameters
 let kraken1 = new ccxt.kraken ({ nonce: () => nonce++ }) 
+
 // B: nonce redefined explicitly
 let kraken2 = new ccxt.kraken ()
 kraken2.nonce = function () { return nonce++ } // uses same nonce as kraken1
-// C: nonce redefined by calling this.milliseconds
+
+// C: milliseconds nonce
 let kraken3 = new ccxt.kraken ({
     nonce: function () { return this.milliseconds () },
 })
@@ -809,15 +813,25 @@ In Python and PHP you can do the same by subclassing and overriding nonce functi
 
 ```Python
 # Python
+
+# A: custom nonce
 class MyKraken (ccxt.kraken):
     n = 1
     def nonce (self):
         return self.n += 1
 mykraken = MyKraken ()
+
+# B: milliseconds nonce
+class MyBitfinex (ccxt.bitfinex):
+    def nonce (self):
+        return self.milliseconds ()
+mybitfinex = MyBitfinex ()
 ```
 
 ```PHP
 // PHP
+
+// A: custom nonce value
 class MyOKCoinUSD extends \ccxt\okcoinusd {
     public function __construct ($options = array ()) {
         parent::__construct (array_merge (array ('i' => 1), $options));
@@ -826,6 +840,18 @@ class MyOKCoinUSD extends \ccxt\okcoinusd {
         return $this->i++;
     }
 }
+$my_okcoinusd = new MyOKCoinUSD ();
+
+// B: milliseconds nonce
+class MyZaif extends \ccxt\zaif {
+    public function __construct ($options = array ()) {
+        parent::__construct (array_merge (array ('i' => 1), $options));
+    }
+    public function nonce () {
+        return $this->milliseconds ();
+    }
+}
+$my_zaif = new MyZaif ();
 ```
 
 ```
