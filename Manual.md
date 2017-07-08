@@ -739,9 +739,11 @@ The exchange will close your market order for the best price available. You are 
 Note, that some exchanges will not accept market orders (they allow limit orders only).
 
 ```
+// camelCaseNotation
 market.createMarketBuyOrder (symbol, amount[, params])
 market.createMarketSellOrder (symbol, amount[, params])
 
+// underscore_notation
 market.create_market_buy_order (symbol, amount[, params])
 market.create_market_sell_order (symbol, amount[, params])
 ```
@@ -751,9 +753,11 @@ market.create_market_sell_order (symbol, amount[, params])
 Limit price orders are also known as *limit orders*. Some markets accept limit orders only. Limit orders require a price (rate per unit) to be submitted with the order. The exchange will close limit orders if and only if market price reaches the desired level.
 
 ```
+// camelCaseStyle
 market.createLimitBuyOrder (symbol, amount, price[, params])
 market.createLimitSellOrder (symbol, amount, price[, params])
 
+// underscore_style
 market.create_limit_buy_order (symbol, amount, price[, params])
 market.create_limit_sell_order (symbol, amount, price[, params])
 ```
