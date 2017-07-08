@@ -76,7 +76,29 @@ Besides making basic market and limit orders, some exchanges offer leverage (mar
 
 ## Instantiation
 
-To connect to an exchange market and start trading you need to instantiate a market class instance from ccxt library. A market can be instantiated like so:
+To connect to an exchange market and start trading you need to instantiate a market class instance from ccxt library.
+
+To get the full list of ids of supported markets programmatically:
+
+```JavaScript
+// JavaScript
+const ccxt = require ('ccxt')
+console.log (ccxt.markets)
+```
+
+```Python
+# Python
+import ccxt
+print (ccxt.markets)
+```
+
+```PHP
+// PHP
+include 'ccxt.php';
+var_dump (\ccxt\Market::$markets);
+```
+
+An exchange market can be instantiated like in the examples below:
 
 ```JavaScript
 // JavaScript
@@ -84,22 +106,29 @@ const ccxt = require ('ccxt')
 let market = new ccxt.kraken () // default id
 let kraken1 = new ccxt.kraken ({ id: 'kraken1' })
 let kraken2 = new ccxt.kraken ({ id: 'kraken2' })
+let id = 'gdax'
+let gdax = new ccxt[id] ();
 ```
 
 ```Python
 # Python
+import ccxt
 market = ccxt.okcoinusd () # default id
 okcoin1 = ccxt.okcoinusd ({ 'id': 'okcoin1' })
 okcoin2 = ccxt.okcoinusd ({ 'id': 'okcoin2' })
+id = 'btcchina'
+gdax = eval ('ccxt.%s ()' % id)
 ```
 
 ```PHP
 // PHP
 date_default_timezone_set ('UTC');
 include 'ccxt.php';
-$market = new \ccxt\bitfinex (); // default id
+$bitfinex = new \ccxt\bitfinex (); // default id
 $bitfinex1 = new \ccxt\bitfinex (array ('id' => 'bitfinex1'));
 $bitfinex2 = new \ccxt\bitfinex (array ('id' => 'bitfinex2'));
+$id = 'kraken';
+$kraken = new \ccxt\$id ());
 ```
 
 Note, that ccxt library in PHP uses builtin UTC/GMT time functions, therefore you are required to set date.timezone in your php.ini or call [date_default_timezone_set](http://php.net/manual/en/function.date-default-timezone-set.php)() function before using the PHP version of the library. The recommended timezone setting is `"UTC"`.
