@@ -27,10 +27,11 @@ Welcome to the ccxt wiki!
       - [Market Orders](https://github.com/kroitor/ccxt/wiki/Manual#market-orders)
       - [Limit Orders](https://github.com/kroitor/ccxt/wiki/Manual#limit-orders)
     - Cancelling Orders
-    - Getting Order Info
-    - Querying Personal Orders
-    - Deposit
-    - Withdraw
+    - Querying Orders
+    - Funding Your Account
+      - Deposit
+      - Withdraw
+      - Ledger
     - [Overriding The Nonce](https://github.com/kroitor/ccxt/wiki/Manual#overriding-the-nonce)
     - ...
 - Usage Examples

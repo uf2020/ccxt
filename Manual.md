@@ -779,7 +779,11 @@ market.create_limit_buy_order (symbol, amount, price[, params])
 market.create_limit_sell_order (symbol, amount, price[, params])
 ```
 
-## Your Open And Closed Orders
+## Cancelling Orders
+
+```UNDER CONSTRUCTION```
+
+## Querying Orders
 
 ```UNDER CONSTRUCTION```
 
