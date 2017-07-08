@@ -139,6 +139,7 @@ Exchange markets usually impose what is called a *rate limit*. Exchanges will re
 
 Most markets allow **up to 1 or 2 requests per second**. Markets may temporarily restrict your access to their exchange API or ban you for some period of time if you are too aggressive with your requests.
 
+**Stay under the rate limit to avoid ban.**
 ```
 UNDER CONSTRUCTION
 ```
@@ -148,8 +149,6 @@ UNDER CONSTRUCTION
 Some markets are [DDoS](https://en.wikipedia.org/wiki/Denial-of-service_attack)-protected by [Cloudflare](https://www.cloudflare.com). Your IP can get temporarily blocked during periods of high load. Sometimes they even restrict whole countries and regions. In that case their servers usually return a page that states a HTTP 40x error or runs an AJAX test of your browser / captcha test and delays the reload of the page for several seconds. Then your browser/fingerprint is granted access temporarily and gets added to a whitelist or receives a HTTP cookie for further use. 
 
 If you encounter Cloudflare DDoS protection errors and cannot reach a particular exchange market then try later or ask the exchange support to add you to a whitelist.
-
-**Stay under the rate limit to avoid ban.**
 
 ```
 UNDER CONSTRUCTION
