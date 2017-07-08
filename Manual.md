@@ -139,7 +139,7 @@ Exchange markets usually impose what is called a *rate limit*. Exchanges will re
 
 Most markets allow **up to 1 or 2 requests per second**. Markets may temporarily restrict your access to their exchange API or ban you for some period of time if you are too aggressive with your requests.
 
-**Stay under the rate limit to avoid ban.**
+**WARNING: Stay under the rate limit to avoid ban!**
 
 ## DDoS Protection By Cloudflare
 
