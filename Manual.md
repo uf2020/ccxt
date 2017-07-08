@@ -639,7 +639,7 @@ The API credentials usually include the following:
 
 - `market.apiKey`. This is your public API Key and/or Token. This part is *non-secret*, it is included in your request header or body and sent over HTTPS in open text to identify your request. It is often a string in Hex or Base64 encoding or an UUID identifier.
 - `market.secret`. This is your private key. Keep it secret, don't tell it to anybody. It used to sign your requests locally before sending them to exchanges. The secret key does not get sent over the internet in the request-response process and should not be published or emailed. It is used to generate a cryptographically strong signature, which in its turn gets sent with your public key to authenticate your identity.
-- `market.uid`. Some markets (not all of them) also generate a user id or *uid* for short. It can be a string or numeric literal. You should set it, if that is explicitly required by your exchange. See their docs for details.
+- `market.uid`. Some markets (not all of them) also generate a user id or *uid* for short. It can be a string or numeric literal. You should set it, if that is explicitly required by your exchange. See [their docs](https://github.com/kroitor/ccxt/wiki/Manual#exchange-markets) for details.
 
 In order to create API keys find the API tab or button in your user settings on the exchange website. Then create your keys and copy-paste them to your config file. Your config file permissions should be set appropriately, unreadable to anyone except owner. Remember to keep your secret key safe from unauthorized use, do not send or tell it to anybody. A leak of the secret key or a breach in security can cost you a fund loss.
 
@@ -728,22 +728,7 @@ To place an order you will need the following information:
 - `amount`, how much of currency you want to trade. This usually refers to base currency of the trading pair symbol, though some markets require the amount in quote currency and a few of them require base or quote amount depending on the side of the order. See their API docs for details.
 - `price`, how much quote currency you are willing to pay for a trade lot of base currency (for limit orders only)
 
-Below is a set of generic methods for placing orders of all types and sides. Some markets will allow to trade with limit orders only. See their docs for details.
-
-```
-market.order (symbol, side, amount[, price[, params]])
-market.trade (symbol, side, amount[, price[, params]])
-market.buy (symbol, amount[, price[, params]])
-market.sell (symbol, amount[, price[, params]])
-
-market.createOrder (symbol, side, amount[, price[, params]])
-market.createBuyOrder (symbol, amount[, price[, params]])
-market.createSellOrder (symbol, amount[, price[, params]])
-
-market.create_order (symbol, side, amount[, price[, params]])
-market.create_buy_order (symbol, amount[, price[, params]])
-market.create_sell_order (symbol, amount[, price[, params]])
-```
+**Some markets will allow to trade with limit orders only.** See [their docs](https://github.com/kroitor/ccxt/wiki/Manual#exchange-markets) for details.
 
 ### Market Orders
 
@@ -754,11 +739,9 @@ The exchange will close your market order for the best price available. You are 
 Note, that some exchanges will not accept market orders (they allow limit orders only).
 
 ```
-market.createMarketOrder (symbol, side, amount[, params])
 market.createMarketBuyOrder (symbol, amount[, params])
 market.createMarketSellOrder (symbol, amount[, params])
 
-market.create_market_order (symbol, side, amount[, params])
 market.create_market_buy_order (symbol, amount[, params])
 market.create_market_sell_order (symbol, amount[, params])
 ```
@@ -768,11 +751,9 @@ market.create_market_sell_order (symbol, amount[, params])
 Limit price orders are also known as *limit orders*. Some markets accept limit orders only. Limit orders require a price (rate per unit) to be submitted with the order. The exchange will close limit orders if and only if market price reaches the desired level.
 
 ```
-market.createLimitOrder (symbol, side, amount, price, params])
 market.createLimitBuyOrder (symbol, amount, price[, params])
 market.createLimitSellOrder (symbol, amount, price[, params])
 
-market.create_limit_order (symbol, side, amount, price, params])
 market.create_limit_buy_order (symbol, amount, price[, params])
 market.create_limit_sell_order (symbol, amount, price[, params])
 ```
