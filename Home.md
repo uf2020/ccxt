@@ -1,9 +1,5 @@
 Welcome to the ccxt wiki!
 
-```diff
-- the ccxt documentation is under heavy development right now
-```
-
 - [Install](https://github.com/kroitor/ccxt/wiki/Install)
   - [Node.js](https://github.com/kroitor/ccxt/wiki/Install#nodejs)
   - [Python](https://github.com/kroitor/ccxt/wiki/Install#python)
@@ -37,4 +33,3 @@ Welcome to the ccxt wiki!
 - Usage Examples
 - API Reference
   - ...
-
