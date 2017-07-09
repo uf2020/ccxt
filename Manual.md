@@ -469,6 +469,8 @@ The unified ccxt API is a subset of methods common among the markets. It current
 
 - `cancelOrder (id)`
 
+- ...
+
 # Market Data
 
 ```
