@@ -237,10 +237,6 @@ The ccxt library abstracts uncommon product ids to symbols, standardized to a co
 
 A symbol is an uppercase string literal name for a pair of traded currencies with a slash in between. A currency is a code of three or four uppercase letters, like `BTC`, `ETH`, `USD`, `GBP`, `CNY`, `LTC`, `JPY`, `DOGE`, `RUB`, `ZEC`, `XRP`, `XMR`, etc. Some markets have exotic currencies with longer names. The first currency before the slash is usually called *base currency*, and the one after the slash is called *quote currency*.  Examples of a symbol are: `BTC/USD`, `DOGE/LTC`, `ETH/EUR`, `DASH/XRP`, `BTC/CNY`, `ZEC/XMR`, `ETH/JPY`.
 
-There is a bit of term ambiguity across various markets. Some exchanges call products as *markets*, whereas other exchanges call symbols as *products*. In terms of the ccxt library, exchanges are the same as markets. Each exchange market contains and trades one or more products. Each product has an id and a symbol. Most symbols are pairs of base currency and quote currency.
-
-```Markets → Products → Symbols → Currencies```
-
 Product structures are indexed by symbols. The base market class has builtin methods for accessing products by symbols. Most API methods require a symbol to be passed in their first parameter. You are often required to specify a symbol when querying current prices, making orders, etc. Most of the time users will be working with product symbols.
 
 ```JavaScript
@@ -274,6 +270,19 @@ etheurId = $market->product_id ('BTC/USD'); // get product id by symbol
 $symbols = array_keys ($market->products);
 var_dump ($market->id, $symbols); // print all symbols
 ```
+
+### Naming Consistency
+
+There is a bit of term ambiguity across various markets. Some exchanges call products as *markets*, whereas other exchanges call symbols as *products*. In terms of the ccxt library, exchanges are the same as markets. Each exchange market contains and trades one or more products. Each product has an id and a symbol. Most symbols are pairs of base currency and quote currency.
+
+```Markets → Products → Symbols → Currencies```
+
+Historically various symbolic names have been used to designate same trading pairs. Some cryptocurrencies (like Dash) even changed their names more than once during their ongoing lifetime. For consistency across markets the ccxt library will perform the following known subsitutions for symbols:
+
+- `XBT → BTC` (`XBT` is newer but `BTC` is more common among markets and sounds more like bitcoin)
+- `DRK` → DASH` (`DASH` had some naming issues)
+
+Also try not to confuse symbols and currencies, for example the `DSH` (Dashcoin) is not the same as `DASH` (Dash). Some markets have DASH encoded incorrectly as DSH, the ccxt library does correct for that. 
 
 ## Product Cache Force Reload
 
