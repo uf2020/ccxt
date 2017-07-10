@@ -280,7 +280,7 @@ There is a bit of term ambiguity across various markets that may cause confusion
 Historically various symbolic names have been used to designate same trading pairs. Some cryptocurrencies (like Dash) even changed their names more than once during their ongoing lifetime. For consistency across markets the ccxt library will perform the following known subsitutions for symbols:
 
 - `XBT → BTC` (`XBT` is newer but `BTC` is more common among markets and sounds more like bitcoin)
-- `DRK → DASH` (`DASH` had some naming issues)
+- `DRK → DASH` (`DASH` was Darkcoin then became Dash)
 
 Also try not to confuse symbols and currencies, for example the `DSH` (Dashcoin) is not the same as `DASH` (Dash). Some markets have DASH encoded incorrectly as DSH, the ccxt library does correct for that. 
 
