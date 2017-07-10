@@ -846,6 +846,11 @@ kraken2.nonce = function () { return nonce++ } // uses same nonce as kraken1
 let kraken3 = new ccxt.kraken ({
     nonce: function () { return this.milliseconds () },
 })
+
+// D: newer ES syntax
+let kraken4 = new ccxt.kraken ({
+    nonce () { return this.milliseconds () },
+})
 ```
 
 In Python and PHP you can do the same by subclassing and overriding nonce function of a particular market class:
