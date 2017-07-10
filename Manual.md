@@ -282,7 +282,7 @@ Historically various symbolic names have been used to designate same trading pai
 - `XBT → BTC` (`XBT` is newer but `BTC` is more common among markets and sounds more like bitcoin)
 - `DRK → DASH` (`DASH` was Darkcoin then became Dash)
 
-Also try not to confuse symbols and currencies, for example the `DSH` (Dashcoin) is not the same as `DASH` (Dash). Some markets have DASH encoded incorrectly as DSH, the ccxt library does correct for that. 
+Also try not to confuse symbols and currencies, for example the `DSH` (Dashcoin) is not the same as `DASH` (Dash). Some markets have DASH encoded inconsistently as DSH, the ccxt library does a correction for that as well. 
 
 ## Product Cache Force Reload
 
