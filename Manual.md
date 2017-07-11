@@ -673,7 +673,7 @@ Authentication with all exchange markets is handled automatically if provided wi
 1. Generate new nonce. A nonce is an integer, usually a Unix Timestamp in seconds or milliseconds (since epoch January 1, 1970). The nonce should be unique to a particular request and constantly increasing, so that no two requests share the same nonce. Each next request should have greater nonce than the previous request. **The default nonce is a 32-bit Unix Timestamp in seconds.**
 2. Append public apiKey and nonce to other endpoint params, if any, then serialize the whole thing for signing.
 3. Sign the serialized params using HMAC-SHA256/384/512 or MD5 with your secret key.
-4. Encode the signature in Hex or Base64, then append it (and nonce also) to HTTP headers or body.
+4. Append the signature in Hex or Base64 and nonce to HTTP headers or body.
 
 This process may differ from market to market. Some markets may want the signature in a different encoding, some of them vary in header and body param names and formats, but the general pattern is the same for all of them. The authentication is already handled for you, so you don't need to perform any of those steps manually unless you are implementing a new market class. The only thing you need for trading is the actual API key pair.
 
