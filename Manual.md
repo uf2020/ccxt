@@ -197,7 +197,7 @@ In terms of the ccxt library, every market trades products within itself. The se
 
 Each product is an associative array (aka dictionary) with the following keys:
 - `product['id']`. The string or numeric ID of the product or trade instrument within the market. Product ids are used inside markets internally to identify products and trading pairs during the request/response process.
-- `product['symbol']`. An uppercase string code representation of a particular trading pair or instrument. This is usually written as `BaseCurrency/QuoteCurrency` with a slash as in `BTC/USD`, `LTC/CNY` or `ETH/EUR`, etc. Product symbols are used to reference products within the ccxt library.
+- `product['symbol']`. An uppercase string code representation of a particular trading pair or instrument. This is usually written as `BaseCurrency/QuoteCurrency` with a slash as in `BTC/USD`, `LTC/CNY` or `ETH/EUR`, etc. Symbols are used to reference products within the ccxt library.
 - `product['base']`. An uppercase string code of base fiat or crypto currency.
 - `product['quote']`. An uppercase string code of quoted fiat or crypto currency.
 - `product['info']`. An associative array of non-common market properties, including fees, rates, limits and other general product information. The internal info array is different for each particular market product, its contents depend on the exchange market.
