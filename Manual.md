@@ -841,8 +841,8 @@ In case you need to reset the nonce it is much easier to create another pair of 
 In some cases you are unable to create new keys due to lack of permissions or whatever. If that happens you can still override the nonce. Base market class has the following methods for convenience:
 
 - `market.seconds ()`: returns a Unix Timestamp in seconds.
-- `market.milliseconds ()`: same in milliseconds (1000 * seconds, thousandths of a second).
-- `market.microseconds ()`: same in microseconds (1000 * milliseconds, millionths of a second).
+- `market.milliseconds ()`: same in milliseconds (ms = 1000 * s, thousandths of a second).
+- `market.microseconds ()`: same in microseconds (μs = 1000 * ms, millionths of a second).
 
 There are exchanges that confuse milliseconds with microseconds in their API docs, let's all forgive them for that, folks. You can use methods listed above to override the nonce value. If you need to use the same keypair from multiple instances simultaneously use closures or a common function to avoid nonce conflicts. In Javascript you can override the nonce by providing a `nonce` parameter to the market constructor or by setting it explicitly on a market object:
 
