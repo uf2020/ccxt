@@ -834,13 +834,15 @@ market.create_limit_sell_order (symbol, amount, price[, params])
 
 ## Overriding The Nonce
 
-**The default nonce is a 32-bit Unix Timestamp in seconds.** In case you need to reset the nonce it is much easier to create another pair of keys for using with private APIs. Creating new keys and setting up a fresh unused keypair in your config is usually enough for that. 
+**The default nonce is a 32-bit Unix Timestamp in seconds.** 
+
+In case you need to reset the nonce it is much easier to create another pair of keys for using with private APIs. Creating new keys and setting up a fresh unused keypair in your config is usually enough for that. 
 
 In some cases you are unable to create new keys due to lack of permissions or whatever. If that happens you can still override the nonce. Base market class has the following methods for convenience:
 
-- `market.seconds ()`. Returns a Unix Timestamp in seconds.
-- `market.milliseconds ()`. Unix Timestamp in milliseconds (1000 * seconds, thousandths of a second).
-- `market.microseconds ()`. Unix Timestamp in microseconds (1000 * milliseconds, millionths of a second).
+- `market.seconds ()`: returns a Unix Timestamp in seconds.
+- `market.milliseconds ()`: same in milliseconds (1000 * seconds, thousandths of a second).
+- `market.microseconds ()`: same in microseconds (1000 * milliseconds, millionths of a second).
 
 There are exchanges that confuse milliseconds with microseconds in their API docs, let's all forgive them for that, folks. You can use methods listed above to override the nonce value. If you need to use the same keypair from multiple instances simultaneously use closures or a common function to avoid nonce conflicts. In Javascript you can override the nonce by providing a `nonce` parameter to the market constructor or by setting it explicitly on a market object:
 
