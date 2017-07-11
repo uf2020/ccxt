@@ -30,6 +30,8 @@ Welcome to the ccxt wiki!
       - Ledger
     - [Overriding The Nonce](https://github.com/kroitor/ccxt/wiki/Manual#overriding-the-nonce)
     - ...
+  - Proxy Settings
+  - CORS (Cross-Origin Resource Sharing) / Access-Control-Allow-Origin
 - Usage Examples
 - API Reference
   - ...

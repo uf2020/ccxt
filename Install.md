@@ -95,10 +95,57 @@ Add links to CryptoJS components and ccxt to your HTML page code:
 
 ### CORS (Access-Control-Allow-Origin)
 
-CORS is [Cross-Origin Resource Sharing](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). When accessing a market HTTP REST API from browser with ccxt library you may get a warning or an exception, saying `No 'Access-Control-Allow-Origin' header is present on the requested resource`. That means that the exchange market admins haven't enabled access to their API from arbitrary web browser pages. You can still use the ccxt library from your browser via a CORS-proxy, which is very easy to install.
+CORS is [Cross-Origin Resource Sharing](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). When accessing a market HTTP REST API from browser with ccxt library you may get a warning or an exception, saying `No 'Access-Control-Allow-Origin' header is present on the requested resource`. That means that the exchange market admins haven't enabled access to their API from arbitrary web browser pages.
 
-#### CORS Proxy
+You can still use the ccxt library from your browser via a CORS-proxy, which is very easy to set up or install. There are also public CORS proxies on the internet, like [https://crossorigin.me](https://crossorigin.me).
 
+#### Run CORS Proxy
+
+To run your own CORS proxy locally you can either set up one of the existing ones or make a quick script of your own, like shown below. 
+
+##### Node.js CORS Proxy
+
+```JavaScript
+// JavaScript CORS Proxy
+// Save this in a file like cors.js and run with `node cors [port]`
+// It will listen for your requests on the port you pass in command line or port 8080 by default
+let port = (process.argv.length > 2) ? parseInt (process.argv[2]) : 8080; // default 
+require ('cors-anywhere').createServer ().listen (port, 'localhost')
 ```
-UNDER CONSTRUCTION
+
+##### Python CORS Proxy
+
+```Python
+#!/usr/bin/env python
+# Python CORS Proxy
+# Save this in a file like cors.py and run with `python cors.py [port]` or `cors [port]`
+try:
+    # Python 3
+    from http.server import HTTPServer, SimpleHTTPRequestHandler, test as test_orig
+    import sys
+    def test (*args):
+        test_orig (*args, port = int (sys.argv[1]) if len (sys.argv) > 1 else 8080)
+except ImportError: # Python 2
+    from BaseHTTPServer import HTTPServer, test
+    from SimpleHTTPServer import SimpleHTTPRequestHandler
+
+class CORSRequestHandler (SimpleHTTPRequestHandler):
+    def end_headers (self):
+        self.send_header ('Access-Control-Allow-Origin', '*')
+        SimpleHTTPRequestHandler.end_headers (self)
+
+if __name__ == '__main__':
+    test (CORSRequestHandler, HTTPServer)
 ```
+
+##### Testing CORS
+
+After you set it up and run it, you can test it by querying the target URL of exchange endpoint through the proxy (like https://localhost:8080/https://exchange.com/path/to/endpoint).
+
+To test the CORS you can do either of the following:
+
+- set up proxy somewhere in your browser settings, then go to endpoint URL `https://exchange.com/path/to/endpoint`
+- type that URL directly in the address bar as `https://localhost:8080/https://exchange.com/path/to/endpoint`
+- cURL it from command like `curl https://localhost:8080/https://exchange.com/path/to/endpoint`
+
+To let ccxt know of the proxy, you can set `market.proxy` property on the market instance. `market.proxy / market['proxy'] / $market->proxy` is a string literal containing base URL of http(s) proxy, `''` by default. For use with web browsers and from blocked locations. An example of a proxy string is `'http://crossorigin.me/'`. The absolute exchange endpoint URL is appended to this string before HTTP request to exchange is sent.
