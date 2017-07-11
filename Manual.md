@@ -151,7 +151,7 @@ Each market has a default id. The id is not used for anything, it's a string lit
 
 - `market.countries / market['countries'] / $market->countries`: A string literal or an array of string literals of 2-symbol ISO country codes, where the exchange is operating from.
 
-- `market.urls['name'] / market['urls']['api'] / $market->urls['api']`: The single string literal base URL for API calls or an associative array of separate URLs for private and public APIs.
+- `market.urls['api'] / market['urls']['api'] / $market->urls['api']`: The single string literal base URL for API calls or an associative array of separate URLs for private and public APIs.
 
 - `market.urls['www'] / market['urls']['www'] / $market->urls['www']`: The main HTTP website URL.
 
