@@ -93,17 +93,19 @@ Add links to CryptoJS components and ccxt to your HTML page code:
 </script>
 ```
 
-### CORS (Access-Control-Allow-Origin)
+## Proxy
+
+If you need a proxy, use the `market.proxy / market['proxy'] / $market->proxy` string literal containing base URL of http(s) proxy. It is for use with web browsers and from blocked locations. Bear in mind that each added intermediary contributes to the overall latency and roundtrip time. The absolute exchange endpoint URL is appended to `market['proxy']` string before HTTP request is sent to exchange. The proxy setting is an empty string `''` by default. An example of a non-empty proxy string is `'http://crossorigin.me/'`. 
+
+## CORS (Access-Control-Allow-Origin)
 
 CORS is [Cross-Origin Resource Sharing](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). When accessing a market HTTP REST API from browser with ccxt library you may get a warning or an exception, saying `No 'Access-Control-Allow-Origin' header is present on the requested resource`. That means that the exchange market admins haven't enabled access to their API from arbitrary web browser pages.
 
 You can still use the ccxt library from your browser via a CORS-proxy, which is very easy to set up or install. There are also public CORS proxies on the internet, like [https://crossorigin.me](https://crossorigin.me).
 
-#### Run CORS Proxy
-
 To run your own CORS proxy locally you can either set up one of the existing ones or make a quick script of your own, like shown below. 
 
-##### Node.js CORS Proxy
+### Node.js CORS Proxy
 
 ```JavaScript
 // JavaScript CORS Proxy
@@ -113,7 +115,7 @@ let port = (process.argv.length > 2) ? parseInt (process.argv[2]) : 8080; // def
 require ('cors-anywhere').createServer ().listen (port, 'localhost')
 ```
 
-##### Python CORS Proxy
+### Python CORS Proxy
 
 ```Python
 #!/usr/bin/env python
@@ -138,7 +140,7 @@ if __name__ == '__main__':
     test (CORSRequestHandler, HTTPServer)
 ```
 
-##### Testing CORS
+### Testing CORS
 
 After you set it up and run it, you can test it by querying the target URL of exchange endpoint through the proxy (like https://localhost:8080/https://exchange.com/path/to/endpoint).
 
@@ -148,4 +150,4 @@ To test the CORS you can do either of the following:
 - type that URL directly in the address bar as `https://localhost:8080/https://exchange.com/path/to/endpoint`
 - cURL it from command like `curl https://localhost:8080/https://exchange.com/path/to/endpoint`
 
-To let ccxt know of the proxy, you can set `market.proxy` property on the market instance. `market.proxy / market['proxy'] / $market->proxy` is a string literal containing base URL of http(s) proxy, `''` by default. For use with web browsers and from blocked locations. An example of a proxy string is `'http://crossorigin.me/'`. The absolute exchange endpoint URL is appended to this string before HTTP request to exchange is sent.
+To let ccxt know of the proxy, you can set `market.proxy` property on the market instance.
