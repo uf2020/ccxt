@@ -95,6 +95,8 @@ Add links to CryptoJS components and ccxt to your HTML page code:
 
 ## Proxy
 
+In some specific cases you may want a proxy, if you experience issues with [DDoS protection by Cloudflare](https://github.com/kroitor/ccxt/wiki/Manual#ddos-protection-by-cloudflare) or your network / country / IP is rejected by their filters.
+
 If you need a proxy, use the `market.proxy / market['proxy'] / $market->proxy` string literal containing base URL of http(s) proxy. It is for use with web browsers and from blocked locations. The absolute exchange endpoint URL is appended to `market['proxy']` string before HTTP request is sent to exchange. The proxy setting is an empty string `''` by default. An example of a non-empty proxy string is `'http://crossorigin.me/'`. 
 
 **Bear in mind that each added intermediary contributes to the overall latency and roundtrip time.**
