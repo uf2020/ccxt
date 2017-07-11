@@ -373,7 +373,7 @@ Private APIs allow the following:
 - transfer funds between accounts
 - use merchant services
 
-Some exchanges offer the same logic under different names. For example, a public API is also often called *market data*, *basic*, *market*, *mapi*, *api*, *price*, etc... All of them mean a set of methods for accessing data available to public. A private API is also often called *trading*, *trade*, *tapi*, *exchange*, *account*, etc... A few exchanges also expose a merchant API which is often called *merchant*, *ecapi* (for e-commerce).
+Some exchanges offer the same logic under different names. For example, a public API is also often called *market data*, *basic*, *market*, *mapi*, *api*, *price*, etc... All of them mean a set of methods for accessing data available to public. A private API is also often called *trading*, *trade*, *tapi*, *exchange*, *account*, etc... A few exchanges also expose a merchant API which is often called *merchant*, *payment*, *ecapi* (for e-commerce).
 
 To get a list of all available methods with a market instance, you can simply do the following:
 
