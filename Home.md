@@ -5,7 +5,7 @@ Welcome to the ccxt wiki!
   - [Python](https://github.com/kroitor/ccxt/wiki/Install#python)
   - [PHP](https://github.com/kroitor/ccxt/wiki/Install#php)
   - [Web Browsers](https://github.com/kroitor/ccxt/wiki/Install#web-browsers)
-  - [Proxy](https://github.com/kroitor/ccxt/wiki/Manual#proxy)
+  - [Proxy](https://github.com/kroitor/ccxt/wiki/Install#proxy)
   - [CORS (Access-Control-Allow-Origin)](https://github.com/kroitor/ccxt/wiki/Install#cors-access-control-allow-origin)
 - [User Manual](https://github.com/kroitor/ccxt/wiki/Manual)
   - [Architecture Overview](https://github.com/kroitor/ccxt/wiki/Manual#overview)
