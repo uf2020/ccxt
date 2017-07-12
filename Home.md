@@ -5,6 +5,8 @@ Welcome to the ccxt wiki!
   - [Python](https://github.com/kroitor/ccxt/wiki/Install#python)
   - [PHP](https://github.com/kroitor/ccxt/wiki/Install#php)
   - [Web Browsers](https://github.com/kroitor/ccxt/wiki/Install#web-browsers)
+  - [Proxy](https://github.com/kroitor/ccxt/wiki/Manual#proxy)
+  - [CORS (Access-Control-Allow-Origin)](https://github.com/kroitor/ccxt/wiki/Install#cors-access-control-allow-origin)
 - [User Manual](https://github.com/kroitor/ccxt/wiki/Manual)
   - [Architecture Overview](https://github.com/kroitor/ccxt/wiki/Manual#overview)
   - [Exchange Markets](https://github.com/kroitor/ccxt/wiki/Manual#exchange-markets)
@@ -30,8 +32,6 @@ Welcome to the ccxt wiki!
       - Ledger
     - [Overriding The Nonce](https://github.com/kroitor/ccxt/wiki/Manual#overriding-the-nonce)
     - ...
-  - [Proxy](https://github.com/kroitor/ccxt/wiki/Manual#proxy)
-  - [CORS (Access-Control-Allow-Origin)](https://github.com/kroitor/ccxt/wiki/Install#cors-access-control-allow-origin)
 - Usage Examples
 - API Reference
   - ...
