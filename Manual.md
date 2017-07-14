@@ -936,5 +936,6 @@ class MyZaif extends \ccxt\zaif {
 - `TimeoutError`
 - `MarketNotAvailaibleError`
 - `AuthenticationError`
+- ...
 
 ```UNDER CONSTRUCTION```
