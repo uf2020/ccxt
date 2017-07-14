@@ -815,7 +815,7 @@ market.create_limit_sell_order (symbol, amount, price[, params])
 
 ## Cancelling Orders
 
-To cancel an existing order pass the order id to `cancelOrder (id) / cancel_order (id)` method, like in the following example:
+To cancel an existing order pass the order id to `cancelOrder (id) / cancel_order (id)` method, like in the following examples:
 
 ```JavaScript
 market.cancelOrder (123) // replace with your order id here
