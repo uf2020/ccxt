@@ -826,7 +826,7 @@ market.cancel_order (123) # replace with your order id here
 ```
 
 ```PHP
-$market->cancel_order (123) // replace with your order id here
+$market->cancel_order (123); // replace with your order id here
 ```
 
 ## Querying Orders
