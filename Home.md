@@ -32,6 +32,6 @@ Welcome to the ccxt wiki!
       - Ledger
     - [Overriding The Nonce](https://github.com/kroitor/ccxt/wiki/Manual#overriding-the-nonce)
     - ...
-- Usage Examples
+- [Usage Examples](https://github.com/kroitor/ccxt/tree/master/examples) (work in progress)
 - API Reference
   - ...
