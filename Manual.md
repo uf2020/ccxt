@@ -930,4 +930,11 @@ class MyZaif extends \ccxt\zaif {
 }
 ```
 
+# Error Handling
+
+- `DDoSProtectionError`
+- `TimeoutError`
+- `MarketNotAvailaibleError`
+- `AuthenticationError`
+
 ```UNDER CONSTRUCTION```
