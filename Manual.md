@@ -274,10 +274,10 @@ Most of the time users will be working with product symbols. You will get a stan
     await bitfinex.loadProducts ()
 
     bitfinex.products['BTC/USD']                // symbol → product (get product by symbol)
-    bitfinex.productsById['XRPBTC']           // id → product (get product by id)
+    bitfinex.productsById['XRPBTC']             // id → product (get product by id)
 
     bitfinex.products['BTC/USD']['id']          // symbol → id (get id by symbol)
-    bitfinex.productsById['XRPBTC']['symbol'] // id → symbol (get symbol by id)
+    bitfinex.productsById['XRPBTC']['symbol']   // id → symbol (get symbol by id)
 
 })
 ```
