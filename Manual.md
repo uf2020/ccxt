@@ -169,7 +169,9 @@ Each market has a default id. The id is not used for anything, it's a string lit
 
 - `market.verbose / market['verbose'] / $market->verbose`: A boolean flag indicating whether to log HTTP requests to stdout (verbose flag is false by default).
 
-- `market.products / market['products'] / $market->products`: An associative array of products indexed by trading pair or symbol. Market products should be loaded prior to accessing this property. Products are unavailable until you call the `loadProducts() / load_products()` method on a market instance.
+- `market.products / market['products'] / $market->products`: An associative array of products indexed by common trading pairs or symbols. Market products should be loaded prior to accessing this property. Products are unavailable until you call the `loadProducts() / load_products()` method on a market instance.
+
+- `market.products / market['products'] / $market->products`: An associative array of products indexed by exchange-specific ids. Market products should be loaded prior to accessing this property.
 
 - `market.proxy / market['proxy'] / $market->proxy`: A string literal containing base URL of http(s) proxy, `''` by default. For use with web browsers and from blocked locations. An example of a proxy string is `'http://crossorigin.me/'`. The absolute exchange endpoint URL is appended to this string before sending the HTTP request.
 
@@ -308,25 +310,25 @@ kraken.products_by_id['XXRPZUSD']['symbol'] # id → symbol (get symbol by id)
 
 $var_dump (market->load_products ());
 
-etheur1 = $market->products['ETH/EUR'];     // get product structure by symbol
-etheur2 = $market->product ('ETH/EUR');     // same result in a slightly different way
+etheur1 = $market->products['ETH/EUR'];           // get product structure by symbol
+etheur2 = $market->product ('ETH/EUR');           // same result in a slightly different way
 
-etheurId = $market->product_id ('BTC/USD'); // get product id by symbol
+etheurId = $market->product_id ('BTC/USD');       // get product id by symbol
 
-$symbols = array_keys ($market->products);  // get an array of symbols
+$symbols = array_keys ($market->products);        // get an array of symbols
 
-var_dump ($market->id, $symbols);           // print all symbols
+var_dump ($market->id, $symbols);                 // print all symbols
 
 $okcoinusd = '\\ccxt\\okcoinusd';
 $okcoinusd = new $okcoinusd ();
 
-$okcoinusd.load_products ()
+$okcoinusd->load_products ();
 
-$okcoinusd.products['BTC/USD']                  // symbol → product (get product by symbol)
-$okcoinusd.products_by_id['XXRPZUSD']           // id → product (get product by id)
+$okcoinusd->products['BTC/USD'];                  // symbol → product (get product by symbol)
+$okcoinusd->products_by_id['XXRPZUSD'];           // id → product (get product by id)
 
-$okcoinusd.products['BTC/USD']['id']            // symbol → id (get id by symbol)
-$okcoinusd.products_by_id['XXRPZUSD']['symbol'] // id → symbol (get symbol by id)
+$okcoinusd->products['BTC/USD']['id'];            // symbol → id (get id by symbol)
+$okcoinusd->products_by_id['XXRPZUSD']['symbol']; // id → symbol (get symbol by id)
 ```
 
 ### Naming Consistency
