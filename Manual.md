@@ -252,8 +252,6 @@ A symbol is an uppercase string literal name for a pair of traded currencies wit
 
 Product structures are indexed by symbols and ids. The base market class also has builtin methods for accessing products by symbols. Most API methods require a symbol to be passed in their first parameter. You are often required to specify a symbol when querying current prices, making orders, etc.
 
-### Working With Symbols And Ids
-
 Most of the time users will be working with product symbols. You will get a standard userland exception if you access non-existent keys in these dicts.
 
 ```JavaScript
