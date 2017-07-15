@@ -311,25 +311,25 @@ kraken.products_by_id['XXRPZUSD']['symbol'] # id → symbol (get symbol by id)
 
 $var_dump (market->load_products ());
 
-$etheur1 = $market->products['ETH/EUR'];           // get product structure by symbol
-$etheur2 = $market->product ('ETH/EUR');           // same result in a slightly different way
+$dashcny1 = $market->products['DASH/CNY'];       // get product structure by symbol
+$dashcny2 = $market->product ('DASH/CNY');       // same result in a slightly different way
 
-$etheurId = $market->product_id ('BTC/USD');       // get product id by symbol
+$dashcnyId = $market->product_id ('DASH/CNY');   // get product id by symbol
 
-$symbols = array_keys ($market->products);        // get an array of symbols
+$symbols = array_keys ($market->products);       // get an array of symbols
 
-var_dump ($market->id, $symbols);                 // print all symbols
+var_dump ($market->id, $symbols);                // print all symbols
 
 $okcoinusd = '\\ccxt\\okcoinusd';
 $okcoinusd = new $okcoinusd ();
 
 $okcoinusd->load_products ();
 
-$okcoinusd->products['BTC/USD'];                  // symbol → product (get product by symbol)
-$okcoinusd->products_by_id['XXRPZUSD'];           // id → product (get product by id)
+$okcoinusd->products['BTC/USD'];                 // symbol → product (get product by symbol)
+$okcoinusd->products_by_id['btc_usd'];           // id → product (get product by id)
 
-$okcoinusd->products['BTC/USD']['id'];            // symbol → id (get id by symbol)
-$okcoinusd->products_by_id['XXRPZUSD']['symbol']; // id → symbol (get symbol by id)
+$okcoinusd->products['BTC/USD']['id'];           // symbol → id (get id by symbol)
+$okcoinusd->products_by_id['btc_usd']['symbol']; // id → symbol (get symbol by id)
 ```
 
 ### Naming Consistency
