@@ -248,38 +248,85 @@ The ccxt library abstracts uncommon product ids to symbols, standardized to a co
 
 A symbol is an uppercase string literal name for a pair of traded currencies with a slash in between. A currency is a code of three or four uppercase letters, like `BTC`, `ETH`, `USD`, `GBP`, `CNY`, `LTC`, `JPY`, `DOGE`, `RUB`, `ZEC`, `XRP`, `XMR`, etc. Some markets have exotic currencies with longer names. The first currency before the slash is usually called *base currency*, and the one after the slash is called *quote currency*.  Examples of a symbol are: `BTC/USD`, `DOGE/LTC`, `ETH/EUR`, `DASH/XRP`, `BTC/CNY`, `ZEC/XMR`, `ETH/JPY`.
 
-Product structures are indexed by symbols. The base market class has builtin methods for accessing products by symbols. Most API methods require a symbol to be passed in their first parameter. You are often required to specify a symbol when querying current prices, making orders, etc. Most of the time users will be working with product symbols.
+Product structures are indexed by symbols. The base market class has builtin methods for accessing products by symbols. Most API methods require a symbol to be passed in their first parameter. You are often required to specify a symbol when querying current prices, making orders, etc. Most of the time users will be working with product symbols. You will get a standard userland exception if you access non-existent keys in these dicts.
+
 
 ```JavaScript
 // JavaScript
+
 (async () => {
+
     console.log (await market.loadProducts ())
-    let btcusd1 = market.products['BTC/USD'] // get product structure by symbol
-    let btcusd2 = market.product ('BTC/USD') // same result in a slightly different way
+
+    let btcusd1 = market.products['BTC/USD']    // get product structure by symbol
+    let btcusd2 = market.product ('BTC/USD')    // same result in a slightly different way
+
     let btcusdId = market.productId ('BTC/USD') // get product id by symbol
-    let symbols = Object.keys (market.products)
-    console.log (market.id, symbols) // print all symbols
+
+    let symbols = Object.keys (market.products) // get an array of symbols
+
+    console.log (market.id, symbols)            // print all symbols
+
+    let bitfinex = new ccxt.bitfinex ()
+    await bitfinex.load_products ()
+
+    bitfinex.products['BTC/USD']                // symbol → product (get product by symbol)
+    bitfinex.products_by_id['XRPBTC']           // id → product (get product by id)
+
+    bitfinex.products['BTC/USD']['id']          // symbol → id (get id by symbol)
+    bitfinex.products_by_id['XRPBTC']['symbol'] // id → symbol (get symbol by id)
+
 })
 ```
 
 ```Python
 # Python
+
 print (market.load_products ())
-etheur1 = market.products['ETH/EUR'] # get product structure by symbol
-etheur2 = market.product ('ETH/EUR') # same result in a slightly different way
-etheurId = market.product_id ('BTC/USD') # get product id by symbol
-symbols = list (market.products.keys ())
-print (market.id, symbols) # print all symbols
+
+etheur1 = market.products['ETH/EUR']        # get product structure by symbol
+etheur2 = market.product ('ETH/EUR')        # same result in a slightly different way
+
+etheurId = market.product_id ('BTC/USD')    # get product id by symbol
+
+symbols = list (market.products.keys ())    # get a list of symbols
+
+print (market.id, symbols)                  # print all symbols
+
+kraken = ccxt.kraken ()
+kraken.load_products ()
+
+kraken.products['BTC/USD']                  # symbol → product (get product by symbol)
+kraken.products_by_id['XXRPZUSD']           # id → product (get product by id)
+
+kraken.products['BTC/USD']['id']            # symbol → id (get id by symbol)
+kraken.products_by_id['XXRPZUSD']['symbol'] # id → symbol (get symbol by id)
 ```
 
 ```PHP
 // PHP
+
 $var_dump (market->load_products ());
-etheur1 = $market->products['ETH/EUR']; // get product structure by symbol
-etheur2 = $market->product ('ETH/EUR'); // same result in a slightly different way
+
+etheur1 = $market->products['ETH/EUR'];     // get product structure by symbol
+etheur2 = $market->product ('ETH/EUR');     // same result in a slightly different way
+
 etheurId = $market->product_id ('BTC/USD'); // get product id by symbol
-$symbols = array_keys ($market->products);
-var_dump ($market->id, $symbols); // print all symbols
+
+$symbols = array_keys ($market->products);  // get an array of symbols
+
+var_dump ($market->id, $symbols);           // print all symbols
+
+$okcoinusd = '\\ccxt\\okcoinusd';
+$okcoinusd = new $okcoinusd ();
+
+$okcoinusd.load_products ()
+
+$okcoinusd.products['BTC/USD']                  // symbol → product (get product by symbol)
+$okcoinusd.products_by_id['XXRPZUSD']           // id → product (get product by id)
+
+$okcoinusd.products['BTC/USD']['id']            // symbol → id (get id by symbol)
+$okcoinusd.products_by_id['XXRPZUSD']['symbol'] // id → symbol (get symbol by id)
 ```
 
 ### Naming Consistency
@@ -513,9 +560,9 @@ The structure of an order book is as follows:
         ...
     ],
     'asks': [
-    	[ price, amount ],
-    	[ price, amount ],
-    	...
+        [ price, amount ],
+        [ price, amount ],
+        ...
     ],
     'timestamp': 1499280391811, // Unix Timestamp in milliseconds (seconds * 1000)
     'datetime': '2017-07-05T18:47:14.692Z', // ISO8601 datetime string with milliseconds
@@ -695,14 +742,14 @@ This process may differ from market to market. Some markets may want the signatu
 The API credentials usually include the following:
 
 - `market.apiKey`. This is your public API Key and/or Token. This part is *non-secret*, it is included in your request header or body and sent over HTTPS in open text to identify your request. It is often a string in Hex or Base64 encoding or an UUID identifier.
-- `market.secret`. This is your private key. Keep it secret, don't tell it to anybody. It is used to sign your requests locally before sending them to exchanges. The secret key does not get sent over the internet in the request-response process and should not be published or emailed. It is used to generate a cryptographically strong signature, which in its turn gets sent with your public key to authenticate your identity.
+- `market.secret`. This is your private key. Keep it secret, don't tell it to anybody. It is used to sign your requests locally before sending them to exchanges. The secret key does not get sent over the internet in the request-response process and should not be published or emailed. It is used together with the nonce to generate a cryptographically strong signature. That signature is sent with your public key to authenticate your identity. Each request has a unique nonce and therefore a unique cryptographic signature.
 - `market.uid`. Some markets (not all of them) also generate a user id or *uid* for short. It can be a string or numeric literal. You should set it, if that is explicitly required by your exchange. See [their docs](https://github.com/kroitor/ccxt/wiki/Manual#exchange-markets) for details.
 
 In order to create API keys find the API tab or button in your user settings on the exchange website. Then create your keys and copy-paste them to your config file. Your config file permissions should be set appropriately, unreadable to anyone except the owner.
 
 **Remember to keep your secret key safe from unauthorized use, do not send or tell it to anybody.** A leak of the secret key or a breach in security can cost you a fund loss.
 
-To set up a market for trading, just assign the API credentials to an existing market instance or pass them to a market constructor upon instantiation, like so:
+To set up a market for trading just assign the API credentials to an existing market instance or pass them to a market constructor upon instantiation, like so:
 
 ```JavaScript
 // JavaScript
@@ -716,8 +763,8 @@ kraken.secret = 'YOUR_KRAKEN_SECRET_KEY'
 
 // upon instantiation
 let okcoinusd = new ccxt.okcoinusd ({
-	apiKey: 'YOUR_OKCOIN_API_KEY',
-	secret: 'YOUR_OKCOIN_SECRET_KEY',
+    apiKey: 'YOUR_OKCOIN_API_KEY',
+    secret: 'YOUR_OKCOIN_SECRET_KEY',
 })
 ```
 
@@ -733,8 +780,8 @@ bitfinex.secret = 'YOUR_BFX_SECRET'
 
 # upon instantiation
 hitbtc = ccxt.hitbtc ({
-	'apiKey': 'YOUR_HITBTC_API_KEY',
-	'secret': 'YOUR_HITBTC_SECRET_KEY',
+    'apiKey': 'YOUR_HITBTC_API_KEY',
+    'secret': 'YOUR_HITBTC_SECRET_KEY',
 })
 ```
 
