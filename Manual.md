@@ -311,10 +311,10 @@ kraken.products_by_id['XXRPZUSD']['symbol'] # id → symbol (get symbol by id)
 
 $var_dump (market->load_products ());
 
-etheur1 = $market->products['ETH/EUR'];           // get product structure by symbol
-etheur2 = $market->product ('ETH/EUR');           // same result in a slightly different way
+$etheur1 = $market->products['ETH/EUR'];           // get product structure by symbol
+$etheur2 = $market->product ('ETH/EUR');           // same result in a slightly different way
 
-etheurId = $market->product_id ('BTC/USD');       // get product id by symbol
+$etheurId = $market->product_id ('BTC/USD');       // get product id by symbol
 
 $symbols = array_keys ($market->products);        // get an array of symbols
 
