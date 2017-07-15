@@ -185,7 +185,14 @@ Most markets allow **up to 1 or 2 requests per second**. Markets may temporarily
 
 Some markets are [DDoS](https://en.wikipedia.org/wiki/Denial-of-service_attack)-protected by [Cloudflare](https://www.cloudflare.com) or [Incapsula](https://www.incapsula.com). Your IP can get temporarily blocked during periods of high load. Sometimes they even restrict whole countries and regions. In that case their servers usually return a page that states a HTTP 40x error or runs an AJAX test of your browser / captcha test and delays the reload of the page for several seconds. Then your browser/fingerprint is granted access temporarily and gets added to a whitelist or receives a HTTP cookie for further use. 
 
-If you encounter DDoS protection errors and cannot reach a particular exchange market then use a proxy, try later or ask the exchange support to add you to a whitelist.
+If you encounter DDoS protection errors and cannot reach a particular exchange market then:
+- try later
+- use a proxy (this is less responsive, though)
+- ask the exchange support to add you to a whitelist
+- run your software in close proximity to the exchange (same country, same city, same datacenter, same server rack, same server)
+- try an alternative IP within a different geographic region
+- run your software in a distributed network of servers with redundancy
+- ...
 
 ```
 UNDER CONSTRUCTION
