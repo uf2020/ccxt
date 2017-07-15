@@ -163,7 +163,7 @@ Each market has a default id. The id is not used for anything, it's a string lit
 
 - `market.api / market['api'] / $market->api`: An associative array containing a definition of all API endpoints exposed by a crypto exchange. The API definition is used by ccxt to automatically construct callable instance methods for each available endpoint.
 
-- `market.timeout / market['timeout'] / $market->timeout`: A timeout for a request-response roundtrip (default timeout is 10 seconds).
+- `market.timeout / market['timeout'] / $market->timeout`: A timeout in milliseconds for a request-response roundtrip (default timeout is 10000 ms = 10 seconds).
 
 - `market.rateLimit / market['rateLimit'] / $market->rateLimit`: A request rate limit in milliseconds. Specifies the required minimal delay between two consequent HTTP requests to the same market. This parameter is not used for now (reserved for future).
 
