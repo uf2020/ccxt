@@ -309,7 +309,7 @@ kraken.products_by_id['XXRPZUSD']['symbol'] # id → symbol (get symbol by id)
 ```PHP
 // PHP
 
-$var_dump (market->load_products ());
+$var_dump ($market->load_products ());
 
 $dashcny1 = $market->products['DASH/CNY'];       // get product structure by symbol
 $dashcny2 = $market->product ('DASH/CNY');       // same result in a slightly different way
