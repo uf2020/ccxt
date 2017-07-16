@@ -82,7 +82,7 @@ The ccxt library currently supports the following 65 cryptocurrency exchange mar
 |![yobit](https://user-images.githubusercontent.com/1294454/27766910-cdcbfdae-5eea-11e7-9859-03fea873272d.jpg)         | yobit         | [YoBit](https://www.yobit.net)                       | 3   | [API](https://www.yobit.net/en/api/)                                                        | Russia                                  |
 |![zaif](https://user-images.githubusercontent.com/1294454/27766927-39ca2ada-5eeb-11e7-972f-1b4199518ca6.jpg)          | zaif          | [Zaif](https://zaif.jp)                              | 1   | [API](http://techbureau-api-document.readthedocs.io/ja/latest/index.html)                   | Japan                                   |
 
-Besides making basic market and limit orders, some exchanges offer leverage (margin) trading, various derivatives (like future contracts and options) and also have [dark pools](https://en.wikipedia.org/wiki/Dark_pool), [OTC](https://en.wikipedia.org/wiki/Over-the-counter_(finance)) (over-the-counter trading), merchant APIs and much more.
+Besides making basic market and limit orders, some exchanges offer margin trading (leverage), various derivatives (like future contracts and options) and also have [dark pools](https://en.wikipedia.org/wiki/Dark_pool), [OTC](https://en.wikipedia.org/wiki/Over-the-counter_(finance)) (over-the-counter trading), merchant APIs and much more.
 
 ## Instantiation
 
