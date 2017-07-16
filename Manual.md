@@ -175,6 +175,14 @@ Each market has a default id. The id is not used for anything, it's a string lit
 
 - `market.proxy / market['proxy'] / $market->proxy`: A string literal containing base URL of http(s) proxy, `''` by default. For use with web browsers and from blocked locations. An example of a proxy string is `'http://crossorigin.me/'`. The absolute exchange endpoint URL is appended to this string before sending the HTTP request.
 
+- `market.apiKey`: Your public API key string literal, [see below](). Most markets require this for trading.
+
+- `market.secret`: Your secret API key string literal, [see below](). Most markets require this for trading as well.
+
+- `market.password`: A string literal with your password/phrase. Some exchanges require this parameter for trading, but most of them don't.
+
+- `market.uid`: A unique id of your account. This can be a string literal or a number. Some exchanges also require this for trading, but most of them don't.
+
 ## Rate Limit
 
 Exchange markets usually impose what is called a *rate limit*. Exchanges will remember and track your user credentials and your IP address and will not allow you to query the API too frequently. They balance their load and control traffic congestion to protect API servers from (D)DoS and misuse.
