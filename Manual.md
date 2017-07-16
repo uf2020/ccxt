@@ -178,7 +178,7 @@ Each market has a default id. The id is not used for anything, it's a string lit
 
 - `market.apiKey / market['apiKey'] / $market->apiKey`: Your public API key string literal, [see below](https://github.com/kroitor/ccxt/wiki/Manual#api-keys-setup). Most markets require this for trading.
 
-- `market.secret / market['secret'] / $market->secret`: Your secret API key string literal, [see below](https://github.com/kroitor/ccxt/wiki/Manual#api-keys-setup). Most markets require this for trading as well.
+- `market.secret / market['secret'] / $market->secret`: Your secret API key string literal, [see below](https://github.com/kroitor/ccxt/wiki/Manual#api-keys-setup). Most markets require this as well together with the apiKey.
 
 - `market.password / market['password'] / $market->password`: A string literal with your password/phrase. Some exchanges require this parameter for trading, but most of them don't.
 
