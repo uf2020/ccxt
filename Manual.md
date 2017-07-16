@@ -202,7 +202,7 @@ If you encounter DDoS protection errors and cannot reach a particular exchange m
 - ask the exchange support to add you to a whitelist
 - run your software in close proximity to the exchange (same country, same city, same datacenter, same server rack, same server)
 - try an alternative IP within a different geographic region
-- run your software in a distributed network of servers with redundancy
+- run your software in a distributed network of servers
 - ...
 
 ```
