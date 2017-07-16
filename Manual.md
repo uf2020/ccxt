@@ -743,7 +743,7 @@ In order to be able to access your user account, perform algorithmic trading by 
 
 Authentication with all exchange markets is handled automatically if provided with proper API keys. The process of authentication usually goes through the following pattern:
 
-1. Generate new nonce. A nonce is an integer, usually a Unix Timestamp in seconds or milliseconds (since epoch January 1, 1970). The nonce should be unique to a particular request and constantly increasing, so that no two requests share the same nonce. Each next request should have greater nonce than the previous request. **The default nonce is a 32-bit Unix Timestamp in seconds.**
+1. Generate new nonce. A nonce is an integer, often a Unix Timestamp in seconds or milliseconds (since epoch January 1, 1970). The nonce should be unique to a particular request and constantly increasing, so that no two requests share the same nonce. Each next request should have greater nonce than the previous request. **The default nonce is a 32-bit Unix Timestamp in seconds.**
 2. Append public apiKey and nonce to other endpoint params, if any, then serialize the whole thing for signing.
 3. Sign the serialized params using HMAC-SHA256/384/512 or MD5 with your secret key.
 4. Append the signature in Hex or Base64 and nonce to HTTP headers or body.
