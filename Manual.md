@@ -175,9 +175,9 @@ Each market has a default id. The id is not used for anything, it's a string lit
 
 - `market.proxy / market['proxy'] / $market->proxy`: A string literal containing base URL of http(s) proxy, `''` by default. For use with web browsers and from blocked locations. An example of a proxy string is `'http://crossorigin.me/'`. The absolute exchange endpoint URL is appended to this string before sending the HTTP request.
 
-- `market.apiKey`: Your public API key string literal, [see below](). Most markets require this for trading.
+- `market.apiKey`: Your public API key string literal, [see below](https://github.com/kroitor/ccxt/wiki/Manual#api-keys-setup). Most markets require this for trading.
 
-- `market.secret`: Your secret API key string literal, [see below](). Most markets require this for trading as well.
+- `market.secret`: Your secret API key string literal, [see below](https://github.com/kroitor/ccxt/wiki/Manual#api-keys-setup). Most markets require this for trading as well.
 
 - `market.password`: A string literal with your password/phrase. Some exchanges require this parameter for trading, but most of them don't.
 
@@ -755,6 +755,7 @@ The API credentials usually include the following:
 - `market.apiKey`. This is your public API Key and/or Token. This part is *non-secret*, it is included in your request header or body and sent over HTTPS in open text to identify your request. It is often a string in Hex or Base64 encoding or an UUID identifier.
 - `market.secret`. This is your private key. Keep it secret, don't tell it to anybody. It is used to sign your requests locally before sending them to exchanges. The secret key does not get sent over the internet in the request-response process and should not be published or emailed. It is used together with the nonce to generate a cryptographically strong signature. That signature is sent with your public key to authenticate your identity. Each request has a unique nonce and therefore a unique cryptographic signature.
 - `market.uid`. Some markets (not all of them) also generate a user id or *uid* for short. It can be a string or numeric literal. You should set it, if that is explicitly required by your exchange. See [their docs](https://github.com/kroitor/ccxt/wiki/Manual#exchange-markets) for details.
+- `market.password`. Some markets (not all of them) also require your password/phrase for trading. You should set this string, if that is explicitly required by your exchange. See [their docs](https://github.com/kroitor/ccxt/wiki/Manual#exchange-markets) for details.
 
 In order to create API keys find the API tab or button in your user settings on the exchange website. Then create your keys and copy-paste them to your config file. Your config file permissions should be set appropriately, unreadable to anyone except the owner.
 
