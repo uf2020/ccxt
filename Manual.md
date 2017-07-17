@@ -172,7 +172,7 @@ Each market has a default id. The id is not used for anything, it's a string lit
 
 - `market.products / market['products'] / $market->products`: An associative array of products indexed by common trading pairs or symbols. Market products should be loaded prior to accessing this property. Products are unavailable until you call the `loadProducts() / load_products()` method on a market instance.
 
-- `market.symbols / market['symbols'] / $market->symbols`: A non-associative array (a list) of symbols available with a market. These are the keys of the `market.products` property. Symbols are loaded and reloaded from products.
+- `market.symbols / market['symbols'] / $market->symbols`: A non-associative array (a list) of symbols available with a market, sorted in alphabetical order. These are the keys of the `market.products` property. Symbols are loaded and reloaded from products.
 
 - `market.products_by_id / market['products_by_id'] / $market->products_by_id`: An associative array of products indexed by exchange-specific ids. Market products should be loaded prior to accessing this property.
 
