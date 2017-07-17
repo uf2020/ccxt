@@ -331,7 +331,7 @@ $dashcny2 = $market->product ('DASH/CNY');       // same result in a slightly di
 $dashcnyId = $market->product_id ('DASH/CNY');   // get product id by symbol
 
 $symbols = $market->symbols;                     // get an array of symbols
-$symbols = array_keys ($market->products);       // same as previous line
+$symbols2 = array_keys ($market->products);      // same as previous line
 
 var_dump ($market->id, $symbols);                // print all symbols
 
