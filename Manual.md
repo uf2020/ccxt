@@ -281,7 +281,6 @@ Most of the time users will be working with product symbols. You will get a stan
     let symbols = market.symbols                 // get an array of symbols
     let symbols2 = Object.keys (market.products) // same as previous line
 
-
     console.log (market.id, symbols)             // print all symbols
 
     let bitfinex = new ccxt.bitfinex ()
