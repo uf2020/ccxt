@@ -172,7 +172,9 @@ Each market has a default id. The id is not used for anything, it's a string lit
 
 - `market.products / market['products'] / $market->products`: An associative array of products indexed by common trading pairs or symbols. Market products should be loaded prior to accessing this property. Products are unavailable until you call the `loadProducts() / load_products()` method on a market instance.
 
-- `market.products / market['products'] / $market->products`: An associative array of products indexed by exchange-specific ids. Market products should be loaded prior to accessing this property.
+- `market.symbols / market['symbols'] / $market->symbols`: A non-associative array (a list) of symbols available with a market. These are the keys of the `market.products` property. Symbols are loaded and reloaded from products.
+
+- `market.products_by_id / market['products_by_id'] / $market->products_by_id`: An associative array of products indexed by exchange-specific ids. Market products should be loaded prior to accessing this property.
 
 - `market.proxy / market['proxy'] / $market->proxy`: A string literal containing base URL of http(s) proxy, `''` by default. For use with web browsers and from blocked locations. An example of a proxy string is `'http://crossorigin.me/'`. The absolute exchange endpoint URL is appended to this string before sending the HTTP request.
 
@@ -271,23 +273,25 @@ Most of the time users will be working with product symbols. You will get a stan
 
     console.log (await market.loadProducts ())
 
-    let btcusd1 = market.products['BTC/USD']    // get product structure by symbol
-    let btcusd2 = market.product ('BTC/USD')    // same result in a slightly different way
+    let btcusd1 = market.products['BTC/USD']     // get product structure by symbol
+    let btcusd2 = market.product ('BTC/USD')     // same result in a slightly different way
 
-    let btcusdId = market.productId ('BTC/USD') // get product id by symbol
+    let btcusdId = market.productId ('BTC/USD')  // get product id by symbol
 
-    let symbols = Object.keys (market.products) // get an array of symbols
+    let symbols = market.symbols                 // get an array of symbols
+    let symbols2 = Object.keys (market.products) // same as previous line
 
-    console.log (market.id, symbols)            // print all symbols
+
+    console.log (market.id, symbols)             // print all symbols
 
     let bitfinex = new ccxt.bitfinex ()
     await bitfinex.loadProducts ()
 
-    bitfinex.products['BTC/USD']                // symbol → product (get product by symbol)
-    bitfinex.productsById['XRPBTC']             // id → product (get product by id)
+    bitfinex.products['BTC/USD']                 // symbol → product (get product by symbol)
+    bitfinex.productsById['XRPBTC']              // id → product (get product by id)
 
-    bitfinex.products['BTC/USD']['id']          // symbol → id (get id by symbol)
-    bitfinex.productsById['XRPBTC']['symbol']   // id → symbol (get symbol by id)
+    bitfinex.products['BTC/USD']['id']           // symbol → id (get id by symbol)
+    bitfinex.productsById['XRPBTC']['symbol']    // id → symbol (get symbol by id)
 
 })
 ```
@@ -302,7 +306,8 @@ etheur2 = market.product ('ETH/EUR')        # same result in a slightly differen
 
 etheurId = market.product_id ('BTC/USD')    # get product id by symbol
 
-symbols = list (market.products.keys ())    # get a list of symbols
+symbols = market.symbols                    # get a list of symbols
+symbols2 = list (market.products.keys ())   # same as previous line
 
 print (market.id, symbols)                  # print all symbols
 
@@ -326,7 +331,8 @@ $dashcny2 = $market->product ('DASH/CNY');       // same result in a slightly di
 
 $dashcnyId = $market->product_id ('DASH/CNY');   // get product id by symbol
 
-$symbols = array_keys ($market->products);       // get an array of symbols
+$symbols = $market->symbols;                     // get an array of symbols
+$symbols = array_keys ($market->products);       // same as previous line
 
 var_dump ($market->id, $symbols);                // print all symbols
 
@@ -620,7 +626,7 @@ In order to get current best price (query market price) and calculate bidask spr
 
 ```JavaScript
 // JavaScript
-let orderbook = market.fetchOrderBook (Object.keys (market.products)[0])
+let orderbook = market.fetchOrderBook (market.symbols[0])
 let bid = orderbook.bids.length ? orderbook.bids[0][0] : undefined
 let ask = orderbook.asks.length ? orderbook.asks[0][0] : undefined
 let spread = (bid && ask) ? ask - bid : undefined
@@ -629,7 +635,7 @@ console.log (market.id, 'market price', { bid, ask, spread })
 
 ```Python
 # Python
-orderbook = market.fetch_order_book (list (market.products.keys ()) [0])
+orderbook = market.fetch_order_book (market.symbols[0])
 bid = orderbook['bids'][0][0] if len (orderbook['bids']) > 0 else None
 ask = orderbook['asks'][0][0] if len (orderbook['asks']) > 0 else None
 spread = (ask - bid) if (bid and ask) else None
@@ -638,7 +644,7 @@ print (market.id, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
 
 ```PHP
 // PHP
-$orderbook = $market->fetch_order_book (array_keys ($market->products)[0]);
+$orderbook = $market->fetch_order_book ($market->symbols[0]);
 $bid = count ($orderbook['bids']) ? $orderbook['bids'][0][0] : null;
 $ask = count ($orderbook['asks']) ? $orderbook['asks'][0][0] : null;
 $spread = ($bid && $ask) ? $ask - $bid : null;
