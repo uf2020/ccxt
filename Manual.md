@@ -164,7 +164,7 @@ Each market has a default id. The id is not used for anything, it's a string lit
 
 - `market.api / market['api'] / $market->api`: An associative array containing a definition of all API endpoints exposed by a crypto exchange. The API definition is used by ccxt to automatically construct callable instance methods for each available endpoint.
 
-- `market.timeout / market['timeout'] / $market->timeout`: A timeout in milliseconds for a request-response roundtrip (default timeout is 10000 ms = 10 seconds).
+- `market.timeout / market['timeout'] / $market->timeout`: A timeout in milliseconds for a request-response roundtrip (default timeout is 10000 ms = 10 seconds). You should always set it to a reasonable value, hanging forever with no timeout is not your option, for sure.
 
 - `market.rateLimit / market['rateLimit'] / $market->rateLimit`: A request rate limit in milliseconds. Specifies the required minimal delay between two consequent HTTP requests to the same market. This parameter is not used for now (reserved for future).
 
@@ -1005,10 +1005,63 @@ class MyZaif extends \ccxt\zaif {
 
 # Error Handling
 
-- `DDoSProtectionError`
-- `TimeoutError`
-- `MarketNotAvailaibleError`
-- `AuthenticationError`
-- ...
+All exceptions are deriveed from the base CCXTError exception, which, in its turn, is defined in the ccxt library like so:
 
-```UNDER CONSTRUCTION```
+```JavaScript
+// JavaScript
+class CCXTError extends Error {
+    constructor () {
+        super ()
+        // a workaround to make `instanceof CCXTError` work in ES5
+        this.constructor = CCXTError 
+        this.__proto__   = CCXTError.prototype
+    }
+}
+```
+
+```Python
+# Python
+class CCXTError (Exception):
+    pass
+```
+
+```PHP
+// PHP
+class CCXTError extends \Exception {}
+```
+
+Below is an outline of exception inheritance hierarchy:
+
+```
++ CCXTErrror
+|
++---+ DDoSProtectionError
+|
++---+ TimeoutError
+|
++---+ AuthenticationError
+|
++---+ NotAvailableError
+    |
+    +---+ MarketNotAvailaibleError
+    |
+    +---+ OrderBookNotAvailableError
+    |
+    +---+ TickerNotAvailableError
+```
+
+- `DDoSProtectionError`: This exception is thrown whenever a Cloudflare / Incapsula / rate limiter restrictions are enforced upon on you or the region you're connecting from. The ccxt library does a case-insensitive match of the response received from the exchange to one of the following keywords:
+    - `cloudflare`
+    - `incapsula`
+- `TimeoutError`: The name literally says it all. This exception is raised when connection with the exchange market fails or data is not fully received in a specified amount of time. This is controlled by the `market.timeout / market['timeout'] / $market->timeout` option.
+- `AuthenticationError`: Raised when a market requires one of the API credentials that you've missed to specify. Most of the time you need `market.apiKey` and `market.secret`, some times you also need `market.uid` and/or `market.password`.
+- `NotAvailableError`: Generic class for exchange accessibility.
+- `MarketNotAvailableError`: The ccxt library throws this if it detects any of the following keywords anywhere in response: 
+    - `offline`
+    - `unavailable`
+    - `busy`
+    - `maintain`
+    - `maintenance`
+    - `maintenancing`
+- `OrderBookNotAvailableError`: The exchange replied with an error.
+- `TickerNotAvailableError`: The exchange replied with an error.
