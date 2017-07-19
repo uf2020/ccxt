@@ -150,28 +150,28 @@ Here's an overview of base market properties with values added for example:
 
 ```
 market: {    
-    'id': 'market'                      // lowercase string market id
+    'id':   'market'                    // lowercase string market id
     'name': 'Market'                    // human-readable string
-    'countries': [ 'US', 'CN', 'EU' ],  // string or array of ISO country codes
+    'countries': [ 'US', 'CN', 'EU' ],  // string or array of ISO country codes    
     'urls': {
         'api': 'https://api.example.com/data',  // string or dictionary of base API URLs
         'www': 'https://www.example.com'        // string website URL
         'doc': 'https://docs.example.com/api',  // string URL or array of URLs
     },
-    'version': 'v1',                    // string ending with digits
-    'api': { ... },                     // dictionary of api endpoints
-    'timeout': 10000,                   // number in milliseconds
-    'rateLimit': 2000,                  // number in milliseconds
-    'verbose': false,                   // boolean
-    'products': { ... }                 // dictionary of products/pairs by symbol
-    'symbols': [ ... ]                  // list of strings (product symbols/pairs)
+    'version':    'v1',                 // string ending with digits
+    'api':        { ... },              // dictionary of api endpoints
+    'timeout':    10000,                // number in milliseconds
+    'rateLimit':  2000,                 // number in milliseconds
+    'verbose':    false,                // boolean
+    'products':   { ... }               // dictionary of products/pairs by symbol
+    'symbols':    [ ... ]               // list of strings (product symbols/pairs)
     'currencies': [ ... ]               // list of strings (currency codes)
     'products_by_id': { ... },          // dictionary of dictionaries (products) by id
     'proxy': 'https://crossorigin.me/', // string URL
-    'apiKey': '92560ffae9b8a0421...',   // string public apiKey (ASCII, hex, Base64, ...)
-    'secret': '9aHjPmW+EtRRKN/Oi...'    // string private secret key 
+    'apiKey':   '92560ffae9b8a0421...', // string public apiKey (ASCII, hex, Base64, ...)
+    'secret':   '9aHjPmW+EtRRKN/Oi...'  // string private secret key 
     'password': '6kszf4aci8r',          // string password
-    'uid': '123456',                    // string user id
+    'uid':      '123456',               // string user id
 }
 ```
 
