@@ -174,6 +174,8 @@ Each market has a default id. The id is not used for anything, it's a string lit
 
 - `market.symbols / market['symbols'] / $market->symbols`: A non-associative array (a list) of symbols available with a market, sorted in alphabetical order. These are the keys of the `market.products` property. Symbols are loaded and reloaded from products.
 
+- `market.currencies / market['currencies'] / $market->currencies`: A non-associative array (a list) of currency codes (usually 3 or 4 letters) available with a market, sorted in alphabetical order. Currencies are loaded and reloaded from products.
+
 - `market.products_by_id / market['products_by_id'] / $market->products_by_id`: An associative array of products indexed by exchange-specific ids. Market products should be loaded prior to accessing this property.
 
 - `market.proxy / market['proxy'] / $market->proxy`: A string literal containing base URL of http(s) proxy, `''` by default. For use with web browsers and from blocked locations. An example of a proxy string is `'http://crossorigin.me/'`. The absolute exchange endpoint URL is appended to this string before sending the HTTP request.
