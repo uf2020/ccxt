@@ -165,8 +165,8 @@ market: {
     'rateLimit':  2000,                 // number in milliseconds
     'verbose':    false,                // boolean
     'products':   { ... }               // dictionary of products/pairs by symbol
-    'symbols':    [ ... ]               // list of strings (product symbols/pairs)
-    'currencies': [ ... ]               // list of strings (currency codes)
+    'symbols':    [ ... ]               // sorted list of string symbols (product pairs)
+    'currencies': [ ... ]               // sorted list of strings (currency codes)
     'products_by_id': { ... },          // dictionary of dictionaries (products) by id
     'proxy': 'https://crossorigin.me/', // string URL
     'apiKey':   '92560ffae9b8a0421...', // string public apiKey (ASCII, hex, Base64, ...)
