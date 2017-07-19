@@ -1,3 +1,7 @@
+- [Install](https://github.com/kroitor/ccxt/wiki/Install)
+- [Exchange Markets](https://github.com/kroitor/ccxt/wiki/Exchange-Markets)
+- [Exchanges By Country](https://github.com/kroitor/ccxt/wiki/Exchange-Markets-By-Country)
+- [Manual](https://github.com/kroitor/ccxt/wiki/Manual)
 - [Examples](https://github.com/kroitor/ccxt/tree/master/examples)
 - [Contributing](https://github.com/kroitor/ccxt/blob/master/CONTRIBUTING.md)
-- ...
+- [Public Offer](https://github.com/kroitor/ccxt#public-offer)
