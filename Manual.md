@@ -163,13 +163,13 @@ market: {
     'timeout': 10000,                   // number in milliseconds
     'rateLimit': 2000,                  // number in milliseconds
     'verbose': false,                   // boolean
-    'products': { ... }                 // dictionary of dictionaries (traded products/pairs) by symbol
+    'products': { ... }                 // dictionary of products/pairs by symbol
     'symbols': [ ... ]                  // list of strings (product symbols/pairs)
     'currencies': [ ... ]               // list of strings (currency codes)
     'products_by_id': { ... },          // dictionary of dictionaries (products) by id
     'proxy': 'https://crossorigin.me/', // string URL
     'apiKey': '92560ffae9b8a0421...',   // string public apiKey (ASCII, hex, Base64, ...)
-    'secret': '9aHjPmW+EtRRKN/Oi...'    // string private secret key (ASCII, hex, Base64, ...)
+    'secret': '9aHjPmW+EtRRKN/Oi...'    // string private secret key 
     'password': '6kszf4aci8r',          // string password
     'uid': '123456',                    // string user id
 }
