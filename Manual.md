@@ -108,7 +108,7 @@ include 'ccxt.php';
 var_dump (\ccxt\Market::$markets);
 ```
 
-An exchange market can be instantiated like in the examples below:
+An exchange market can be instantiated like shown in the examples below:
 
 ```JavaScript
 // JavaScript
@@ -238,6 +238,8 @@ If you encounter DDoS protection errors and cannot reach a particular exchange m
 - try an alternative IP within a different geographic region
 - run your software in a distributed network of servers
 - ...
+
+The ccxt library will throw a DDoSProtectionError in case it hits a rate limit. A later retry is usually enough to handle that.
 
 ```
 UNDER CONSTRUCTION
@@ -1037,7 +1039,7 @@ class MyZaif extends \ccxt\zaif {
 
 # Error Handling
 
-All exceptions are deriveed from the base CCXTError exception, which, in its turn, is defined in the ccxt library like so:
+All exceptions are derived from the base CCXTError exception, which, in its turn, is defined in the ccxt library like so:
 
 ```JavaScript
 // JavaScript
