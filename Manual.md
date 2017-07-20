@@ -963,7 +963,7 @@ $market->cancel_order (123); // replace with your order id here
 
 ## Overriding The Nonce
 
-**The default nonce is a 32-bit Unix Timestamp in seconds.** 
+**The default nonce is a 32-bit Unix Timestamp in seconds. You should override it with a milliseconds-nonce if you want to make private requests more frequently than once per second!** 
 
 In case you need to reset the nonce it is much easier to create another pair of keys for using with private APIs. Creating new keys and setting up a fresh unused keypair in your config is usually enough for that. 
 
