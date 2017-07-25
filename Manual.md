@@ -1094,7 +1094,7 @@ Below is an outline of exception inheritance hierarchy:
 - `TimeoutError`: The name literally says it all. This exception is raised when connection with the exchange market fails or data is not fully received in a specified amount of time. This is controlled by the `market.timeout / market['timeout'] / $market->timeout` option.
 - `AuthenticationError`: Raised when a market requires one of the API credentials that you've missed to specify. Most of the time you need `market.apiKey` and `market.secret`, some times you also need `market.uid` and/or `market.password`.
 - `NotAvailableError`: Generic class for exchange accessibility.
-- `MarketNotAvailableError`: The ccxt library throws this if it detects any of the following keywords anywhere in response: 
+- `MarketNotAvailableError`: The ccxt library throws this if it detects any of the following keywords in response: 
     - `offline`
     - `unavailable`
     - `busy`
@@ -1103,3 +1103,24 @@ Below is an outline of exception inheritance hierarchy:
     - `maintenancing`
 - `OrderBookNotAvailableError`: The exchange replied with an error.
 - `TickerNotAvailableError`: The exchange replied with an error.
+
+## Troubleshooting
+
+In case you experience any difficulty connecting to a particular market, do the following in order of precedence:
+
+1. Turn `market.verbose = true` to get more detail about it.
+2. Check you API credentials. Try a fresh new keypair if possible.
+3. Check your nonce. If you used your API keys with other software, you most likely should [override your nonce function](#overriding-the-nonce) to match your previous nonce value. A nonce usually can be easily reset by generating a new unused keypair.
+4. Check your connectivity with the market, by accessing it with your browser.
+5. Check your connection with the market through a proxy. Read the [Proxy](https://github.com/kroitor/ccxt/wiki/Install#proxy) section for more details.
+6. Try accesing the exchange from a different computer or a remote server, to see if this is a local or global issue with the exchange.
+7. Check if there were any news from the exchange recently regarding downtime for maintenance. Some exchange markets go offline for updates regularly (like once a week).
+
+### Notes
+
+- Use the `market.verbose = true` option or instantiate your troublesome exchange market with `new ccxt.market ({ 'verbose': true })` to see the HTTP exchange in details. The verbose output will also be of use for us to debug it if you submit an issue on GitHub.
+- As written above, some markets are not available in certain countries. You should use a proxy or get a server somewhere closer to the exchange. 
+- Some exchanges do not state it clearly if they fail to authenticate your request. In those circumstances they might respond with an exotic error code, like HTTP 502 Bad Gateway Error or something that's even less related to the actual cause of the error.
+- ...
+
+```UNDER CONSTRUCTION```
