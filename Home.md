@@ -33,6 +33,7 @@ Welcome to the ccxt wiki!
     - [Overriding The Nonce](https://github.com/kroitor/ccxt/wiki/Manual#overriding-the-nonce)
     - ...
   - [Error Handling](https://github.com/kroitor/ccxt/wiki/Manual#error-handling)
+  - [Troubleshooting](https://github.com/kroitor/ccxt/wiki/Manual#troubleshooting)
 - [Usage Examples](https://github.com/kroitor/ccxt/tree/master/examples) (work in progress)
 - API Reference
   - ...

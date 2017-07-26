@@ -12,7 +12,7 @@ Full public and private HTTP REST APIs for all exchanges are implemented. WebSoc
 
 # Exchange Markets
 
-The ccxt library currently supports the following 66 cryptocurrency exchange markets and trading APIs:
+The ccxt library currently supports the following 68 cryptocurrency exchange markets and trading APIs:
 
 |                                                                                                                      | id            | name                                                 | ver | doc                                                                                         | countries                               |
 |----------------------------------------------------------------------------------------------------------------------|---------------|------------------------------------------------------|:---:|:-------------------------------------------------------------------------------------------:|-----------------------------------------|
@@ -42,6 +42,7 @@ The ccxt library currently supports the following 66 cryptocurrency exchange mar
 |![bxinth](https://user-images.githubusercontent.com/1294454/27766412-567b1eb4-5ed7-11e7-94a8-ff6a3884f6c5.jpg)        | bxinth        | [BX.in.th](https://bx.in.th)                         | *   | [API](https://bx.in.th/info/api)                                                            | Thailand                                |
 |![ccex](https://user-images.githubusercontent.com/1294454/27766433-16881f90-5ed8-11e7-92f8-3d92cc747a6c.jpg)          | ccex          | [C-CEX](https://c-cex.com)                           | *   | [API](https://c-cex.com/?id=api)                                                            | Germany, EU                             |
 |![cex](https://user-images.githubusercontent.com/1294454/27766442-8ddc33b0-5ed8-11e7-8b98-f786aef0f3c9.jpg)           | cex           | [CEX.IO](https://cex.io)                             | *   | [API](https://cex.io/cex-api)                                                               | UK, EU, Cyprus, Russia                  |
+|![chbtc](https://user-images.githubusercontent.com/1294454/28555659-f0040dc2-7109-11e7-9d99-688a438bf9f4.jpg)         | chbtc         | [CHBTC](https://trade.chbtc.com/api)                 | 1   | [API](https://www.chbtc.com/i/developer)                                                    | China                                   |
 |![chilebit](https://user-images.githubusercontent.com/1294454/27991414-1298f0d8-647f-11e7-9c40-d56409266336.jpg)      | chilebit      | [ChileBit](https://chilebit.net)                     | 1   | [API](https://blinktrade.com/docs)                                                          | Chile                                   |
 |![coincheck](https://user-images.githubusercontent.com/1294454/27766464-3b5c3c74-5ed9-11e7-840e-31b32968e1da.jpg)     | coincheck     | [coincheck](https://coincheck.com)                   | *   | [API](https://coincheck.com/documents/exchange/api)                                         | Japan, Indonesia                        |
 |![coinmarketcap](https://user-images.githubusercontent.com/1294454/28244244-9be6312a-69ed-11e7-99c1-7c1797275265.jpg) | coinmarketcap | [CoinMarketCap](https://coinmarketcap.com)           | 1   | [API](https://coinmarketcap.com/api)                                                        | US                                      |
@@ -81,6 +82,7 @@ The ccxt library currently supports the following 66 cryptocurrency exchange mar
 |![virwox](https://user-images.githubusercontent.com/1294454/27766894-6da9d360-5eea-11e7-90aa-41f2711b7405.jpg)        | virwox        | [VirWoX](https://www.virwox.com)                     | *   | [API](https://www.virwox.com/developers.php)                                                | Austria                                 |
 |![xbtce](https://user-images.githubusercontent.com/1294454/28059414-e235970c-662c-11e7-8c3a-08e31f78684b.jpg)         | xbtce         | [xBTCe](https://www.xbtce.com)                       | 1   | [API](https://www.xbtce.com/tradeapi)                                                       | Russia                                  |
 |![yobit](https://user-images.githubusercontent.com/1294454/27766910-cdcbfdae-5eea-11e7-9859-03fea873272d.jpg)         | yobit         | [YoBit](https://www.yobit.net)                       | 3   | [API](https://www.yobit.net/en/api/)                                                        | Russia                                  |
+|![yunbi](https://user-images.githubusercontent.com/1294454/28570548-4d646c40-7147-11e7-9cf6-839b93e6d622.jpg)         | yunbi         | [YUNBI](https://yunbi.com)                           | 2   | [API](https://yunbi.com/documents/api/guide)                                                | China                                   |
 |![zaif](https://user-images.githubusercontent.com/1294454/27766927-39ca2ada-5eeb-11e7-972f-1b4199518ca6.jpg)          | zaif          | [Zaif](https://zaif.jp)                              | 1   | [API](http://techbureau-api-document.readthedocs.io/ja/latest/index.html)                   | Japan                                   |
 
 Besides making basic market and limit orders, some exchanges offer margin trading (leverage), various derivatives (like futures contracts and options) and also have [dark pools](https://en.wikipedia.org/wiki/Dark_pool), [OTC](https://en.wikipedia.org/wiki/Over-the-counter_(finance)) (over-the-counter trading), merchant APIs and much more.
@@ -1104,7 +1106,7 @@ Below is an outline of exception inheritance hierarchy:
 - `OrderBookNotAvailableError`: The exchange replied with an error.
 - `TickerNotAvailableError`: The exchange replied with an error.
 
-## Troubleshooting
+# Troubleshooting
 
 In case you experience any difficulty connecting to a particular market, do the following in order of precedence:
 
@@ -1116,7 +1118,7 @@ In case you experience any difficulty connecting to a particular market, do the 
 6. Try accesing the exchange from a different computer or a remote server, to see if this is a local or global issue with the exchange.
 7. Check if there were any news from the exchange recently regarding downtime for maintenance. Some exchange markets go offline for updates regularly (like once a week).
 
-### Notes
+## Notes
 
 - Use the `market.verbose = true` option or instantiate your troublesome exchange market with `new ccxt.market ({ 'verbose': true })` to see the HTTP exchange in details. The verbose output will also be of use for us to debug it if you submit an issue on GitHub.
 - As written above, some markets are not available in certain countries. You should use a proxy or get a server somewhere closer to the exchange. 
