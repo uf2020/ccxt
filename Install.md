@@ -99,7 +99,7 @@ In some specific cases you may want a proxy, if you experience issues with [DDoS
 
 If you need a proxy, use the `market.proxy / market['proxy'] / $market->proxy` string literal containing base URL of http(s) proxy. It is for use with web browsers and from blocked locations. 
 
-**Bear in mind that each added intermediary contributes to the overall latency and roundtrip time. Longer delays can result in price slippage. **
+**Bear in mind that each added intermediary contributes to the overall latency and roundtrip time. Longer delays can result in price slippage.**
 
 The absolute exchange endpoint URL is appended to `market['proxy']` string before HTTP request is sent to exchange. The proxy setting is an empty string `''` by default. Below are examples of a non-empty proxy string (last slash is mandatory!):
 
