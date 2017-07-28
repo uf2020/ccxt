@@ -103,7 +103,7 @@ If you need a proxy, use the `market.proxy / market['proxy'] / $market->proxy` s
 
 The absolute exchange endpoint URL is appended to `market['proxy']` string before HTTP request is sent to exchange. The proxy setting is an empty string `''` by default. Below are examples of a non-empty proxy string (last slash is mandatory!):
 
-- `kraken.proxy = 'http://crossorigin.me/'`
+- `kraken.proxy = 'https://crossorigin.me/'`
 - `gdax.proxy   = 'https://cors-anywhere.herokuapp.com/'`
 
 ## CORS (Access-Control-Allow-Origin)
