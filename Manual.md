@@ -584,7 +584,7 @@ The unified ccxt API is a subset of methods common among the markets. It current
 
 - `fetchBalance ()`: Fetch Balance.
 
-- `createOrder (symbol, side, amount[, price[, params]])`
+- `createOrder (symbol, type, side, amount[, price[, params]])`
 
 - `createLimitBuyOrder (symbol, amount, price[, params])`
 
