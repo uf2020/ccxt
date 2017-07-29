@@ -1,8 +1,7 @@
-# Navigate
 
 - [Supported Exchanges](https://github.com/kroitor/ccxt/wiki/Exchange-Markets)
 - [Exchanges By Country](https://github.com/kroitor/ccxt/wiki/Exchange-Markets-By-Country)
---------
+-------------------------------------------------------------------------------
 - [Install](https://github.com/kroitor/ccxt/wiki/Install)
 - [Manual](https://github.com/kroitor/ccxt/wiki/Manual)
   - [Architecture Overview](https://github.com/kroitor/ccxt/wiki/Manual#overview)
