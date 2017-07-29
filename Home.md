@@ -10,6 +10,8 @@ Welcome to the ccxt wiki!
 - [User Manual](https://github.com/kroitor/ccxt/wiki/Manual)
   - [Architecture Overview](https://github.com/kroitor/ccxt/wiki/Manual#overview)
   - [Exchange Markets](https://github.com/kroitor/ccxt/wiki/Manual#exchange-markets)
+  - [Market Structure](https://github.com/kroitor/ccxt/wiki/Manual#market-structure)
+  - [Market Properties](https://github.com/kroitor/ccxt/wiki/Manual#market-properties)
   - [Products](https://github.com/kroitor/ccxt/wiki/Manual#products)
   - [API Methods / Endpoints](https://github.com/kroitor/ccxt/wiki/Manual#api-methods--endpoints)
   - [Market Data](https://github.com/kroitor/ccxt/wiki/Manual#market-data)
