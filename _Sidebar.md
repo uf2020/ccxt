@@ -5,6 +5,8 @@
 - [Install](https://github.com/kroitor/ccxt/wiki/Install)
 - [Manual](https://github.com/kroitor/ccxt/wiki/Manual)
   - [Architecture Overview](https://github.com/kroitor/ccxt/wiki/Manual#overview)
+  - [Market Structure](https://github.com/kroitor/ccxt/wiki/Manual#market-structure)
+  - [Market Properties](https://github.com/kroitor/ccxt/wiki/Manual#market-properties)
   - [Products](https://github.com/kroitor/ccxt/wiki/Manual#products)
   - [API Methods / Endpoints](https://github.com/kroitor/ccxt/wiki/Manual#api-methods--endpoints)
   - [Market Data](https://github.com/kroitor/ccxt/wiki/Manual#market-data)
