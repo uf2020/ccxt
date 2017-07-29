@@ -866,6 +866,26 @@ Note that your private requests will fail with an exception or error if you don'
 
 ## Querying Account Balance
 
+The structure of returned balance info is as follows:
+
+```
+{
+    'BTC': {             // three-letter currency code
+        'free': 321.00   // float, money available for trading
+        'used': 234.00,  // float, money on hold, locked, frozen or pending
+        'total': 555.00, // float, total balance (free + used)
+    },
+    'USD': {
+        'free': 123.00   // ...
+        'used': 456.00,  
+        'total': 579.00, 
+    },
+    ...
+}
+```
+
+Some markets may not return full balance info. Many markets do not return balances for your empty or unused accounts. In that case some currencies may be missing in returned balance structure. Also, some exchanges cannot return certain fields and are only capable of telling a total balance (without details). Therefore some or all of the free, used and total amounts may be undefined, None or null. You need to account for that when working with returned balances.
+
 ```JavaScript
 // JavaScript
 (async () => {
