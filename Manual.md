@@ -169,7 +169,8 @@ market: {
     'api':        { ... },              // dictionary of api endpoints
     'timeout':    10000,                // number in milliseconds
     'rateLimit':  2000,                 // number in milliseconds
-    'verbose':    false,                // boolean
+    'userAgent':  'ccxt/1.1.1 ...'      // string, HTTP User-Agent header
+    'verbose':    false,                // boolean, output error details
     'products':   { ... }               // dictionary of products/pairs by symbol
     'symbols':    [ ... ]               // sorted list of string symbols (product pairs)
     'currencies': [ ... ]               // sorted list of strings (currency codes)
@@ -203,6 +204,8 @@ Below is a detailed description of each of the base market properties:
 - `market.timeout / market['timeout'] / $market->timeout`: A timeout in milliseconds for a request-response roundtrip (default timeout is 10000 ms = 10 seconds). You should always set it to a reasonable value, hanging forever with no timeout is not your option, for sure.
 
 - `market.rateLimit / market['rateLimit'] / $market->rateLimit`: A request rate limit in milliseconds. Specifies the required minimal delay between two consequent HTTP requests to the same market. This parameter is not used for now (reserved for future).
+
+- `market.userAgent / market['userAgent'] / $market->userAgent`: An object to set HTTP User-Agent header to. The ccxt library will set its User-Agent by default. Some markets may not like it. If you are having difficulties getting a reply from a market and want to turn User-Agent off or use the default one, set this value to false, undefined, or an empty string.
 
 - `market.verbose / market['verbose'] / $market->verbose`: A boolean flag indicating whether to log HTTP requests to stdout (verbose flag is false by default).
 
