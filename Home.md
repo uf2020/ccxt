@@ -9,7 +9,6 @@ Welcome to the ccxt wiki!
   - [CORS (Access-Control-Allow-Origin)](https://github.com/kroitor/ccxt/wiki/Install#cors-access-control-allow-origin)
 - [User Manual](https://github.com/kroitor/ccxt/wiki/Manual)
   - [Architecture Overview](https://github.com/kroitor/ccxt/wiki/Manual#overview)
-  - [Exchange Markets](https://github.com/kroitor/ccxt/wiki/Manual#exchange-markets)
   - [Market Structure](https://github.com/kroitor/ccxt/wiki/Manual#market-structure)
   - [Market Properties](https://github.com/kroitor/ccxt/wiki/Manual#market-properties)
   - [Products](https://github.com/kroitor/ccxt/wiki/Manual#products)
