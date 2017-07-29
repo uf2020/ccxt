@@ -1,9 +1,9 @@
-- [Install](https://github.com/kroitor/ccxt/wiki/Install)
 - [Supported Exchanges](https://github.com/kroitor/ccxt/wiki/Exchange-Markets)
 - [Exchanges By Country](https://github.com/kroitor/ccxt/wiki/Exchange-Markets-By-Country)
+
+- [Install](https://github.com/kroitor/ccxt/wiki/Install)
 - [Manual](https://github.com/kroitor/ccxt/wiki/Manual)
   - [Architecture Overview](https://github.com/kroitor/ccxt/wiki/Manual#overview)
-  - [Exchanges Markets](https://github.com/kroitor/ccxt/wiki/Manual#exchange-markets)
   - [Products](https://github.com/kroitor/ccxt/wiki/Manual#products)
   - [API Methods / Endpoints](https://github.com/kroitor/ccxt/wiki/Manual#api-methods--endpoints)
   - [Market Data](https://github.com/kroitor/ccxt/wiki/Manual#market-data)
