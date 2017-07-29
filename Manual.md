@@ -183,6 +183,8 @@ market: {
 }
 ```
 
+### Market Properties
+
 Below is a detailed description of each of the base market properties:
 
 - `market.id` / `market['id']` / `$market->id`: Each market has a default id. The id is not used for anything, it's a string literal for user-land market instance identification purposes. You can have multiple links to the same exchange market and differentiate them by ids. Default ids are all lowercase and correspond to market names.
