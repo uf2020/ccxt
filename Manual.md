@@ -273,7 +273,9 @@ Each product is an associative array (aka dictionary) with the following keys:
 
 ## Loading Products
 
-In most cases you are required to load the list of products and trading symbols for a particular market prior to accessing other market API methods. If you forget to load products the ccxt library will load them automatically upon your first call to the unified API. It will send two HTTP requests, first for products and then the second one for other data. In order to load products manually beforehand call the `loadProducts ()` / `load_products ()` method on a market instance. It returns an associative array of products indexed by trading symbol. If you want more control over execution of your logic, preloading products by hand is recommended.
+In most cases you are required to load the list of products and trading symbols for a particular market prior to accessing other market API methods. If you forget to load products the ccxt library will load them automatically upon your first call to the unified API. It will send two HTTP requests, first for products and then the second one for other data. 
+
+In order to load products manually beforehand call the `loadProducts ()` / `load_products ()` method on a market instance. It returns an associative array of products indexed by trading symbol. If you want more control over execution of your logic, preloading products by hand is recommended.
 
 ```JavaScript
 // JavaScript
