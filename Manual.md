@@ -1116,13 +1116,11 @@ Below is an outline of exception inheritance hierarchy:
 |
 +---+ AuthenticationError
 |
-+---+ NotAvailableError
++---+ MarketError
     |
     +---+ MarketNotAvailaibleError
     |
-    +---+ OrderBookNotAvailableError
-    |
-    +---+ TickerNotAvailableError
+    +---+ EndpointError
 ```
 
 - `DDoSProtectionError`: This exception is thrown whenever a Cloudflare / Incapsula / rate limiter restrictions are enforced upon on you or the region you're connecting from. The ccxt library does a case-insensitive match of the response received from the exchange to one of the following keywords:
