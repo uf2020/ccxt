@@ -34,7 +34,7 @@ Below is a set of frequently asked questions you need to answer, if you want to 
   - Do you need to proxify your requests? (to work around exchange request rate limits)
   - What parameters do you want for control?
   - Do you want it to have a rich end-user GUI?
-  - Do you need sophisticate interactive charts?
+  - Do you need sophisticated interactive charts?
 
 # Testing
 
