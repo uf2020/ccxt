@@ -18,7 +18,7 @@ Below is a set of frequently asked questions you need to answer, if you want to 
   - Do you need chat integrations (like, slack, telegram, discord, irc)?
   - Do you want to control it from a phone application?
   - Do you want network access to your bot? 
-  - Do you need the bot to notify you on significant market events by email, with text messaging, push notifications or other means?
+  - Do you need the bot to notify you on significant market events by email, text messaging, push notifications or other means?
   - Do you want web access to your bot (to open it within a browser tab)?
   - Do you want to integrate with the actual blockchain or a transaction graph of an existing cryptocurrency like Bitcoin, Ethereum, altcoins?    
   - Which external sources of data and online services you want integrated for market insights, signals (other purposes, maybe)?
