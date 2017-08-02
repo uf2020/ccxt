@@ -1,11 +1,9 @@
-# Algorithmic Trading Bot FAQ / Checklist:
-
-Below is a set of frequently asked questions you need to answer, if you want to implement a crypto trading bot yourself or if you want us to make one for you. Try being as specific as you possibly can.
+Below is a set of frequently asked questions you need to answer, if you want to implement a cryptocurrency algorithmic trading bot yourself or if you want us to make one for you. Try being as specific as you possibly can.
 
 - Strategy
   - What type of trading strategy you want implemented (say, if it is an arbitrage strategy, what kind of arbitrage you want: basic, statistical, rebalancing, etc...)?
   - What's considered to be a trading opportunity for the bot?
-  - What are desired conditions to enter a trade (TA params, indicators, signalling, etc)?
+  - What are desired conditions to enter a trade (TA params, indicators, signaling, etc)?
   - What are the exit conditions?
   - What are your risk management requirements?
   - Do you want to trade with one account or multiple accounts within each exchange?
