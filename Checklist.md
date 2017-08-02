@@ -2,14 +2,16 @@ Below is a set of frequently asked questions you need to answer, if you want to 
 
 # Strategy
 
-  - What type of trading strategy you want implemented (say, if it is an arbitrage strategy, what kind of arbitrage you want: basic, statistical, rebalancing, triangular, etc...)?
+  - What is the trading strategy you want implemented (say, if it is an arbitrage strategy, what kind/type of arbitrage you want: basic, statistical, rebalancing, triangular, etc...)?
   - What's considered to be a trading opportunity for the bot?
   - What are desired conditions to enter a trade (TA params, indicators, signaling, etc)?
   - What are the exit conditions?
   - What are your risk management requirements?
   - Do you want to trade with one account or multiple accounts within each exchange?
-  - Do you want advanced asset management within the bot or trading software itself (withdraws, deposits, portfolio balancing, exposure control, etc...)?
+  - Do you want advanced asset management within the bot itself (withdraws, deposits, portfolio balancing, exposure control, etc...)?
   - Does your strategy involve OTC trading or darkpools?
+  - Do you want to lend and provide liquidity, is it a maker, a taker or both?
+  - Does it involve margin or leveraged *position* trading?
 
 # Access
 
