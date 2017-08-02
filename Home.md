@@ -1,8 +1,12 @@
 Welcome to the ccxt wiki!
 
+## General Information
+
 - [Supported Exchanges](https://github.com/kroitor/ccxt/wiki/Exchange-Markets)
 - [Exchanges By Country](https://github.com/kroitor/ccxt/wiki/Exchange-Markets-By-Country)
--------------------------------------------------------------------------------
+
+## How To Install
+
 - [Install](https://github.com/kroitor/ccxt/wiki/Install)
   - [Node.js](https://github.com/kroitor/ccxt/wiki/Install#nodejs)
   - [Python](https://github.com/kroitor/ccxt/wiki/Install#python)
@@ -10,6 +14,9 @@ Welcome to the ccxt wiki!
   - [Web Browsers](https://github.com/kroitor/ccxt/wiki/Install#web-browsers)
   - [Proxy](https://github.com/kroitor/ccxt/wiki/Install#proxy)
   - [CORS (Access-Control-Allow-Origin)](https://github.com/kroitor/ccxt/wiki/Install#cors-access-control-allow-origin)
+
+## How To Use
+
 - [User Manual](https://github.com/kroitor/ccxt/wiki/Manual)
   - [Architecture Overview](https://github.com/kroitor/ccxt/wiki/Manual#overview)
   - [Market Structure](https://github.com/kroitor/ccxt/wiki/Manual#market-structure)
