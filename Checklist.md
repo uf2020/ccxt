@@ -38,8 +38,8 @@ Below is a set of frequently asked questions you need to answer, if you want to 
 
 # Testing
 
-  - Do you want to have backtesting functionality (trade simulation with recent data from the past)?
   - Do you want paper trading capabilities (trade simulation in real time)?
+  - Do you want to have backtesting functionality (for trade simulation with data from recent past)?
   - Do you want to conduct a test of your strategy before running it in real action?
   - How much historical data you need?
   - How much of statistical calculations you want to perform, do you want concurrency, parallelism?
