@@ -1122,40 +1122,44 @@ class CCXTError extends \Exception {}
 Below is an outline of exception inheritance hierarchy:
 
 ```
-+ CCXTErrror
++ CCXTError
 |
-+---+ DDoSProtectionError
++---+ MarketError (non-recoverable)
 |
-+---+ TimeoutError
++---+ AuthenticationError (non-recoverable)
 |
-+---+ AuthenticationError
-|
-+---+ MarketError
++---+ NetworkError (recoverable)
     |
-    +---+ MarketNotAvailaibleError
+    +---+ DDoSProtectionError
     |
-    +---+ EndpointError
+    +---+ TimeoutError
+    |
+    +---+ MarketNotAvailableError
 ```
 
-- `DDoSProtectionError`: This exception is thrown whenever a Cloudflare / Incapsula / rate limiter restrictions are enforced upon on you or the region you're connecting from. The ccxt library does a case-insensitive match of the response received from the exchange to one of the following keywords:
-  - `cloudflare`
-  - `incapsula`
-- `TimeoutError`: The name literally says it all. This exception is raised when connection with the exchange market fails or data is not fully received in a specified amount of time. This is controlled by the `market.timeout / market['timeout'] / $market->timeout` option.
-- `AuthenticationError`: Raised when a market requires one of the API credentials that you've missed to specify. Most of the time you need `market.apiKey` and `market.secret`, some times you also need `market.uid` and/or `market.password`.
-- `MarketError`: Generic error class for all sorts of exchange errors, including accessibility and request/response mismatch.
-- `MarketNotAvailableError`: The ccxt library throws this if it detects any of the following keywords in response: 
-  - `offline`
-  - `unavailable`
-  - `busy`
-  - `maintain`
-  - `maintenance`
-  - `maintenancing`
-- `EndpointError`: This error is raised in the following situations:
+- `CCXTError`: Generic error class for all sorts of errors, including accessibility and request/response mismatch. Users should catch this exception at the very least, if no error differentiation is required.
+- `MarketError`: This exception is thrown when an exchange server replies with an error in JSON, possible reasons:
   - endpoint is switched off by the exchange market
   - endpoint is not offered/not supported by the exchange market API
   - symbol not found on the exchange market
   - some additional endpoint parameter required by the exchange is missing
+  - the format of some parameters passed into the endpoint is incorrect
   - an exchange replies with an unclear answer
+- `AuthenticationError`: Raised when a market requires one of the API credentials that you've missed to specify, or when there's a mistake in the keypair or an outdated nonce. Most of the time you need `market.apiKey` and `market.secret`, some times you also need `market.uid` and/or `market.password`.
+- `NetworkError`: All errors related to networking are usually recoverable, meaning that networking problems, traffic congestion, unavailability is usually time-dependent. Making a retry later is usually enough to recover from a NetworkError, but if it doesn't go away, then it may indicate some persistent problem with the exchange or with your connection.
+  - `DDoSProtectionError`: This exception is thrown whenever a Cloudflare / Incapsula / rate limiter restrictions are enforced upon on you or the region you're connecting from. The ccxt library does a case-insensitive match of the response received from the exchange to one of the following keywords:
+    - `cloudflare`
+    - `incapsula`
+  - `TimeoutError`: The name literally says it all. This exception is raised when connection with the exchange market fails or data is not fully received in a specified amount of time. This is controlled by the `market.timeout / market['timeout'] / $market->timeout` option.
+  - `MarketNotAvailableError`: The ccxt library throws this error if it detects any of the following keywords in response: 
+    - `offline`
+    - `unavailable`
+    - `busy`
+    - `retry`
+    - `wait`
+    - `maintain`
+    - `maintenance`
+    - `maintenancing`
 
 # Troubleshooting
 
