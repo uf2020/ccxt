@@ -723,7 +723,10 @@ A price ticker contains statistics for a particular product/symbol for some peri
 ```
 
 Timestamp and datetime are both Universal Time Coordinated (UTC).
-To get the ticker data from exchange market call the `market.fetchTicker (productOrSymbol) / market.fetch_ticker (product_or_symbol)`:
+
+### Individually By Symbol
+
+To get the individual ticker data from exchange market for each particular trading pair or symbol call the `market.fetchTicker (symbol) / market.fetch_ticker (symbol)`:
 
 ```JavaScript
 // JavaScript
@@ -751,8 +754,19 @@ $random = rand () % count ($symbols);
 var_dump ($market->fetch_ticker ($symbols[$random])); // ticker for a random symbol
 ```
 
+### All At Once
+
 ```
-UNDER CONSTRUCTION
+// UNDER CONSTRUCTION, WORK IN PROGRESS RIGHT NOW
+
+fetchTickers ()
+fetch_tickers ()
+```
+
+#### Async Mode / Concurrency
+
+```
+// UNDER CONSTRUCTION
 ```
 
 ## OHLC(V) Candlestick Charts
