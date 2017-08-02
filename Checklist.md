@@ -1,0 +1,33 @@
+# Algorithmic Trading Bot FAQ / Checklist:
+
+Below is a set of frequently asked questions you need to answer, if you want to implement a crypto trading bot yourself or if you want us to make one for you. Try being as specific as you possibly can.
+
+- Strategy
+  - What type of trading strategy you want implemented (say, if it is an arbitrage strategy, what kind of arbitrage you want: basic, statistical, rebalancing, etc...)?
+  - What's considered to be a trading opportunity for the bot?
+  - What are desired conditions to enter a trade (TA params, indicators, signalling, etc)?
+  - What are the exit conditions?
+  - What are your risk management requirements?
+  - Do you want to trade with one account or multiple accounts within each exchange?
+- Access
+  - Which exchanges you want?
+  - Which pairs/instruments you want?
+- Technology
+  - Do you want REST over HTTP?
+  - Do you need Websockets to receive market data feeds directly from the exchanges (this is usually faster than REST)?
+  - Do you need to proxify your requests? (to work around exchange request rate limits)
+  - Which parameters you want for control?
+  - Which external datasources / online services you want for insights and signals?
+  - Do you want it to have a GUI or a network access to your bot?
+  - Do you want to run it from your computer?
+  - Do you want chat integrations, or do you want to control it from your mobile?
+- Testing
+  - Do you want it to have backtesting (trade simulation with recent data)?
+  - Do you want paper trading capabilities (trade simulation in real time)?
+  - Do you want to conduct a test of your strategy before running it in real action?
+- Scalability
+  - Do you want a large-scale High-Frequency Trading operation across multiple countries or a personal trading bot (do you want lowest latencies possible for HFT, or intra-day trading only)?
+  - Do you want to have it online in a distributed network of leased vds/vps close to the exchange?
+  - What's your requirements for redundancy and max downtime, can you afford to stop the trade?
+  - ...
+- ...

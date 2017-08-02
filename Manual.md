@@ -18,7 +18,7 @@ The ccxt library currently supports the following 70 cryptocurrency exchange mar
 |----------------------------------------------------------------------------------------------------------------------|---------------|------------------------------------------------------|:---:|:-------------------------------------------------------------------------------------------:|-----------------------------------------|
 |![_1broker](https://user-images.githubusercontent.com/1294454/27766021-420bd9fc-5ecb-11e7-8ed6-56d0081efed2.jpg)      | _1broker      | [1Broker](https://1broker.com)                       | 2   | [API](https://1broker.com/?c=en/content/api-documentation)                                  | US                                      |
 |![_1btcxe](https://user-images.githubusercontent.com/1294454/27766049-2b294408-5ecc-11e7-85cc-adaff013dc1a.jpg)       | _1btcxe       | [1BTCXE](https://1btcxe.com)                         | *   | [API](https://1btcxe.com/api-docs.php)                                                      | Panama                                  |
-|![anxpro](https://user-images.githubusercontent.com/1294454/27765983-fd8595da-5ec9-11e7-82e3-adb3ab8c2612.jpg)        | anxpro        | [ANXPro](https://anxpro.com)                         | 2   | [API](https://anxpro.com/pages/api)                                                         | Japan, Singapore, Hong Kong, New Zealand|
+|![anxpro](https://user-images.githubusercontent.com/1294454/27765983-fd8595da-5ec9-11e7-82e3-adb3ab8c2612.jpg)        | anxpro        | [ANXPro](https://anxpro.com)                         | 2   | [API](http://docs.anxv2.apiary.io)                                                          | Japan, Singapore, Hong Kong, New Zealand|
 |![bit2c](https://user-images.githubusercontent.com/1294454/27766119-3593220e-5ece-11e7-8b3a-5a041f6bcc3f.jpg)         | bit2c         | [Bit2C](https://www.bit2c.co.il)                     | *   | [API](https://www.bit2c.co.il/home/api)                                                     | Israel                                  |
 |![bitbay](https://user-images.githubusercontent.com/1294454/27766132-978a7bd8-5ece-11e7-9540-bc96d1e9bbb8.jpg)        | bitbay        | [BitBay](https://bitbay.net)                         | *   | [API](https://bitbay.net/public-api)                                                        | Poland, EU                              |
 |![bitbays](https://user-images.githubusercontent.com/1294454/27808599-983687d2-6051-11e7-8d95-80dfcbe5cbb4.jpg)       | bitbays       | [BitBays](https://bitbays.com)                       | 1   | [API](https://bitbays.com/help/api/)                                                        | China, UK, Hong Kong, Australia, Canada |
@@ -1149,11 +1149,12 @@ In case you experience any difficulty connecting to a particular market, do the 
 
 1. Turn `market.verbose = true` to get more detail about it.
 2. Check you API credentials. Try a fresh new keypair if possible.
-3. Check your nonce. If you used your API keys with other software, you most likely should [override your nonce function](#overriding-the-nonce) to match your previous nonce value. A nonce usually can be easily reset by generating a new unused keypair.
-4. Check your connectivity with the market, by accessing it with your browser.
-5. Check your connection with the market through a proxy. Read the [Proxy](https://github.com/kroitor/ccxt/wiki/Install#proxy) section for more details.
-6. Try accesing the exchange from a different computer or a remote server, to see if this is a local or global issue with the exchange.
-7. Check if there were any news from the exchange recently regarding downtime for maintenance. Some exchange markets go offline for updates regularly (like once a week).
+3. Read the [API docs for your exchange](https://github.com/kroitor/ccxt/wiki/Exchange-Markets) and compare your verbose output to the docs.
+4. Check your nonce. If you used your API keys with other software, you most likely should [override your nonce function](#overriding-the-nonce) to match your previous nonce value. A nonce usually can be easily reset by generating a new unused keypair.
+5. Check your connectivity with the market, by accessing it with your browser.
+6. Check your connection with the market through a proxy. Read the [Proxy](https://github.com/kroitor/ccxt/wiki/Install#proxy) section for more details.
+7. Try accesing the exchange from a different computer or a remote server, to see if this is a local or global issue with the exchange.
+8. Check if there were any news from the exchange recently regarding downtime for maintenance. Some exchange markets go offline for updates regularly (like once a week).
 
 ## Notes
 
