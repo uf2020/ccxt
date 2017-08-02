@@ -8,7 +8,7 @@ Below is a set of frequently asked questions you need to answer, if you want to 
   - What are the exit conditions?
   - What are your risk management requirements?
   - Do you want to trade with one account or multiple accounts within each exchange?
-  - Do you want advanced asset management within the bot or trading software itself (withdraws, ?
+  - Do you want advanced asset management within the bot or trading software itself (withdraws, deposits, portfolio balancing, exposure control, etc...)?
   - Does your strategy involve OTC trading or darkpools?
 
 # Access
