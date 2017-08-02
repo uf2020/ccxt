@@ -26,8 +26,6 @@ Welcome to the ccxt wiki!
   - [Market Data](https://github.com/kroitor/ccxt/wiki/Manual#market-data)
     - [Order Book / Market Depth](https://github.com/kroitor/ccxt/wiki/Manual#order-book--market-depth)
     - [Price Tickers](https://github.com/kroitor/ccxt/wiki/Manual#price-tickers)
-      - By Trading Symbol
-      - All At Once
     - OHLC(V) Candlestick Charts
     - Public Trades And Closed Orders
   - [Trading](https://github.com/kroitor/ccxt/wiki/Manual#trading)
