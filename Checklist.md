@@ -2,7 +2,7 @@ Below is a set of frequently asked questions you need to answer, if you want to 
 
 # Strategy
 
-  - What type of trading strategy you want implemented (say, if it is an arbitrage strategy, what kind of arbitrage you want: basic, statistical, rebalancing, one-legged, triangular, etc...)?
+  - What type of trading strategy you want implemented (say, if it is an arbitrage strategy, what kind of arbitrage you want: basic, statistical, rebalancing, triangular, etc...)?
   - What's considered to be a trading opportunity for the bot?
   - What are desired conditions to enter a trade (TA params, indicators, signaling, etc)?
   - What are the exit conditions?
