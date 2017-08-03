@@ -28,7 +28,7 @@ Below is a set of frequently asked questions you need to answer, if you want to 
 # Technology
 
   - What programming language do you prefer?
-  - What are you hardware and bandwidth requirements (do you want a bot to run from an arduino USB stick, from your mobile, from a server rack, from within a cloud)?
+  - What are you hardware and bandwidth requirements (do you want a bot to run from an Arduino USB stick, from your mobile, from a server rack, from within a cloud)?
   - What's your target OS / runtime environment?
   - What are your software/resource limits on traffic / CPU time?
   - Do you want REST over HTTP?
