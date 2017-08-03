@@ -57,4 +57,4 @@ Below is a set of frequently asked questions you need to answer, if you want to 
   - What are your requirements for redundancy and maximum downtime, can you afford to stop the trade?
   - Do you need server / bot instance hot-swap?
   - Do you want to use it yourself / in-house, or you want to sell it as part of your service or product to your clients?
-  - Do you want to integrate coin exchange functionality with your running business?
+  - Do you want to integrate coin exchange functionality with your running business (accept payments and do e-commerce in bitcoin, ether and other currencies)?
