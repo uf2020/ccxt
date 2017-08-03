@@ -1015,9 +1015,7 @@ $market->cancel_order (123); // replace with your order id here
 
 ## Overriding The Nonce
 
-**The default nonce is a 32-bit Unix Timestamp in seconds.**
-
-**You should override it with a milliseconds-nonce if you want to make private requests more frequently than once per second!** 
+**The default nonce is a 32-bit Unix Timestamp in seconds. You should override it with a milliseconds-nonce if you want to make private requests more frequently than once per second! Most exchanges will throttle your requests if you hit their rate limits, read [API docs for your exchange](https://github.com/kroitor/ccxt/wiki/Exchange-Markets) carefully!** 
 
 In case you need to reset the nonce it is much easier to create another pair of keys for using with private APIs. Creating new keys and setting up a fresh unused keypair in your config is usually enough for that. 
 
@@ -1167,7 +1165,7 @@ In case you experience any difficulty connecting to a particular market, do the 
 
 1. Turn `market.verbose = true` to get more detail about it.
 2. Check you API credentials. Try a fresh new keypair if possible.
-3. Read the [API docs for your exchange](https://github.com/kroitor/ccxt/wiki/Exchange-Markets) and compare your verbose output to the docs.
+3. Read the [docs for your exchange](https://github.com/kroitor/ccxt/wiki/Exchange-Markets) and compare your verbose output to the docs.
 4. Check your nonce. If you used your API keys with other software, you most likely should [override your nonce function](#overriding-the-nonce) to match your previous nonce value. A nonce usually can be easily reset by generating a new unused keypair.
 5. Check your connectivity with the market, by accessing it with your browser.
 6. Check your connection with the market through a proxy. Read the [Proxy](https://github.com/kroitor/ccxt/wiki/Install#proxy) section for more details.
