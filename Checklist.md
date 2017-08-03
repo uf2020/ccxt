@@ -49,7 +49,7 @@ Below is a set of frequently asked questions you need to answer, if you want to 
 # Scalability
 
   - Do you want to run it from your computer for personal use (intra-day orders, up to several trades per minute)?
-  - Do you want a large-scale High-Frequency Trading business operation across multiple countries (do you need lowest possible latencies for HFT) ?
+  - Do you want a large-scale High-Frequency Trading business operation across multiple countries (do you need lowest possible latencies for HFT, up to several trades per second)?
   - Do you want to have it online in a distributed network of leased VDS/VPS close to the exchange?
   - What are your requirements for redundancy and maximum downtime, can you afford to stop the trade?
   - Do you need server / bot instance hot-swap?
