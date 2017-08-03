@@ -34,7 +34,7 @@ Below is a set of frequently asked questions you need to answer, if you want to 
   - Do you want REST over HTTP?
   - Do you need Websockets to receive market data feeds directly from the exchanges (this is usually faster than REST)?
   - Do you need support for FIX / IFEX?
-  - Do you need to proxify your requests? (to work around exchange request rate limits)
+  - Do you need to proxify your requests (to work around exchange request rate limits)?
   - What parameters do you want for control?
   - Do you want it to have a rich end-user GUI?
   - Do you need sophisticated interactive charts?
