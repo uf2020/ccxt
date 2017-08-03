@@ -20,7 +20,7 @@ Below is a set of frequently asked questions you need to answer, if you want to 
   - Do you need chat integrations (like, slack, telegram, discord, irc)?
   - Do you want to control it from a phone application?
   - Do you want network access to your bot? 
-  - Do you need the bot to notify you on significant market events by email, text messaging, push notifications or other means?
+  - Do you need the bot to notify you on significant market events by email, text messaging, mobile push notifications or other means?
   - Do you want web access to your bot (to open it within a browser tab)?
   - Do you want to integrate with the actual blockchain or a transaction graph of an existing cryptocurrency like Bitcoin, Ethereum, altcoins?    
   - Which external sources of data and online services you want integrated for market insights, signals (other purposes, maybe)?
@@ -28,8 +28,9 @@ Below is a set of frequently asked questions you need to answer, if you want to 
 # Technology
 
   - What programming language do you prefer?
-  - What are you hardware requirements?
+  - What are you hardware and bandwidth requirements (do you want a bot to run from an arduino USB stick, from your mobile, from a server rack, from within a cloud)?
   - What's your target OS / runtime environment?
+  - What are your software/resource limits on traffic / CPU time?
   - Do you want REST over HTTP?
   - Do you need Websockets to receive market data feeds directly from the exchanges (this is usually faster than REST)?
   - Do you need support for FIX / IFEX?
@@ -37,6 +38,8 @@ Below is a set of frequently asked questions you need to answer, if you want to 
   - What parameters do you want for control?
   - Do you want it to have a rich end-user GUI?
   - Do you need sophisticated interactive charts?
+  - What kind of reporting do you need apart from a standard log of trades?
+  - Do you need the bot to interact with other software for additional market data, charts, etc?
 
 # Testing
 
