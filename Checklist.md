@@ -33,11 +33,11 @@ Below is a set of frequently asked questions you need to answer, if you want to 
   - What's your target OS / runtime environment?
   - What are your resource limits on traffic, storage space, memory and CPU time?
   - Do you want REST over HTTP?
-  - Do you need Websockets to receive market data feeds directly from the exchanges (this is usually faster than REST)?
-  - Do you need support for FIX / IFEX?
+  - Do you need Websockets (this is usually faster than REST)?
+  - Do you need the support for FIX / IFEX?
   - Do you need to proxify your requests (to work around exchange request rate limits)?
   - What parameters do you want for control?
-  - Do you want it to have a rich end-user GUI?
+  - Do you want it to have a rich GUI?
   - Do you need sophisticated interactive charts?
   - What kind of reporting do you need apart from a standard log of trades?
   - Do you need the bot to interact with other software for additional market data, charts, etc?
