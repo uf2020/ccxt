@@ -10,7 +10,8 @@ Below is a set of frequently asked questions you need to answer, if you want to 
   - Do you want to trade with one account or multiple accounts within each exchange?
   - Do you want advanced asset management within the bot itself (withdraws, deposits, portfolio balancing, exposure control, etc...)?
   - Does your strategy involve OTC trading or darkpools?
-  - Do you want to lend and provide liquidity, is it a maker, a taker or both?
+  - Do you want to lend and provide liquidity?
+  - Is it a maker, a taker or both?
   - Does it involve margin or leveraged (*position*) trading?
 
 # Access
