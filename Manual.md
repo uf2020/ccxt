@@ -403,9 +403,9 @@ There is a bit of term ambiguity across various markets that may cause confusion
 Historically various symbolic names have been used to designate same trading pairs. Some cryptocurrencies (like Dash) even changed their names more than once during their ongoing lifetime. For consistency across markets the ccxt library will perform the following known substitutions for symbols and currencies:
 
 - `XBT → BTC`: `XBT` is newer but `BTC` is more common among markets and sounds more like bitcoin ([read more](https://www.google.ru/search?q=xbt+vs+btc)).
+- `BCC → BCH`: The Bitcoin Cash fork obtained to symbolic names: `BCC` and `BCH`. The name `BCC` is ambiguous for Bitcoin Cash, it is confused with BitConnect. The ccxt library will convert `BCC` to `BCH` where it is appropriate (some exchanges and aggregators confuse them).
 - `DRK → DASH`: `DASH` was Darkcoin then became Dash ([read more](https://minergate.com/blog/dashcoin-and-dash/)).
-
-Also try not to confuse symbols and currencies, for example the `DSH` (Dashcoin) is not the same as `DASH` (Dash). Some markets have `DASH` labelled inconsistently as `DSH`, the ccxt library does a correction for that (`DSH → DASH`) as well, but only on certain markets that have these two currencies confused, whereas most markets have them both correct. Just remember that `DASH/BTC` is not the same as `DSH/BTC`.
+- `DSH → DASH`: Try not to confuse symbols and currencies. The `DSH` (Dashcoin) is not the same as `DASH` (Dash). Some markets have `DASH` labelled inconsistently as `DSH`, the ccxt library does a correction for that as well (`DSH → DASH`), but only on certain markets that have these two currencies confused, whereas most markets have them both correct. Just remember that `DASH/BTC` is not the same as `DSH/BTC`.
 
 ## Product Cache Force Reload
 
