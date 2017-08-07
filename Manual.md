@@ -185,49 +185,49 @@ market: {
 
 ### Market Properties
 
-Below is a detailed description of each of the base market properties:
+Below is a detailed description of each of the base exchange properties:
 
-- `market.id` / `market['id']` / `$market->id`: Each market has a default id. The id is not used for anything, it's a string literal for user-land market instance identification purposes. You can have multiple links to the same exchange market and differentiate them by ids. Default ids are all lowercase and correspond to market names.
+- `id`: Each market has a default id. The id is not used for anything, it's a string literal for user-land market instance identification purposes. You can have multiple links to the same exchange market and differentiate them by ids. Default ids are all lowercase and correspond to market names.
 
-- `market.name / market['name'] / $market->name`: This is a string literal containing the human-readable market name.
+- `name`: This is a string literal containing the human-readable market name.
 
-- `market.countries / market['countries'] / $market->countries`: A string literal or an array of string literals of 2-symbol ISO country codes, where the exchange is operating from.
+- `countries`: A string literal or an array of string literals of 2-symbol ISO country codes, where the exchange is operating from.
 
-- `market.urls['api'] / market['urls']['api'] / $market->urls['api']`: The single string literal base URL for API calls or an associative array of separate URLs for private and public APIs.
+- `urls['api']`: The single string literal base URL for API calls or an associative array of separate URLs for private and public APIs.
 
-- `market.urls['www'] / market['urls']['www'] / $market->urls['www']`: The main HTTP website URL.
+- `urls['www']`: The main HTTP website URL.
 
-- `market.urls['doc'] / market['urls']['doc'] / $market->urls['doc']`: A single string URL link to original documentation for exchange API on their website or an array of links to docs.
+- `urls['doc']`: A single string URL link to original documentation for exchange API on their website or an array of links to docs.
 
-- `market.version / market['version'] / $market->version`: A string literal containing version identifier for current exchange market API. The ccxt library will append this version string to the API Base URL upon each request. You don't have to modify it, unless you are implementing a new exchange API. The version identifier is a usually a numeric string starting with a letter 'v' in some cases, like v1.1. Do not override it unless you are implementing your own new crypto market class.
+- `version`: A string literal containing version identifier for current exchange market API. The ccxt library will append this version string to the API Base URL upon each request. You don't have to modify it, unless you are implementing a new exchange API. The version identifier is a usually a numeric string starting with a letter 'v' in some cases, like v1.1. Do not override it unless you are implementing your own new crypto market class.
 
-- `market.api / market['api'] / $market->api`: An associative array containing a definition of all API endpoints exposed by a crypto exchange. The API definition is used by ccxt to automatically construct callable instance methods for each available endpoint.
+- `api`: An associative array containing a definition of all API endpoints exposed by a crypto exchange. The API definition is used by ccxt to automatically construct callable instance methods for each available endpoint.
 
-- `market.timeout / market['timeout'] / $market->timeout`: A timeout in milliseconds for a request-response roundtrip (default timeout is 10000 ms = 10 seconds). You should always set it to a reasonable value, hanging forever with no timeout is not your option, for sure.
+- `timeout`: A timeout in milliseconds for a request-response roundtrip (default timeout is 10000 ms = 10 seconds). You should always set it to a reasonable value, hanging forever with no timeout is not your option, for sure.
 
-- `market.rateLimit / market['rateLimit'] / $market->rateLimit`: A request rate limit in milliseconds. Specifies the required minimal delay between two consequent HTTP requests to the same market. This parameter is not used for now (reserved for future).
+- `rateLimit`: A request rate limit in milliseconds. Specifies the required minimal delay between two consequent HTTP requests to the same market. This parameter is not used for now (reserved for future).
 
-- `market.userAgent / market['userAgent'] / $market->userAgent`: An object to set HTTP User-Agent header to. The ccxt library will set its User-Agent by default. Some markets may not like it. If you are having difficulties getting a reply from a market and want to turn User-Agent off or use the default one, set this value to false, undefined, or an empty string.
+- `userAgent`: An object to set HTTP User-Agent header to. The ccxt library will set its User-Agent by default. Some markets may not like it. If you are having difficulties getting a reply from a market and want to turn User-Agent off or use the default one, set this value to false, undefined, or an empty string.
 
-- `market.verbose / market['verbose'] / $market->verbose`: A boolean flag indicating whether to log HTTP requests to stdout (verbose flag is false by default).
+- `verbose`: A boolean flag indicating whether to log HTTP requests to stdout (verbose flag is false by default).
 
-- `market.products / market['products'] / $market->products`: An associative array of products indexed by common trading pairs or symbols. Market products should be loaded prior to accessing this property. Products are unavailable until you call the `loadProducts() / load_products()` method on a market instance.
+- `products`: An associative array of products indexed by common trading pairs or symbols. Market products should be loaded prior to accessing this property. Products are unavailable until you call the `loadProducts() / load_products()` method on a market instance.
 
-- `market.symbols / market['symbols'] / $market->symbols`: A non-associative array (a list) of symbols available with a market, sorted in alphabetical order. These are the keys of the `market.products` property. Symbols are loaded and reloaded from products. This property is a convenient shorthand for all product keys.
+- `symbols`: A non-associative array (a list) of symbols available with a market, sorted in alphabetical order. These are the keys of the `market.products` property. Symbols are loaded and reloaded from products. This property is a convenient shorthand for all product keys.
 
-- `market.currencies / market['currencies'] / $market->currencies`: A non-associative array (a list) of currency codes (usually 3 or 4 letters) available with a market, sorted in alphabetical order. Currencies are loaded and reloaded from products.
+- `currencies`: A non-associative array (a list) of currency codes (usually 3 or 4 letters) available with a market, sorted in alphabetical order. Currencies are loaded and reloaded from products.
 
-- `market.products_by_id / market['products_by_id'] / $market->products_by_id`: An associative array of products indexed by exchange-specific ids. Market products should be loaded prior to accessing this property.
+- `products_by_id`: An associative array of products indexed by exchange-specific ids. Market products should be loaded prior to accessing this property.
 
-- `market.proxy / market['proxy'] / $market->proxy`: A string literal containing base URL of http(s) proxy, `''` by default. For use with web browsers and from blocked locations. An example of a proxy string is `'http://crossorigin.me/'`. The absolute exchange endpoint URL is appended to this string before sending the HTTP request.
+- `proxy`: A string literal containing base URL of http(s) proxy, `''` by default. For use with web browsers and from blocked locations. An example of a proxy string is `'http://crossorigin.me/'`. The absolute exchange endpoint URL is appended to this string before sending the HTTP request.
 
-- `market.apiKey / market['apiKey'] / $market->apiKey`: This is your public API key string literal. Most markets require this for trading ([see below](https://github.com/kroitor/ccxt/wiki/Manual#api-keys-setup)).
+- `apiKey`: This is your public API key string literal. Most markets require this for trading ([see below](https://github.com/kroitor/ccxt/wiki/Manual#api-keys-setup)).
 
-- `market.secret / market['secret'] / $market->secret`: Your private secret API key string literal. Most markets require this as well together with the apiKey.
+- `secret`: Your private secret API key string literal. Most markets require this as well together with the apiKey.
 
-- `market.password / market['password'] / $market->password`: A string literal with your password/phrase. Some exchanges require this parameter for trading, but most of them don't.
+- `password`: A string literal with your password/phrase. Some exchanges require this parameter for trading, but most of them don't.
 
-- `market.uid / market['uid'] / $market->uid`: A unique id of your account. This can be a string literal or a number. Some exchanges also require this for trading, but most of them don't.
+- `uid`: A unique id of your account. This can be a string literal or a number. Some exchanges also require this for trading, but most of them don't.
 
 ## Rate Limit
 
