@@ -153,12 +153,12 @@ $kraken = new \ccxt\$id ();
 
 Every market has a set of properties and methods, most of which you can override by passing an associative array of params to a market constructor. You can also make a subclass and override everything.
 
-Here's an overview of base market properties with values added for example:
+Here's an overview of base exchange properties with values added for example:
 
 ```
-market: {    
-    'id':   'market'                    // lowercase string market id
-    'name': 'Market'                    // human-readable string
+{    
+    'id':   'exchange'                  // lowercase string market id
+    'name': 'Exchange'                  // human-readable string
     'countries': [ 'US', 'CN', 'EU' ],  // string or array of ISO country codes    
     'urls': {
         'api': 'https://api.example.com/data',  // string or dictionary of base API URLs
