@@ -151,7 +151,7 @@ $kraken = new \ccxt\$id ();
 
 ## Market Structure
 
-Every market has a set of properties and methods, most of which you can override by passing an associative array of params to a market constructor. You can also make a subclass and override everything.
+Every exchange market has a set of properties and methods, most of which you can override by passing an associative array of params to a market constructor. You can also make a subclass and override everything.
 
 Here's an overview of base exchange properties with values added for example:
 
