@@ -1007,6 +1007,14 @@ $exchange->cancel_order (123); // replace with your order id here
 
 ```UNDER CONSTRUCTION```
 
+### Open Orders
+
+### Closed Orders
+
+### All Orders
+
+### Transactions / Executions
+
 ## Funding Your Account
 
 ```UNDER CONSTRUCTION```
