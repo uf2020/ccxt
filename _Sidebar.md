@@ -3,6 +3,7 @@
 - [Install](https://github.com/kroitor/ccxt/wiki/Install)
 - [Manual](https://github.com/kroitor/ccxt/wiki/Manual)
   - [Architecture Overview](https://github.com/kroitor/ccxt/wiki/Manual#overview)
+  - [Instantiation](https://github.com/kroitor/ccxt/wiki/Manual#instantiation)
   - [Exchange Structure](https://github.com/kroitor/ccxt/wiki/Manual#exchange-structure)
   - [Exchange Properties](https://github.com/kroitor/ccxt/wiki/Manual#exchange-properties)
   - [Markets](https://github.com/kroitor/ccxt/wiki/Manual#markets)
