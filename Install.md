@@ -25,7 +25,7 @@ Node version of the ccxt library requires [crypto-js](https://www.npmjs.com/pack
 
 ```JavaScript
 var ccxt = require ('ccxt')
-console.log (Object.keys (ccxt)) // print all available markets
+console.log (ccxt.exchanges) // print all available exchanges
 ```
 
 ## Python
@@ -38,7 +38,7 @@ Python version of the ccxt library does not require any additional dependencies 
 
 ```Python
 import ccxt
-print dir (ccxt) # print a list of all available market classes
+print (ccxt.exchanges) # print a list of all available exchange classes
 ```
 
 ## PHP
@@ -60,7 +60,7 @@ Note, that ccxt library uses builtin UTC/GMT time functions, therefore you are r
 ```PHP
 date_default_timezone_set ('UTC');
 include "ccxt.php";
-$market = new \cxxt\kraken ();
+$exchange = new \cxxt\kraken ();
 ```
 
 ## Web Browsers
@@ -88,8 +88,8 @@ Add links to CryptoJS components and ccxt to your HTML page code:
 
 <script type="text/javascript" src="ccxt.js"></script>
 <script type="text/javascript">
-    // print all available markets
-    document.addEventListener ('DOMContentLoaded', () => console.log (ccxt))
+    // print all available exchanges
+    document.addEventListener ('DOMContentLoaded', () => console.log (ccxt.exchanges))
 </script>
 ```
 
@@ -108,7 +108,7 @@ The absolute exchange endpoint URL is appended to `market['proxy']` string befor
 
 ## CORS (Access-Control-Allow-Origin)
 
-CORS is [Cross-Origin Resource Sharing](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). When accessing a market HTTP REST API from browser with ccxt library you may get a warning or an exception, saying `No 'Access-Control-Allow-Origin' header is present on the requested resource`. That means that the exchange market admins haven't enabled access to their API from arbitrary web browser pages.
+CORS is [Cross-Origin Resource Sharing](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). When accessing the HTTP REST API of an exchange from browser with ccxt library you may get a warning or an exception, saying `No 'Access-Control-Allow-Origin' header is present on the requested resource`. That means that the exchange market admins haven't enabled access to their API from arbitrary web browser pages.
 
 You can still use the ccxt library from your browser via a CORS-proxy, which is very easy to set up or install. There are also public CORS proxies on the internet, like [https://crossorigin.me](https://crossorigin.me).
 
@@ -159,4 +159,4 @@ To test the CORS you can do either of the following:
 - type that URL directly in the address bar as `https://localhost:8080/https://exchange.com/path/to/endpoint`
 - cURL it from command like `curl https://localhost:8080/https://exchange.com/path/to/endpoint`
 
-To let ccxt know of the proxy, you can set `market.proxy` property on the market instance.
+To let ccxt know of the proxy, you can set `proxy` property on the exchange instance.
