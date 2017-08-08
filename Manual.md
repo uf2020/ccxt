@@ -1,16 +1,16 @@
 # Overview
 
-The ccxt library is a collection of available crypto exchange *markets* or market classes. Each market implements the public and private API for a particular crypto exchange. All markets are derived from the base Market class and share a set of common methods. To access a particular market from ccxt library you need to create an instance of corresponding market class. Supported markets are updated frequently and new markets are added regularly.
+The ccxt library is a collection of available crypto *exchanges* or exchange classes. Each exchange implements the public and private API for a particular crypto exchange. All exchanges are derived from the base Exchange class and share a set of common methods. To access a particular exchange from ccxt library you need to create an instance of corresponding exchange class. Supported exchanges are updated frequently and new exchanges are added regularly.
 
 Full public and private HTTP REST APIs for all exchanges are implemented. WebSocket and FIX implementations in JavaScript, PHP, Python and other languages coming soon.
 
-- [Exchange Markets](#exchange-markets)
-- [Products](#products)
+- [Exchanges](#exchanges)
+- [Markets](#markets)
 - [API Methods / Endpoints](#api-methods--endpoints)
 - [Market Data](#market-data)
 - [Trading](#trading)
 
-# Exchange Markets
+# Exchanges
 
 The ccxt library currently supports the following 70 cryptocurrency exchange markets and trading APIs:
 
@@ -91,34 +91,34 @@ Besides making basic market and limit orders, some exchanges offer margin tradin
 
 ## Instantiation
 
-To connect to an exchange market and start trading you need to instantiate a market class instance from ccxt library.
+To connect to an exchange and start trading you need to instantiate a exchange class from ccxt library.
 
-To get the full list of ids of supported markets programmatically:
+To get the full list of ids of supported exchanges programmatically:
 
 ```JavaScript
 // JavaScript
 const ccxt = require ('ccxt')
-console.log (ccxt.markets)
+console.log (ccxt.exchanges)
 ```
 
 ```Python
 # Python
 import ccxt
-print (ccxt.markets)
+print (ccxt.exchanges)
 ```
 
 ```PHP
 // PHP
 include 'ccxt.php';
-var_dump (\ccxt\Market::$markets);
+var_dump (\ccxt\Exchange::$exchanges);
 ```
 
-An exchange market can be instantiated like shown in the examples below:
+An exchange can be instantiated like shown in the examples below:
 
 ```JavaScript
 // JavaScript
 const ccxt = require ('ccxt')
-let market = new ccxt.kraken () // default id
+let exchange = new ccxt.kraken () // default id
 let kraken1 = new ccxt.kraken ({ id: 'kraken1' })
 let kraken2 = new ccxt.kraken ({ id: 'kraken2' })
 let id = 'gdax'
@@ -128,7 +128,7 @@ let gdax = new ccxt[id] ();
 ```Python
 # Python
 import ccxt
-market = ccxt.okcoinusd () # default id
+exchange = ccxt.okcoinusd () # default id
 okcoin1 = ccxt.okcoinusd ({ 'id': 'okcoin1' })
 okcoin2 = ccxt.okcoinusd ({ 'id': 'okcoin2' })
 id = 'btcchina'
@@ -149,15 +149,15 @@ $id = 'kraken';
 $kraken = new \ccxt\$id ();
 ```
 
-## Market Structure
+## Exchange Structure
 
-Every exchange market has a set of properties and methods, most of which you can override by passing an associative array of params to a market constructor. You can also make a subclass and override everything.
+Every exchange has a set of properties and methods, most of which you can override by passing an associative array of params to an exchange constructor. You can also make a subclass and override everything.
 
 Here's an overview of base exchange properties with values added for example:
 
 ```
 {    
-    'id':   'exchange'                  // lowercase string market id
+    'id':   'exchange'                  // lowercase string exchange id
     'name': 'Exchange'                  // human-readable string
     'countries': [ 'US', 'CN', 'EU' ],  // string or array of ISO country codes    
     'urls': {
@@ -171,10 +171,10 @@ Here's an overview of base exchange properties with values added for example:
     'rateLimit':  2000,                 // number in milliseconds
     'userAgent':  'ccxt/1.1.1 ...'      // string, HTTP User-Agent header
     'verbose':    false,                // boolean, output error details
-    'products':   { ... }               // dictionary of products/pairs by symbol
-    'symbols':    [ ... ]               // sorted list of string symbols (product pairs)
+    'markets':   { ... }                // dictionary of markets/pairs by symbol
+    'symbols':    [ ... ]               // sorted list of string symbols (traded pairs)
     'currencies': [ ... ]               // sorted list of strings (currency codes)
-    'products_by_id': { ... },          // dictionary of dictionaries (products) by id
+    'markets_by_id': { ... },           // dictionary of dictionaries (markets) by id
     'proxy': 'https://crossorigin.me/', // string URL
     'apiKey':   '92560ffae9b8a0421...', // string public apiKey (ASCII, hex, Base64, ...)
     'secret':   '9aHjPmW+EtRRKN/Oi...'  // string private secret key 
@@ -183,13 +183,13 @@ Here's an overview of base exchange properties with values added for example:
 }
 ```
 
-### Market Properties
+### Exchange Properties
 
 Below is a detailed description of each of the base exchange properties:
 
-- `id`: Each market has a default id. The id is not used for anything, it's a string literal for user-land market instance identification purposes. You can have multiple links to the same exchange market and differentiate them by ids. Default ids are all lowercase and correspond to market names.
+- `id`: Each exchange has a default id. The id is not used for anything, it's a string literal for user-land exchange instance identification purposes. You can have multiple links to the same exchange and differentiate them by ids. Default ids are all lowercase and correspond to exchange names.
 
-- `name`: This is a string literal containing the human-readable market name.
+- `name`: This is a string literal containing the human-readable exchange name.
 
 - `countries`: A string literal or an array of string literals of 2-symbol ISO country codes, where the exchange is operating from.
 
@@ -199,31 +199,31 @@ Below is a detailed description of each of the base exchange properties:
 
 - `urls['doc']`: A single string URL link to original documentation for exchange API on their website or an array of links to docs.
 
-- `version`: A string literal containing version identifier for current exchange market API. The ccxt library will append this version string to the API Base URL upon each request. You don't have to modify it, unless you are implementing a new exchange API. The version identifier is a usually a numeric string starting with a letter 'v' in some cases, like v1.1. Do not override it unless you are implementing your own new crypto market class.
+- `version`: A string literal containing version identifier for current exchange API. The ccxt library will append this version string to the API Base URL upon each request. You don't have to modify it, unless you are implementing a new exchange API. The version identifier is a usually a numeric string starting with a letter 'v' in some cases, like v1.1. Do not override it unless you are implementing your own new crypto exchange class.
 
 - `api`: An associative array containing a definition of all API endpoints exposed by a crypto exchange. The API definition is used by ccxt to automatically construct callable instance methods for each available endpoint.
 
 - `timeout`: A timeout in milliseconds for a request-response roundtrip (default timeout is 10000 ms = 10 seconds). You should always set it to a reasonable value, hanging forever with no timeout is not your option, for sure.
 
-- `rateLimit`: A request rate limit in milliseconds. Specifies the required minimal delay between two consequent HTTP requests to the same market. This parameter is not used for now (reserved for future).
+- `rateLimit`: A request rate limit in milliseconds. Specifies the required minimal delay between two consequent HTTP requests to the same exchange. This parameter is not used for now (reserved for future).
 
-- `userAgent`: An object to set HTTP User-Agent header to. The ccxt library will set its User-Agent by default. Some markets may not like it. If you are having difficulties getting a reply from a market and want to turn User-Agent off or use the default one, set this value to false, undefined, or an empty string.
+- `userAgent`: An object to set HTTP User-Agent header to. The ccxt library will set its User-Agent by default. Some exchanges may not like it. If you are having difficulties getting a reply from an exchange and want to turn User-Agent off or use the default one, set this value to false, undefined, or an empty string.
 
 - `verbose`: A boolean flag indicating whether to log HTTP requests to stdout (verbose flag is false by default).
 
-- `products`: An associative array of products indexed by common trading pairs or symbols. Market products should be loaded prior to accessing this property. Products are unavailable until you call the `loadProducts() / load_products()` method on a market instance.
+- `markets`: An associative array of markets indexed by common trading pairs or symbols. Markets should be loaded prior to accessing this property. Markets are unavailable until you call the `loadMarkets() / load_markets()` method on exchange instance.
 
-- `symbols`: A non-associative array (a list) of symbols available with a market, sorted in alphabetical order. These are the keys of the `market.products` property. Symbols are loaded and reloaded from products. This property is a convenient shorthand for all product keys.
+- `symbols`: A non-associative array (a list) of symbols available with an exchange, sorted in alphabetical order. These are the keys of the `markets` property. Symbols are loaded and reloaded from markets. This property is a convenient shorthand for all market keys.
 
-- `currencies`: A non-associative array (a list) of currency codes (usually 3 or 4 letters) available with a market, sorted in alphabetical order. Currencies are loaded and reloaded from products.
+- `currencies`: A non-associative array (a list) of currency codes (usually 3 or 4 letters) available with an exchange, sorted in alphabetical order. Currencies are loaded and reloaded from markets.
 
-- `products_by_id`: An associative array of products indexed by exchange-specific ids. Market products should be loaded prior to accessing this property.
+- `markets_by_id`: An associative array of markets indexed by exchange-specific ids. Markets should be loaded prior to accessing this property.
 
 - `proxy`: A string literal containing base URL of http(s) proxy, `''` by default. For use with web browsers and from blocked locations. An example of a proxy string is `'http://crossorigin.me/'`. The absolute exchange endpoint URL is appended to this string before sending the HTTP request.
 
-- `apiKey`: This is your public API key string literal. Most markets require this for trading ([see below](https://github.com/kroitor/ccxt/wiki/Manual#api-keys-setup)).
+- `apiKey`: This is your public API key string literal. Most exchanges require this for trading ([see below](https://github.com/kroitor/ccxt/wiki/Manual#api-keys-setup)).
 
-- `secret`: Your private secret API key string literal. Most markets require this as well together with the apiKey.
+- `secret`: Your private secret API key string literal. Most exchanges require this as well together with the apiKey.
 
 - `password`: A string literal with your password/phrase. Some exchanges require this parameter for trading, but most of them don't.
 
@@ -231,17 +231,17 @@ Below is a detailed description of each of the base exchange properties:
 
 ## Rate Limit
 
-Exchange markets usually impose what is called a *rate limit*. Exchanges will remember and track your user credentials and your IP address and will not allow you to query the API too frequently. They balance their load and control traffic congestion to protect API servers from (D)DoS and misuse.
+Exchanges usually impose what is called a *rate limit*. Exchanges will remember and track your user credentials and your IP address and will not allow you to query the API too frequently. They balance their load and control traffic congestion to protect API servers from (D)DoS and misuse.
 
-Most markets allow **up to 1 or 2 requests per second**. Markets may temporarily restrict your access to their exchange API or ban you for some period of time if you are too aggressive with your requests.
+Most exchanges allow **up to 1 or 2 requests per second**. Exchanges may temporarily restrict your access to their API or ban you for some period of time if you are too aggressive with your requests.
 
 **WARNING: Stay under the rate limit to avoid ban!**
 
 ## DDoS Protection By Cloudflare / Incapsula
 
-Some markets are [DDoS](https://en.wikipedia.org/wiki/Denial-of-service_attack)-protected by [Cloudflare](https://www.cloudflare.com) or [Incapsula](https://www.incapsula.com). Your IP can get temporarily blocked during periods of high load. Sometimes they even restrict whole countries and regions. In that case their servers usually return a page that states a HTTP 40x error or runs an AJAX test of your browser / captcha test and delays the reload of the page for several seconds. Then your browser/fingerprint is granted access temporarily and gets added to a whitelist or receives a HTTP cookie for further use. 
+Some exchanges are [DDoS](https://en.wikipedia.org/wiki/Denial-of-service_attack)-protected by [Cloudflare](https://www.cloudflare.com) or [Incapsula](https://www.incapsula.com). Your IP can get temporarily blocked during periods of high load. Sometimes they even restrict whole countries and regions. In that case their servers usually return a page that states a HTTP 40x error or runs an AJAX test of your browser / captcha test and delays the reload of the page for several seconds. Then your browser/fingerprint is granted access temporarily and gets added to a whitelist or receives a HTTP cookie for further use. 
 
-If you encounter DDoS protection errors and cannot reach a particular exchange market then:
+If you encounter DDoS protection errors and cannot reach a particular exchange then:
 - try later
 - use a proxy (this is less responsive, though)
 - ask the exchange support to add you to a whitelist
@@ -256,88 +256,98 @@ The ccxt library will throw a DDoSProtectionError in case it hits a rate limit. 
 UNDER CONSTRUCTION
 ```
 
-# Products
+# Markets
 
-Each market is a place for trading some kinds of valuables. Sometimes they are called with various different terms like instruments, symbols, trading pairs, currencies, tokens, stocks, commodities, contracts, etc, but they all mean the same – a trading pair, a symbol, a financial instrument or some kind of *product*. 
+Each exchange is a place for trading some kinds of valuables. Sometimes they are called with various different terms like instruments, symbols, trading pairs, currencies, tokens, stocks, commodities, contracts, etc, but they all mean the same – a trading pair, a symbol, a financial instrument or some kind of *product*. 
 
-In terms of the ccxt library, every market trades products within itself. The set of products differs from market to market opening possibilities for cross-market and cross-product arbitrage. A product is usually a pair of traded crypto and/or fiat currencies. 
+In terms of the ccxt library, every exchange offers multiple markets within itself. The set of markets differs from exchange to exchange opening possibilities for cross-exchange and cross-market arbitrage. A market is usually a pair of traded crypto and/or fiat currencies. 
 
-## Product Structure
+## Market Structure
 
-Each product is an associative array (aka dictionary) with the following keys:
-- `product['id']`. The string or numeric ID of the product or trade instrument within the market. Product ids are used inside markets internally to identify products and trading pairs during the request/response process.
-- `product['symbol']`. An uppercase string code representation of a particular trading pair or instrument. This is usually written as `BaseCurrency/QuoteCurrency` with a slash as in `BTC/USD`, `LTC/CNY` or `ETH/EUR`, etc. Symbols are used to reference products within the ccxt library (explained below).
-- `product['base']`. An uppercase string code of base fiat or crypto currency.
-- `product['quote']`. An uppercase string code of quoted fiat or crypto currency.
-- `product['info']`. An associative array of non-common market properties, including fees, rates, limits and other general product information. The internal info array is different for each particular market product, its contents depend on the exchange market.
+```
+{
+    'id':     'btcusd',  // string literal for referencing within an exchange
+    'symbol': 'BTC/USD', // uppercase string literal of a pair of currencies
+    'base':   'BTC',     // uppercase string, base currency, 3 or more letters
+    'quote':  'USD',     // uppercase string, quote currency, 3 or more letters
+    'info':   { ... },   // the original unparsed market info from the exchange
+}
+```
 
-## Loading Products
+Each market is an associative array (aka dictionary) with the following keys:
+- `id`. The string or numeric ID of the market or trade instrument within the exchange. Market ids are used inside exchanges internally to identify trading pairs during the request/response process.
+- `symbol`. An uppercase string code representation of a particular trading pair or instrument. This is usually written as `BaseCurrency/QuoteCurrency` with a slash as in `BTC/USD`, `LTC/CNY` or `ETH/EUR`, etc. Symbols are used to reference markets within the ccxt library (explained below).
+- `base`. An uppercase string code of base fiat or crypto currency.
+- `quote`. An uppercase string code of quoted fiat or crypto currency.
+- `info`. An associative array of non-common market properties, including fees, rates, limits and other general market information. The internal info array is different for each particular market, its contents depend on the exchange.
 
-In most cases you are required to load the list of products and trading symbols for a particular market prior to accessing other market API methods. If you forget to load products the ccxt library will do that automatically upon your first call to the unified API. It will send two HTTP requests, first for products and then the second one for other data, sequentially.
+## Loading Markets
 
-In order to load products manually beforehand call the `loadProducts ()` / `load_products ()` method on a market instance. It returns an associative array of products indexed by trading symbol. If you want more control over the execution of your logic, preloading products by hand is recommended.
+In most cases you are required to load the list of markets and trading symbols for a particular exchange prior to accessing other API methods. If you forget to load markets the ccxt library will do that automatically upon your first call to the unified API. It will send two HTTP requests, first for markets and then the second one for other data, sequentially.
+
+In order to load markets manually beforehand call the `loadMarkets ()` / `load_markets ()` method on an exchange instance. It returns an associative array of markets indexed by trading symbol. If you want more control over the execution of your logic, preloading markets by hand is recommended.
 
 ```JavaScript
 // JavaScript
 (async () => {
     let kraken = new ccxt.kraken ()
-    let products = await kraken.load_products ()
-    console.log (kraken.id, products)
+    let markets = await kraken.load_markets ()
+    console.log (kraken.id, markets)
 }) ()
 ```
 
 ```Python
 # Python
 okcoin = ccxt.okcoinusd ()
-products = okcoin.load_products ()
-print (okcoin.id, products)
+markets = okcoin.load_markets ()
+print (okcoin.id, markets)
 ```
 
 ```PHP
 // PHP
 $id = 'huobi';
 $huobi = new \ccxt\$id ();
-$products = $huobi.load_products ();
-var_dump ($huobi->id, $products);
+$markets = $huobi.load_markets ();
+var_dump ($huobi->id, $markets);
 ```
 
-## Product Ids And Symbols
+## Market Ids And Symbols
 
-Product ids are used during the REST request-response process to reference trading pairs within markets. The set of product ids is unique per exchange and cannot be used across markets. For example, the BTC/USD pair/product may have different ids on various popular markets, like `btcusd`, `BTCUSD`, `XBTUSD`, `btc/usd`, `42` (numeric id), `BTC/USD`, `Btc/Usd`, `tBTCUSD`, `XXBTZUSD`. You don't need to remember or use product ids, they are there for internal HTTP request-response purposes inside market implementations.
+Market ids are used during the REST request-response process to reference trading pairs within exchanges. The set of market ids is unique per exchange and cannot be used across exchanges. For example, the BTC/USD pair/market may have different ids on various popular exchanges, like `btcusd`, `BTCUSD`, `XBTUSD`, `btc/usd`, `42` (numeric id), `BTC/USD`, `Btc/Usd`, `tBTCUSD`, `XXBTZUSD`. You don't need to remember or use market ids, they are there for internal HTTP request-response purposes inside exchange implementations.
 
-The ccxt library abstracts uncommon product ids to symbols, standardized to a common format. Symbols are not the same as product ids. Every product is referenced by a corresponding symbol. Symbols are common across markets which makes them suitable for arbitrage and many other things.
+The ccxt library abstracts uncommon market ids to symbols, standardized to a common format. Symbols are not the same as market ids. Every market is referenced by a corresponding symbol. Symbols are common across exchanges which makes them suitable for arbitrage and many other things.
 
-A symbol is an uppercase string literal name for a pair of traded currencies with a slash in between. A currency is a code of three or four uppercase letters, like `BTC`, `ETH`, `USD`, `GBP`, `CNY`, `LTC`, `JPY`, `DOGE`, `RUB`, `ZEC`, `XRP`, `XMR`, etc. Some markets have exotic currencies with longer names. The first currency before the slash is usually called *base currency*, and the one after the slash is called *quote currency*.  Examples of a symbol are: `BTC/USD`, `DOGE/LTC`, `ETH/EUR`, `DASH/XRP`, `BTC/CNY`, `ZEC/XMR`, `ETH/JPY`.
+A symbol is an uppercase string literal name for a pair of traded currencies with a slash in between. A currency is a code of three or four uppercase letters, like `BTC`, `ETH`, `USD`, `GBP`, `CNY`, `LTC`, `JPY`, `DOGE`, `RUB`, `ZEC`, `XRP`, `XMR`, etc. Some exchanges have exotic currencies with longer names. The first currency before the slash is usually called *base currency*, and the one after the slash is called *quote currency*.  Examples of a symbol are: `BTC/USD`, `DOGE/LTC`, `ETH/EUR`, `DASH/XRP`, `BTC/CNY`, `ZEC/XMR`, `ETH/JPY`.
 
-Product structures are indexed by symbols and ids. The base market class also has builtin methods for accessing products by symbols. Most API methods require a symbol to be passed in their first parameter. You are often required to specify a symbol when querying current prices, making orders, etc.
+Market structures are indexed by symbols and ids. The base exchange class also has builtin methods for accessing markets by symbols. Most API methods require a symbol to be passed in their first parameter. You are often required to specify a symbol when querying current prices, making orders, etc.
 
-Most of the time users will be working with product symbols. You will get a standard userland exception if you access non-existent keys in these dicts.
+Most of the time users will be working with market symbols. You will get a standard userland exception if you access non-existent keys in these dicts.
 
 ```JavaScript
 // JavaScript
 
 (async () => {
 
-    console.log (await market.loadProducts ())
+    console.log (await exchange.loadMarkets ())
 
-    let btcusd1 = market.products['BTC/USD']     // get product structure by symbol
-    let btcusd2 = market.product ('BTC/USD')     // same result in a slightly different way
+    let btcusd1 = exchange.markets['BTC/USD']     // get market structure by symbol
+    let btcusd2 = exchange.market ('BTC/USD')     // same result in a slightly different way
 
-    let btcusdId = market.productId ('BTC/USD')  // get product id by symbol
+    let btcusdId = exchange.marketId ('BTC/USD')  // get market id by symbol
 
-    let symbols = market.symbols                 // get an array of symbols
-    let symbols2 = Object.keys (market.products) // same as previous line
+    let symbols = exchange.symbols                // get an array of symbols
+    let symbols2 = Object.keys (exchange.markets) // same as previous line
 
-    console.log (market.id, symbols)             // print all symbols
+    console.log (exchange.id, symbols)            // print all symbols
 
     let bitfinex = new ccxt.bitfinex ()
-    await bitfinex.loadProducts ()
+    await bitfinex.loadMarkets ()
 
-    bitfinex.products['BTC/USD']                 // symbol → product (get product by symbol)
-    bitfinex.productsById['XRPBTC']              // id → product (get product by id)
+    bitfinex.markets['BTC/USD']                   // symbol → market (get market by symbol)
+    bitfinex.marketsById['XRPBTC']                // id → market (get market by id)
 
-    bitfinex.products['BTC/USD']['id']           // symbol → id (get id by symbol)
-    bitfinex.productsById['XRPBTC']['symbol']    // id → symbol (get symbol by id)
+    bitfinex.markets['BTC/USD']['id']             // symbol → id (get id by symbol)
+    bitfinex.marketsById['XRPBTC']['symbol']      // id → symbol (get symbol by id)
 
 })
 ```
@@ -345,131 +355,131 @@ Most of the time users will be working with product symbols. You will get a stan
 ```Python
 # Python
 
-print (market.load_products ())
+print (exchange.load_markets ())
 
-etheur1 = market.products['ETH/EUR']        # get product structure by symbol
-etheur2 = market.product ('ETH/EUR')        # same result in a slightly different way
+etheur1 = exchange.markets['ETH/EUR']      # get market structure by symbol
+etheur2 = exchange.market ('ETH/EUR')      # same result in a slightly different way
 
-etheurId = market.product_id ('BTC/USD')    # get product id by symbol
+etheurId = exchange.market_id ('BTC/USD')  # get market id by symbol
 
-symbols = market.symbols                    # get a list of symbols
-symbols2 = list (market.products.keys ())   # same as previous line
+symbols = exchange.symbols                 # get a list of symbols
+symbols2 = list (exchange.markets.keys ()) # same as previous line
 
-print (market.id, symbols)                  # print all symbols
+print (exchange.id, symbols)               # print all symbols
 
 kraken = ccxt.kraken ()
-kraken.load_products ()
+kraken.load_markets ()
 
-kraken.products['BTC/USD']                  # symbol → product (get product by symbol)
-kraken.products_by_id['XXRPZUSD']           # id → product (get product by id)
+kraken.markets['BTC/USD']                  # symbol → market (get market by symbol)
+kraken.markets_by_id['XXRPZUSD']           # id → market (get market by id)
 
-kraken.products['BTC/USD']['id']            # symbol → id (get id by symbol)
-kraken.products_by_id['XXRPZUSD']['symbol'] # id → symbol (get symbol by id)
+kraken.markets['BTC/USD']['id']            # symbol → id (get id by symbol)
+kraken.markets_by_id['XXRPZUSD']['symbol'] # id → symbol (get symbol by id)
 ```
 
 ```PHP
 // PHP
 
-$var_dump ($market->load_products ());
+$var_dump ($exchange->load_markets ());
 
-$dashcny1 = $market->products['DASH/CNY'];       // get product structure by symbol
-$dashcny2 = $market->product ('DASH/CNY');       // same result in a slightly different way
+$dashcny1 = $exchange->markets['DASH/CNY'];     // get market structure by symbol
+$dashcny2 = $exchange->market ('DASH/CNY');     // same result in a slightly different way
 
-$dashcnyId = $market->product_id ('DASH/CNY');   // get product id by symbol
+$dashcnyId = $exchange->market_id ('DASH/CNY'); // get market id by symbol
 
-$symbols = $market->symbols;                     // get an array of symbols
-$symbols2 = array_keys ($market->products);      // same as previous line
+$symbols = $exchange->symbols;                  // get an array of symbols
+$symbols2 = array_keys ($exchange->markets);    // same as previous line
 
-var_dump ($market->id, $symbols);                // print all symbols
+var_dump ($exchange->id, $symbols);             // print all symbols
 
 $okcoinusd = '\\ccxt\\okcoinusd';
 $okcoinusd = new $okcoinusd ();
 
-$okcoinusd->load_products ();
+$okcoinusd->load_markets ();
 
-$okcoinusd->products['BTC/USD'];                 // symbol → product (get product by symbol)
-$okcoinusd->products_by_id['btc_usd'];           // id → product (get product by id)
+$okcoinusd->markets['BTC/USD'];                 // symbol → market (get market by symbol)
+$okcoinusd->markets_by_id['btc_usd'];           // id → market (get market by id)
 
-$okcoinusd->products['BTC/USD']['id'];           // symbol → id (get id by symbol)
-$okcoinusd->products_by_id['btc_usd']['symbol']; // id → symbol (get symbol by id)
+$okcoinusd->markets['BTC/USD']['id'];           // symbol → id (get id by symbol)
+$okcoinusd->markets_by_id['btc_usd']['symbol']; // id → symbol (get symbol by id)
 ```
 
 ### Naming Consistency
 
-There is a bit of term ambiguity across various markets that may cause confusion among newcoming traders. Some exchanges call products as *markets*, whereas other exchanges call symbols as *products*. In terms of the ccxt library, exchanges are the same as markets. Each exchange market contains and trades one or more products. Each product has an id and a symbol. Most symbols are pairs of base currency and quote currency.
+There is a bit of term ambiguity across various exchanges that may cause confusion among newcoming traders. Some exchanges call markets as *pairs*, whereas other exchanges call symbols as *products*. In terms of the ccxt library, each exchange contains one or more trading markets. Each market has an id and a symbol. Most symbols are pairs of base currency and quote currency.
 
-```Markets → Products → Symbols → Currencies```
+```Exchanges → Markets → Symbols → Currencies```
 
-Historically various symbolic names have been used to designate same trading pairs. Some cryptocurrencies (like Dash) even changed their names more than once during their ongoing lifetime. For consistency across markets the ccxt library will perform the following known substitutions for symbols and currencies:
+Historically various symbolic names have been used to designate same trading pairs. Some cryptocurrencies (like Dash) even changed their names more than once during their ongoing lifetime. For consistency across exchanges the ccxt library will perform the following known substitutions for symbols and currencies:
 
-- `XBT → BTC`: `XBT` is newer but `BTC` is more common among markets and sounds more like bitcoin ([read more](https://www.google.ru/search?q=xbt+vs+btc)).
+- `XBT → BTC`: `XBT` is newer but `BTC` is more common among exchanges and sounds more like bitcoin ([read more](https://www.google.ru/search?q=xbt+vs+btc)).
 - `BCC → BCH`: The Bitcoin Cash fork obtained to symbolic names: `BCC` and `BCH`. The name `BCC` is ambiguous for Bitcoin Cash, it is confused with BitConnect. The ccxt library will convert `BCC` to `BCH` where it is appropriate (some exchanges and aggregators confuse them).
 - `DRK → DASH`: `DASH` was Darkcoin then became Dash ([read more](https://minergate.com/blog/dashcoin-and-dash/)).
-- `DSH → DASH`: Try not to confuse symbols and currencies. The `DSH` (Dashcoin) is not the same as `DASH` (Dash). Some markets have `DASH` labelled inconsistently as `DSH`, the ccxt library does a correction for that as well (`DSH → DASH`), but only on certain markets that have these two currencies confused, whereas most markets have them both correct. Just remember that `DASH/BTC` is not the same as `DSH/BTC`.
+- `DSH → DASH`: Try not to confuse symbols and currencies. The `DSH` (Dashcoin) is not the same as `DASH` (Dash). Some exchanges have `DASH` labelled inconsistently as `DSH`, the ccxt library does a correction for that as well (`DSH → DASH`), but only on certain exchanges that have these two currencies confused, whereas most exchanges have them both correct. Just remember that `DASH/BTC` is not the same as `DSH/BTC`.
 
-## Product Cache Force Reload
+## Market Cache Force Reload
 
-The `loadProducts () / load_products ()` is also a dirty method with a side effect of saving the array of products on the market instance. You only need to call it once per market. All subsequent calls to the same method will return the locally saved (cached) array of products.
+The `loadMarkets () / load_markets ()` is also a dirty method with a side effect of saving the array of markets on the exchange instance. You only need to call it once per exchange. All subsequent calls to the same method will return the locally saved (cached) array of markets.
 
-When market products are loaded, you can then access product information any time via the `market.products / market['products'] / $market->products` property. This property contains an associative array of products indexed by symbol. If you need to force reload the list of products after you have them loaded already, pass the reload = true flag to the same method again.
+When exchange markets are loaded, you can then access market information any time via the `markets` property. This property contains an associative array of markets indexed by symbol. If you need to force reload the list of markets after you have them loaded already, pass the reload = true flag to the same method again.
 
 ```JavaScript
 // JavaScript
 (async () => {
     let kraken = new ccxt.kraken ({ verbose: true }) // log HTTP requests
-    await kraken.load_products () // request products
-    console.log (kraken.id, kraken.products) // output a full list of all loaded products
-    console.log (Object.keys (kraken.products)) // output a short list of product symbols
-    console.log (kraken.products['BTC/USD']) // output single product details
-    await kraken.load_products () // return a locally cached version, no reload
-    let reloadedProducts = await kraken.load_products (true) // force HTTP reload = true
-    console.log (reloadedProducts['ETH/BTC'])
+    await kraken.load_markets () // request markets
+    console.log (kraken.id, kraken.markets)    // output a full list of all loaded markets
+    console.log (Object.keys (kraken.markets)) // output a short list of market symbols
+    console.log (kraken.markets['BTC/USD'])    // output single market details
+    await kraken.load_markets () // return a locally cached version, no reload
+    let reloadedMarkets = await kraken.load_markets (true) // force HTTP reload = true
+    console.log (reloadedMarkets['ETH/BTC'])
 }) ()
 ```
 
 ```Python
 # Python
 poloniex = ccxt.poloniex ({ 'verbose': True }) # log HTTP requests
-poloniex.load_products () # request products
-print (poloniex.id, poloniex.products) # output a full list of all loaded products
-print (list (poloniex.products.keys ())) # output a short list of product symbols
-print (poloniex.products['BTC/ETH']) # output single product details
-poloniex.load_products () # return a locally cached version, no reload
-reloadedProducts = poloniex.load_products (True) # force HTTP reload = True
-print (reloadedProducts['ETH/ZEC'])
+poloniex.load_markets () # request markets
+print (poloniex.id, poloniex.markets)   # output a full list of all loaded markets
+print (list (poloniex.markets.keys ())) # output a short list of market symbols
+print (poloniex.markets['BTC/ETH'])     # output single market details
+poloniex.load_markets () # return a locally cached version, no reload
+reloadedMarkets = poloniex.load_markets (True) # force HTTP reload = True
+print (reloadedMarkets['ETH/ZEC'])
 ```
 
 ```PHP
 // PHP
 $bitfinex = new \ccxt\bitfinex (array ('verbose' => true)); // log HTTP requests
-$bitfinex.load_products (); // request products
-var_dump ($bitfinex->id, $bitfinex->products); // output a full list of all loaded products
-var_dump (array_keys ($bitfinex->products)); // output a short list of product symbols
-var_dump ($bitfinex->products['XRP/USD']); // output single product details
-$bitfinex->load_products (); // return a locally cached version, no reload
-$reloadedProducts = $bitfinex->load_products (true); // force HTTP reload = true
-var_dump ($bitfinex->products['XRP/BTC']);
+$bitfinex.load_markets (); // request markets
+var_dump ($bitfinex->id, $bitfinex->markets); // output a full list of all loaded markets
+var_dump (array_keys ($bitfinex->markets));   // output a short list of market symbols
+var_dump ($bitfinex->markets['XRP/USD']);     // output single market details
+$bitfinex->load_markets (); // return a locally cached version, no reload
+$reloadedMarkets = $bitfinex->load_markets (true); // force HTTP reload = true
+var_dump ($bitfinex->markets['XRP/BTC']);
 ```
 
 # API Methods / Endpoints
 
-Each exchange market offers a set of API methods. Each method of the API is called an *endpoint*. Endpoints are HTTP URLs for querying various types of information. All endpoints return JSON in response to client requests. 
+Each exchange offers a set of API methods. Each method of the API is called an *endpoint*. Endpoints are HTTP URLs for querying various types of information. All endpoints return JSON in response to client requests. 
 
-Usually, there is an endpoint for getting a list of products from an exchange market, an endpoint for retrieving an order book for a particular product, an endpoint for retrieving trade history, endpoints for placing and cancelling orders, for money deposit and withdrawal, etc... Basically every kind of action you could perform within a particular market has a separate endpoint URL offered by exchange API.
+Usually, there is an endpoint for getting a list of markets from an exchange, an endpoint for retrieving an order book for a particular market, an endpoint for retrieving trade history, endpoints for placing and cancelling orders, for money deposit and withdrawal, etc... Basically every kind of action you could perform within a particular exchange has a separate endpoint URL offered by the API.
 
-Because the set of methods differs from market to market, the ccxt library implements the following:
+Because the set of methods differs from exchange to exchange, the ccxt library implements the following:
 - a public and private API for all possible URLs and methods
 - a unified API supporting a subset of common methods
 
-The endpoint URLs are predefined in the `market['api'] / $market->api` property for each market. You don't have to override it, unless you are implementing a new market API (at least you should know what you're doing). 
+The endpoint URLs are predefined in the `api` property for each exchange. You don't have to override it, unless you are implementing a new exchange API (at least you should know what you're doing). 
 
-The endpoint definition is a list of all API URLs exposed by a market. This list gets converted to callable methods upon market instantiation. Each URL in the API endpoint list gets a corresponding callable method. For example, if a market offers an HTTP GET URL for querying prices like `https://example.com/public/quotes`, it is converted to a method named `example.publicGetQuotes () / $example->publicGetQuotes ()`. This is done automatically for all markets, therefore the ccxt library supports all possible URLs offered by crypto exchanges.
+The endpoint definition is a list of all API URLs exposed by a exchange. This list gets converted to callable methods upon exchange instantiation. Each URL in the API endpoint list gets a corresponding callable method. For example, if an exchange offers an HTTP GET URL for querying prices like `https://example.com/public/quotes`, it is converted to a method named `example.publicGetQuotes () / $example->publicGetQuotes ()`. This is done automatically for all exchanges, therefore the ccxt library supports all possible URLs offered by crypto exchanges.
 
 ## Public/Private API
 
 API URLs are often grouped into two sets of methods called a *public API* for market data and a *private API* for trading and account access. These groups of API methods are usually prefixed with a word 'public' or 'private'.
 
-A public API is used to access market data and does not require any authentication whatsoever. Most markets provide market data openly to all (under their rate limit). With the ccxt library anyone can access market data out of the box without having to register with the markets and without setting up account keys and passwords.
+A public API is used to access market data and does not require any authentication whatsoever. Most exchanges provide market data openly to all (under their rate limit). With the ccxt library anyone can access market data out of the box without having to register with the exchanges and without setting up account keys and passwords.
 
 Public APIs include the following: 
 - instruments/trading pairs
@@ -480,7 +490,7 @@ Public APIs include the following:
 - OHLC(V) for charting
 - other public endpoints
 
-For trading with private API you need to obtain API keys from/to exchange markets. It often means registering with exchange markets and creating API keys with your account. Most exchanges require personal info or identification. Some kind of verification may be necessary as well.
+For trading with private API you need to obtain API keys from/to exchanges. It often means registering with exchanges and creating API keys with your account. Most exchanges require personal info or identification. Some kind of verification may be necessary as well.
 
 If you want to trade you need to register yourself, this library will not create accounts or API keys for you. Some exchange APIs expose interface methods for registering an account from within the code itself, but most of exchanges don't. You have to sign up and create API keys with their websites.
 
@@ -500,7 +510,7 @@ Some exchanges offer the same logic under different names. For example, a public
 
 A few exchanges also expose a merchant API which allows you to create invoices and accept crypto and fiat payments from your clients. This kind of API is often called *merchant*, *wallet*, *payment*, *ecapi* (for e-commerce).
 
-To get a list of all available methods with a market instance, you can simply do the following:
+To get a list of all available methods with a exchange instance, you can simply do the following:
 
 ```
 console.log (new ccxt.kraken ())   // JavaScript
@@ -514,12 +524,12 @@ In Python and PHP all API methods are synchronous. In JavaScript all methods are
 // JavaScript
 
 // callback style
-bitfinex.publicGetSymbolsDetails ().then (products => {
+bitfinex.publicGetSymbolsDetails ().then (markets => {
     // → nested codeflow
-    let productId = products[0]['pair']
-    bitfinex.publicGetPubtickerSymbol ({ symbol: productId }).then (ticker => {
+    let marketId = markets[0]['pair']
+    bitfinex.publicGetPubtickerSymbol ({ symbol: marketId }).then (ticker => {
         // → nested codeflow
-        console.log (bitfinex.id, productId, ticker)
+        console.log (bitfinex.id, marketId, ticker)
     })
 })
 
@@ -527,20 +537,20 @@ bitfinex.publicGetSymbolsDetails ().then (products => {
 (async () => {
     // ↓ linear codeflow
     let pairs = await kraken.publicGetAssetPairs () 
-    let productIds = Object.keys (pairs['result'])
-    let productId = productIds[0]
-    let ticker = await kraken.publicGetTicker ({ pair: productId })
-    console.log (kraken.id, productId, ticker)
+    let marketIds = Object.keys (pairs['result'])
+    let marketId = marketIds[0]
+    let ticker = await kraken.publicGetTicker ({ pair: marketId })
+    console.log (kraken.id, marketId, ticker)
 }) ()
 ```
 
 ## Returned JSON Objects
 
-All public and private API methods return raw decoded JSON objects in response from the exchange markets, as is, untouched. The unified API returns JSON-decoded objects in a common format and structured uniformly across all markets.
+All public and private API methods return raw decoded JSON objects in response from the exchanges, as is, untouched. The unified API returns JSON-decoded objects in a common format and structured uniformly across all exchanges.
 
 ## Passing Parameters To API Methods
 
-The set of all possible API endpoints differs from market to market. Most of methods accept a single associative array (or a Python dict) of key-value parameters. The params are passed as follows:
+The set of all possible API endpoints differs from exchange to exchange. Most of methods accept a single associative array (or a Python dict) of key-value parameters. The params are passed as follows:
 
 ```
 bitso.publicGetTicker ({ book: 'eth_mxn' })            // JavaScript
@@ -548,11 +558,11 @@ zaif.api_get_ticker_pair ({ 'pair': 'btc_jpy' })        # Python
 $luno->public_get_ticker (array ('pair' => 'XBTIDR')); // PHP
 ```
 
-For a full list of accepted method parameters for each market, please consult [API docs](#exchange-markets).
+For a full list of accepted method parameters for each exchange, please consult [API docs](#exchanges).
 
 ### API Method Naming Conventions
 
-A market method name is a concatenated string consisting of type (public or private), HTTP method (GET, POST, PUT, DELETE) and endpoint URL path like in the following examples:
+An exchange method name is a concatenated string consisting of type (public or private), HTTP method (GET, POST, PUT, DELETE) and endpoint URL path like in the following examples:
 
 | Method Name                  | Base API URL                   | Endpoint URL                   |
 |------------------------------|--------------------------------|--------------------------------|
@@ -567,8 +577,8 @@ A market method name is a concatenated string consisting of type (public or priv
 The ccxt library supports both camelcase notation (preferred in JavaScript) and underscore notation (preferred in Python and PHP), therefore all methods can be called in either notation or coding style in any language. Both of these notations work in JavaScript, Python and PHP:
 
 ```
-market.methodName ()  // camelcase pseudocode
-market.method_name () // underscore pseudocode
+exchange.methodName ()  // camelcase pseudocode
+exchange.method_name () // underscore pseudocode
 ```
 
 ```
@@ -577,13 +587,13 @@ UNDER CONSTRUCTION
 
 ## Unified API
 
-The unified ccxt API is a subset of methods common among the markets. It currently contains the following methods:
+The unified ccxt API is a subset of methods common among the exchanges. It currently contains the following methods:
 
-- `fetchProducts ()`: Fetches a list of all available products from a market and returns an abstracted JSON-decoded response, an array of products. Some markets do not have means for obtaining a list of products via their online API, for those the list of products is hardcoded.
+- `fetchMarkets ()`: Fetches a list of all available markets from an exchange and returns an abstracted JSON-decoded response, an array of markets. Some exchanges do not have means for obtaining a list of markets via their online API, for those the list of markets is hardcoded.
 
-- `loadProducts ([reload])`: Loads the list of products indexed by symbol and caches it with the market instance. Returns cached products if loaded already, unless the `reload = true` flag is forced. 
+- `loadMarkets ([reload])`: Loads the list of markets indexed by symbol and caches it with the exchange instance. Returns cached markets if loaded already, unless the `reload = true` flag is forced. 
 
-- `fetchOrderBook (symbol)`: Fetch an order book for a particular product trading symbol.
+- `fetchOrderBook (symbol)`: Fetch an order book for a particular market trading symbol.
 
 - `fetchTrades (symbol)`: Fetch recent trades for a particular trading symbol.
 
@@ -613,7 +623,7 @@ UNDER CONSTRUCTION
 
 ## Order Book / Market Depth
 
-Markets expose information on open orders with bid (buy) and ask (sell) prices, volumes and other data. Usually there is a separate endpoint for querying current state (stack frame) of the *order book* for a particular product. An order book is also often called *market depth*. The order book information is used in the trading decision making process. 
+Exchanges expose information on open orders with bid (buy) and ask (sell) prices, volumes and other data. Usually there is a separate endpoint for querying current state (stack frame) of the *order book* for a particular market. An order book is also often called *market depth*. The order book information is used in the trading decision making process. 
 
 The structure of an order book is as follows:
 
@@ -642,8 +652,8 @@ Some exchanges return the stack of orders in various levels of details for analy
 // JavaScript
 delay = 2000 // milliseconds = seconds * 1000
 (async () => {
-    for (symbol in market.products) {
-        console.log (await market.fetchOrderBook (symbol))
+    for (symbol in exchange.markets) {
+        console.log (await exchange.fetchOrderBook (symbol))
         await new Promise (resolve => setTimeout (resolve, delay)) // rate limit
     }
 }) ()
@@ -652,16 +662,16 @@ delay = 2000 // milliseconds = seconds * 1000
 ```Python
 # Python
 delay = 2 # seconds
-for symbol in market.products:
-    print (market.fetch_order_book (symbol))
+for symbol in exchange.markets:
+    print (exchange.fetch_order_book (symbol))
     time.sleep (delay) # rate limit
 ```
 
 ```PHP
 // PHP
 $delay = 2000000; // microseconds = seconds * 1000000
-foreach ($market->products as $symbol => $product) {
-    var_dump ($market->fetch_order_book ($symbol));
+foreach ($exchange->markets as $symbol => $market) {
+    var_dump ($exchange->fetch_order_book ($symbol));
     usleep ($delay); // rate limit
 }
 ```
@@ -672,39 +682,39 @@ In order to get current best price (query market price) and calculate bidask spr
 
 ```JavaScript
 // JavaScript
-let orderbook = market.fetchOrderBook (market.symbols[0])
+let orderbook = exchange.fetchOrderBook (exchange.symbols[0])
 let bid = orderbook.bids.length ? orderbook.bids[0][0] : undefined
 let ask = orderbook.asks.length ? orderbook.asks[0][0] : undefined
 let spread = (bid && ask) ? ask - bid : undefined
-console.log (market.id, 'market price', { bid, ask, spread })
+console.log (exchange.id, 'market price', { bid, ask, spread })
 ```
 
 ```Python
 # Python
-orderbook = market.fetch_order_book (market.symbols[0])
+orderbook = exchange.fetch_order_book (exchange.symbols[0])
 bid = orderbook['bids'][0][0] if len (orderbook['bids']) > 0 else None
 ask = orderbook['asks'][0][0] if len (orderbook['asks']) > 0 else None
 spread = (ask - bid) if (bid and ask) else None
-print (market.id, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+print (exchange.id, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
 ```
 
 ```PHP
 // PHP
-$orderbook = $market->fetch_order_book ($market->symbols[0]);
+$orderbook = $exchange->fetch_order_book ($exchange->symbols[0]);
 $bid = count ($orderbook['bids']) ? $orderbook['bids'][0][0] : null;
 $ask = count ($orderbook['asks']) ? $orderbook['asks'][0][0] : null;
 $spread = ($bid && $ask) ? $ask - $bid : null;
 $result = array ('bid' => $bid, 'ask' => $ask, 'spread' => $spread);
-var_dump ($market->id, 'market price', $result);
+var_dump ($exchange->id, 'market price', $result);
 ```
 
 ## Price Tickers
 
-A price ticker contains statistics for a particular product/symbol for some period of time in recent past, usually last 24 hours. The structure of a ticker is as follows:
+A price ticker contains statistics for a particular market/symbol for some period of time in recent past, usually last 24 hours. The structure of a ticker is as follows:
 
 ```
 {
-    details:   { the original non-modified unparsed reply from exchange market API server },
+    details:   { the original non-modified unparsed reply from exchange API },
     timestamp:   int (64-bit Unix Timestamp in milliseconds since Epoch 1 Jan 1970)
     datetime:    ISO8601 datetime string with milliseconds
     high:        float (highest price)
@@ -726,32 +736,32 @@ Timestamp and datetime are both Universal Time Coordinated (UTC).
 
 ### Individually By Symbol
 
-To get the individual ticker data from exchange market for each particular trading pair or symbol call the `market.fetchTicker (symbol) / market.fetch_ticker (symbol)`:
+To get the individual ticker data from an exchange for each particular trading pair or symbol call the `fetchTicker (symbol)`:
 
 ```JavaScript
 // JavaScript
 (async () => {
-    console.log (await (market.fetchTicker ('BTC/USD'))) // ticker for BTC/USD
-    let symbols = Object.keys (market.products) 
+    console.log (await (exchange.fetchTicker ('BTC/USD'))) // ticker for BTC/USD
+    let symbols = Object.keys (exchange.markets) 
     let random = Math.floor ((Math.random () * symbols.length)) - 1
-    console.log (market.fetchTicker (symbols[random])) // ticker for a random symbol
+    console.log (exchange.fetchTicker (symbols[random])) // ticker for a random symbol
 }) ()
 ```
 
 ```Python
 # Python
 import random
-print (market.fetch_ticker ('LTC/ZEC')) # ticker for LTC/ZEC
-symbols = list (market.products.keys ())
-print (market.fetch_ticker (random.choice (symbols))) # ticker for a random symbol
+print (exchange.fetch_ticker ('LTC/ZEC')) # ticker for LTC/ZEC
+symbols = list (exchange.markets.keys ())
+print (exchange.fetch_ticker (random.choice (symbols))) # ticker for a random symbol
 ```
 
 ```PHP
 // PHP (don't forget to set your timezone properly!)
-var_dump ($market->fetch_ticker ('ETH/CNY')); // ticker for ETH/CNY
-$symbols = array_keys ($market->products);
+var_dump ($exchange->fetch_ticker ('ETH/CNY')); // ticker for ETH/CNY
+$symbols = array_keys ($exchange->markets);
 $random = rand () % count ($symbols);
-var_dump ($market->fetch_ticker ($symbols[$random])); // ticker for a random symbol
+var_dump ($exchange->fetch_ticker ($symbols[$random])); // ticker for a random symbol
 ```
 
 ### All At Once
@@ -780,21 +790,21 @@ UNDER CONSTRUCTION
 ```JavaScript
 // JavaScript
 (async () => {
-    for (symbol in market.products)
-        console.log (await market.fetchTrades (symbol))
+    for (symbol in exchange.markets)
+        console.log (await exchange.fetchTrades (symbol))
 }) ()
 ```
 
 ```Python
 # Python
-for symbol in market.products:
-    print (market.fetch_trades (symbol))
+for symbol in exchange.markets:
+    print (exchange.fetch_trades (symbol))
 ```
 
 ```PHP
 // PHP
-foreach ($market->products as $symbol => $product)
-    var_dump ($market->fetch_trades ($symbol));
+foreach ($exchange->markets as $symbol => $market)
+    var_dump ($exchange->fetch_trades ($symbol));
 ```
 
 ```
@@ -803,33 +813,33 @@ UNDER CONSTRUCTION
 
 # Trading
 
-In order to be able to access your user account, perform algorithmic trading by placing market and limit orders, query balances, deposit and withdraw funds and so on, you need to obtain your API keys for authentication from each exchange market you want to trade with. They usually have it available on a separate tab or page within your user account settings. API keys are exchange-specific and cannnot be interchanged under any circumstances.
+In order to be able to access your user account, perform algorithmic trading by placing market and limit orders, query balances, deposit and withdraw funds and so on, you need to obtain your API keys for authentication from each exchange you want to trade with. They usually have it available on a separate tab or page within your user account settings. API keys are exchange-specific and cannnot be interchanged under any circumstances.
 
 ## Authentication
 
-Authentication with all exchange markets is handled automatically if provided with proper API keys. The process of authentication usually goes through the following pattern:
+Authentication with all exchanges is handled automatically if provided with proper API keys. The process of authentication usually goes through the following pattern:
 
 1. Generate new nonce. A nonce is an integer, often a Unix Timestamp in seconds or milliseconds (since epoch January 1, 1970). The nonce should be unique to a particular request and constantly increasing, so that no two requests share the same nonce. Each next request should have greater nonce than the previous request. **The default nonce is a 32-bit Unix Timestamp in seconds.**
 2. Append public apiKey and nonce to other endpoint params, if any, then serialize the whole thing for signing.
 3. Sign the serialized params using HMAC-SHA256/384/512 or MD5 with your secret key.
 4. Append the signature in Hex or Base64 and nonce to HTTP headers or body.
 
-This process may differ from market to market. Some markets may want the signature in a different encoding, some of them vary in header and body param names and formats, but the general pattern is the same for all of them. The authentication is already handled for you, so you don't need to perform any of those steps manually unless you are implementing a new market class. The only thing you need for trading is the actual API key pair.
+This process may differ from exchange to exchange. Some exchanges may want the signature in a different encoding, some of them vary in header and body param names and formats, but the general pattern is the same for all of them. The authentication is already handled for you, so you don't need to perform any of those steps manually unless you are implementing a new exchange class. The only thing you need for trading is the actual API key pair.
 
 ## API Keys Setup
 
 The API credentials usually include the following:
 
-- `market.apiKey`. This is your public API Key and/or Token. This part is *non-secret*, it is included in your request header or body and sent over HTTPS in open text to identify your request. It is often a string in Hex or Base64 encoding or an UUID identifier.
-- `market.secret`. This is your private key. Keep it secret, don't tell it to anybody. It is used to sign your requests locally before sending them to exchanges. The secret key does not get sent over the internet in the request-response process and should not be published or emailed. It is used together with the nonce to generate a cryptographically strong signature. That signature is sent with your public key to authenticate your identity. Each request has a unique nonce and therefore a unique cryptographic signature.
-- `market.uid`. Some markets (not all of them) also generate a user id or *uid* for short. It can be a string or numeric literal. You should set it, if that is explicitly required by your exchange. See [their docs](https://github.com/kroitor/ccxt/wiki/Manual#exchange-markets) for details.
-- `market.password`. Some markets (not all of them) also require your password/phrase for trading. You should set this string, if that is explicitly required by your exchange. See [their docs](https://github.com/kroitor/ccxt/wiki/Manual#exchange-markets) for details.
+- `apiKey`. This is your public API Key and/or Token. This part is *non-secret*, it is included in your request header or body and sent over HTTPS in open text to identify your request. It is often a string in Hex or Base64 encoding or an UUID identifier.
+- `secret`. This is your private key. Keep it secret, don't tell it to anybody. It is used to sign your requests locally before sending them to exchanges. The secret key does not get sent over the internet in the request-response process and should not be published or emailed. It is used together with the nonce to generate a cryptographically strong signature. That signature is sent with your public key to authenticate your identity. Each request has a unique nonce and therefore a unique cryptographic signature.
+- `uid`. Some exchanges (not all of them) also generate a user id or *uid* for short. It can be a string or numeric literal. You should set it, if that is explicitly required by your exchange. See [their docs](https://github.com/kroitor/ccxt/wiki/Manual#exchanges) for details.
+- `password`. Some exchanges (not all of them) also require your password/phrase for trading. You should set this string, if that is explicitly required by your exchange. See [their docs](https://github.com/kroitor/ccxt/wiki/Manual#exchanges) for details.
 
 In order to create API keys find the API tab or button in your user settings on the exchange website. Then create your keys and copy-paste them to your config file. Your config file permissions should be set appropriately, unreadable to anyone except the owner.
 
 **Remember to keep your secret key safe from unauthorized use, do not send or tell it to anybody. A leak of the secret key or a breach in security can cost you a fund loss.**
 
-To set up a market for trading just assign the API credentials to an existing market instance or pass them to a market constructor upon instantiation, like so:
+To set up an exchange for trading just assign the API credentials to an existing exchange instance or pass them to a exchange constructor upon instantiation, like so:
 
 ```JavaScript
 // JavaScript
@@ -909,69 +919,69 @@ The structure of returned balance info is as follows:
 }
 ```
 
-Some markets may not return full balance info. Many markets do not return balances for your empty or unused accounts. In that case some currencies may be missing in returned balance structure. 
+Some exchanges may not return full balance info. Many exchanges do not return balances for your empty or unused accounts. In that case some currencies may be missing in returned balance structure. 
 
 Also, some exchanges cannot return certain fields and are only capable of telling a total balance (without details). Therefore some or all of the free, used and total amounts may be undefined, None or null. You need to account for that when working with returned balances.
 
 ```JavaScript
 // JavaScript
 (async () => {
-    console.log (await market.fetchBalance ())
+    console.log (await exchange.fetchBalance ())
 }) ()
 ```
 
 ```Python
 # Python
-print (market.fetch_balance ())
+print (exchange.fetch_balance ())
 ```
 
 ```PHP
 // PHP
-var_dump ($market->fetch_balance ());
+var_dump ($exchange->fetch_balance ());
 ```
 
 ## Placing Orders
 
 To place an order you will need the following information:
 
-- `symbol`, a string literal symbol of the product you wish to trade, like `BTC/USD`, `ZEC/ETH`, `DOGE/DASH`, etc...
+- `symbol`, a string literal symbol of the market you wish to trade on, like `BTC/USD`, `ZEC/ETH`, `DOGE/DASH`, etc...
 - `side`, a string literal for the direction of your order, `buy` or `sell`. When you place a buy order you give quote currency and receive base currency. For example, buying `BTC/USD` means that you will receive bitcoins for your dollars. When you are selling `BTC/USD` the outcome is the opposite and you receive dollars for your bitcoins.
 - `type`, a string literal type of order, ccxt currently supports `market` and `limit` orders
-- `amount`, how much of currency you want to trade. This usually refers to base currency of the trading pair symbol, though some markets require the amount in quote currency and a few of them require base or quote amount depending on the side of the order. See their API docs for details.
+- `amount`, how much of currency you want to trade. This usually refers to base currency of the trading pair symbol, though some exchanges require the amount in quote currency and a few of them require base or quote amount depending on the side of the order. See their API docs for details.
 - `price`, how much quote currency you are willing to pay for a trade lot of base currency (for limit orders only)
 
-**Some markets will allow to trade with limit orders only.** See [their docs](https://github.com/kroitor/ccxt/wiki/Manual#exchange-markets) for details.
+**Some exchanges will allow to trade with limit orders only.** See [their docs](https://github.com/kroitor/ccxt/wiki/Manual#exchanges) for details.
 
 ### Market Orders
 
 Market price orders are also known as *spot price orders*, *instant orders* or simply *market orders*. A market order gets executed immediately. The matching engine of the exchange closes the order (fulfills it) with one or more transactions from the top of the order book stack. 
 
-The exchange will close your market order for the best price available. You are not guaranteed though, that the order will be executed for the price you observe prior to placing your order. There can be a slight change of the price for the traded product while your order is being executed, also known as *price slippage*. The price can slip because of networking roundtrip latency, high loads on the exchange, price volatility and other factors. When placing a market order you don't need to specify the price of the order.
+The exchange will close your market order for the best price available. You are not guaranteed though, that the order will be executed for the price you observe prior to placing your order. There can be a slight change of the price for the traded market while your order is being executed, also known as *price slippage*. The price can slip because of networking roundtrip latency, high loads on the exchange, price volatility and other factors. When placing a market order you don't need to specify the price of the order.
 
 Note, that some exchanges will not accept market orders (they allow limit orders only).
 
 ```
 // camelCaseNotation
-market.createMarketBuyOrder (symbol, amount[, params])
-market.createMarketSellOrder (symbol, amount[, params])
+exchange.createMarketBuyOrder (symbol, amount[, params])
+exchange.createMarketSellOrder (symbol, amount[, params])
 
 // underscore_notation
-market.create_market_buy_order (symbol, amount[, params])
-market.create_market_sell_order (symbol, amount[, params])
+exchange.create_market_buy_order (symbol, amount[, params])
+exchange.create_market_sell_order (symbol, amount[, params])
 ```
 
 ### Limit Orders
 
-Limit price orders are also known as *limit orders*. Some markets accept limit orders only. Limit orders require a price (rate per unit) to be submitted with the order. The exchange will close limit orders if and only if market price reaches the desired level.
+Limit price orders are also known as *limit orders*. Some exchanges accept limit orders only. Limit orders require a price (rate per unit) to be submitted with the order. The exchange will close limit orders if and only if market price reaches the desired level.
 
 ```
 // camelCaseStyle
-market.createLimitBuyOrder (symbol, amount, price[, params])
-market.createLimitSellOrder (symbol, amount, price[, params])
+exchange.createLimitBuyOrder (symbol, amount, price[, params])
+exchange.createLimitSellOrder (symbol, amount, price[, params])
 
 // underscore_style
-market.create_limit_buy_order (symbol, amount, price[, params])
-market.create_limit_sell_order (symbol, amount, price[, params])
+exchange.create_limit_buy_order (symbol, amount, price[, params])
+exchange.create_limit_sell_order (symbol, amount, price[, params])
 ```
 
 ## Cancelling Orders
@@ -980,17 +990,17 @@ To cancel an existing order pass the order id to `cancelOrder (id) / cancel_orde
 
 ```JavaScript
 // JavaScript
-market.cancelOrder (123) // replace with your order id here
+exchange.cancelOrder (123) // replace with your order id here
 ```
 
 ```Python
 # Python
-market.cancel_order (123) # replace with your order id here
+exchange.cancel_order (123) # replace with your order id here
 ```
 
 ```PHP
 // PHP
-$market->cancel_order (123); // replace with your order id here
+$exchange->cancel_order (123); // replace with your order id here
 ```
 
 ## Querying Orders
@@ -1015,17 +1025,17 @@ $market->cancel_order (123); // replace with your order id here
 
 ## Overriding The Nonce
 
-**The default nonce is a 32-bit Unix Timestamp in seconds. You should override it with a milliseconds-nonce if you want to make private requests more frequently than once per second! Most exchanges will throttle your requests if you hit their rate limits, read [API docs for your exchange](https://github.com/kroitor/ccxt/wiki/Exchange-Markets) carefully!** 
+**The default nonce is a 32-bit Unix Timestamp in seconds. You should override it with a milliseconds-nonce if you want to make private requests more frequently than once per second! Most exchanges will throttle your requests if you hit their rate limits, read [API docs for your exchange](https://github.com/kroitor/ccxt/wiki/Exchanges) carefully!** 
 
 In case you need to reset the nonce it is much easier to create another pair of keys for using with private APIs. Creating new keys and setting up a fresh unused keypair in your config is usually enough for that. 
 
 In some cases you are unable to create new keys due to lack of permissions or whatever. If that happens you can still override the nonce. Base market class has the following methods for convenience:
 
-- `market.seconds ()`: returns a Unix Timestamp in seconds.
-- `market.milliseconds ()`: same in milliseconds (ms = 1000 * s, thousandths of a second).
-- `market.microseconds ()`: same in microseconds (μs = 1000 * ms, millionths of a second).
+- `seconds ()`: returns a Unix Timestamp in seconds.
+- `milliseconds ()`: same in milliseconds (ms = 1000 * s, thousandths of a second).
+- `microseconds ()`: same in microseconds (μs = 1000 * ms, millionths of a second).
 
-There are exchanges that confuse milliseconds with microseconds in their API docs, let's all forgive them for that, folks. You can use methods listed above to override the nonce value. If you need to use the same keypair from multiple instances simultaneously use closures or a common function to avoid nonce conflicts. In Javascript you can override the nonce by providing a `nonce` parameter to the market constructor or by setting it explicitly on a market object:
+There are exchanges that confuse milliseconds with microseconds in their API docs, let's all forgive them for that, folks. You can use methods listed above to override the nonce value. If you need to use the same keypair from multiple instances simultaneously use closures or a common function to avoid nonce conflicts. In Javascript you can override the nonce by providing a `nonce` parameter to the exchange constructor or by setting it explicitly on exchange object:
 
 ```JavaScript
 // JavaScript
@@ -1049,7 +1059,7 @@ let kraken4 = new ccxt.kraken ({
 })
 ```
 
-In Python and PHP you can do the same by subclassing and overriding nonce function of a particular market class:
+In Python and PHP you can do the same by subclassing and overriding nonce function of a particular exchange class:
 
 ```Python
 # Python
@@ -1122,7 +1132,7 @@ Below is an outline of exception inheritance hierarchy:
 ```
 + CCXTError
 |
-+---+ MarketError (non-recoverable)
++---+ ExchangeError (non-recoverable)
 |
 +---+ AuthenticationError (non-recoverable)
 |
@@ -1132,24 +1142,24 @@ Below is an outline of exception inheritance hierarchy:
     |
     +---+ TimeoutError
     |
-    +---+ MarketNotAvailableError
+    +---+ ExchangeNotAvailableError
 ```
 
 - `CCXTError`: Generic error class for all sorts of errors, including accessibility and request/response mismatch. Users should catch this exception at the very least, if no error differentiation is required.
-- `MarketError`: This exception is thrown when an exchange server replies with an error in JSON, possible reasons:
-  - endpoint is switched off by the exchange market
-  - endpoint is not offered/not supported by the exchange market API
-  - symbol not found on the exchange market
+- `ExchangeError`: This exception is thrown when an exchange server replies with an error in JSON, possible reasons:
+  - endpoint is switched off by the exchange
+  - endpoint is not offered/not supported by the exchange API
+  - symbol not found on the exchange 
   - some additional endpoint parameter required by the exchange is missing
   - the format of some parameters passed into the endpoint is incorrect
   - an exchange replies with an unclear answer
-- `AuthenticationError`: Raised when a market requires one of the API credentials that you've missed to specify, or when there's a mistake in the keypair or an outdated nonce. Most of the time you need `market.apiKey` and `market.secret`, some times you also need `market.uid` and/or `market.password`.
+- `AuthenticationError`: Raised when a exchange requires one of the API credentials that you've missed to specify, or when there's a mistake in the keypair or an outdated nonce. Most of the time you need `apiKey` and `secret`, some times you also need `uid` and/or `password`.
 - `NetworkError`: All errors related to networking are usually recoverable, meaning that networking problems, traffic congestion, unavailability is usually time-dependent. Making a retry later is usually enough to recover from a NetworkError, but if it doesn't go away, then it may indicate some persistent problem with the exchange or with your connection.
   - `DDoSProtectionError`: This exception is thrown whenever a Cloudflare / Incapsula / rate limiter restrictions are enforced upon on you or the region you're connecting from. The ccxt library does a case-insensitive match of the response received from the exchange to one of the following keywords:
     - `cloudflare`
     - `incapsula`
-  - `TimeoutError`: The name literally says it all. This exception is raised when connection with the exchange market fails or data is not fully received in a specified amount of time. This is controlled by the `market.timeout / market['timeout'] / $market->timeout` option.
-  - `MarketNotAvailableError`: The ccxt library throws this error if it detects any of the following keywords in response: 
+  - `TimeoutError`: The name literally says it all. This exception is raised when connection with the exchange fails or data is not fully received in a specified amount of time. This is controlled by the `timeout` option.
+  - `ExchangeNotAvailableError`: The ccxt library throws this error if it detects any of the following keywords in response: 
     - `offline`
     - `unavailable`
     - `busy`
@@ -1161,21 +1171,21 @@ Below is an outline of exception inheritance hierarchy:
 
 # Troubleshooting
 
-In case you experience any difficulty connecting to a particular market, do the following in order of precedence:
+In case you experience any difficulty connecting to a particular exchange, do the following in order of precedence:
 
-1. Turn `market.verbose = true` to get more detail about it.
+1. Turn `verbose = true` to get more detail about it.
 2. Check you API credentials. Try a fresh new keypair if possible.
-3. Read the [docs for your exchange](https://github.com/kroitor/ccxt/wiki/Exchange-Markets) and compare your verbose output to the docs.
+3. Read the [docs for your exchange](https://github.com/kroitor/ccxt/wiki/Exchanges) and compare your verbose output to the docs.
 4. Check your nonce. If you used your API keys with other software, you most likely should [override your nonce function](#overriding-the-nonce) to match your previous nonce value. A nonce usually can be easily reset by generating a new unused keypair.
-5. Check your connectivity with the market, by accessing it with your browser.
-6. Check your connection with the market through a proxy. Read the [Proxy](https://github.com/kroitor/ccxt/wiki/Install#proxy) section for more details.
+5. Check your connectivity with the exchange, by accessing it with your browser.
+6. Check your connection with the exchange through a proxy. Read the [Proxy](https://github.com/kroitor/ccxt/wiki/Install#proxy) section for more details.
 7. Try accesing the exchange from a different computer or a remote server, to see if this is a local or global issue with the exchange.
-8. Check if there were any news from the exchange recently regarding downtime for maintenance. Some exchange markets go offline for updates regularly (like once a week).
+8. Check if there were any news from the exchange recently regarding downtime for maintenance. Some exchanges go offline for updates regularly (like once a week).
 
 ## Notes
 
-- Use the `market.verbose = true` option or instantiate your troublesome exchange market with `new ccxt.market ({ 'verbose': true })` to see the HTTP exchange in details. The verbose output will also be of use for us to debug it if you submit an issue on GitHub.
-- As written above, some markets are not available in certain countries. You should use a proxy or get a server somewhere closer to the exchange. 
+- Use the `verbose = true` option or instantiate your troublesome exchange with `new ccxt.exchange ({ 'verbose': true })` to see the HTTP exchange in details. The verbose output will also be of use for us to debug it if you submit an issue on GitHub.
+- As written above, some exchanges are not available in certain countries. You should use a proxy or get a server somewhere closer to the exchange. 
 - Some exchanges do not state it clearly if they fail to authenticate your request. In those circumstances they might respond with an exotic error code, like HTTP 502 Bad Gateway Error or something that's even less related to the actual cause of the error.
 - ...
 
