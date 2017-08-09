@@ -19,6 +19,7 @@ Welcome to the ccxt wiki!
 
 - [User Manual](https://github.com/kroitor/ccxt/wiki/Manual)
   - [Architecture Overview](https://github.com/kroitor/ccxt/wiki/Manual#overview)
+  - [Instantiation](https://github.com/kroitor/ccxt/wiki/Manual#instantiation)
   - [Exchange Structure](https://github.com/kroitor/ccxt/wiki/Manual#exchange-structure)
   - [Exchange Properties](https://github.com/kroitor/ccxt/wiki/Manual#exchange-properties)
   - [Markets](https://github.com/kroitor/ccxt/wiki/Manual#markets)
@@ -42,9 +43,18 @@ Welcome to the ccxt wiki!
       - Withdraw
       - Ledger
     - [Overriding The Nonce](https://github.com/kroitor/ccxt/wiki/Manual#overriding-the-nonce)
-    - ...
-  - [Error Handling](https://github.com/kroitor/ccxt/wiki/Manual#error-handling)
-  - [Troubleshooting](https://github.com/kroitor/ccxt/wiki/Manual#troubleshooting)
+
+## Troubleshooting
+  
+- [Error Handling](https://github.com/kroitor/ccxt/wiki/Manual#error-handling)
+- [Troubleshooting](https://github.com/kroitor/ccxt/wiki/Manual#troubleshooting)
+
+## Examples
+
 - [Usage Examples](https://github.com/kroitor/ccxt/tree/master/examples) (work in progress)
-- API Reference
-  - ...
+
+## API Reference
+
+- API Reference (under construction right now!)
+
+
