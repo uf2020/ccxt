@@ -91,7 +91,7 @@ Besides making basic market and limit orders, some exchanges offer margin tradin
 
 ## Instantiation
 
-To connect to an exchange and start trading you need to instantiate a exchange class from ccxt library.
+To connect to an exchange and start trading you need to instantiate an exchange class from ccxt library.
 
 To get the full list of ids of supported exchanges programmatically:
 
@@ -473,7 +473,7 @@ Because the set of methods differs from exchange to exchange, the ccxt library i
 
 The endpoint URLs are predefined in the `api` property for each exchange. You don't have to override it, unless you are implementing a new exchange API (at least you should know what you're doing). 
 
-The endpoint definition is a list of all API URLs exposed by a exchange. This list gets converted to callable methods upon exchange instantiation. Each URL in the API endpoint list gets a corresponding callable method. For example, if an exchange offers an HTTP GET URL for querying prices like `https://example.com/public/quotes`, it is converted to a method named `example.publicGetQuotes () / $example->publicGetQuotes ()`. This is done automatically for all exchanges, therefore the ccxt library supports all possible URLs offered by crypto exchanges.
+The endpoint definition is a list of all API URLs exposed by an exchange. This list gets converted to callable methods upon exchange instantiation. Each URL in the API endpoint list gets a corresponding callable method. For example, if an exchange offers an HTTP GET URL for querying prices like `https://example.com/public/quotes`, it is converted to a method named `example.publicGetQuotes () / $example->publicGetQuotes ()`. This is done automatically for all exchanges, therefore the ccxt library supports all possible URLs offered by crypto exchanges.
 
 ## Public/Private API
 
@@ -510,7 +510,7 @@ Some exchanges offer the same logic under different names. For example, a public
 
 A few exchanges also expose a merchant API which allows you to create invoices and accept crypto and fiat payments from your clients. This kind of API is often called *merchant*, *wallet*, *payment*, *ecapi* (for e-commerce).
 
-To get a list of all available methods with a exchange instance, you can simply do the following:
+To get a list of all available methods with an exchange instance, you can simply do the following:
 
 ```
 console.log (new ccxt.kraken ())   // JavaScript
@@ -839,7 +839,7 @@ In order to create API keys find the API tab or button in your user settings on 
 
 **Remember to keep your secret key safe from unauthorized use, do not send or tell it to anybody. A leak of the secret key or a breach in security can cost you a fund loss.**
 
-To set up an exchange for trading just assign the API credentials to an existing exchange instance or pass them to a exchange constructor upon instantiation, like so:
+To set up an exchange for trading just assign the API credentials to an existing exchange instance or pass them to exchange constructor upon instantiation, like so:
 
 ```JavaScript
 // JavaScript
@@ -1161,7 +1161,7 @@ Below is an outline of exception inheritance hierarchy:
   - some additional endpoint parameter required by the exchange is missing
   - the format of some parameters passed into the endpoint is incorrect
   - an exchange replies with an unclear answer
-- `AuthenticationError`: Raised when a exchange requires one of the API credentials that you've missed to specify, or when there's a mistake in the keypair or an outdated nonce. Most of the time you need `apiKey` and `secret`, some times you also need `uid` and/or `password`.
+- `AuthenticationError`: Raised when an exchange requires one of the API credentials that you've missed to specify, or when there's a mistake in the keypair or an outdated nonce. Most of the time you need `apiKey` and `secret`, some times you also need `uid` and/or `password`.
 - `NetworkError`: All errors related to networking are usually recoverable, meaning that networking problems, traffic congestion, unavailability is usually time-dependent. Making a retry later is usually enough to recover from a NetworkError, but if it doesn't go away, then it may indicate some persistent problem with the exchange or with your connection.
   - `DDoSProtection`: This exception is thrown whenever a Cloudflare / Incapsula / rate limiter restrictions are enforced upon on you or the region you're connecting from. The ccxt library does a case-insensitive match of the response received from the exchange to one of the following keywords:
     - `cloudflare`
