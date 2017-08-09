@@ -42,10 +42,10 @@ Welcome to the ccxt wiki!
       - Deposit
       - Withdraw
       - Ledger
-    - [Overriding The Nonce](https://github.com/kroitor/ccxt/wiki/Manual#overriding-the-nonce)
 
 ## Troubleshooting
-  
+
+- [Overriding The Nonce](https://github.com/kroitor/ccxt/wiki/Manual#overriding-the-nonce)  
 - [Error Handling](https://github.com/kroitor/ccxt/wiki/Manual#error-handling)
 - [Troubleshooting](https://github.com/kroitor/ccxt/wiki/Manual#troubleshooting)
 
