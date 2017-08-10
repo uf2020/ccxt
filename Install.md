@@ -159,4 +159,4 @@ To test the CORS you can do either of the following:
 - type that URL directly in the address bar as `https://localhost:8080/https://exchange.com/path/to/endpoint`
 - cURL it from command like `curl https://localhost:8080/https://exchange.com/path/to/endpoint`
 
-To let ccxt know of the proxy, you can set `proxy` property on the exchange instance.
+To let ccxt know of the proxy, you can set the `proxy` property on your exchange instance.
