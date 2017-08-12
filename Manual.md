@@ -1191,14 +1191,15 @@ Below is an outline of exception inheritance hierarchy:
 
 In case you experience any difficulty connecting to a particular exchange, do the following in order of precedence:
 
-1. Turn `verbose = true` to get more detail about it.
-2. Check you API credentials. Try a fresh new keypair if possible.
-3. Read the [docs for your exchange](https://github.com/kroitor/ccxt/wiki/Exchanges) and compare your verbose output to the docs.
-4. Check your nonce. If you used your API keys with other software, you most likely should [override your nonce function](#overriding-the-nonce) to match your previous nonce value. A nonce usually can be easily reset by generating a new unused keypair.
-5. Check your connectivity with the exchange, by accessing it with your browser.
-6. Check your connection with the exchange through a proxy. Read the [Proxy](https://github.com/kroitor/ccxt/wiki/Install#proxy) section for more details.
-7. Try accesing the exchange from a different computer or a remote server, to see if this is a local or global issue with the exchange.
-8. Check if there were any news from the exchange recently regarding downtime for maintenance. Some exchanges go offline for updates regularly (like once a week).
+1. Check the [CHANGELOG](https://github.com/kroitor/ccxt/blob/master/CHANGELOG.md) for recent updates
+2. Turn `verbose = true` to get more detail about it.
+3. Check you API credentials. Try a fresh new keypair if possible.
+4. Read the [docs for your exchange](https://github.com/kroitor/ccxt/wiki/Exchanges) and compare your verbose output to the docs.
+5. Check your nonce. If you used your API keys with other software, you most likely should [override your nonce function](#overriding-the-nonce) to match your previous nonce value. A nonce usually can be easily reset by generating a new unused keypair.
+6. Check your connectivity with the exchange, by accessing it with your browser.
+7. Check your connection with the exchange through a proxy. Read the [Proxy](https://github.com/kroitor/ccxt/wiki/Install#proxy) section for more details.
+8. Try accesing the exchange from a different computer or a remote server, to see if this is a local or global issue with the exchange.
+9. Check if there were any news from the exchange recently regarding downtime for maintenance. Some exchanges go offline for updates regularly (like once a week).
 
 ## Notes
 
