@@ -261,7 +261,7 @@ UNDER CONSTRUCTION
 
 Each exchange is a place for trading some kinds of valuables. Sometimes they are called with various different terms like instruments, symbols, trading pairs, currencies, tokens, stocks, commodities, contracts, etc, but they all mean the same – a trading pair, a symbol or a financial instrument. 
 
-In terms of the ccxt library, every exchange offers multiple markets within itself. The set of markets differs from exchange to exchange opening possibilities for cross-exchange and cross-market arbitrage. A market is usually a pair of traded crypto and/or fiat currencies. 
+In terms of the ccxt library, every exchange offers multiple markets within itself. The set of markets differs from exchange to exchange opening possibilities for cross-exchange and cross-market arbitrage. A market is usually a pair of traded crypto/fiat currencies. 
 
 ## Market Structure
 
@@ -952,6 +952,15 @@ To place an order you will need the following information:
 - `price`, how much quote currency you are willing to pay for a trade lot of base currency (for limit orders only)
 
 **Some exchanges will allow to trade with limit orders only.** See [their docs](https://github.com/kroitor/ccxt/wiki/Manual#exchanges) for details.
+
+A successful call to a unified method for placing market or limit orders orders returns the following structure:
+
+```JavaScript
+{
+    'id': 'string',  // order id
+    'info': { ... }, // decoded original JSON response from the exchange as is 
+}
+```
 
 ### Market Orders
 
