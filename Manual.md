@@ -1191,7 +1191,7 @@ Below is an outline of exception inheritance hierarchy:
 
 In case you experience any difficulty connecting to a particular exchange, do the following in order of precedence:
 
-1. Check the [CHANGELOG](https://github.com/kroitor/ccxt/blob/master/CHANGELOG.md) for recent updates
+1. Check the [CHANGELOG](https://github.com/kroitor/ccxt/blob/master/CHANGELOG.md) for recent updates.
 2. Turn `verbose = true` to get more detail about it.
 3. Check you API credentials. Try a fresh new keypair if possible.
 4. Read the [docs for your exchange](https://github.com/kroitor/ccxt/wiki/Exchanges) and compare your verbose output to the docs.
