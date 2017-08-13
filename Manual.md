@@ -951,7 +951,7 @@ To place an order you will need the following information:
 - `amount`, how much of currency you want to trade. This usually refers to base currency of the trading pair symbol, though some exchanges require the amount in quote currency and a few of them require base or quote amount depending on the side of the order. See their API docs for details.
 - `price`, how much quote currency you are willing to pay for a trade lot of base currency (for limit orders only)
 
-A successful call to a unified method for placing market or a limit order returns the following structure:
+A successful call to a unified method for placing market or limit orders returns the following structure:
 
 ```JavaScript
 {
