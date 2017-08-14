@@ -770,16 +770,19 @@ var_dump ($exchange->fetch_ticker ($symbols[$random])); // ticker for a random s
 Some markets (not all of them) also support fetching all tickers at once. See [their docs](https://github.com/kroitor/ccxt/wiki/Manual#exchanges) for details. You can fetch all tickers with a single call like so:
 
 ```JavaScript
+// JavaScript
 (async () => {
     console.log (await (exchange.fetchTickers ())) // all tickers indexed by their symbols
 }) ()
 ```
 
 ```Python
+# Python
 print(exchange.fetch_tickers()) # all tickers indexed by their symbols
 ```
 
 ```PHP
+// PHP
 var_dump ($exchange->fetch_tickers ()); // all tickers indexed by their symbols
 ```
 
