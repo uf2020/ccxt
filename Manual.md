@@ -752,9 +752,9 @@ To get the individual ticker data from an exchange for each particular trading p
 ```Python
 # Python
 import random
-print (exchange.fetch_ticker ('LTC/ZEC')) # ticker for LTC/ZEC
-symbols = list (exchange.markets.keys ())
-print (exchange.fetch_ticker (random.choice (symbols))) # ticker for a random symbol
+print(exchange.fetch_ticker('LTC/ZEC')) # ticker for LTC/ZEC
+symbols = list(exchange.markets.keys())
+print(exchange.fetch_ticker(random.choice(symbols))) # ticker for a random symbol
 ```
 
 ```PHP
@@ -767,12 +767,27 @@ var_dump ($exchange->fetch_ticker ($symbols[$random])); // ticker for a random s
 
 ### All At Once
 
-```
-// UNDER CONSTRUCTION, WORK IN PROGRESS RIGHT NOW
+Some markets (not all of them) also support fetching all tickers at once. See [their docs](https://github.com/kroitor/ccxt/wiki/Manual#exchanges) for details. You can fetch all tickers with a single call like so:
 
-fetchTickers ()
-fetch_tickers ()
+```JavaScript
+(async () => {
+    console.log (await (exchange.fetchTickers ())) // all tickers indexed by their symbols
+}) ()
 ```
+
+```Python
+print(exchange.fetch_tickers()) # all tickers indexed by their symbols
+```
+
+```PHP
+var_dump ($exchange->fetch_tickers ()); // all tickers indexed by their symbols
+```
+
+Fetching all tickers requires more traffic than fetching a single ticker. If you only need one ticker, fetching by a particular symbol is faster in general. You probably want to fetch all tickers only if you really need all of them. 
+
+A general solution for fetching all tickers from all exchanges (even the ones that don't have a corresponding API endpoint) is on the way, this section will be updated soon.
+
+```UNDER CONSTRUCTION```
 
 #### Async Mode / Concurrency
 
