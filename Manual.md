@@ -801,7 +801,9 @@ The structure of returned value is as follows:
 
 A general solution for fetching all tickers from all exchanges (even the ones that don't have a corresponding API endpoint) is on the way, this section will be updated soon.
 
-```UNDER CONSTRUCTION```
+```
+UNDER CONSTRUCTION
+```
 
 #### Async Mode / Concurrency
 
