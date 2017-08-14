@@ -786,6 +786,8 @@ print(exchange.fetch_tickers()) # all tickers indexed by their symbols
 var_dump ($exchange->fetch_tickers ()); // all tickers indexed by their symbols
 ```
 
+Fetching all tickers requires more traffic than fetching a single ticker. If you only need one ticker, fetching by a particular symbol is faster in general. You probably want to fetch all tickers only if you really need all of them. 
+
 The structure of returned value is as follows:
 
 ```
@@ -796,8 +798,6 @@ The structure of returned value is as follows:
     ...
 }
 ```
-
-Fetching all tickers requires more traffic than fetching a single ticker. If you only need one ticker, fetching by a particular symbol is faster in general. You probably want to fetch all tickers only if you really need all of them. 
 
 A general solution for fetching all tickers from all exchanges (even the ones that don't have a corresponding API endpoint) is on the way, this section will be updated soon.
 
