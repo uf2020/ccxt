@@ -27,8 +27,8 @@ Welcome to the ccxt wiki!
   - [Market Data](https://github.com/kroitor/ccxt/wiki/Manual#market-data)
     - [Order Book / Market Depth](https://github.com/kroitor/ccxt/wiki/Manual#order-book--market-depth)
     - [Price Tickers](https://github.com/kroitor/ccxt/wiki/Manual#price-tickers)
-    - OHLC(V) Candlestick Charts
-    - Public Trades And Closed Orders
+    - OHLC(V) Candlestick Charts (work in progress)
+    - [Public Trades And Closed Orders](https://github.com/kroitor/ccxt/wiki/Manual#trades-orders-executions-transactions)
   - [Trading](https://github.com/kroitor/ccxt/wiki/Manual#trading)
     - [Authentication](https://github.com/kroitor/ccxt/wiki/Manual#authentication)
     - [API Keys Setup](https://github.com/kroitor/ccxt/wiki/Manual#api-keys-setup)
