@@ -814,11 +814,15 @@ UNDER CONSTRUCTION
 
 ## OHLC(V) Candlestick Charts
 
-```
-UNDER CONSTRUCTION
+```diff
+- this is under heavy development right now, contributions appreciated
 ```
 
 ## Trades, Orders, Executions, Transactions
+
+```diff
+- this is under heavy development right now, contributions appreciated
+```
 
 ```JavaScript
 // JavaScript
@@ -838,6 +842,22 @@ for symbol in exchange.markets:
 // PHP
 foreach ($exchange->markets as $symbol => $market)
     var_dump ($exchange->fetch_trades ($symbol));
+```
+
+```
+{
+    'info': { ... }, // the original decoded JSON as is
+
+    'id':        '12345-67890:09876/54321', // string trade id
+    'timestamp': 1502962946216,             // Unix timestamp in milliseconds
+    'datetime':  '2017-08-17 12:42:48.000', // ISO8601 datetime with milliseconds
+    'symbol': 'ETH/BTC',                    // symbol
+    'order':  '12345-67890:09876/54321',    // string order id
+    'type':   'limit',                      // 'market', 'limit'
+    'side':   'buy',                        // 'buy', 'sell'
+    'price':  0.06917684,                   // float price in quote currency
+    'amount': 1.5,                          // amount of base currency
+}
 ```
 
 ```
