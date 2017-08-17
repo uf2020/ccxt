@@ -1047,13 +1047,11 @@ $exchange->cancel_order (123); // replace with your order id here
 
 ## Querying Orders
 
-```UNDER CONSTRUCTION```
+```diff
+- this is under heavy development right now, contributions appreciated
+```
 
 ### By Order Id
-
-```diff
-- this is under heavy development right now
-```
 
 ```
 fetchOrder (id)
