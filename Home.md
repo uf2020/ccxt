@@ -37,7 +37,7 @@ Welcome to the ccxt wiki!
       - [Market Orders](https://github.com/kroitor/ccxt/wiki/Manual#market-orders)
       - [Limit Orders](https://github.com/kroitor/ccxt/wiki/Manual#limit-orders)
     - [Cancelling Orders](https://github.com/kroitor/ccxt/wiki/Manual#cancelling-orders)
-    - Querying Orders
+    - Querying Orders (work in progress)
     - Funding Your Account
       - Deposit
       - Withdraw
