@@ -1059,16 +1059,16 @@ fetchOrder (id)
 
 ```JavaScript
 {
-    'id': '12345-67890:09876/54321',       // string
-    'timestamp': 1502962946216,            // Unix timestamp in milliseconds
-    'datetime': '2017-08-17 12:42:48.000', // ISO8601 datetime with milliseconds
-    'status': 'open',                      // 'open', 'closed'
-    'symbol': 'ETH/BTC',                   // symbol
-    'type': 'limit',                       // 'market', 'limit'
-    'side': 'buy',                         // 'buy', 'sell'
-    'price': 0.06917684,                   // float price in quote currency
-    'amount': 1.5,                         // amount of base currency
-    'trades': [ ... ],                     // a list of order trades/executions
+    'id':        '12345-67890:09876/54321', // string
+    'timestamp': 1502962946216,             // Unix timestamp in milliseconds
+    'datetime':  '2017-08-17 12:42:48.000', // ISO8601 datetime with milliseconds
+    'status': 'open',                       // 'open', 'closed'
+    'symbol': 'ETH/BTC',                    // symbol
+    'type':   'limit',                      // 'market', 'limit'
+    'side':   'buy',                        // 'buy', 'sell'
+    'price':  0.06917684,                   // float price in quote currency
+    'amount': 1.5,                          // amount of base currency
+    'trades': [ ... ],                      // a list of order trades/executions
 }
 ```
 
