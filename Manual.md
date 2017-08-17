@@ -1068,7 +1068,7 @@ fetchOrder (id)
     'side': 'buy',                         // 'buy', 'sell'
     'price': 0.06917684,                   // float price in quote currency
     'amount': 1.5,                         // amount of base currency
-    'trades': [ ... ],                     // a list of order trades or executions (optional)
+    'trades': [ ... ],                     // a list of order trades/executions
 }
 ```
 
