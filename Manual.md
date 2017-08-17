@@ -157,7 +157,7 @@ Every exchange has a set of properties and methods, most of which you can overri
 
 Here's an overview of base exchange properties with values added for example:
 
-```
+```JavaScript
 {    
     'id':   'exchange'                  // lowercase string exchange id
     'name': 'Exchange'                  // human-readable string
@@ -266,7 +266,7 @@ In terms of the ccxt library, every exchange offers multiple markets within itse
 
 ## Market Structure
 
-```
+```JavaScript
 {
     'id':     'btcusd',  // string literal for referencing within an exchange
     'symbol': 'BTC/USD', // uppercase string literal of a pair of currencies
@@ -791,11 +791,11 @@ Fetching all tickers requires more traffic than fetching a single ticker. If you
 
 The structure of returned value is as follows:
 
-```
+```JavaScript
 {
-    'info': { ... }, // the original JSON response from the exchange as is
-    'BTC/USD': { ... single ticker contents ... }, // the ticker for BTC/USD
-    'ETH/BTC': { ... single ticker contents ... }, // the ticker for ETH/BTC
+    'info':    { ... }, // the original JSON response from the exchange as is
+    'BTC/USD': { ... }, // a single ticker for BTC/USD
+    'ETH/BTC': { ... }, // a ticker for ETH/BTC
     ...
 }
 ```
@@ -932,7 +932,7 @@ Note that your private requests will fail with an exception or error if you don'
 
 The structure of returned balance info is as follows:
 
-```
+```JavaScript
 {
     'info': { ... },     // the original untouched non-parsed reply with details
 
@@ -1048,6 +1048,31 @@ $exchange->cancel_order (123); // replace with your order id here
 ## Querying Orders
 
 ```UNDER CONSTRUCTION```
+
+### By Order Id
+
+```diff
+- this is under heavy development right now
+```
+
+```
+fetchOrder (id)
+```
+
+```JavaScript
+{
+    'id': '12345-67890:09876/54321',       // string
+    'timestamp': 1502962946216,            // Unix timestamp in milliseconds
+    'datetime': '2017-08-17 12:42:48.000', // ISO8601 datetime with milliseconds
+    'status': 'open',                      // 'open', 'closed'
+    'symbol': 'ETH/BTC',                   // symbol
+    'type': 'limit',                       // 'market', 'limit'
+    'side': 'buy',                         // 'buy', 'sell'
+    'price': 0.06917684,                   // float price in quote currency
+    'amount': 1.5,                         // amount of base currency
+    'trades': [ ... ],                     // a list of order trades or executions (optional)
+}
+```
 
 ### All Orders
 
