@@ -1052,17 +1052,17 @@ To cancel an existing order pass the order id to `cancelOrder (id) / cancel_orde
 
 ```JavaScript
 // JavaScript
-exchange.cancelOrder (123) // replace with your order id here
+exchange.cancelOrder ('1234567890') // replace with your order id here (a string)
 ```
 
 ```Python
 # Python
-exchange.cancel_order (123) # replace with your order id here
+exchange.cancel_order ('1234567890') # replace with your order id here (a string)
 ```
 
 ```PHP
 // PHP
-$exchange->cancel_order (123); // replace with your order id here
+$exchange->cancel_order ('1234567890'); // replace with your order id here (a string)
 ```
 
 ## Querying Orders
