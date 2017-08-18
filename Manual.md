@@ -1167,6 +1167,11 @@ class MyKraken (ccxt.kraken):
 class MyBitfinex (ccxt.bitfinex):
     def nonce (self):
         return self.milliseconds ()
+
+# C: milliseconds nonce inline
+hitbtc = ccxt.hitbtc ({
+    'nonce': lambda: time.time ()
+})
 ```
 
 ```PHP
