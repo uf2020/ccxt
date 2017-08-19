@@ -852,11 +852,11 @@ foreach ($exchange->markets as $symbol => $market)
     'timestamp': 1502962946216,             // Unix timestamp in milliseconds
     'datetime':  '2017-08-17 12:42:48.000', // ISO8601 datetime with milliseconds
     'symbol': 'ETH/BTC',                    // symbol
-    'order':  '12345-67890:09876/54321',    // string order id
-    'type':   'limit',                      // 'market', 'limit'
-    'side':   'buy',                        // 'buy', 'sell'
-    'price':  0.06917684,                   // float price in quote currency
-    'amount': 1.5,                          // amount of base currency
+    'order':  '12345-67890:09876/54321',    // string order id or undefined/None/null
+    'type':   'limit',        // order type, 'market', 'limit' or undefined/None/null
+    'side':   'buy',          // direction of the trade, 'buy' or 'sell'
+    'price':  0.06917684,     // float price in quote currency
+    'amount': 1.5,            // amount of base currency
 }
 ```
 
