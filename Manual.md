@@ -52,7 +52,7 @@ The ccxt library currently supports the following 73 cryptocurrency exchange mar
 |![coinmate](https://user-images.githubusercontent.com/1294454/27811229-c1efb510-606c-11e7-9a36-84ba2ce412d8.jpg)      | coinmate      | [CoinMate](https://coinmate.io)                      | *   | [API](http://docs.coinmate.apiary.io)                                                       | UK, Czech Republic                      |
 |![coinsecure](https://user-images.githubusercontent.com/1294454/27766472-9cbd200a-5ed9-11e7-9551-2267ad7bac08.jpg)    | coinsecure    | [Coinsecure](https://coinsecure.in)                  | 1   | [API](https://api.coinsecure.in)                                                            | India                                   |
 |![coinspot](https://user-images.githubusercontent.com/1294454/28208429-3cacdf9a-6896-11e7-854e-4c79a772a30f.jpg)      | coinspot      | [CoinSpot](https://www.coinspot.com.au)              | *   | [API](https://www.coinspot.com.au/api)                                                      | Australia                               |
-|![cryptopia](https://user-images.githubusercontent.com/1294454/29483974-98c3ed94-84bd-11e7-8fcc-f328f7533df5.jpg)     | cryptopia     | [Cryptopia](https://www.cryptopia.co.nz)             | *   | [API](https://www.cryptopia.co.nz/Forum/Thread/255)                                         | New Zealand                             |
+|![cryptopia](https://user-images.githubusercontent.com/1294454/29484394-7b4ea6e2-84c6-11e7-83e5-1fccf4b2dc81.jpg)     | cryptopia     | [Cryptopia](https://www.cryptopia.co.nz)             | *   | [API](https://www.cryptopia.co.nz/Forum/Thread/255)                                         | New Zealand                             |
 |![dsx](https://user-images.githubusercontent.com/1294454/27990275-1413158a-645a-11e7-931c-94717f7510e3.jpg)           | dsx           | [DSX](https://dsx.uk)                                | *   | [API](https://api.dsx.uk)                                                                   | UK                                      |
 |![exmo](https://user-images.githubusercontent.com/1294454/27766491-1b0ea956-5eda-11e7-9225-40d67b481b8d.jpg)          | exmo          | [EXMO](https://exmo.me)                              | 1   | [API](https://exmo.me/ru/api_doc)                                                           | Spain, Russia                           |
 |![flowbtc](https://user-images.githubusercontent.com/1294454/28162465-cd815d4c-67cf-11e7-8e57-438bea0523a2.jpg)       | flowbtc       | [flowBTC](https://trader.flowbtc.com)                | 1   | [API](http://www.flowbtc.com.br/api/)                                                       | Brazil                                  |
@@ -521,7 +521,9 @@ print (dir (ccxt.hitbtc ()))        # Python
 var_dump (new \ccxt\okcoinusd ()); // PHP
 ```
 
-In Python and PHP all API methods are synchronous. In JavaScript all methods are asynchronous and return Promises that resolve with a decoded JSON object. Therefore there are two styles for JavaScript code structuring – callbacks and async/await.
+## Synchronous vs Asynchronous Calls
+
+In JavaScript all methods are asynchronous and return Promises that resolve with a decoded JSON object. Therefore there are two styles for JavaScript code structuring – callbacks and async/await.
 
 ```JavaScript
 // JavaScript
@@ -546,6 +548,21 @@ bitfinex.publicGetSymbolsDetails ().then (markets => {
     console.log (kraken.id, marketId, ticker)
 }) ()
 ```
+
+The ccxt library supports asynchronous concurrency mode in Python 3.5+ with async/await syntax. The asynchronous Python version uses pure [asyncio](https://docs.python.org/3/library/asyncio.html) with [aiohttp](http://aiohttp.readthedocs.io). In async mode you have all the same properties and methods, but most methods are decorated with an async keyword. If you want to use async mode, you should link against the `ccxt.async` subpackage, like in the following example:
+
+```Python
+import asyncio
+import ccxt.async as ccxt
+
+async def print_poloniex_ethbtc_ticker():
+    poloniex = ccxt.poloniex()
+    print(await poloniex.fetch_ticker('ETH/BTC'))
+
+asyncio.get_event_loop().run_until_complete(print_poloniex_ethbtc_ticker)
+```
+
+In PHP all API methods are synchronous.
 
 ## Returned JSON Objects
 
