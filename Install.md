@@ -37,8 +37,9 @@ pip install ccxt
 Synchronous Python 2+ version of the ccxt library does not require any additional dependencies and uses builtin modules only. Asynchronous Python 3.5+ version of the ccxt library uses the builtin [asyncio](https://docs.python.org/3/library/asyncio.html) and [aiohttp](http://aiohttp.readthedocs.io).
 
 ```Python
-import ccxt
-print (ccxt.exchanges) # print a list of all available exchange classes
+import ccxt               # sync Python 2.7+ or
+import ccxt.async as ccxt # async Python 3.5+
+print(ccxt.exchanges)     # print a list of all available exchange classes
 ```
 
 ## PHP
