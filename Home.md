@@ -24,6 +24,8 @@ Welcome to the ccxt wiki!
   - [Exchange Properties](https://github.com/kroitor/ccxt/wiki/Manual#exchange-properties)
   - [Markets](https://github.com/kroitor/ccxt/wiki/Manual#markets)
   - [API Methods / Endpoints](https://github.com/kroitor/ccxt/wiki/Manual#api-methods--endpoints)
+    - [Public/Private API](https://github.com/kroitor/ccxt/wiki/Manual#publicprivate-api)
+    - [Synchronous vs Asynchronous Calls](https://github.com/kroitor/ccxt/wiki/Manual#synchronous-vs-asynchronous-calls)
   - [Market Data](https://github.com/kroitor/ccxt/wiki/Manual#market-data)
     - [Order Book / Market Depth](https://github.com/kroitor/ccxt/wiki/Manual#order-book--market-depth)
     - [Price Tickers](https://github.com/kroitor/ccxt/wiki/Manual#price-tickers)
