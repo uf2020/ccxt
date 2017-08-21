@@ -617,7 +617,7 @@ The unified ccxt API is a subset of methods common among the exchanges. It curre
 
 - `fetchOrderBook (symbol)`: Fetch an order book for a particular market trading symbol.
 
-- `fetchTrades (symbol)`: Fetch recent trades for a particular trading symbol.
+- `fetchTrades (symbol, [params = {}])`: Fetch recent trades for a particular trading symbol.
 
 - `fetchTicker (symbol)`: Fetch latest ticker data by trading symbol.
 
