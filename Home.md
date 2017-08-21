@@ -38,6 +38,7 @@ Welcome to the ccxt wiki!
     - [Placing Orders](https://github.com/kroitor/ccxt/wiki/Manual#placing-orders)
       - [Market Orders](https://github.com/kroitor/ccxt/wiki/Manual#market-orders)
       - [Limit Orders](https://github.com/kroitor/ccxt/wiki/Manual#limit-orders)
+      - [Custom Params](https://github.com/kroitor/ccxt/wiki/Manual#custom-order-params)
     - [Cancelling Orders](https://github.com/kroitor/ccxt/wiki/Manual#cancelling-orders)
     - Querying Orders (work in progress)
     - Funding Your Account
