@@ -637,6 +637,8 @@ The unified ccxt API is a subset of methods common among the exchanges. It curre
 
 - ...
 
+Note, that most of methods of the unified API accept an optional `params` parameter. It is an associative array (a dictionary, empty by default) containing the params you want to override. Use the `params` dictionary if you need to pass a custom setting or an optional parameter to your unified query. 
+
 # Market Data
 
 ```
