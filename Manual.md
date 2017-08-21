@@ -1068,6 +1068,28 @@ exchange.create_limit_buy_order (symbol, amount, price[, params])
 exchange.create_limit_sell_order (symbol, amount, price[, params])
 ```
 
+### Custom Order Params
+
+Some exchanges allow you to specify optional parameters for your order. You can pass your optional parameters and override your query with an associative array using the `params` argument to your unified API call.
+
+```JavaScript
+// JavaScript
+// use a custom order type
+bitfinex.createLimitSellOrder ('BTC/USD', 1, 10, { 'type': 'trailing-stop' })
+```
+
+```Python
+# Python
+# add a custom order flag
+kraken.create_market_buy_order('BTC/USD', 1, {'trading_agreement': 'agree'})
+```
+
+```PHP
+// PHP
+// add custom user id to your order
+$hitbtc->create_order('BTC/USD', 'limit', 'buy', 1, 3000, array ('clientOrderId' => '123'));
+```
+
 ## Cancelling Orders
 
 To cancel an existing order pass the order id to `cancelOrder (id) / cancel_order (id)` method, like in the following examples:
