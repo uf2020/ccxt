@@ -612,29 +612,17 @@ UNDER CONSTRUCTION
 The unified ccxt API is a subset of methods common among the exchanges. It currently contains the following methods:
 
 - `fetchMarkets ()`: Fetches a list of all available markets from an exchange and returns an abstracted JSON-decoded response, an array of markets. Some exchanges do not have means for obtaining a list of markets via their online API, for those the list of markets is hardcoded.
-
 - `loadMarkets ([reload])`: Loads the list of markets indexed by symbol and caches it with the exchange instance. Returns cached markets if loaded already, unless the `reload = true` flag is forced. 
-
 - `fetchOrderBook (symbol)`: Fetch an order book for a particular market trading symbol.
-
 - `fetchTrades (symbol, [params = {}])`: Fetch recent trades for a particular trading symbol.
-
 - `fetchTicker (symbol)`: Fetch latest ticker data by trading symbol.
-
 - `fetchBalance ()`: Fetch Balance.
-
 - `createOrder (symbol, type, side, amount[, price[, params]])`
-
 - `createLimitBuyOrder (symbol, amount, price[, params])`
-
 - `createLimitSellOrder (symbol, amount, price[, params])`
-
 - `createMarketBuyOrder (symbol, amount[, params])`
-
 - `createMarketSellOrder (symbol, amount[, params])`
-
 - `cancelOrder (id)`
-
 - ...
 
 Note, that most of methods of the unified API accept an optional `params` parameter. It is an associative array (a dictionary, empty by default) containing the params you want to override. Use the `params` dictionary if you need to pass a custom setting or an optional parameter to your unified query. 
@@ -738,21 +726,21 @@ A price ticker contains statistics for a particular market/symbol for some perio
 
 ```
 {
-    details:   { the original non-modified unparsed reply from exchange API },
-    timestamp:   int (64-bit Unix Timestamp in milliseconds since Epoch 1 Jan 1970)
-    datetime:    ISO8601 datetime string with milliseconds
-    high:        float (highest price)
-    low:         float (lowest price)
-    bid:         float (current bid (buy) price)
-    ask:         float (current ask (sell) price)
-    vwap:        float (volume weighed average price)
-    open:        float (open price),
-    first:       float (price of first trade),
-    last:        float (price of last trade),
-    change:      float (percentage change),
-    average:     float (average),
-    baseVolume:  float (volume of base currency),
-    quoteVolume: float (volume of quote currency),
+    'info':      { the original non-modified unparsed reply from exchange API },
+    'timestamp':   int (64-bit Unix Timestamp in milliseconds since Epoch 1 Jan 1970)
+    'datetime':    ISO8601 datetime string with milliseconds
+    'high':        float (highest price)
+    'low':         float (lowest price)
+    'bid':         float (current bid (buy) price)
+    'ask':         float (current ask (sell) price)
+    'vwap':        float (volume weighed average price)
+    'open':        float (open price),
+    'first':       float (price of first trade),
+    'last':        float (price of last trade),
+    'change':      float (percentage change),
+    'average':     float (average),
+    'baseVolume':  float (volume of base currency),
+    'quoteVolume': float (volume of quote currency),
 }
 ```
 
@@ -871,14 +859,14 @@ foreach ($exchange->markets as $symbol => $market)
     'info': { ... }, // the original decoded JSON as is
 
     'id':        '12345-67890:09876/54321', // string trade id
-    'timestamp': 1502962946216,             // Unix timestamp in milliseconds
+    'timestamp':  1502962946216,            // Unix timestamp in milliseconds
     'datetime':  '2017-08-17 12:42:48.000', // ISO8601 datetime with milliseconds
-    'symbol': 'ETH/BTC',                    // symbol
-    'order':  '12345-67890:09876/54321',    // string order id or undefined/None/null
-    'type':   'limit',        // order type, 'market', 'limit' or undefined/None/null
-    'side':   'buy',          // direction of the trade, 'buy' or 'sell'
-    'price':  0.06917684,     // float price in quote currency
-    'amount': 1.5,            // amount of base currency
+    'symbol':    'ETH/BTC',                 // symbol
+    'order':     '12345-67890:09876/54321', // string order id or undefined/None/null
+    'type':      'limit',                   // order type, 'market', 'limit' or undefined/None/null
+    'side':      'buy',                     // direction of the trade, 'buy' or 'sell'
+    'price':      0.06917684,               // float price in quote currency
+    'amount':     1.5,                      // amount of base currency
 }
 ```
 
