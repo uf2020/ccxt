@@ -168,16 +168,17 @@ Here's an overview of base exchange properties with values added for example:
         'www': 'https://www.example.com'        // string website URL
         'doc': 'https://docs.example.com/api',  // string URL or array of URLs
     },
-    'version':       'v1',              // string ending with digits
-    'api':           { ... },           // dictionary of api endpoints
-    'timeout':       10000,             // number in milliseconds
-    'rateLimit':     2000,              // number in milliseconds
-    'userAgent':     'ccxt/1.1.1 ...'   // string, HTTP User-Agent header
-    'verbose':       false,             // boolean, output error details
-    'markets':       { ... }            // dictionary of markets/pairs by symbol
-    'symbols':       [ ... ]            // sorted list of string symbols (traded pairs)
-    'currencies':    [ ... ]            // sorted list of strings (currency codes)
-    'markets_by_id': { ... },           // dictionary of dictionaries (markets) by id
+    'version':         'v1',              // string ending with digits
+    'api':             { ... },           // dictionary of api endpoints
+    'hasFetchTickers':  true,             // true if exchange implements fetchTickers ()
+    'timeout':          10000,            // number in milliseconds
+    'rateLimit':        2000,             // number in milliseconds
+    'userAgent':       'ccxt/1.1.1 ...'   // string, HTTP User-Agent header
+    'verbose':          false,            // boolean, output error details
+    'markets':         { ... }            // dictionary of markets/pairs by symbol
+    'symbols':         [ ... ]            // sorted list of string symbols (traded pairs)
+    'currencies':      [ ... ]            // sorted list of strings (currency codes)
+    'markets_by_id':   { ... },           // dictionary of dictionaries (markets) by id
     'proxy': 'https://crossorigin.me/', // string URL
     'apiKey':   '92560ffae9b8a0421...', // string public apiKey (ASCII, hex, Base64, ...)
     'secret':   '9aHjPmW+EtRRKN/Oi...'  // string private secret key 
