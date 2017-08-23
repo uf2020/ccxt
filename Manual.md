@@ -347,6 +347,8 @@ Most of the time users will be working with market symbols. You will get a stand
 
     console.log (exchange.id, symbols)            // print all symbols
 
+    let currencies = exchange.currencies          // a list of currencies
+
     let bitfinex = new ccxt.bitfinex ()
     await bitfinex.loadMarkets ()
 
@@ -374,6 +376,8 @@ symbols2 = list (exchange.markets.keys ()) # same as previous line
 
 print (exchange.id, symbols)               # print all symbols
 
+currencies = exchange.currencies           # a list of currencies
+
 kraken = ccxt.kraken ()
 kraken.load_markets ()
 
@@ -398,6 +402,8 @@ $symbols = $exchange->symbols;                  // get an array of symbols
 $symbols2 = array_keys ($exchange->markets);    // same as previous line
 
 var_dump ($exchange->id, $symbols);             // print all symbols
+
+$currencies = $exchange->currencies;            // a list of currencies
 
 $okcoinusd = '\\ccxt\\okcoinusd';
 $okcoinusd = new $okcoinusd ();
