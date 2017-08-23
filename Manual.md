@@ -1316,7 +1316,7 @@ In case you experience any difficulty connecting to a particular exchange, do th
 3. Check you API credentials. Try a fresh new keypair if possible.
 4. Read the [docs for your exchange](https://github.com/kroitor/ccxt/wiki/Exchanges) and compare your verbose output to the docs.
 5. Check your nonce. If you used your API keys with other software, you most likely should [override your nonce function](#overriding-the-nonce) to match your previous nonce value. A nonce usually can be easily reset by generating a new unused keypair.
-6. Check your connectivity with the exchange, by accessing it with your browser.
+6. Check your connectivity with the exchange by accessing it with your browser.
 7. Check your connection with the exchange through a proxy. Read the [Proxy](https://github.com/kroitor/ccxt/wiki/Install#proxy) section for more details.
 8. Try accesing the exchange from a different computer or a remote server, to see if this is a local or global issue with the exchange.
 9. Check if there were any news from the exchange recently regarding downtime for maintenance. Some exchanges go offline for updates regularly (like once a week).
