@@ -1213,7 +1213,7 @@ class MyBitfinex (ccxt.bitfinex):
 
 # C: milliseconds nonce inline
 hitbtc = ccxt.hitbtc ({
-    'nonce': lambda: time.time ()
+    'nonce': lambda: time.time () * 1000
 })
 ```
 
