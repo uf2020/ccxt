@@ -840,7 +840,7 @@ UNDER CONSTRUCTION
 - this is under heavy development right now, contributions appreciated
 ```
 
-Most exchanges have an endpoint for fetching OHLCV data, but some of them don't. The exchange boolean (true/false) property named `hadFetchOHLCV` indicates whether the exchange supports candlestick data series or not. You can call the unified `fetchOHLCV` / `fetch_ohlcv` method to get the list of most recent OHLCV candles for a particular symbol. The `fetchOHLCV` method is declared in the following way:
+Most exchanges have endpoints for fetching OHLCV data, but some of them don't. The exchange boolean (true/false) property named `hasFetchOHLCV` indicates whether the exchange supports candlestick data series or not. You can call the unified `fetchOHLCV` / `fetch_ohlcv` method to get the list of most recent OHLCV candles for a particular symbol. The `fetchOHLCV` method is declared in the following way:
 
 ```
 async fetchOHLCV (symbol, timeframe = '1m', since = undefined, limit = undefined, params = {})
