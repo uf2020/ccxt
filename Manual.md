@@ -864,8 +864,8 @@ You can call the unified `fetchOHLCV` / `fetch_ohlcv` method to get the list of 
 
 ```JavaScript
 // JavaScript
-if (exchange.hasFetchOHLCV) {
-    let sleep = (ms) => new Promise (resolve => setTimeout (resolve, ms));
+let sleep = (ms) => new Promise (resolve => setTimeout (resolve, ms));
+if (exchange.hasFetchOHLCV) {    
     (async () => {
         for (symbol in exchange.markets) {
             await sleep (exchange.rateLimit) // milliseconds
