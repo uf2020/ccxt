@@ -220,7 +220,7 @@ Below is a detailed description of each of the base exchange properties:
 
 - `hasFetchTickers`: This is a boolean property indicating if the exchange has the fetchTickers () method available. When this property is false, the exchange will also throw a NotSupported exception upon a call to fetchTickers ().
 
-- `hasFetchTickers`: This is a boolean property indicating if the exchange has the fetchOHLCV () method available. When this property is false, the exchange will also throw a NotSupported exception upon a call to fetchOHLCV (). Also, if this property is true, the `timeframes` property is populated as well.
+- `hasFetchOHLCV`: This is a boolean property indicating if the exchange has the fetchOHLCV () method available. When this property is false, the exchange will also throw a NotSupported exception upon a call to fetchOHLCV (). Also, if this property is true, the `timeframes` property is populated as well.
 
 - `timeframes`: An associative array of timeframes, supported by the fetchOHLCV method of the exchange. This is only populated when `hasFetchTickers` property is true.
 
