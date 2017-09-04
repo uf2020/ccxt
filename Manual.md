@@ -892,7 +892,7 @@ if ($exchange->hasFetchOHLCV)
     }
 ```
 
-To get the list of available timeframes for your exchange see the `timeframes` exchange property. Note that it is only populated when `hasFetchTickers` property is true as well. 
+To get the list of available timeframes for your exchange see the `timeframes` property. Note that it is only populated when `hasFetchTickers`  is true as well. 
 
 The fetchOHLCV method shown above returns a list (a flat array) of OHLCV candles represented by the following structure:
 
