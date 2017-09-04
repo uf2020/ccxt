@@ -846,7 +846,6 @@ Most of the exchanges have an enpoint for fetching OHLCV data, but some of them 
 async fetchOHLCV (symbol, timeframe = '1m', since = undefined, limit = undefined, params = {})
 ```
 
-To see t
 ```JavaScript
 // JavaScript
 if (exchange.hasFetchOHLCV) {
