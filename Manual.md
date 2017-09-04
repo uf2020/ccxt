@@ -171,17 +171,25 @@ Here's an overview of base exchange properties with values added for example:
         'www': 'https://www.example.com'        // string website URL
         'doc': 'https://docs.example.com/api',  // string URL or array of URLs
     },
-    'version':         'v1',              // string ending with digits
-    'api':             { ... },           // dictionary of api endpoints
-    'hasFetchTickers':  true,             // true if exchange implements fetchTickers ()
-    'timeout':          10000,            // number in milliseconds
-    'rateLimit':        2000,             // number in milliseconds
-    'userAgent':       'ccxt/1.1.1 ...'   // string, HTTP User-Agent header
-    'verbose':          false,            // boolean, output error details
-    'markets':         { ... }            // dictionary of markets/pairs by symbol
-    'symbols':         [ ... ]            // sorted list of string symbols (traded pairs)
-    'currencies':      [ ... ]            // sorted list of strings (currency codes)
-    'markets_by_id':   { ... },           // dictionary of dictionaries (markets) by id
+    'version':         'v1',            // string ending with digits
+    'api':             { ... },         // dictionary of api endpoints
+    'hasFetchTickers':  true,           // true if the exchange implements fetchTickers ()
+    'hasFetchOHLCV':    false,          // true if the exchange implements fetchOHLCV ()
+    'timeframes': {                     // empty if the exchange !hasFetchOHLCV
+        '1m': '1minute',
+        '1h': '1hour',
+        '1d': '1day',
+        '1M': '1month',
+        '1y': '1year',
+    },
+    'timeout':          10000,          // number in milliseconds
+    'rateLimit':        2000,           // number in milliseconds
+    'userAgent':       'ccxt/1.1.1 ...' // string, HTTP User-Agent header
+    'verbose':          false,          // boolean, output error details
+    'markets':         { ... }          // dictionary of markets/pairs by symbol
+    'symbols':         [ ... ]          // sorted list of string symbols (traded pairs)
+    'currencies':      [ ... ]          // sorted list of strings (currency codes)
+    'markets_by_id':   { ... },         // dictionary of dictionaries (markets) by id
     'proxy': 'https://crossorigin.me/', // string URL
     'apiKey':   '92560ffae9b8a0421...', // string public apiKey (ASCII, hex, Base64, ...)
     'secret':   '9aHjPmW+EtRRKN/Oi...'  // string private secret key 
@@ -211,6 +219,10 @@ Below is a detailed description of each of the base exchange properties:
 - `api`: An associative array containing a definition of all API endpoints exposed by a crypto exchange. The API definition is used by ccxt to automatically construct callable instance methods for each available endpoint.
 
 - `hasFetchTickers`: This is a boolean property indicating if the exchange has the fetchTickers () method available. When this property is false, the exchange will also throw a NotSupported exception upon a call to fetchTickers ().
+
+- `hasFetchTickers`: This is a boolean property indicating if the exchange has the fetchOHLCV () method available. When this property is false, the exchange will also throw a NotSupported exception upon a call to fetchOHLCV (). Also, if this property is true, the `timeframes` property is populated as well.
+
+- `timeframes`: An associative array of timeframes, supported by the fetchOHLCV method of the exchange. This is only populated when `hasFetchTickers` property is true.
 
 - `timeout`: A timeout in milliseconds for a request-response roundtrip (default timeout is 10000 ms = 10 seconds). You should always set it to a reasonable value, hanging forever with no timeout is not your option, for sure.
 
@@ -879,6 +891,8 @@ if ($exchange->hasFetchOHLCV)
         var_dump ($exchange->fetch_ohlcv ($symbol, '1M')); // one month
     }
 ```
+
+To get the list of available timeframes for your exchange see the `timeframes` exchange property. Note that it is only populated when `hasFetchTickers` property is true as well. 
 
 The fetchOHLCV method shown above returns a list (a flat array) of OHLCV candles represented by the following structure:
 
