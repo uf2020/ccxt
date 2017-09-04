@@ -845,7 +845,7 @@ Most exchanges have endpoints for fetching OHLCV data, but some of them don't. T
 The `fetchOHLCV` method is declared in the following way:
 
 ```
-async fetchOHLCV (symbol, timeframe = '1m', since = undefined, limit = undefined, params = {})
+fetchOHLCV (symbol, timeframe = '1m', since = undefined, limit = undefined, params = {})
 ```
 
 You can call the unified `fetchOHLCV` / `fetch_ohlcv` method to get the list of most recent OHLCV candles for a particular symbol like so:
