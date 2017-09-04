@@ -12,7 +12,7 @@ Full public and private HTTP REST APIs for all exchanges are implemented. WebSoc
 
 # Exchanges
 
-The ccxt library currently supports the following 75 cryptocurrency exchange markets and trading APIs:
+The ccxt library currently supports the following 76 cryptocurrency exchange markets and trading APIs:
 
 |                                                                                                                      | id            | name                                                 | ver | doc                                                                                         | countries                               |
 |----------------------------------------------------------------------------------------------------------------------|---------------|------------------------------------------------------|:---:|:-------------------------------------------------------------------------------------------:|-----------------------------------------|
@@ -25,6 +25,7 @@ The ccxt library currently supports the following 75 cryptocurrency exchange mar
 |![bitbays](https://user-images.githubusercontent.com/1294454/27808599-983687d2-6051-11e7-8d95-80dfcbe5cbb4.jpg)       | bitbays       | [BitBays](https://bitbays.com)                       | 1   | [API](https://bitbays.com/help/api/)                                                        | China, UK, Hong Kong, Australia, Canada |
 |![bitcoincoid](https://user-images.githubusercontent.com/1294454/27766138-043c7786-5ecf-11e7-882b-809c14f38b53.jpg)   | bitcoincoid   | [Bitcoin.co.id](https://www.bitcoin.co.id)           | *   | [API](https://vip.bitcoin.co.id/downloads/BITCOINCOID-API-DOCUMENTATION.pdf)                | Indonesia                               |
 |![bitfinex](https://user-images.githubusercontent.com/1294454/27766244-e328a50c-5ed2-11e7-947b-041416579bb3.jpg)      | bitfinex      | [Bitfinex](https://www.bitfinex.com)                 | 1   | [API](https://bitfinex.readme.io/v1/docs)                                                   | US                                      |
+|![bitfinex2](https://user-images.githubusercontent.com/1294454/27766244-e328a50c-5ed2-11e7-947b-041416579bb3.jpg)     | bitfinex2     | [Bitfinex v2](https://www.bitfinex.com)              | 2   | [API](https://bitfinex.readme.io/v2/docs)                                                   | US                                      |
 |![bitflyer](https://user-images.githubusercontent.com/1294454/28051642-56154182-660e-11e7-9b0d-6042d1e6edd8.jpg)      | bitflyer      | [bitFlyer](https://bitflyer.jp)                      | 1   | [API](https://bitflyer.jp/API)                                                              | Japan                                   |
 |![bitlish](https://user-images.githubusercontent.com/1294454/27766275-dcfc6c30-5ed3-11e7-839d-00a846385d0b.jpg)       | bitlish       | [bitlish](https://bitlish.com)                       | 1   | [API](https://bitlish.com/api)                                                              | UK, EU, Russia                          |
 |![bitmarket](https://user-images.githubusercontent.com/1294454/27767256-a8555200-5ef9-11e7-96fd-469a65e2b0bd.jpg)     | bitmarket     | [BitMarket](https://www.bitmarket.pl)                | *   | [API](https://www.bitmarket.net/docs.php?file=api_public.html)                              | Poland, EU                              |
@@ -68,7 +69,7 @@ The ccxt library currently supports the following 75 cryptocurrency exchange mar
 |![itbit](https://user-images.githubusercontent.com/1294454/27822159-66153620-60ad-11e7-89e7-005f6d7f3de0.jpg)         | itbit         | [itBit](https://www.itbit.com)                       | 1   | [API](https://api.itbit.com/docs)                                                           | US                                      |
 |![jubi](https://user-images.githubusercontent.com/1294454/27766581-9d397d9a-5edd-11e7-8fb9-5d8236c0e692.jpg)          | jubi          | [jubi.com](https://www.jubi.com)                     | 1   | [API](https://www.jubi.com/help/api.html)                                                   | China                                   |
 |![kraken](https://user-images.githubusercontent.com/1294454/27766599-22709304-5ede-11e7-9de1-9f33732e1509.jpg)        | kraken        | [Kraken](https://www.kraken.com)                     | 0   | [API](https://www.kraken.com/en-us/help/api)                                                | US                                      |
-|![lakebtc](https://user-images.githubusercontent.com/1294454/28074120-72b7c38a-6660-11e7-92d9-d9027502281d.jpg)       | lakebtc       | [LakeBTC](https://www.lakebtc.com)                   | 2   | [API](https://www.lakebtc.com/s/api)                                                        | US                                      |
+|![lakebtc](https://user-images.githubusercontent.com/1294454/28074120-72b7c38a-6660-11e7-92d9-d9027502281d.jpg)       | lakebtc       | [LakeBTC](https://www.lakebtc.com)                   | 2   | [API](https://www.lakebtc.com/s/api_v2)                                                     | US                                      |
 |![livecoin](https://user-images.githubusercontent.com/1294454/27980768-f22fc424-638a-11e7-89c9-6010a54ff9be.jpg)      | livecoin      | [LiveCoin](https://www.livecoin.net)                 | *   | [API](https://www.livecoin.net/api?lang=en)                                                 | US, UK, Russia                          |
 |![liqui](https://user-images.githubusercontent.com/1294454/27982022-75aea828-63a0-11e7-9511-ca584a8edd74.jpg)         | liqui         | [Liqui](https://liqui.io)                            | 3   | [API](https://liqui.io/api)                                                                 | Ukraine                                 |
 |![luno](https://user-images.githubusercontent.com/1294454/27766607-8c1a69d8-5ede-11e7-930c-540b5eb9be24.jpg)          | luno          | [luno](https://www.luno.com)                         | 1   | [API](https://www.luno.com/en/api)                                                          | UK, Singapore, South Africa             |
@@ -501,7 +502,7 @@ Public APIs include the following:
 - order books (L1, L2, L3...)
 - trade history (closed orders, transactions, executions)
 - tickers (spot / 24h price)
-- OHLC(V) for charting
+- OHLCV series for charting
 - other public endpoints
 
 For trading with private API you need to obtain API keys from/to exchanges. It often means registering with exchanges and creating API keys with your account. Most exchanges require personal info or identification. Some kind of verification may be necessary as well.
@@ -833,10 +834,63 @@ UNDER CONSTRUCTION
 UNDER CONSTRUCTION
 ```
 
-## OHLC(V) Candlestick Charts
+## OHLCV Candlestick Charts
 
 ```diff
 - this is under heavy development right now, contributions appreciated
+```
+
+Most of the exchanges have an enpoint for fetching OHLCV data, but some of them don't. The exchange boolean (true/false) property named `hadFetchOHLCV` indicates whether the exchange supports candlestick data series or not. You can call the unified `fetchOHLCV` / `fetch_ohlcv` method to get the list of most recent OHLCV candles for a particular symbol. The `fetchOHLCV` method is declared in the following way:
+
+```
+async fetchOHLCV (symbol, timeframe = '1m', since = undefined, limit = undefined, params = {})
+```
+
+To see t
+```JavaScript
+// JavaScript
+if (exchange.hasFetchOHLCV) {
+    let sleep = (ms) => new Promise (resolve => setTimeout (resolve, ms));
+    (async () => {
+        for (symbol in exchange.markets) {
+            await sleep (exchange.rateLimit) // milliseconds
+            console.log (await exchange.fetchOHLCV (symbol, '1m')) // one minute
+        }
+    }) ()    
+}
+```
+
+```Python
+# Python
+if exchange.hasFetchOHLCV:
+    for symbol in exchange.markets:
+        time.sleep (exchange.rateLimit / 1000) // time.sleep wants seconds
+        print (exchange.fetch_ohlcv (symbol, '1d')) # one day
+```
+
+```PHP
+// PHP
+if ($exchange->hasFetchOHLCV)
+    foreach ($exchange->markets as $symbol => $market) {
+        usleep ($exchange.rateLimit * 1000); // usleep wants microseconds
+        var_dump ($exchange->fetch_ohlcv ($symbol, '1M')); // one month
+    }
+```
+
+The fetchOHLCV method shown above returns a list (a flat array) of OHLCV candles represented by the following structure:
+
+```
+[
+    [
+        1504541580000, // UTC timestamp in milliseconds
+        4235.4,        // (O)pen price
+        4230.6,        // (H)ighest price
+        4239.7,        // (L)owest price
+        4230.0,        // (C)losing price
+        37.72941911    // (V)olume
+    ],
+    ...
+]
 ```
 
 ## Trades, Orders, Executions, Transactions
@@ -845,41 +899,63 @@ UNDER CONSTRUCTION
 - this is under heavy development right now, contributions appreciated
 ```
 
+You can call the unified `fetchTrades` / `fetch_trades` method to get the list of most recent trades for a particular symbol. The `fetchTrades` method is declared in the following way:
+
+```
+async fetchTrades (symbol, params = {})
+```
+
+For example, if you want to print recent trades for all symbols one by one sequentially (mind the rateLimit!) you would do it like so:
+
 ```JavaScript
 // JavaScript
+let sleep = (ms) => new Promise (resolve => setTimeout (resolve, ms));
 (async () => {
-    for (symbol in exchange.markets)
+    for (symbol in exchange.markets) {
+        await sleep (exchange.rateLimit) // milliseconds
         console.log (await exchange.fetchTrades (symbol))
+    }
 }) ()
 ```
 
 ```Python
 # Python
 for symbol in exchange.markets:
+    time.sleep (exchange.rateLimit / 1000) # time.sleep wants seconds
     print (exchange.fetch_trades (symbol))
 ```
 
 ```PHP
 // PHP
-foreach ($exchange->markets as $symbol => $market)
+foreach ($exchange->markets as $symbol => $market) {
+    usleep ($exchange.rateLimit * 1000); // usleep wants microseconds
     var_dump ($exchange->fetch_trades ($symbol));
-```
-
-```
-{
-    'info': { ... }, // the original decoded JSON as is
-
-    'id':        '12345-67890:09876/54321', // string trade id
-    'timestamp':  1502962946216,            // Unix timestamp in milliseconds
-    'datetime':  '2017-08-17 12:42:48.000', // ISO8601 datetime with milliseconds
-    'symbol':    'ETH/BTC',                 // symbol
-    'order':     '12345-67890:09876/54321', // string order id or undefined/None/null
-    'type':      'limit',                   // order type, 'market', 'limit' or undefined/None/null
-    'side':      'buy',                     // direction of the trade, 'buy' or 'sell'
-    'price':      0.06917684,               // float price in quote currency
-    'amount':     1.5,                      // amount of base currency
 }
 ```
+
+The fetchTrades method shown above returns a list (a flat array) of trades represented by the following structure:
+
+```
+[
+    {
+        'info':       { ... },                  // the original decoded JSON as is
+        'id':        '12345-67890:09876/54321', // string trade id
+        'timestamp':  1502962946216,            // Unix timestamp in milliseconds
+        'datetime':  '2017-08-17 12:42:48.000', // ISO8601 datetime with milliseconds
+        'symbol':    'ETH/BTC',                 // symbol
+        'order':     '12345-67890:09876/54321', // string order id or undefined/None/null
+        'type':      'limit',                   // order type, 'market', 'limit' or undefined/None/null
+        'side':      'buy',                     // direction of the trade, 'buy' or 'sell'
+        'price':      0.06917684,               // float price in quote currency
+        'amount':     1.5,                      // amount of base currency
+    },
+    ...
+]
+```
+
+Most exchanges return most of the above fields for each trade, though there are exchanges that don't return the type, the side, the trade id or the order id of the trade. Most of the time you are guaranteed to have the timestamp, the datetime, the symbol, the price and the amount of each trade.
+
+Also, the `fetchTrades ()` / `fetch_trades()` method has an optional second argument `params` (an assoc-key array/dict, empty by default). You can use it to pass extra params (if supported by your exchange), for example, the offset, the sorting direction, the limit (count) of returned trades and some other params (see the API docs for your exchange for more details).
 
 ```
 UNDER CONSTRUCTION
