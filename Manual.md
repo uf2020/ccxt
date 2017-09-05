@@ -653,9 +653,13 @@ Note, that most of methods of the unified API accept an optional `params` parame
 
 # Market Data
 
-```
-UNDER CONSTRUCTION
-```
+- [Order Book / Market Depth](https://github.com/kroitor/ccxt/wiki/Manual#order-book--market-depth)
+  - [Market Price](https://github.com/kroitor/ccxt/wiki/Manual#market-price)
+- [Price Tickers](https://github.com/kroitor/ccxt/wiki/Manual#price-tickers)
+  - [Individually By Symbol](https://github.com/kroitor/ccxt/wiki/Manual#individually-by-symbol)
+  - [All At Once](https://github.com/kroitor/ccxt/wiki/Manual#all-at-once)
+- [OHLCV Candlestick Charts](https://github.com/kroitor/ccxt/wiki/Manual#ohlcv-candlestick-charts)
+- [Public Trades And Closed Orders](https://github.com/kroitor/ccxt/wiki/Manual#trades-orders-executions-transactions)
 
 ## Order Book / Market Depth
 
