@@ -4,7 +4,10 @@ Below is a set of frequently asked questions you need to answer, if you want to 
 
   - What is the trading strategy you want implemented (say, if it is an arbitrage strategy, what kind/type of arbitrage you want: basic, statistical, rebalancing, triangular, etc...)?
   - What's considered to be a trading opportunity for the bot?
-  - What are desired conditions to enter a trade (TA params, indicators, signaling, etc)?
+  - What are desired conditions to enter a trade? Try each sentence of your strategy specification on the following:
+    - At which price/rate/level?
+    - For which volume?
+    - On which exchange?
   - What are the exit conditions?
   - What are your risk management requirements?
   - Do you want to trade with one account or multiple accounts within each exchange?
@@ -18,10 +21,9 @@ Below is a set of frequently asked questions you need to answer, if you want to 
 
   - Which exchanges you want?
   - Which pairs/instruments you want?
-  - Do you need chat integrations (like, slack, telegram, discord, irc)?
+  - Do you need chat integrations and/or notifications (slack, telegram, discord, irc, twitter, email, text messaging, mobile push notifications or other means)?
   - Do you want to control it from a phone application?
   - Do you want network access to your bot? 
-  - Do you need the bot to notify you on significant market events by email, text messaging, mobile push notifications or other means?
   - Do you want web access to your bot (to open it within a browser tab)?
   - Do you want to integrate with the actual blockchain or a transaction graph of an existing cryptocurrency like Bitcoin, Ethereum, altcoins?    
   - Which external sources of data and online services you want integrated for market insights, signals (other purposes, maybe)?
@@ -33,9 +35,11 @@ Below is a set of frequently asked questions you need to answer, if you want to 
   - What are you hardware and bandwidth requirements (do you want a bot to run from an Arduino USB stick, from your mobile, from a server rack, from within a cloud)?
   - What's your target OS / runtime environment?
   - What are your resource limits on traffic, storage space, memory and CPU time?
-  - Do you want REST over HTTP?
-  - Do you need Websockets (this is usually faster than REST)?
-  - Do you need the support for FIX / IFEX?
+  - Which of these connectivity options do you choose? You can choose more than one, but you need to choose at least one:
+    - Standard REST over HTTP?
+    - WebSocket (usually faster than REST)?
+    - FIX/IFEX?
+    - other?
   - Do you need to proxify your requests (to work around exchange request rate limits)?
   - What parameters do you want for control?
   - Do you want it to have a rich GUI?
