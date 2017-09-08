@@ -71,4 +71,4 @@ For those who are not programmers or software developers: please, don't waste yo
 
 A one-liner question is not enough to derive a precise estimate of time and costs. If you ask *'How much is it?'* and don't say what it is, it's like asking *'How much is it to buy a car or a house?'*. The first answer you'll get is: *'That depends.'*. You should specify your wheels, your roof, your engine, your basement type, the size of your windows, your desired interior and exterior, etc, etc... Specify everything, just like you would do in everyday life. We can only quote you based on your design specification, so you must have it for a start.
 
-If you don't have a specification, we can make it for you, but this separate job on its own can cost you extra time and money.
+If you don't have a specification, we can make it for you but it can cost you extra time and money.
