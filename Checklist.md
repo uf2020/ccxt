@@ -34,11 +34,9 @@ Below is a set of frequently asked questions you need to answer, if you want to 
   - What are your resource limits on traffic, storage space, memory and CPU time?
   - Which of these connectivity options do you choose? You can choose more than one, but you need to choose at least one:
     - Standard REST over HTTP?
-    - WebSocket ?
-    - FIX?
+    - WebSocket (usually faster than REST)?
+    - FIX/IFEX?
     - other?
-  - Do you need Websockets (this is usually faster than REST)?
-  - Do you need the support for FIX / IFEX?
   - Do you need to proxify your requests (to work around exchange request rate limits)?
   - What parameters do you want for control?
   - Do you want it to have a rich GUI?
