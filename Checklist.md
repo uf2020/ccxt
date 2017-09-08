@@ -50,9 +50,9 @@ Below is a set of frequently asked questions you need to answer, if you want to 
 # Testing
 
   - Do you want paper trading capabilities (trade simulation in real time)?
-  - Do you want to have backtesting functionality (for trade simulation with data from recent past)?
+  - Do you want to have backtesting functionality (for trade simulation with data from recent past)? Adding this feature can easily double the time and costs, depending on the number of exchanges and pairs you want.
+  - How much historical data you require? The more it is, the better infrastructure you will need.
   - Do you want to conduct a test of your strategy before running it in real action?
-  - How much historical data you need?
   - How much of statistical calculations you want to perform, do you want concurrency, parallelism, genetic algorithms?
 
 # Scalability
@@ -70,3 +70,5 @@ Below is a set of frequently asked questions you need to answer, if you want to 
 For those who are not programmers or software developers: please, don't waste your time asking *'How much does it cost to make a bot?'*. You need to be a lot more specific than that if you really want your bot or your software done. At least be generous enough to include a feature list in your request. Without knowing your requirements it's very hard for us to quote you. You should be able to tell exactly what you want and to specify your requirements in a structured way.
 
 A one-liner question is not enough to derive a precise estimate of time and costs. If you ask *'How much is it?'* and don't say what it is, it's like asking *'How much is it to buy a car or a house?'*. The first answer you'll get is: *'That depends.'*. You should specify your wheels, your roof, your engine, your basement type, the size of your windows, your desired interior and exterior, etc, etc... Specify everything, just like you would do in everyday life. We can only quote you based on your design specification, so you must have it for a start.
+
+If you don't have a specification, we can make it for you, but this separate job on its own can cost you extra time and money.
