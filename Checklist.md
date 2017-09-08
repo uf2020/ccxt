@@ -4,7 +4,7 @@ Below is a set of frequently asked questions you need to answer, if you want to 
 
   - What is the trading strategy you want implemented (say, if it is an arbitrage strategy, what kind/type of arbitrage you want: basic, statistical, rebalancing, triangular, etc...)?
   - What's considered to be a trading opportunity for the bot?
-  - What are desired conditions to enter a trade? Try each sentence of your strategy specification on the following:
+  - What are desired conditions to enter a trade? To each sentence of your specification apply the following:
     - At which price/rate/level?
     - For which volume?
     - On which exchange?
