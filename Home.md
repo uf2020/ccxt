@@ -40,11 +40,16 @@ Welcome to the ccxt wiki!
       - [Limit Orders](https://github.com/kroitor/ccxt/wiki/Manual#limit-orders)
       - [Custom Params](https://github.com/kroitor/ccxt/wiki/Manual#custom-order-params)
     - [Cancelling Orders](https://github.com/kroitor/ccxt/wiki/Manual#cancelling-orders)
-    - Querying Orders (work in progress)
-    - Funding Your Account
+    - Querying Orders *(work in progress right now)*
+      - Order By Id
+      - All Orders
+      - Open Orders
+      - Closed Orders
+      - Trades, Fills, Executions
+    - Funding Your Account *(work in progress right now)*
       - Deposit
       - Withdraw
-      - Ledger
+      - Transaction History (Ledger)
 
 ## Troubleshooting
 
