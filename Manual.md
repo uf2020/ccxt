@@ -1300,19 +1300,19 @@ In Python and PHP you can do the same by subclassing and overriding nonce functi
 # Python
 
 # A: custom nonce
-class MyKraken (ccxt.kraken):
+class MyKraken(ccxt.kraken):
     n = 1
-    def nonce (self):
+    def nonce(self):
         return self.n += 1
 
 # B: milliseconds nonce
-class MyBitfinex (ccxt.bitfinex):
-    def nonce (self):
-        return self.milliseconds ()
+class MyBitfinex(ccxt.bitfinex):
+    def nonce(self):
+        return self.milliseconds()
 
 # C: milliseconds nonce inline
-hitbtc = ccxt.hitbtc ({
-    'nonce': lambda: time.time () * 1000
+hitbtc = ccxt.hitbtc({
+    'nonce': lambda: int(time.time() * 1000)
 })
 ```
 
