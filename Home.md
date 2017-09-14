@@ -26,6 +26,7 @@ Welcome to the ccxt wiki!
   - [API Methods / Endpoints](https://github.com/kroitor/ccxt/wiki/Manual#api-methods--endpoints)
     - [Public/Private API](https://github.com/kroitor/ccxt/wiki/Manual#publicprivate-api)
     - [Synchronous vs Asynchronous Calls](https://github.com/kroitor/ccxt/wiki/Manual#synchronous-vs-asynchronous-calls)
+    - [Unified API](https://github.com/kroitor/ccxt/wiki/Manual#unified-api)
   - [Market Data](https://github.com/kroitor/ccxt/wiki/Manual#market-data)
     - [Order Book / Market Depth](https://github.com/kroitor/ccxt/wiki/Manual#order-book--market-depth)
     - [Price Tickers](https://github.com/kroitor/ccxt/wiki/Manual#price-tickers)
@@ -53,7 +54,7 @@ Welcome to the ccxt wiki!
 
 ## Troubleshooting
 
-- [Overriding The Nonce](https://github.com/kroitor/ccxt/wiki/Manual#overriding-the-nonce)  
+- [Overriding The Nonce](https://github.com/kroitor/ccxt/wiki/Manual#overriding-the-nonce)
 - [Error Handling](https://github.com/kroitor/ccxt/wiki/Manual#error-handling)
 - [Troubleshooting](https://github.com/kroitor/ccxt/wiki/Manual#troubleshooting)
 
