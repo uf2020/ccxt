@@ -58,6 +58,11 @@ Welcome to the ccxt wiki!
 - [Error Handling](https://github.com/kroitor/ccxt/wiki/Manual#error-handling)
 - [Troubleshooting](https://github.com/kroitor/ccxt/wiki/Manual#troubleshooting)
 
+## Tutorials
+
+- Hello, Bot! *(work in progress)*
+- ...
+
 ## Examples
 
 - [Usage Examples](https://github.com/kroitor/ccxt/tree/master/examples) (work in progress)
