@@ -555,25 +555,22 @@ var_dump (new \ccxt\okcoinusd ()); // PHP
 
 ## Synchronous vs Asynchronous Calls
 
-In JavaScript all methods are asynchronous and return Promises that resolve with a decoded JSON object. Therefore there are two styles for JavaScript code structuring – callbacks and async/await.
+In JavaScript all methods are asynchronous and return Promises that resolve with a decoded JSON object. Therefore there are two styles for JavaScript code structuring – callbacks and async/await:
 
 ```JavaScript
-// JavaScript
-
-// callback style
-bitfinex.publicGetSymbolsDetails ().then (markets => {
-    // → nested codeflow
-    let marketId = markets[0]['pair']
-    bitfinex.publicGetPubtickerSymbol ({ symbol: marketId }).then (ticker => {
-        // → nested codeflow
-        console.log (bitfinex.id, marketId, ticker)
+// JavaScript, callback style (nested code flow)
+kraken.publicGetSymbolsDetails ().then (pairs => {
+    let marketIds = Object.keys (pairs['result'])
+    let marketId = marketIds[0]
+    kraken.publicGetTicker ({ pair: marketId }).then (ticker => {
+        console.log (kraken.id, marketId, ticker)
     })
 })
-
-// async / await style
+```
+```
+// JavaScript, async / await style (linear code flow)
 (async () => {
-    // ↓ linear codeflow
-    let pairs = await kraken.publicGetAssetPairs () 
+    let pairs = await kraken.publicGetSymbolsDetails () 
     let marketIds = Object.keys (pairs['result'])
     let marketId = marketIds[0]
     let ticker = await kraken.publicGetTicker ({ pair: marketId })
