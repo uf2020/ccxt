@@ -559,6 +559,7 @@ In JavaScript all methods are asynchronous and return Promises that resolve with
 
 ```JavaScript
 // JavaScript, callback style (nested code flow)
+
 kraken.publicGetSymbolsDetails ().then (pairs => {
     let marketIds = Object.keys (pairs['result'])
     let marketId = marketIds[0]
@@ -569,6 +570,7 @@ kraken.publicGetSymbolsDetails ().then (pairs => {
 ```
 ```JavaScript
 // JavaScript, async / await style (linear code flow)
+
 (async () => {
     let pairs = await kraken.publicGetSymbolsDetails () 
     let marketIds = Object.keys (pairs['result'])
