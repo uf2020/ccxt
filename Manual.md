@@ -555,21 +555,10 @@ var_dump (new \ccxt\okcoinusd ()); // PHP
 
 ## Synchronous vs Asynchronous Calls
 
-In JavaScript all methods are asynchronous and return Promises that resolve with a decoded JSON object. Therefore there are two styles for JavaScript code structuring – callbacks and async/await:
+In JavaScript all methods are asynchronous and return `await`able Promises that resolve with a decoded JSON object. If you're not familiar with the async/await syntax in JavaScript, you can read about it [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function).
 
 ```JavaScript
-// JavaScript, callback style (nested code flow)
-
-kraken.publicGetSymbolsDetails ().then (pairs => {
-    let marketIds = Object.keys (pairs['result'])
-    let marketId = marketIds[0]
-    kraken.publicGetTicker ({ pair: marketId }).then (ticker => {
-        console.log (kraken.id, marketId, ticker)
-    })
-})
-```
-```JavaScript
-// JavaScript, async / await style (linear code flow)
+// JavaScript
 
 (async () => {
     let pairs = await kraken.publicGetSymbolsDetails () 
