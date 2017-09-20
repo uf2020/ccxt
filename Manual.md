@@ -567,7 +567,7 @@ kraken.publicGetSymbolsDetails ().then (pairs => {
     })
 })
 ```
-```
+```JavaScript
 // JavaScript, async / await style (linear code flow)
 (async () => {
     let pairs = await kraken.publicGetSymbolsDetails () 
