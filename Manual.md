@@ -171,10 +171,10 @@ Every exchange has a set of properties and methods, most of which you can overri
 Here's an overview of base exchange properties with values added for example:
 
 ```JavaScript
-{    
+{
     'id':   'exchange'                  // lowercase string exchange id
     'name': 'Exchange'                  // human-readable string
-    'countries': [ 'US', 'CN', 'EU' ],  // string or array of ISO country codes    
+    'countries': [ 'US', 'CN', 'EU' ],  // string or array of ISO country codes
     'urls': {
         'api': 'https://api.example.com/data',  // string or dictionary of base API URLs
         'www': 'https://www.example.com'        // string website URL
@@ -201,7 +201,7 @@ Here's an overview of base exchange properties with values added for example:
     'markets_by_id':   { ... },         // dictionary of dictionaries (markets) by id
     'proxy': 'https://crossorigin.me/', // string URL
     'apiKey':   '92560ffae9b8a0421...', // string public apiKey (ASCII, hex, Base64, ...)
-    'secret':   '9aHjPmW+EtRRKN/Oi...'  // string private secret key 
+    'secret':   '9aHjPmW+EtRRKN/Oi...'  // string private secret key
     'password': '6kszf4aci8r',          // string password
     'uid':      '123456',               // string user id
 }
@@ -269,7 +269,7 @@ Most exchanges allow **up to 1 or 2 requests per second**. Exchanges may tempora
 
 ## DDoS Protection By Cloudflare / Incapsula
 
-Some exchanges are [DDoS](https://en.wikipedia.org/wiki/Denial-of-service_attack)-protected by [Cloudflare](https://www.cloudflare.com) or [Incapsula](https://www.incapsula.com). Your IP can get temporarily blocked during periods of high load. Sometimes they even restrict whole countries and regions. In that case their servers usually return a page that states a HTTP 40x error or runs an AJAX test of your browser / captcha test and delays the reload of the page for several seconds. Then your browser/fingerprint is granted access temporarily and gets added to a whitelist or receives a HTTP cookie for further use. 
+Some exchanges are [DDoS](https://en.wikipedia.org/wiki/Denial-of-service_attack)-protected by [Cloudflare](https://www.cloudflare.com) or [Incapsula](https://www.incapsula.com). Your IP can get temporarily blocked during periods of high load. Sometimes they even restrict whole countries and regions. In that case their servers usually return a page that states a HTTP 40x error or runs an AJAX test of your browser / captcha test and delays the reload of the page for several seconds. Then your browser/fingerprint is granted access temporarily and gets added to a whitelist or receives a HTTP cookie for further use.
 
 If you encounter DDoS protection errors and cannot reach a particular exchange then:
 - try later
@@ -288,9 +288,9 @@ UNDER CONSTRUCTION
 
 # Markets
 
-Each exchange is a place for trading some kinds of valuables. Sometimes they are called with various different terms like instruments, symbols, trading pairs, currencies, tokens, stocks, commodities, contracts, etc, but they all mean the same – a trading pair, a symbol or a financial instrument. 
+Each exchange is a place for trading some kinds of valuables. Sometimes they are called with various different terms like instruments, symbols, trading pairs, currencies, tokens, stocks, commodities, contracts, etc, but they all mean the same – a trading pair, a symbol or a financial instrument.
 
-In terms of the ccxt library, every exchange offers multiple markets within itself. The set of markets differs from exchange to exchange opening possibilities for cross-exchange and cross-market arbitrage. A market is usually a pair of traded crypto/fiat currencies. 
+In terms of the ccxt library, every exchange offers multiple markets within itself. The set of markets differs from exchange to exchange opening possibilities for cross-exchange and cross-market arbitrage. A market is usually a pair of traded crypto/fiat currencies.
 
 ## Market Structure
 
@@ -499,7 +499,7 @@ var_dump ($bitfinex->markets['XRP/BTC']);
 
 # API Methods / Endpoints
 
-Each exchange offers a set of API methods. Each method of the API is called an *endpoint*. Endpoints are HTTP URLs for querying various types of information. All endpoints return JSON in response to client requests. 
+Each exchange offers a set of API methods. Each method of the API is called an *endpoint*. Endpoints are HTTP URLs for querying various types of information. All endpoints return JSON in response to client requests.
 
 Usually, there is an endpoint for getting a list of markets from an exchange, an endpoint for retrieving an order book for a particular market, an endpoint for retrieving trade history, endpoints for placing and cancelling orders, for money deposit and withdrawal, etc... Basically every kind of action you could perform within a particular exchange has a separate endpoint URL offered by the API.
 
@@ -507,7 +507,7 @@ Because the set of methods differs from exchange to exchange, the ccxt library i
 - a public and private API for all possible URLs and methods
 - a unified API supporting a subset of common methods
 
-The endpoint URLs are predefined in the `api` property for each exchange. You don't have to override it, unless you are implementing a new exchange API (at least you should know what you're doing). 
+The endpoint URLs are predefined in the `api` property for each exchange. You don't have to override it, unless you are implementing a new exchange API (at least you should know what you're doing).
 
 The endpoint definition is a list of all API URLs exposed by an exchange. This list gets converted to callable methods upon exchange instantiation. Each URL in the API endpoint list gets a corresponding callable method. For example, if an exchange offers an HTTP GET URL for querying prices like `https://example.com/public/quotes`, it is converted to a method named `example.publicGetQuotes () / $example->publicGetQuotes ()`. This is done automatically for all exchanges, therefore the ccxt library supports all possible URLs offered by crypto exchanges.
 
@@ -517,7 +517,7 @@ API URLs are often grouped into two sets of methods called a *public API* for ma
 
 A public API is used to access market data and does not require any authentication whatsoever. Most exchanges provide market data openly to all (under their rate limit). With the ccxt library anyone can access market data out of the box without having to register with the exchanges and without setting up account keys and passwords.
 
-Public APIs include the following: 
+Public APIs include the following:
 - instruments/trading pairs
 - price feeds (exchange rates)
 - order books (L1, L2, L3...)
@@ -542,7 +542,7 @@ Private APIs allow the following:
 - transfer funds between accounts
 - use merchant services
 
-Some exchanges offer the same logic under different names. For example, a public API is also often called *market data*, *basic*, *market*, *mapi*, *api*, *price*, etc... All of them mean a set of methods for accessing data available to public. A private API is also often called *trading*, *trade*, *tapi*, *exchange*, *account*, etc... 
+Some exchanges offer the same logic under different names. For example, a public API is also often called *market data*, *basic*, *market*, *mapi*, *api*, *price*, etc... All of them mean a set of methods for accessing data available to public. A private API is also often called *trading*, *trade*, *tapi*, *exchange*, *account*, etc...
 
 A few exchanges also expose a merchant API which allows you to create invoices and accept crypto and fiat payments from your clients. This kind of API is often called *merchant*, *wallet*, *payment*, *ecapi* (for e-commerce).
 
@@ -562,7 +562,7 @@ In the JavaScript version of CCXT all methods are asynchronous and return [Promi
 // JavaScript
 
 (async () => {
-    let pairs = await kraken.publicGetSymbolsDetails () 
+    let pairs = await kraken.publicGetSymbolsDetails ()
     let marketIds = Object.keys (pairs['result'])
     let marketId = marketIds[0]
     let ticker = await kraken.publicGetTicker ({ pair: marketId })
@@ -633,7 +633,7 @@ UNDER CONSTRUCTION
 The unified ccxt API is a subset of methods common among the exchanges. It currently contains the following methods:
 
 - `fetchMarkets ()`: Fetches a list of all available markets from an exchange and returns an abstracted JSON-decoded response, an array of markets. Some exchanges do not have means for obtaining a list of markets via their online API, for those the list of markets is hardcoded.
-- `loadMarkets ([reload])`: Loads the list of markets indexed by symbol and caches it with the exchange instance. Returns cached markets if loaded already, unless the `reload = true` flag is forced. 
+- `loadMarkets ([reload])`: Loads the list of markets indexed by symbol and caches it with the exchange instance. Returns cached markets if loaded already, unless the `reload = true` flag is forced.
 - `fetchOrderBook (symbol)`: Fetch an order book for a particular market trading symbol.
 - `fetchTrades (symbol, [params = {}])`: Fetch recent trades for a particular trading symbol.
 - `fetchTicker (symbol)`: Fetch latest ticker data by trading symbol.
@@ -646,7 +646,7 @@ The unified ccxt API is a subset of methods common among the exchanges. It curre
 - `cancelOrder (id)`
 - ...
 
-Note, that most of methods of the unified API accept an optional `params` parameter. It is an associative array (a dictionary, empty by default) containing the params you want to override. Use the `params` dictionary if you need to pass a custom setting or an optional parameter to your unified query. 
+Note, that most of methods of the unified API accept an optional `params` parameter. It is an associative array (a dictionary, empty by default) containing the params you want to override. Use the `params` dictionary if you need to pass a custom setting or an optional parameter to your unified query.
 
 # Market Data
 
@@ -660,7 +660,7 @@ Note, that most of methods of the unified API accept an optional `params` parame
 
 ## Order Book / Market Depth
 
-Exchanges expose information on open orders with bid (buy) and ask (sell) prices, volumes and other data. Usually there is a separate endpoint for querying current state (stack frame) of the *order book* for a particular market. An order book is also often called *market depth*. The order book information is used in the trading decision making process. 
+Exchanges expose information on open orders with bid (buy) and ask (sell) prices, volumes and other data. Usually there is a separate endpoint for querying current state (stack frame) of the *order book* for a particular market. An order book is also often called *market depth*. The order book information is used in the trading decision making process.
 
 The structure of an order book is as follows:
 
@@ -779,7 +779,7 @@ To get the individual ticker data from an exchange for each particular trading p
 // JavaScript
 (async () => {
     console.log (await (exchange.fetchTicker ('BTC/USD'))) // ticker for BTC/USD
-    let symbols = Object.keys (exchange.markets) 
+    let symbols = Object.keys (exchange.markets)
     let random = Math.floor ((Math.random () * symbols.length)) - 1
     console.log (exchange.fetchTicker (symbols[random])) // ticker for a random symbol
 }) ()
@@ -822,7 +822,7 @@ print(exchange.fetch_tickers()) # all tickers indexed by their symbols
 var_dump ($exchange->fetch_tickers ()); // all tickers indexed by their symbols
 ```
 
-Fetching all tickers requires more traffic than fetching a single ticker. If you only need one ticker, fetching by a particular symbol is faster in general. You probably want to fetch all tickers only if you really need all of them. 
+Fetching all tickers requires more traffic than fetching a single ticker. If you only need one ticker, fetching by a particular symbol is faster in general. You probably want to fetch all tickers only if you really need all of them.
 
 The structure of returned value is as follows:
 
@@ -853,7 +853,7 @@ UNDER CONSTRUCTION
 - this is under heavy development right now, contributions appreciated
 ```
 
-Most exchanges have endpoints for fetching OHLCV data, but some of them don't. The exchange boolean (true/false) property named `hasFetchOHLCV` indicates whether the exchange supports candlestick data series or not. 
+Most exchanges have endpoints for fetching OHLCV data, but some of them don't. The exchange boolean (true/false) property named `hasFetchOHLCV` indicates whether the exchange supports candlestick data series or not.
 
 The `fetchOHLCV` method is declared in the following way:
 
@@ -866,13 +866,13 @@ You can call the unified `fetchOHLCV` / `fetch_ohlcv` method to get the list of 
 ```JavaScript
 // JavaScript
 let sleep = (ms) => new Promise (resolve => setTimeout (resolve, ms));
-if (exchange.hasFetchOHLCV) {    
+if (exchange.hasFetchOHLCV) {
     (async () => {
         for (symbol in exchange.markets) {
             await sleep (exchange.rateLimit) // milliseconds
             console.log (await exchange.fetchOHLCV (symbol, '1m')) // one minute
         }
-    }) ()    
+    }) ()
 }
 ```
 
@@ -893,7 +893,7 @@ if ($exchange->hasFetchOHLCV)
     }
 ```
 
-To get the list of available timeframes for your exchange see the `timeframes` property. Note that it is only populated when `hasFetchTickers`  is true as well. 
+To get the list of available timeframes for your exchange see the `timeframes` property. Note that it is only populated when `hasFetchTickers`  is true as well.
 
 The fetchOHLCV method shown above returns a list (a flat array) of OHLCV candles represented by the following structure:
 
@@ -992,7 +992,9 @@ Authentication with all exchanges is handled automatically if provided with prop
 3. Sign the serialized params using HMAC-SHA256/384/512 or MD5 with your secret key.
 4. Append the signature in Hex or Base64 and nonce to HTTP headers or body.
 
-This process may differ from exchange to exchange. Some exchanges may want the signature in a different encoding, some of them vary in header and body param names and formats, but the general pattern is the same for all of them. The authentication is already handled for you, so you don't need to perform any of those steps manually unless you are implementing a new exchange class. The only thing you need for trading is the actual API key pair.
+This process may differ from exchange to exchange. Some exchanges may want the signature in a different encoding, some of them vary in header and body param names and formats, but the general pattern is the same for all of them.
+
+The authentication is already handled for you, so you don't need to perform any of those steps manually unless you are implementing a new exchange class. The only thing you need for trading is the actual API key pair.
 
 ## API Keys Setup
 
@@ -1061,7 +1063,7 @@ $zaif = new \ccxt\zaif (array (
 
 ```
 
-Note that your private requests will fail with an exception or error if you don't set up your API credentials before you start trading. To avoid character escaping **always write your credentials in single quotes**, not double quotes (`'VERY_GOOD'`, `"VERY_BAD"`). 
+Note that your private requests will fail with an exception or error if you don't set up your API credentials before you start trading. To avoid character escaping **always write your credentials in single quotes**, not double quotes (`'VERY_GOOD'`, `"VERY_BAD"`).
 
 ## Querying Account Balance
 
@@ -1079,15 +1081,15 @@ The structure of returned balance info is as follows:
 
     'USD': {
         'free': 123.00   // ...
-        'used': 456.00,  
-        'total': 579.00, 
+        'used': 456.00,
+        'total': 579.00,
     },
 
     ...
 }
 ```
 
-Some exchanges may not return full balance info. Many exchanges do not return balances for your empty or unused accounts. In that case some currencies may be missing in returned balance structure. 
+Some exchanges may not return full balance info. Many exchanges do not return balances for your empty or unused accounts. In that case some currencies may be missing in returned balance structure.
 
 Also, some exchanges cannot return certain fields and are only capable of telling a total balance (without details). Therefore some or all of the free, used and total amounts may be undefined, None or null. You need to account for that when working with returned balances.
 
@@ -1123,7 +1125,7 @@ A successful call to a unified method for placing market or limit orders returns
 ```JavaScript
 {
     'id': 'string',  // order id
-    'info': { ... }, // decoded original JSON response from the exchange as is 
+    'info': { ... }, // decoded original JSON response from the exchange as is
 }
 ```
 
@@ -1131,7 +1133,7 @@ A successful call to a unified method for placing market or limit orders returns
 
 ### Market Orders
 
-Market price orders are also known as *spot price orders*, *instant orders* or simply *market orders*. A market order gets executed immediately. The matching engine of the exchange closes the order (fulfills it) with one or more transactions from the top of the order book stack. 
+Market price orders are also known as *spot price orders*, *instant orders* or simply *market orders*. A market order gets executed immediately. The matching engine of the exchange closes the order (fulfills it) with one or more transactions from the top of the order book stack.
 
 The exchange will close your market order for the best price available. You are not guaranteed though, that the order will be executed for the price you observe prior to placing your order. There can be a slight change of the price for the traded market while your order is being executed, also known as *price slippage*. The price can slip because of networking roundtrip latency, high loads on the exchange, price volatility and other factors. When placing a market order you don't need to specify the price of the order.
 
@@ -1245,7 +1247,7 @@ fetchOrder (id)
 
 ```UNDER CONSTRUCTION```
 
-### Withdraw 
+### Withdraw
 
 ```UNDER CONSTRUCTION```
 
@@ -1255,9 +1257,9 @@ fetchOrder (id)
 
 ## Overriding The Nonce
 
-**The default nonce is a 32-bit Unix Timestamp in seconds. You should override it with a milliseconds-nonce if you want to make private requests more frequently than once per second! Most exchanges will throttle your requests if you hit their rate limits, read [API docs for your exchange](https://github.com/kroitor/ccxt/wiki/Exchanges) carefully!** 
+**The default nonce is a 32-bit Unix Timestamp in seconds. You should override it with a milliseconds-nonce if you want to make private requests more frequently than once per second! Most exchanges will throttle your requests if you hit their rate limits, read [API docs for your exchange](https://github.com/kroitor/ccxt/wiki/Exchanges) carefully!**
 
-In case you need to reset the nonce it is much easier to create another pair of keys for using with private APIs. Creating new keys and setting up a fresh unused keypair in your config is usually enough for that. 
+In case you need to reset the nonce it is much easier to create another pair of keys for using with private APIs. Creating new keys and setting up a fresh unused keypair in your config is usually enough for that.
 
 In some cases you are unable to create new keys due to lack of permissions or whatever. If that happens you can still override the nonce. Base market class has the following methods for convenience:
 
@@ -1272,7 +1274,7 @@ There are exchanges that confuse milliseconds with microseconds in their API doc
 
 // A: custom nonce redefined in constructor parameters
 let nonce = 1
-let kraken1 = new ccxt.kraken ({ nonce: () => nonce++ }) 
+let kraken1 = new ccxt.kraken ({ nonce: () => nonce++ })
 
 // B: nonce redefined explicitly
 let kraken2 = new ccxt.kraken ()
@@ -1345,7 +1347,7 @@ class CCXTError extends Error {
     constructor () {
         super ()
         // a workaround to make `instanceof CCXTError` work in ES5
-        this.constructor = CCXTError 
+        this.constructor = CCXTError
         this.__proto__   = CCXTError.prototype
     }
 }
@@ -1387,7 +1389,7 @@ Below is an outline of exception inheritance hierarchy:
 - `CCXTError`: Generic error class for all sorts of errors, including accessibility and request/response mismatch. Users should catch this exception at the very least, if no error differentiation is required.
 - `ExchangeError`: This exception is thrown when an exchange server replies with an error in JSON, possible reasons:
   - endpoint is switched off by the exchange
-  - symbol not found on the exchange 
+  - symbol not found on the exchange
   - some additional endpoint parameter required by the exchange is missing
   - the format of some parameters passed into the endpoint is incorrect
   - an exchange replies with an unclear answer
@@ -1399,7 +1401,7 @@ Below is an outline of exception inheritance hierarchy:
     - `cloudflare`
     - `incapsula`
   - `RequestTimeout`: The name literally says it all. This exception is raised when connection with the exchange fails or data is not fully received in a specified amount of time. This is controlled by the `timeout` option.
-  - `ExchangeNotAvailable`: The ccxt library throws this error if it detects any of the following keywords in response: 
+  - `ExchangeNotAvailable`: The ccxt library throws this error if it detects any of the following keywords in response:
     - `offline`
     - `unavailable`
     - `busy`
@@ -1426,7 +1428,7 @@ In case you experience any difficulty connecting to a particular exchange, do th
 ## Notes
 
 - Use the `verbose = true` option or instantiate your troublesome exchange with `new ccxt.exchange ({ 'verbose': true })` to see the HTTP exchange in details. The verbose output will also be of use for us to debug it if you submit an issue on GitHub.
-- As written above, some exchanges are not available in certain countries. You should use a proxy or get a server somewhere closer to the exchange. 
+- As written above, some exchanges are not available in certain countries. You should use a proxy or get a server somewhere closer to the exchange.
 - If you are getting authentication errors or *'invalid keys'* errors, those are most likely due to a nonce issue.
 - Some exchanges do not state it clearly if they fail to authenticate your request. In those circumstances they might respond with an exotic error code, like HTTP 502 Bad Gateway Error or something that's even less related to the actual cause of the error.
 - ...
