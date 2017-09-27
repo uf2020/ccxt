@@ -1130,7 +1130,7 @@ var_dump ($exchange->fetch_balance ());
 ## Orders
 
 ```diff
-- this is under heavy development right now, contributions, pull requests and feedback appreciated
+- this is under development right now, contributions, pull requests and feedback appreciated
 ```
 
 ### Order Structure
