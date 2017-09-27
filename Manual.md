@@ -1129,6 +1129,10 @@ var_dump ($exchange->fetch_balance ());
 
 ## Orders
 
+```diff
+- this is under heavy development right now, contributions, pull requests and feedback appreciated
+```
+
 ### Order Structure
 
 Most of methods returning orders within ccxt unified API will usually yield an order structure as described below:
@@ -1251,7 +1255,7 @@ $exchange->cancel_order ('1234567890'); // replace with your order id here (a st
 ### Querying Orders
 
 ```diff
-- this is under heavy development right now, contributions and feedback appreciated
+- this is under heavy development right now, contributions, pull requests and feedback appreciated
 ```
 
 Most of the time you can query orders by their ids or statuses, though not all exchanges offer a full and flexible set of endpoints for querying orders. Some exchanges might not have a method for fetching recently closed orders, the other can lack a method for getting an order by id, etc. The ccxt library will target those cases by making workarounds if possible.
