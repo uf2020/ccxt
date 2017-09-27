@@ -48,9 +48,9 @@ Welcome to the ccxt wiki!
         - Open Orders
         - Closed Orders
         - Trades, Fills, Executions
-    - Funding Your Account *(work in progress right now)*
+    - [Funding Your Account](https://github.com/kroitor/ccxt/wiki/Manual#funding-your-account) *(work in progress right now)*
       - Deposit
-      - Withdraw
+      - [Withdraw](https://github.com/kroitor/ccxt/wiki/Manual#withdraw)
       - Transaction History (Ledger)
 
 ## Troubleshooting

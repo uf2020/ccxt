@@ -1314,7 +1314,11 @@ exchange.fetchOrders (symbol = undefined, params = {}) // use params for custom 
 
 ## Funding Your Account
 
-```UNDER CONSTRUCTION```
+```diff
+- this part of the unified API is currenty a work in progress
+- there may be some issues and missing implementations here and there
+- contributions, pull requests and feedback appreciated
+```
 
 ### Deposit
 
@@ -1322,7 +1326,20 @@ exchange.fetchOrders (symbol = undefined, params = {}) // use params for custom 
 
 ### Withdraw
 
-```UNDER CONSTRUCTION```
+```
+exchange.withdraw (currency, amount, address, params = {})
+```
+
+The withdraw method returns a dictionary containing the withdrawal id, which is usually the txid of the onchain transaction itself, or an internal *withdrawal request id* registered within the exchange. The returned value looks as follows:
+
+```
+{
+    'info' { ... },      // unparsed reply from the exchange, as is
+    'id': '12345567890', // withdrawal id, if any
+}
+```
+
+Some exchanges require a manual approval of each withdrawal by means of 2FA (2-factor authentication). In order to approve your withdrawal you usually have to either click their secret link in your email inbox or enter a Google Authenticator code or an Authy code on their website to verify that withdrawal transaction was requested intentionally.
 
 ### Ledger
 
