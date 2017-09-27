@@ -52,6 +52,9 @@ Welcome to the ccxt wiki!
       - Deposit
       - [Withdraw](https://github.com/kroitor/ccxt/wiki/Manual#withdraw)
       - Transaction History (Ledger)
+    - Fees *(work in progress right now)*
+      - Maker / Taker Order Fees
+      - Deposit / Withdraw
 
 ## Troubleshooting
 
