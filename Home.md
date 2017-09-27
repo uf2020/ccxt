@@ -44,10 +44,10 @@ Welcome to the ccxt wiki!
       - [Cancelling Orders](https://github.com/kroitor/ccxt/wiki/Manual#cancelling-orders)
       - [Querying Orders](https://github.com/kroitor/ccxt/wiki/Manual#querying-orders) *(work in progress right now)*
         - [By Order Id](https://github.com/ccxt-dev/ccxt/wiki/Manual#by-order-id)
-        - All Orders
-        - Open Orders
-        - Closed Orders
-        - Trades, Fills, Executions
+        - [All Orders](https://github.com/ccxt-dev/ccxt/wiki/Manual#all-orders)
+        - [Open Orders](https://github.com/ccxt-dev/ccxt/wiki/Manual#open-orders)
+        - [Closed Orders](https://github.com/ccxt-dev/ccxt/wiki/Manual#closed-orders)
+        - [Trades / Transactions / Fills / Executions](https://github.com/ccxt-dev/ccxt/wiki/Manual#trades--transactions--fills--executions)
     - [Funding Your Account](https://github.com/kroitor/ccxt/wiki/Manual#funding-your-account) *(work in progress right now)*
       - Deposit
       - [Withdraw](https://github.com/kroitor/ccxt/wiki/Manual#withdraw)

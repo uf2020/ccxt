@@ -1310,14 +1310,38 @@ var_dump ($order);
 #### All Orders
 
 ```JavaScript
-exchange.fetchOrders (symbol = undefined, params = {}) // use params for custom overrides
+exchange.fetchOrders (symbol = undefined, params = {})
 ```
 
 #### Open Orders
 
+```JavaScript
+exchange.fetchOpenOrders (symbol = undefined, params = {})
+```
+
 #### Closed Orders
 
-#### Transactions / Executions
+```JavaScript
+exchange.fetchOpenOrders (symbol = undefined, params = {})
+```
+
+#### Trades / Transactions / Fills / Executions
+
+```
+- this part of the unified API is currenty a work in progress
+- there may be some issues and missing implementations here and there
+- contributions, pull requests and feedback appreciated
+```
+
+##### Recent Trades
+
+```JavaScript
+exchange.fetchMyTrades (symbol = undefined, params = {})
+```
+
+##### Trades By Order Id
+
+```UNDER CONSTRUCTION```
 
 ## Funding Your Account
 
