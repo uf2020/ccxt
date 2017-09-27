@@ -1270,34 +1270,34 @@ To get details of a particular order by its id, use the fetchOrder / fetch_order
 
 ```JavaScript
 // the second params argument is optional, you can use it for custom overrides
-exchange.fetchOrder (id, params = {})
+exchange.fetchOrder (id, symbol = undefined, params = {})
 ```
 
-You can pass custom overrided key-values in its second parameter if needed. Below are examples of using the fetchOrder method to get order info from an authenticated exchange instance:
+You can pass custom overrided key-values in additional params if needed. Below are examples of using the fetchOrder method to get order info from an authenticated exchange instance:
 
 ```JavaScript
 // JavaScript
 (async function () {
-    const order = await exchange.fetchOrder (id, {})
+    const order = await exchange.fetchOrder (id)
     console.log (order)
 }) ()
 ```
 
 ```Python
 # Python 2/3 (synchronous)
-order = exchange.fetch_order(id, params = {})
+order = exchange.fetch_order(id)
 print(order)
 
 # Python 3.5+ asyncio (asynchronous)
 import asyncio
 import ccxt.async as ccxt
-order = asyncio.get_event_loop().run_until_complete(exchange.fetch_order(id, {}))
+order = asyncio.get_event_loop().run_until_complete(exchange.fetch_order(id))
 print(order)
 ```
 
 ```PHP
 // PHP
-$order = $exchange->fetch_order ($id, array ());
+$order = $exchange->fetch_order ($id);
 var_dump ($order);
 ```
 
