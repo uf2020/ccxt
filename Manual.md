@@ -1221,7 +1221,7 @@ exchange.cancel_order ('1234567890') # replace with your order id here (a string
 $exchange->cancel_order ('1234567890'); // replace with your order id here (a string)
 ```
 
-## Orders
+## Order Structure
 
 Most of methods returning orders within ccxt unified API will usually yield an order structure as described below:
 
