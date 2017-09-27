@@ -1270,10 +1270,12 @@ Most of the time you can query orders by their ids or statuses, though not all e
 
 #### By Order Id
 
-To get details of a particular order by its id, use the fetchOrder / fetch_order method. The signature of the method is as follows:
+To get details of a particular order by its id, use the fetchOrder / fetch_order method. Some exchanges also require a symbol even when fetching a particular order by id.
+
+The signature of the fetchOrder/fetch_order method is as follows:
 
 ```JavaScript
-// the second params argument is optional, you can use it for custom overrides
+//  you can use the params argument for custom overrides
 exchange.fetchOrder (id, symbol = undefined, params = {})
 ```
 
