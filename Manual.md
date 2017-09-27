@@ -667,28 +667,7 @@ Note, that most of methods of the unified API accept an optional `params` parame
 
 Exchanges expose information on open orders with bid (buy) and ask (sell) prices, volumes and other data. Usually there is a separate endpoint for querying current state (stack frame) of the *order book* for a particular market. An order book is also often called *market depth*. The order book information is used in the trading decision making process.
 
-The structure of an order book is as follows:
-
-```JavaScript
-{
-    'bids': [
-        [ price, amount ],
-        [ price, amount ],
-        ...
-    ],
-    'asks': [
-        [ price, amount ],
-        [ price, amount ],
-        ...
-    ],
-    'timestamp': 1499280391811, // Unix Timestamp in milliseconds (seconds * 1000)
-    'datetime': '2017-07-05T18:47:14.692Z', // ISO8601 datetime string with milliseconds
-}
-```
-
-Prices and amounts are floats. The bids array is sorted by price in descending order. The best (highest) bid price is the first element and the worst (lowest) bid price is the last element. The asks array is sorted by price in ascending order. The best (lowest) ask price is the first element and the worst (highest) ask price is the last element. Bid/ask arrays can be empty if there are no corresponding orders in the order book of an exchange.
-
-Some exchanges return the stack of orders in various levels of details for analysis. It is either in full detail containing each and every order, or it is aggregated having slightly less detail where orders are grouped and merged by price and volume. The levels of detail or levels of order book aggregation are often number-labelled like L1, L2, L3... Having greater detail requires more traffic and bandwidth and is slower in general but gives a benefit of higher precision. Having less detail is usually faster, but may not be  enough in some very specific cases. Some exchanges accept a second dictionary of extra parameters to the `fetchOrderBook () / fetch_order_book ()` function allowing you to get the level of aggregation you need.
+The method for fetching an order book for a particular symbol is called fetchOrderBook(symbol) or fetch_order_book(symbol). It accepts a single symbol param and is called like shown below:
 
 ```JavaScript
 // JavaScript
@@ -717,6 +696,29 @@ foreach ($exchange->markets as $symbol => $market) {
     usleep ($delay); // rate limit
 }
 ```
+
+The structure of a returned order book is as follows:
+
+```JavaScript
+{
+    'bids': [
+        [ price, amount ],
+        [ price, amount ],
+        ...
+    ],
+    'asks': [
+        [ price, amount ],
+        [ price, amount ],
+        ...
+    ],
+    'timestamp': 1499280391811, // Unix Timestamp in milliseconds (seconds * 1000)
+    'datetime': '2017-07-05T18:47:14.692Z', // ISO8601 datetime string with milliseconds
+}
+```
+
+Prices and amounts are floats. The bids array is sorted by price in descending order. The best (highest) bid price is the first element and the worst (lowest) bid price is the last element. The asks array is sorted by price in ascending order. The best (lowest) ask price is the first element and the worst (highest) ask price is the last element. Bid/ask arrays can be empty if there are no corresponding orders in the order book of an exchange.
+
+Some exchanges return the stack of orders in various levels of details for analysis. It is either in full detail containing each and every order, or it is aggregated having slightly less detail where orders are grouped and merged by price and volume. The levels of detail or levels of order book aggregation are often number-labelled like L1, L2, L3... Having greater detail requires more traffic and bandwidth and is slower in general but gives a benefit of higher precision. Having less detail is usually faster, but may not be  enough in some very specific cases. Some exchanges accept a second dictionary of extra parameters to the `fetchOrderBook () / fetch_order_book ()` function allowing you to get the level of aggregation you need.
 
 ### Market Price
 
