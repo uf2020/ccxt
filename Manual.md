@@ -667,7 +667,7 @@ Note, that most of methods of the unified API accept an optional `params` parame
 
 Exchanges expose information on open orders with bid (buy) and ask (sell) prices, volumes and other data. Usually there is a separate endpoint for querying current state (stack frame) of the *order book* for a particular market. An order book is also often called *market depth*. The order book information is used in the trading decision making process.
 
-The method for fetching an order book for a particular symbol is called fetchOrderBook(symbol) or fetch_order_book(symbol). It accepts a single symbol param and is called like shown below:
+The method for fetching an order book for a particular symbol is named `fetchOrderBook (symbol)` or `fetch_order_book(symbol)`. It accepts a single symbol param and is called like shown below:
 
 ```JavaScript
 // JavaScript
