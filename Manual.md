@@ -1068,7 +1068,7 @@ Note that your private requests will fail with an exception or error if you don'
 
 ## Querying Account Balance
 
-The structure of returned balance info is as follows:
+The returned balance structure is as follows:
 
 ```JavaScript
 {
@@ -1141,21 +1141,22 @@ Most of methods returning orders within ccxt unified API will usually yield an o
 ```JavaScript
 {
     'id':        '12345-67890:09876/54321', // string
-    'timestamp':  1502962946216,            // Unix timestamp in milliseconds
     'datetime':  '2017-08-17 12:42:48.000', // ISO8601 datetime with milliseconds
-    'status':    'open',                    // 'open', 'closed', 'canceled'
-    'symbol':    'ETH/BTC',                 // symbol
-    'type':      'limit',                   // 'market', 'limit'
-    'side':      'buy',                     // 'buy', 'sell'
-    'price':      0.06917684,               // float price in quote currency
-    'amount':     1.5,                      // ordered amount of base currency
-    'filled':     1.0,                      // filled amount of base currency
-    'remaining':  0.5,                      // remaining amount to fill
-    'trades':   [ ... ],                    // a list of order trades/executions
-    'fee':      {                           // fee info, if available
-        'currency': 'BTC',                  // which currency the fee is (usually quote)
-        'cost': 0.0009,                     // the fee amount in that currency
+    'timestamp':  1502962946216, // Unix timestamp in milliseconds
+    'status':    'open',         // 'open', 'closed', 'canceled'
+    'symbol':    'ETH/BTC',      // symbol
+    'type':      'limit',        // 'market', 'limit'
+    'side':      'buy',          // 'buy', 'sell'
+    'price':      0.06917684,    // float price in quote currency
+    'amount':     1.5,           // ordered amount of base currency
+    'filled':     1.0,           // filled amount of base currency
+    'remaining':  0.5,           // remaining amount to fill
+    'trades':   [ ... ],         // a list of order trades/executions
+    'fee':      {                // fee info, if available
+        'currency': 'BTC',       // which currency the fee is (usually quote)
+        'cost': 0.0009,          // the fee amount in that currency
     },
+    'info':     { ... },         // the original unparsed order structure as is
 }
 ```
 
@@ -1335,11 +1336,13 @@ The withdraw method returns a dictionary containing the withdrawal id, which is 
 ```
 {
     'info' { ... },      // unparsed reply from the exchange, as is
-    'id': '12345567890', // withdrawal id, if any
+    'id': '12345567890', // string withdrawal id, if any
 }
 ```
 
 Some exchanges require a manual approval of each withdrawal by means of 2FA (2-factor authentication). In order to approve your withdrawal you usually have to either click their secret link in your email inbox or enter a Google Authenticator code or an Authy code on their website to verify that withdrawal transaction was requested intentionally.
+
+In some cases you can also use the withdrawal id to check withdrawal status later (whether it succeeded or not) and to submit 2FA confirmation codes, where this is supported by the exchange. See [their docs](https://github.com/kroitor/ccxt/wiki/Manual#exchanges) for details.
 
 ### Ledger
 
