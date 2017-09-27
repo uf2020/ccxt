@@ -36,17 +36,18 @@ Welcome to the ccxt wiki!
     - [Authentication](https://github.com/kroitor/ccxt/wiki/Manual#authentication)
     - [API Keys Setup](https://github.com/kroitor/ccxt/wiki/Manual#api-keys-setup)
     - [Querying Account Balance](https://github.com/kroitor/ccxt/wiki/Manual#querying-account-balance)
-    - [Placing Orders](https://github.com/kroitor/ccxt/wiki/Manual#placing-orders)
-      - [Market Orders](https://github.com/kroitor/ccxt/wiki/Manual#market-orders)
-      - [Limit Orders](https://github.com/kroitor/ccxt/wiki/Manual#limit-orders)
-      - [Custom Params](https://github.com/kroitor/ccxt/wiki/Manual#custom-order-params)
-    - [Cancelling Orders](https://github.com/kroitor/ccxt/wiki/Manual#cancelling-orders)
-    - [Querying Orders](https://github.com/kroitor/ccxt/wiki/Manual#querying-orders) *(work in progress right now)*
-      - [By Order Id](https://github.com/ccxt-dev/ccxt/wiki/Manual#by-order-id)
-      - All Orders
-      - Open Orders
-      - Closed Orders
-      - Trades, Fills, Executions
+    - [Orders](https://github.com/kroitor/ccxt/wiki/Manual#orders)
+      - [Placing Orders](https://github.com/kroitor/ccxt/wiki/Manual#placing-orders)
+        - [Market Orders](https://github.com/kroitor/ccxt/wiki/Manual#market-orders)
+        - [Limit Orders](https://github.com/kroitor/ccxt/wiki/Manual#limit-orders)
+        - [Custom Params](https://github.com/kroitor/ccxt/wiki/Manual#custom-order-params)
+      - [Cancelling Orders](https://github.com/kroitor/ccxt/wiki/Manual#cancelling-orders)
+      - [Querying Orders](https://github.com/kroitor/ccxt/wiki/Manual#querying-orders) *(work in progress right now)*
+        - [By Order Id](https://github.com/ccxt-dev/ccxt/wiki/Manual#by-order-id)
+        - All Orders
+        - Open Orders
+        - Closed Orders
+        - Trades, Fills, Executions
     - Funding Your Account *(work in progress right now)*
       - Deposit
       - Withdraw

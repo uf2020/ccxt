@@ -1127,101 +1127,9 @@ print (exchange.fetch_balance ())
 var_dump ($exchange->fetch_balance ());
 ```
 
-## Placing Orders
+## Orders
 
-To place an order you will need the following information:
-
-- `symbol`, a string literal symbol of the market you wish to trade on, like `BTC/USD`, `ZEC/ETH`, `DOGE/DASH`, etc...
-- `side`, a string literal for the direction of your order, `buy` or `sell`. When you place a buy order you give quote currency and receive base currency. For example, buying `BTC/USD` means that you will receive bitcoins for your dollars. When you are selling `BTC/USD` the outcome is the opposite and you receive dollars for your bitcoins.
-- `type`, a string literal type of order, ccxt currently supports `market` and `limit` orders
-- `amount`, how much of currency you want to trade. This usually refers to base currency of the trading pair symbol, though some exchanges require the amount in quote currency and a few of them require base or quote amount depending on the side of the order. See their API docs for details.
-- `price`, how much quote currency you are willing to pay for a trade lot of base currency (for limit orders only)
-
-A successful call to a unified method for placing market or limit orders returns the following structure:
-
-```JavaScript
-{
-    'id': 'string',  // order id
-    'info': { ... }, // decoded original JSON response from the exchange as is
-}
-```
-
-**Some exchanges will allow to trade with limit orders only.** See [their docs](https://github.com/kroitor/ccxt/wiki/Manual#exchanges) for details.
-
-### Market Orders
-
-Market price orders are also known as *spot price orders*, *instant orders* or simply *market orders*. A market order gets executed immediately. The matching engine of the exchange closes the order (fulfills it) with one or more transactions from the top of the order book stack.
-
-The exchange will close your market order for the best price available. You are not guaranteed though, that the order will be executed for the price you observe prior to placing your order. There can be a slight change of the price for the traded market while your order is being executed, also known as *price slippage*. The price can slip because of networking roundtrip latency, high loads on the exchange, price volatility and other factors. When placing a market order you don't need to specify the price of the order.
-
-Note, that some exchanges will not accept market orders (they allow limit orders only).
-
-```
-// camelCaseNotation
-exchange.createMarketBuyOrder (symbol, amount[, params])
-exchange.createMarketSellOrder (symbol, amount[, params])
-
-// underscore_notation
-exchange.create_market_buy_order (symbol, amount[, params])
-exchange.create_market_sell_order (symbol, amount[, params])
-```
-
-### Limit Orders
-
-Limit price orders are also known as *limit orders*. Some exchanges accept limit orders only. Limit orders require a price (rate per unit) to be submitted with the order. The exchange will close limit orders if and only if market price reaches the desired level.
-
-```
-// camelCaseStyle
-exchange.createLimitBuyOrder (symbol, amount, price[, params])
-exchange.createLimitSellOrder (symbol, amount, price[, params])
-
-// underscore_style
-exchange.create_limit_buy_order (symbol, amount, price[, params])
-exchange.create_limit_sell_order (symbol, amount, price[, params])
-```
-
-### Custom Order Params
-
-Some exchanges allow you to specify optional parameters for your order. You can pass your optional parameters and override your query with an associative array using the `params` argument to your unified API call.
-
-```JavaScript
-// JavaScript
-// use a custom order type
-bitfinex.createLimitSellOrder ('BTC/USD', 1, 10, { 'type': 'trailing-stop' })
-```
-
-```Python
-# Python
-# add a custom order flag
-kraken.create_market_buy_order('BTC/USD', 1, {'trading_agreement': 'agree'})
-```
-
-```PHP
-// PHP
-// add custom user id to your order
-$hitbtc->create_order ('BTC/USD', 'limit', 'buy', 1, 3000, array ('clientOrderId' => '123'));
-```
-
-## Cancelling Orders
-
-To cancel an existing order pass the order id to `cancelOrder (id) / cancel_order (id)` method, like in the following examples:
-
-```JavaScript
-// JavaScript
-exchange.cancelOrder ('1234567890') // replace with your order id here (a string)
-```
-
-```Python
-# Python
-exchange.cancel_order ('1234567890') # replace with your order id here (a string)
-```
-
-```PHP
-// PHP
-$exchange->cancel_order ('1234567890'); // replace with your order id here (a string)
-```
-
-## Order Structure
+### Order Structure
 
 Most of methods returning orders within ccxt unified API will usually yield an order structure as described below:
 
@@ -1246,7 +1154,101 @@ Most of methods returning orders within ccxt unified API will usually yield an o
 }
 ```
 
-## Querying Orders
+### Placing Orders
+
+To place an order you will need the following information:
+
+- `symbol`, a string literal symbol of the market you wish to trade on, like `BTC/USD`, `ZEC/ETH`, `DOGE/DASH`, etc...
+- `side`, a string literal for the direction of your order, `buy` or `sell`. When you place a buy order you give quote currency and receive base currency. For example, buying `BTC/USD` means that you will receive bitcoins for your dollars. When you are selling `BTC/USD` the outcome is the opposite and you receive dollars for your bitcoins.
+- `type`, a string literal type of order, ccxt currently supports `market` and `limit` orders
+- `amount`, how much of currency you want to trade. This usually refers to base currency of the trading pair symbol, though some exchanges require the amount in quote currency and a few of them require base or quote amount depending on the side of the order. See their API docs for details.
+- `price`, how much quote currency you are willing to pay for a trade lot of base currency (for limit orders only)
+
+A successful call to a unified method for placing market or limit orders returns the following structure:
+
+```JavaScript
+{
+    'id': 'string',  // order id
+    'info': { ... }, // decoded original JSON response from the exchange as is
+}
+```
+
+**Some exchanges will allow to trade with limit orders only.** See [their docs](https://github.com/kroitor/ccxt/wiki/Manual#exchanges) for details.
+
+#### Market Orders
+
+Market price orders are also known as *spot price orders*, *instant orders* or simply *market orders*. A market order gets executed immediately. The matching engine of the exchange closes the order (fulfills it) with one or more transactions from the top of the order book stack.
+
+The exchange will close your market order for the best price available. You are not guaranteed though, that the order will be executed for the price you observe prior to placing your order. There can be a slight change of the price for the traded market while your order is being executed, also known as *price slippage*. The price can slip because of networking roundtrip latency, high loads on the exchange, price volatility and other factors. When placing a market order you don't need to specify the price of the order.
+
+Note, that some exchanges will not accept market orders (they allow limit orders only).
+
+```
+// camelCaseNotation
+exchange.createMarketBuyOrder (symbol, amount[, params])
+exchange.createMarketSellOrder (symbol, amount[, params])
+
+// underscore_notation
+exchange.create_market_buy_order (symbol, amount[, params])
+exchange.create_market_sell_order (symbol, amount[, params])
+```
+
+#### Limit Orders
+
+Limit price orders are also known as *limit orders*. Some exchanges accept limit orders only. Limit orders require a price (rate per unit) to be submitted with the order. The exchange will close limit orders if and only if market price reaches the desired level.
+
+```
+// camelCaseStyle
+exchange.createLimitBuyOrder (symbol, amount, price[, params])
+exchange.createLimitSellOrder (symbol, amount, price[, params])
+
+// underscore_style
+exchange.create_limit_buy_order (symbol, amount, price[, params])
+exchange.create_limit_sell_order (symbol, amount, price[, params])
+```
+
+#### Custom Order Params
+
+Some exchanges allow you to specify optional parameters for your order. You can pass your optional parameters and override your query with an associative array using the `params` argument to your unified API call.
+
+```JavaScript
+// JavaScript
+// use a custom order type
+bitfinex.createLimitSellOrder ('BTC/USD', 1, 10, { 'type': 'trailing-stop' })
+```
+
+```Python
+# Python
+# add a custom order flag
+kraken.create_market_buy_order('BTC/USD', 1, {'trading_agreement': 'agree'})
+```
+
+```PHP
+// PHP
+// add custom user id to your order
+$hitbtc->create_order ('BTC/USD', 'limit', 'buy', 1, 3000, array ('clientOrderId' => '123'));
+```
+
+### Cancelling Orders
+
+To cancel an existing order pass the order id to `cancelOrder (id) / cancel_order (id)` method, like in the following examples:
+
+```JavaScript
+// JavaScript
+exchange.cancelOrder ('1234567890') // replace with your order id here (a string)
+```
+
+```Python
+# Python
+exchange.cancel_order ('1234567890') # replace with your order id here (a string)
+```
+
+```PHP
+// PHP
+$exchange->cancel_order ('1234567890'); // replace with your order id here (a string)
+```
+
+### Querying Orders
 
 ```diff
 - this is under heavy development right now, contributions and feedback appreciated
@@ -1256,7 +1258,7 @@ Most of the time you can query orders by their ids or statuses, though not all e
 
 **This part of the unified API is currenty a work in progress, there may be some issues and missing implementations here and there, we will be happy for all your feedback, pull requests and contributions**.
 
-### By Order Id
+#### By Order Id
 
 To get details of a particular order by its id, use the fetchOrder / fetch_order method. The signature of the method is as follows:
 
@@ -1293,17 +1295,17 @@ $order = $exchange->fetch_order ($id, array ());
 var_dump ($order);
 ```
 
-### All Orders
+#### All Orders
 
 ```JavaScript
 exchange.fetchOrders (symbol = undefined, params = {}) // use params for custom overrides
 ```
 
-### Open Orders
+#### Open Orders
 
-### Closed Orders
+#### Closed Orders
 
-### Transactions / Executions
+#### Transactions / Executions
 
 ## Funding Your Account
 
