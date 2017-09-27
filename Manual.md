@@ -1221,34 +1221,83 @@ exchange.cancel_order ('1234567890') # replace with your order id here (a string
 $exchange->cancel_order ('1234567890'); // replace with your order id here (a string)
 ```
 
-## Querying Orders
+## Orders
 
-```diff
-- this is under heavy development right now, contributions appreciated
-```
-
-### By Order Id
-
-```
-fetchOrder (id)
-```
+Most of methods returning orders within ccxt unified API will usually yield an order structure as described below:
 
 ```JavaScript
 {
     'id':        '12345-67890:09876/54321', // string
     'timestamp':  1502962946216,            // Unix timestamp in milliseconds
     'datetime':  '2017-08-17 12:42:48.000', // ISO8601 datetime with milliseconds
-    'status':    'open',                    // 'open', 'closed'
+    'status':    'open',                    // 'open', 'closed', 'canceled'
     'symbol':    'ETH/BTC',                 // symbol
     'type':      'limit',                   // 'market', 'limit'
     'side':      'buy',                     // 'buy', 'sell'
     'price':      0.06917684,               // float price in quote currency
-    'amount':     1.5,                      // amount of base currency
+    'amount':     1.5,                      // ordered amount of base currency
+    'filled':     1.0,                      // filled amount of base currency
+    'remaining':  0.5,                      // remaining amount to fill
     'trades':   [ ... ],                    // a list of order trades/executions
+    'fee':      {                           // fee info, if available
+        'currency': 'BTC',                  // which currency the fee is (usually quote)
+        'cost': 0.0009,                     // the fee amount in that currency
+    },
 }
 ```
 
+## Querying Orders
+
+```diff
+- this is under heavy development right now, contributions and feedback appreciated
+```
+
+Most of the time you can query orders by their ids or statuses, though not all exchanges offer a full and flexible set of endpoints for querying orders. Some exchanges might not have a method for fetching recently closed orders, the other can lack a method for getting an order by id, etc. The ccxt library will target those cases by making workarounds if possible.
+
+**This part of the unified API is currenty a work in progress, there may be some issues and missing implementations here and there, we will be happy for all your feedback, pull requests and contributions**.
+
+### By Order Id
+
+To get details of a particular order by its id, use the fetchOrder / fetch_order method. The signature of the method is as follows:
+
+```JavaScript
+// the second params argument is optional, you can use it for custom overrides
+exchange.fetchOrder (id, params = {})
+```
+
+You can pass custom overrided key-values in its second parameter if needed. Below are examples of using the fetchOrder method to get order info from an authenticated exchange instance:
+
+```JavaScript
+// JavaScript
+(async function () {
+    const order = await exchange.fetchOrder (id, {})
+    console.log (order)
+}) ()
+```
+
+```Python
+# Python 2/3 (synchronous)
+order = exchange.fetch_order(id, params = {})
+print(order)
+
+# Python 3.5+ asyncio (asynchronous)
+import asyncio
+import ccxt.async as ccxt
+order = asyncio.get_event_loop().run_until_complete(exchange.fetch_order(id, {}))
+print(order)
+```
+
+```PHP
+// PHP
+$order = $exchange->fetch_order ($id, array ());
+var_dump ($order);
+```
+
 ### All Orders
+
+```JavaScript
+exchange.fetchOrders (symbol = undefined, params = {}) // use params for custom overrides
+```
 
 ### Open Orders
 

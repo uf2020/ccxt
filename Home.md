@@ -41,8 +41,8 @@ Welcome to the ccxt wiki!
       - [Limit Orders](https://github.com/kroitor/ccxt/wiki/Manual#limit-orders)
       - [Custom Params](https://github.com/kroitor/ccxt/wiki/Manual#custom-order-params)
     - [Cancelling Orders](https://github.com/kroitor/ccxt/wiki/Manual#cancelling-orders)
-    - Querying Orders *(work in progress right now)*
-      - Order By Id
+    - [Querying Orders](https://github.com/kroitor/ccxt/wiki/Manual#querying-orders) *(work in progress right now)*
+      - [By Order Id](https://github.com/ccxt-dev/ccxt/wiki/Manual#by-order-id)
       - All Orders
       - Open Orders
       - Closed Orders
