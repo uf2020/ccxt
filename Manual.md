@@ -12,7 +12,7 @@ Full public and private HTTP REST APIs for all exchanges are implemented. WebSoc
 
 # Exchanges
 
-The ccxt library currently supports the following 86 cryptocurrency exchange markets and trading APIs:
+The ccxt library currently supports the following 87 cryptocurrency exchange markets and trading APIs:
 
 |                                                                                                                           | id                 | name                                                      | ver | doc                                                                                         | countries                               |
 |---------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------|:---:|:-------------------------------------------------------------------------------------------:|-----------------------------------------|
@@ -88,6 +88,7 @@ The ccxt library currently supports the following 86 cryptocurrency exchange mar
 |![paymium](https://user-images.githubusercontent.com/1294454/27790564-a945a9d4-5ff9-11e7-9d2d-b635763f2f24.jpg)            | paymium            | [Paymium](https://www.paymium.com)                        | 1   | [API](https://github.com/Paymium/api-documentation)                                         | France, EU                              |
 |![poloniex](https://user-images.githubusercontent.com/1294454/27766817-e9456312-5ee6-11e7-9b3c-b628ca5626a5.jpg)           | poloniex           | [Poloniex](https://poloniex.com)                          | *   | [API](https://poloniex.com/support/api/)                                                    | US                                      |
 |![quadrigacx](https://user-images.githubusercontent.com/1294454/27766825-98a6d0de-5ee7-11e7-9fa4-38e11a2c6f52.jpg)         | quadrigacx         | [QuadrigaCX](https://www.quadrigacx.com)                  | 2   | [API](https://www.quadrigacx.com/api_info)                                                  | Canada                                  |
+|![qryptos](https://user-images.githubusercontent.com/1294454/30953915-b1611dc0-a436-11e7-8947-c95bd5a42086.jpg)            | qryptos            | [QRYPTOS](https://www.qryptos.com)                        | 2   | [API](https://developers.quoine.com)                                                        | China, Taiwan                           |
 |![quoine](https://user-images.githubusercontent.com/1294454/27766844-9615a4e8-5ee8-11e7-8814-fcd004db8cdd.jpg)             | quoine             | [QUOINE](https://www.quoine.com)                          | 2   | [API](https://developers.quoine.com)                                                        | Japan, Singapore, Vietnam               |
 |![southxchange](https://user-images.githubusercontent.com/1294454/27838912-4f94ec8a-60f6-11e7-9e5d-bbf9bd50a559.jpg)       | southxchange       | [SouthXchange](https://www.southxchange.com)              | *   | [API](https://www.southxchange.com/Home/Api)                                                | Argentina                               |
 |![surbitcoin](https://user-images.githubusercontent.com/1294454/27991511-f0a50194-6481-11e7-99b5-8f02932424cc.jpg)         | surbitcoin         | [SurBitcoin](https://surbitcoin.com)                      | 1   | [API](https://blinktrade.com/docs)                                                          | Venezuela                               |
@@ -1136,9 +1137,89 @@ var_dump ($exchange->fetch_balance ());
 ## Orders
 
 ```diff
-- this is under development right now
+- this part of the unified API is currenty a work in progress
+- there may be some issues and missing implementations here and there
 - contributions, pull requests and feedback appreciated
 ```
+
+### Querying Orders
+
+Most of the time you can query orders by their ids or statuses, though not all exchanges offer a full and flexible set of endpoints for querying orders. Some exchanges might not have a method for fetching recently closed orders, the other can lack a method for getting an order by id, etc. The ccxt library will target those cases by making workarounds if possible.
+
+#### By Order Id
+
+To get details of a particular order by its id, use the fetchOrder / fetch_order method. Some exchanges also require a symbol even when fetching a particular order by id.
+
+The signature of the fetchOrder/fetch_order method is as follows:
+
+```JavaScript
+//  you can use the params argument for custom overrides
+exchange.fetchOrder (id, symbol = undefined, params = {})
+```
+
+You can pass custom overrided key-values in additional params if needed. Below are examples of using the fetchOrder method to get order info from an authenticated exchange instance:
+
+```JavaScript
+// JavaScript
+(async function () {
+    const order = await exchange.fetchOrder (id)
+    console.log (order)
+}) ()
+```
+
+```Python
+# Python 2/3 (synchronous)
+order = exchange.fetch_order(id)
+print(order)
+
+# Python 3.5+ asyncio (asynchronous)
+import asyncio
+import ccxt.async as ccxt
+order = asyncio.get_event_loop().run_until_complete(exchange.fetch_order(id))
+print(order)
+```
+
+```PHP
+// PHP
+$order = $exchange->fetch_order ($id);
+var_dump ($order);
+```
+
+#### All Orders
+
+```JavaScript
+exchange.fetchOrders (symbol = undefined, params = {})
+```
+
+#### Open Orders
+
+```JavaScript
+exchange.fetchOpenOrders (symbol = undefined, params = {})
+```
+
+#### Closed Orders
+
+```JavaScript
+exchange.fetchOpenOrders (symbol = undefined, params = {})
+```
+
+#### Trades / Transactions / Fills / Executions
+
+```
+- this part of the unified API is currenty a work in progress
+- there may be some issues and missing implementations here and there
+- contributions, pull requests and feedback appreciated
+```
+
+##### Recent Trades
+
+```JavaScript
+exchange.fetchMyTrades (symbol = undefined, params = {})
+```
+
+##### Trades By Order Id
+
+```UNDER CONSTRUCTION```
 
 ### Order Structure
 
@@ -1259,91 +1340,6 @@ exchange.cancel_order ('1234567890') # replace with your order id here (a string
 // PHP
 $exchange->cancel_order ('1234567890'); // replace with your order id here (a string)
 ```
-
-### Querying Orders
-
-```diff
-- this part of the unified API is currenty a work in progress
-- there may be some issues and missing implementations here and there
-- contributions, pull requests and feedback appreciated
-```
-
-Most of the time you can query orders by their ids or statuses, though not all exchanges offer a full and flexible set of endpoints for querying orders. Some exchanges might not have a method for fetching recently closed orders, the other can lack a method for getting an order by id, etc. The ccxt library will target those cases by making workarounds if possible.
-
-#### By Order Id
-
-To get details of a particular order by its id, use the fetchOrder / fetch_order method. Some exchanges also require a symbol even when fetching a particular order by id.
-
-The signature of the fetchOrder/fetch_order method is as follows:
-
-```JavaScript
-//  you can use the params argument for custom overrides
-exchange.fetchOrder (id, symbol = undefined, params = {})
-```
-
-You can pass custom overrided key-values in additional params if needed. Below are examples of using the fetchOrder method to get order info from an authenticated exchange instance:
-
-```JavaScript
-// JavaScript
-(async function () {
-    const order = await exchange.fetchOrder (id)
-    console.log (order)
-}) ()
-```
-
-```Python
-# Python 2/3 (synchronous)
-order = exchange.fetch_order(id)
-print(order)
-
-# Python 3.5+ asyncio (asynchronous)
-import asyncio
-import ccxt.async as ccxt
-order = asyncio.get_event_loop().run_until_complete(exchange.fetch_order(id))
-print(order)
-```
-
-```PHP
-// PHP
-$order = $exchange->fetch_order ($id);
-var_dump ($order);
-```
-
-#### All Orders
-
-```JavaScript
-exchange.fetchOrders (symbol = undefined, params = {})
-```
-
-#### Open Orders
-
-```JavaScript
-exchange.fetchOpenOrders (symbol = undefined, params = {})
-```
-
-#### Closed Orders
-
-```JavaScript
-exchange.fetchOpenOrders (symbol = undefined, params = {})
-```
-
-#### Trades / Transactions / Fills / Executions
-
-```
-- this part of the unified API is currenty a work in progress
-- there may be some issues and missing implementations here and there
-- contributions, pull requests and feedback appreciated
-```
-
-##### Recent Trades
-
-```JavaScript
-exchange.fetchMyTrades (symbol = undefined, params = {})
-```
-
-##### Trades By Order Id
-
-```UNDER CONSTRUCTION```
 
 ## Funding Your Account
 
