@@ -584,7 +584,7 @@ async def print_poloniex_ethbtc_ticker():
     poloniex = ccxt.poloniex()
     print(await poloniex.fetch_ticker('ETH/BTC'))
 
-asyncio.get_event_loop().run_until_complete(print_poloniex_ethbtc_ticker)
+asyncio.get_event_loop().run_until_complete(print_poloniex_ethbtc_ticker())
 ```
 
 In PHP all API methods are synchronous.
