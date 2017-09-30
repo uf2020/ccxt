@@ -748,7 +748,7 @@ Some exchanges accept a second dictionary of extra parameters to the `fetchOrder
 
 import ccxt
 # return up to ten bidasks on each side of the order book stack
-ccxt.cex().fetch_order_book('BTC/USD', { 'depth': 10 })
+ccxt.cex().fetch_order_book('BTC/USD', {'depth': 10})
 ```
 
 ```PHP
@@ -758,7 +758,7 @@ ccxt.cex().fetch_order_book('BTC/USD', { 'depth': 10 })
 $exchange = '\\ccxt\\kraken';
 $exchange = new $exchange ();
 var_dump ($exchange->fetch_order_book ('BTC/USD', array (
-    'count' => 10, // up to ten order on each side for example
+    'count' => 10, // up to ten orders on each side for example
 )));
 ```
 
