@@ -725,7 +725,42 @@ The structure of a returned order book is as follows:
 
 Prices and amounts are floats. The bids array is sorted by price in descending order. The best (highest) bid price is the first element and the worst (lowest) bid price is the last element. The asks array is sorted by price in ascending order. The best (lowest) ask price is the first element and the worst (highest) ask price is the last element. Bid/ask arrays can be empty if there are no corresponding orders in the order book of an exchange.
 
-Some exchanges return the stack of orders in various levels of details for analysis. It is either in full detail containing each and every order, or it is aggregated having slightly less detail where orders are grouped and merged by price and volume. The levels of detail or levels of order book aggregation are often number-labelled like L1, L2, L3... Having greater detail requires more traffic and bandwidth and is slower in general but gives a benefit of higher precision. Having less detail is usually faster, but may not be  enough in some very specific cases. Some exchanges accept a second dictionary of extra parameters to the `fetchOrderBook () / fetch_order_book ()` function allowing you to get the level of aggregation you need.
+Some exchanges return the stack of orders in various levels of details for analysis. It is either in full detail containing each and every order, or it is aggregated having slightly less detail where orders are grouped and merged by price and volume. The levels of detail or levels of order book aggregation are often number-labelled like L1, L2, L3... Having greater detail requires more traffic and bandwidth and is slower in general but gives a benefit of higher precision. Having less detail is usually faster, but may not be  enough in some very specific cases.
+
+Some exchanges accept a second dictionary of extra parameters to the `fetchOrderBook () / fetch_order_book ()` function allowing you to get the level of aggregation you need, like so:
+
+```JavaScript
+// JavaScript
+
+(async function test () {
+    const ccxt = require ('ccxt')
+    const exchange = new ccxt.bitfinex ()
+    const orders = await exchange.fetchOrderBook ('BTC/USD', {
+        'limit_bids': 5, // max = 50
+        'limit_asks': 5, // may be 0 in which case the array is empty
+        'group': 1, // 1 = orders are grouped by price, 0 = orders are separate
+    })
+}) ()
+```
+
+```Python
+# Python
+
+import ccxt
+# return up to ten bidasks on each side of the order book stack
+ccxt.cex().fetch_order_book('BTC/USD', { 'depth': 10 })
+```
+
+```PHP
+// PHP
+
+// instantiate the exchange by id
+$exchange = '\\ccxt\\kraken';
+$exchange = new $exchange ();
+var_dump ($exchange->fetch_order_book ('BTC/USD', array (
+    'count' => 10, // up to ten order on each side for example
+)));
+```
 
 ### Market Price
 
