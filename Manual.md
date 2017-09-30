@@ -457,7 +457,7 @@ Historically various symbolic names have been used to designate same trading pai
 
 ### Consistency Of Base And Quote Currencies
 
-It depends on which exchange you are using, but some of them have a reversed (inconsistent) pairing of `base` and `quote`. They actually have base and quote misplaced  (switched sides). In that case you'll see a difference of parsed `base` and `quote` currency values with the unparsed `info` in the market substructure.
+It depends on which exchange you are using, but some of them have a reversed (inconsistent) pairing of `base` and `quote`. They actually have base and quote misplaced  (switched/reversed sides). In that case you'll see a difference of parsed `base` and `quote` currency values with the unparsed `info` in the market substructure.
 
 For those exchanges the ccxt will do a correction, switching and normalizing sides of base and quote currencies when parsing exchange replies. This logic is financially and terminologically correct. If you want less confusion, remember the following rule: **base is always before the slash, quote is always after the slash in any symbol and with any market**.
 
