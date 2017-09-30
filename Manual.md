@@ -265,9 +265,9 @@ Below is a detailed description of each of the base exchange properties:
 
 Exchanges usually impose what is called a *rate limit*. Exchanges will remember and track your user credentials and your IP address and will not allow you to query the API too frequently. They balance their load and control traffic congestion to protect API servers from (D)DoS and misuse.
 
-Most exchanges allow **up to 1 or 2 requests per second**. Exchanges may temporarily restrict your access to their API or ban you for some period of time if you are too aggressive with your requests.
-
 **WARNING: Stay under the rate limit to avoid ban!**
+
+Most exchanges allow **up to 1 or 2 requests per second**. Exchanges may temporarily restrict your access to their API or ban you for some period of time if you are too aggressive with your requests.
 
 ## DDoS Protection By Cloudflare / Incapsula
 
