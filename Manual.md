@@ -642,8 +642,8 @@ The unified ccxt API is a subset of methods common among the exchanges. It curre
 
 - `fetchMarkets ()`: Fetches a list of all available markets from an exchange and returns an abstracted JSON-decoded response, an array of markets. Some exchanges do not have means for obtaining a list of markets via their online API, for those the list of markets is hardcoded.
 - `loadMarkets ([reload])`: Loads the list of markets indexed by symbol and caches it with the exchange instance. Returns cached markets if loaded already, unless the `reload = true` flag is forced.
-- `fetchOrderBook (symbol)`: Fetch an order book for a particular market trading symbol.
-- `fetchTrades (symbol, [params = {}])`: Fetch recent trades for a particular trading symbol.
+- `fetchOrderBook (symbol[, params])`: Fetch an order book for a particular market trading symbol.
+- `fetchTrades (symbol[, params])`: Fetch recent trades for a particular trading symbol.
 - `fetchTicker (symbol)`: Fetch latest ticker data by trading symbol.
 - `fetchBalance ()`: Fetch Balance.
 - `createOrder (symbol, type, side, amount[, price[, params]])`
@@ -674,7 +674,7 @@ Note, that most of methods of the unified API accept an optional `params` parame
 
 Exchanges expose information on open orders with bid (buy) and ask (sell) prices, volumes and other data. Usually there is a separate endpoint for querying current state (stack frame) of the *order book* for a particular market. An order book is also often called *market depth*. The order book information is used in the trading decision making process.
 
-The method for fetching an order book for a particular symbol is named `fetchOrderBook (symbol)` or `fetch_order_book(symbol)`. It accepts a single symbol param and is called like shown below:
+The method for fetching an order book for a particular symbol is named `fetchOrderBook (symbol, params = {})` or `fetch_order_book(symbol, params={})`. It accepts a single symbol and an optional extra params dictionary (where extra params are supported by a particular exchange). The method for fetching the order book is called like shown below:
 
 ```JavaScript
 // JavaScript
