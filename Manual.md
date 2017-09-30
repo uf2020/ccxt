@@ -1202,7 +1202,7 @@ exchange.fetchOpenOrders (symbol = undefined, params = {})
 #### Closed Orders
 
 ```JavaScript
-exchange.fetchOpenOrders (symbol = undefined, params = {})
+exchange.fetchClosedOrders (symbol = undefined, params = {})
 ```
 
 #### Trades / Transactions / Fills / Executions
