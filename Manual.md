@@ -651,7 +651,7 @@ The unified ccxt API is a subset of methods common among the exchanges. It curre
 - `createLimitSellOrder (symbol, amount, price[, params])`
 - `createMarketBuyOrder (symbol, amount[, params])`
 - `createMarketSellOrder (symbol, amount[, params])`
-- `cancelOrder (id)`
+- `cancelOrder (id[, symbol[, params]])`
 - `fetchOrder (id[, symbol[, params]])`
 - `fetchOrders ([symbol[, params]])`
 - `fetchOpenOrders ([symbol[, params]])`
@@ -1367,7 +1367,7 @@ $hitbtc->create_order ('BTC/USD', 'limit', 'buy', 1, 3000, array ('clientOrderId
 
 ### Cancelling Orders
 
-To cancel an existing order pass the order id to `cancelOrder (id) / cancel_order (id)` method, like in the following examples:
+To cancel an existing order pass the order id to `cancelOrder (id, symbol, params) / cancel_order (id, symbol, params)` method. Note, that some exchanges require a second symbol parameter even to cancel a known order by id. The usage is shown in the following examples:
 
 ```JavaScript
 // JavaScript
