@@ -1460,21 +1460,27 @@ In Python and PHP you can do the same by subclassing and overriding nonce functi
 ```Python
 # Python
 
-# A: custom nonce
+# A: the shortest
+gdax = ccxt.gdax({'nonce': ccxt.Exchange.milliseconds})
+
+# B: custom nonce
 class MyKraken(ccxt.kraken):
     n = 1
     def nonce(self):
         return self.n += 1
 
-# B: milliseconds nonce
+# C: milliseconds nonce
 class MyBitfinex(ccxt.bitfinex):
     def nonce(self):
         return self.milliseconds()
 
-# C: milliseconds nonce inline
+# D: milliseconds nonce inline
 hitbtc = ccxt.hitbtc({
     'nonce': lambda: int(time.time() * 1000)
 })
+
+# E: milliseconds nonce
+acx = ccxt.acx({'nonce': lambda: ccxt.Exchange.milliseconds()})
 ```
 
 ```PHP
