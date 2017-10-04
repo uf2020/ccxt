@@ -1503,35 +1503,35 @@ class MyZaif extends \ccxt\zaif {
 
 # Error Handling
 
-All exceptions are derived from the base CCXTError exception, which, in its turn, is defined in the ccxt library like so:
+All exceptions are derived from the base BaseError exception, which, in its turn, is defined in the ccxt library like so:
 
 ```JavaScript
 // JavaScript
-class CCXTError extends Error {
+class BaseError extends Error {
     constructor () {
         super ()
-        // a workaround to make `instanceof CCXTError` work in ES5
-        this.constructor = CCXTError
-        this.__proto__   = CCXTError.prototype
+        // a workaround to make `instanceof BaseError` work in ES5
+        this.constructor = BaseError
+        this.__proto__   = BaseError.prototype
     }
 }
 ```
 
 ```Python
 # Python
-class CCXTError (Exception):
+class BaseError (Exception):
     pass
 ```
 
 ```PHP
 // PHP
-class CCXTError extends \Exception {}
+class BaseError extends \Exception {}
 ```
 
 Below is an outline of exception inheritance hierarchy:
 
 ```
-+ CCXTError
++ BaseError
 |
 +---+ ExchangeError
 |   |
@@ -1550,7 +1550,7 @@ Below is an outline of exception inheritance hierarchy:
     +---+ ExchangeNotAvailable
 ```
 
-- `CCXTError`: Generic error class for all sorts of errors, including accessibility and request/response mismatch. Users should catch this exception at the very least, if no error differentiation is required.
+- `BaseError`: Generic error class for all sorts of errors, including accessibility and request/response mismatch. Users should catch this exception at the very least, if no error differentiation is required.
 - `ExchangeError`: This exception is thrown when an exchange server replies with an error in JSON, possible reasons:
   - endpoint is switched off by the exchange
   - symbol not found on the exchange
