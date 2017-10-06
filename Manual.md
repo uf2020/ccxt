@@ -12,7 +12,7 @@ Full public and private HTTP REST APIs for all exchanges are implemented. WebSoc
 
 # Exchanges
 
-The ccxt library currently supports the following 87 cryptocurrency exchange markets and trading APIs:
+The ccxt library currently supports the following 88 cryptocurrency exchange markets and trading APIs:
 
 |                                                                                                                           | id                 | name                                                      | ver | doc                                                                                         | countries                               |
 |---------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------|:---:|:-------------------------------------------------------------------------------------------:|-----------------------------------------|
@@ -37,6 +37,7 @@ The ccxt library currently supports the following 87 cryptocurrency exchange mar
 |![bittrex](https://user-images.githubusercontent.com/1294454/27766352-cf0b3c26-5ed5-11e7-82b7-f3826b7a97d8.jpg)            | bittrex            | [Bittrex](https://bittrex.com)                            | 1.1 | [API](https://bittrex.com/Home/Api)                                                         | US                                      |
 |![bl3p](https://user-images.githubusercontent.com/1294454/28501752-60c21b82-6feb-11e7-818b-055ee6d0e754.jpg)               | bl3p               | [BL3P](https://bl3p.eu)                                   | 1   | [API](https://github.com/BitonicNL/bl3p-api/tree/master/docs)                               | Netherlands, EU                         |
 |![bleutrade](https://user-images.githubusercontent.com/1294454/30303000-b602dbe6-976d-11e7-956d-36c5049c01e7.jpg)          | bleutrade          | [Bleutrade](https://bleutrade.com)                        | 2   | [API](https://bleutrade.com/help/API)                                                       | Brazil                                  |
+|![btcbox](https://user-images.githubusercontent.com/1294454/31275803-4df755a8-aaa1-11e7-9abb-11ec2fad9f2d.jpg)             | btcbox             | [BtcBox](https://www.btcbox.co.jp/)                       | 1   | [API](https://www.btcbox.co.jp/help/asm)                                                    | Japan                                   |
 |![btcchina](https://user-images.githubusercontent.com/1294454/27766368-465b3286-5ed6-11e7-9a11-0f6467e1d82b.jpg)           | btcchina           | [BTCChina](https://www.btcchina.com)                      | 1   | [API](https://www.btcchina.com/apidocs)                                                     | China                                   |
 |![btcexchange](https://user-images.githubusercontent.com/1294454/27993052-4c92911a-64aa-11e7-96d8-ec6ac3435757.jpg)        | btcexchange        | [BTCExchange](https://www.btcexchange.ph)                 | *   | [API](https://github.com/BTCTrader/broker-api-docs)                                         | Philippines                             |
 |![btcmarkets](https://user-images.githubusercontent.com/1294454/29142911-0e1acfc2-7d5c-11e7-98c4-07d9532b29d7.jpg)         | btcmarkets         | [BTC Markets](https://btcmarkets.net/)                    | *   | [API](https://github.com/BTCMarkets/API)                                                    | Australia                               |
@@ -643,6 +644,7 @@ The unified ccxt API is a subset of methods common among the exchanges. It curre
 - `fetchMarkets ()`: Fetches a list of all available markets from an exchange and returns an abstracted JSON-decoded response, an array of markets. Some exchanges do not have means for obtaining a list of markets via their online API, for those the list of markets is hardcoded.
 - `loadMarkets ([reload])`: Loads the list of markets indexed by symbol and caches it with the exchange instance. Returns cached markets if loaded already, unless the `reload = true` flag is forced.
 - `fetchOrderBook (symbol[, params])`: Fetch an order book for a particular market trading symbol.
+- `fetchL2OrderBook (symbol[, params])`: Level 2 (price-aggregated) order book for a particular symbol.
 - `fetchTrades (symbol[, params])`: Fetch recent trades for a particular trading symbol.
 - `fetchTicker (symbol)`: Fetch latest ticker data by trading symbol.
 - `fetchBalance ()`: Fetch Balance.
@@ -725,7 +727,7 @@ The structure of a returned order book is as follows:
 
 Prices and amounts are floats. The bids array is sorted by price in descending order. The best (highest) bid price is the first element and the worst (lowest) bid price is the last element. The asks array is sorted by price in ascending order. The best (lowest) ask price is the first element and the worst (highest) ask price is the last element. Bid/ask arrays can be empty if there are no corresponding orders in the order book of an exchange.
 
-Exchanges may return the stack of orders in various levels of details for analysis. It is either in full detail containing each and every order, or it is aggregated having slightly less detail where orders are grouped and merged by price and volume. The levels of detail or levels of order book aggregation are often number-labelled like L1, L2, L3... Having greater detail requires more traffic and bandwidth and is slower in general but gives a benefit of higher precision. Having less detail is usually faster, but may not be  enough in some very specific cases.
+Exchanges may return the stack of orders in various levels of details for analysis. It is either in full detail containing each and every order, or it is aggregated having slightly less detail where orders are grouped and merged by price and volume. Having greater detail requires more traffic and bandwidth and is slower in general but gives a benefit of higher precision. Having less detail is usually faster, but may not be  enough in some very specific cases.
 
 Some exchanges accept a second dictionary of extra parameters to the `fetchOrderBook () / fetch_order_book ()` function allowing you to get the level of aggregation you need, like so:
 
@@ -761,6 +763,13 @@ var_dump ($exchange->fetch_order_book ('BTC/USD', array (
     'count' => 10, // up to ten orders on each side for example
 )));
 ```
+
+The levels of detail or levels of order book aggregation are often number-labelled like L1, L2, L3...
+- **L1** is the topmost level of detail for quickly obtaining very basic info, namely, the market price only. It appears to look like just one order in the order book.
+- **L2** is the most common level of aggregations where order volumes are grouped by price. If two orders have the same price, they appear as one single order for a volume equal to their total sum.
+- **L3** is the most detailed level, where each order is separate from other orders. This LOD naturally contains duplicates in the output. So, if two orders have equal prices it's up to the exchange's matching engine to decide on their priority in the stack.
+
+If you need to get an L2 order book, whatever the exchange returns, use the `fetchL2OrderBook(symbol, params)` or `fetch_l2_order_book(symbol, params)` unified method.
 
 ### Market Price
 
