@@ -767,7 +767,7 @@ var_dump ($exchange->fetch_order_book ('BTC/USD', array (
 The levels of detail or levels of order book aggregation are often number-labelled like L1, L2, L3...
 - **L1**: less detail for quickly obtaining very basic info, namely, the market price only. It appears to look like just one order in the order book.
 - **L2**: most common level of aggregation where order volumes are grouped by price. If two orders have the same price, they appear as one single order for a volume equal to their total sum. This is most likely the level of aggregation you need for the majority of purposes.
-- **L3**: most detailed level, with no aggregation, where each order is separate from other orders. This LOD naturally contains duplicates in the output. So, if two orders have equal prices they are **not** merged together and it's up to the exchange's matching engine to decide on their priority in the stack. You don't really need L3 detail for successful trading. In fact, you most probably don't need it at all. Therefore some exchanges don't support it and always return aggregated order books.
+- **L3**: most detailed level with no aggregation where each order is separate from other orders. This LOD naturally contains duplicates in the output. So, if two orders have equal prices they are **not** merged together and it's up to the exchange's matching engine to decide on their priority in the stack. You don't really need L3 detail for successful trading. In fact, you most probably don't need it at all. Therefore some exchanges don't support it and always return aggregated order books.
 
 If you want to get an L2 order book, whatever the exchange returns, use the `fetchL2OrderBook(symbol, params)` or `fetch_l2_order_book(symbol, params)` unified method for that.
 
