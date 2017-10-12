@@ -809,6 +809,7 @@ A price ticker contains statistics for a particular market/symbol for some perio
 
 ```
 {
+    'symbol':      string symbol of the market ('BTC/USD', 'ETH/BTC', ...)
     'info':      { the original non-modified unparsed reply from exchange API },
     'timestamp':   int (64-bit Unix Timestamp in milliseconds since Epoch 1 Jan 1970)
     'datetime':    ISO8601 datetime string with milliseconds
