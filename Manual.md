@@ -12,13 +12,14 @@ Full public and private HTTP REST APIs for all exchanges are implemented. WebSoc
 
 # Exchanges
 
-The ccxt library currently supports the following 88 cryptocurrency exchange markets and trading APIs:
+The ccxt library currently supports the following 89 cryptocurrency exchange markets and trading APIs:
 
 |                                                                                                                           | id                 | name                                                      | ver | doc                                                                                         | countries                               |
 |---------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------|:---:|:-------------------------------------------------------------------------------------------:|-----------------------------------------|
 |![_1broker](https://user-images.githubusercontent.com/1294454/27766021-420bd9fc-5ecb-11e7-8ed6-56d0081efed2.jpg)           | _1broker           | [1Broker](https://1broker.com)                            | 2   | [API](https://1broker.com/?c=en/content/api-documentation)                                  | US                                      |
 |![_1btcxe](https://user-images.githubusercontent.com/1294454/27766049-2b294408-5ecc-11e7-85cc-adaff013dc1a.jpg)            | _1btcxe            | [1BTCXE](https://1btcxe.com)                              | *   | [API](https://1btcxe.com/api-docs.php)                                                      | Panama                                  |
 |![acx](https://user-images.githubusercontent.com/1294454/30247614-1fe61c74-9621-11e7-9e8c-f1a627afa279.jpg)                | acx                | [ACX](https://acx.io)                                     | 2   | [API](https://acx.io/documents/api_v2)                                                      | Australia                               |
+|![allcoin](https://user-images.githubusercontent.com/1294454/31561809-c316b37c-b061-11e7-8d5a-b547b4d730eb.jpg)            | allcoin            | [Allcoin](https://allcoin.com)                            | 1   | [API](https://allcoin.com/About/APIReference)                                               | Canada                                  |
 |![anxpro](https://user-images.githubusercontent.com/1294454/27765983-fd8595da-5ec9-11e7-82e3-adb3ab8c2612.jpg)             | anxpro             | [ANXPro](https://anxpro.com)                              | 2   | [API](http://docs.anxv2.apiary.io)                                                          | Japan, Singapore, Hong Kong, New Zealand|
 |![binance](https://user-images.githubusercontent.com/1294454/29604020-d5483cdc-87ee-11e7-94c7-d1a8d9169293.jpg)            | binance            | [Binance](https://www.binance.com)                        | 1   | [API](https://www.binance.com/restapipub.html)                                              | China                                   |
 |![bit2c](https://user-images.githubusercontent.com/1294454/27766119-3593220e-5ece-11e7-8b3a-5a041f6bcc3f.jpg)              | bit2c              | [Bit2C](https://www.bit2c.co.il)                          | *   | [API](https://www.bit2c.co.il/home/api)                                                     | Israel                                  |
@@ -1600,10 +1601,11 @@ In case you experience any difficulty connecting to a particular exchange, do th
 3. Check you API credentials. Try a fresh new keypair if possible.
 4. Read the [docs for your exchange](https://github.com/kroitor/ccxt/wiki/Exchanges) and compare your verbose output to the docs.
 5. Check your nonce. If you used your API keys with other software, you most likely should [override your nonce function](#overriding-the-nonce) to match your previous nonce value. A nonce usually can be easily reset by generating a new unused keypair.
-6. Check your connectivity with the exchange by accessing it with your browser.
-7. Check your connection with the exchange through a proxy. Read the [Proxy](https://github.com/kroitor/ccxt/wiki/Install#proxy) section for more details.
-8. Try accesing the exchange from a different computer or a remote server, to see if this is a local or global issue with the exchange.
-9. Check if there were any news from the exchange recently regarding downtime for maintenance. Some exchanges go offline for updates regularly (like once a week).
+6. Check your request rate if you are getting nonce errors. Your private requests should not follow one another quickly. You should not send them one after another in a split second or in short time. The exchange will most likely ban you, if you don't make a delay before sending each new request, or, in other words, if you hit their rate limit by sending private requests too frequently. Add a delay to your subsequent requests, like show in the long-poller [examples](https://github.com/ccxt-dev/ccxt/tree/master/examples).
+7. Check your connectivity with the exchange by accessing it with your browser.
+8. Check your connection with the exchange through a proxy. Read the [Proxy](https://github.com/kroitor/ccxt/wiki/Install#proxy) section for more details.
+9. Try accesing the exchange from a different computer or a remote server, to see if this is a local or global issue with the exchange.
+10. Check if there were any news from the exchange recently regarding downtime for maintenance. Some exchanges go offline for updates regularly (like once a week).
 
 ## Notes
 
