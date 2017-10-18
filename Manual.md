@@ -12,7 +12,7 @@ Full public and private HTTP REST APIs for all exchanges are implemented. WebSoc
 
 # Exchanges
 
-The ccxt library currently supports the following 89 cryptocurrency exchange markets and trading APIs:
+The ccxt library currently supports the following 90 cryptocurrency exchange markets and trading APIs:
 
 |                                                                                                                           | id                 | name                                                      | ver | doc                                                                                         | countries                               |
 |---------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------|:---:|:-------------------------------------------------------------------------------------------:|-----------------------------------------|
@@ -59,7 +59,7 @@ The ccxt library currently supports the following 89 cryptocurrency exchange mar
 |![coinsecure](https://user-images.githubusercontent.com/1294454/27766472-9cbd200a-5ed9-11e7-9551-2267ad7bac08.jpg)         | coinsecure         | [Coinsecure](https://coinsecure.in)                       | 1   | [API](https://api.coinsecure.in)                                                            | India                                   |
 |![coinspot](https://user-images.githubusercontent.com/1294454/28208429-3cacdf9a-6896-11e7-854e-4c79a772a30f.jpg)           | coinspot           | [CoinSpot](https://www.coinspot.com.au)                   | *   | [API](https://www.coinspot.com.au/api)                                                      | Australia                               |
 |![cryptopia](https://user-images.githubusercontent.com/1294454/29484394-7b4ea6e2-84c6-11e7-83e5-1fccf4b2dc81.jpg)          | cryptopia          | [Cryptopia](https://www.cryptopia.co.nz)                  | *   | [API](https://www.cryptopia.co.nz/Forum/Thread/255)                                         | New Zealand                             |
-|![dsx](https://user-images.githubusercontent.com/1294454/27990275-1413158a-645a-11e7-931c-94717f7510e3.jpg)                | dsx                | [DSX](https://dsx.uk)                                     | *   | [API](https://api.dsx.uk)                                                                   | UK                                      |
+|![dsx](https://user-images.githubusercontent.com/1294454/27990275-1413158a-645a-11e7-931c-94717f7510e3.jpg)                | dsx                | [DSX](https://dsx.uk)                                     | 3   | [API](https://api.dsx.uk)                                                                   | UK                                      |
 |![exmo](https://user-images.githubusercontent.com/1294454/27766491-1b0ea956-5eda-11e7-9225-40d67b481b8d.jpg)               | exmo               | [EXMO](https://exmo.me)                                   | 1   | [API](https://exmo.me/ru/api_doc)                                                           | Spain, Russia                           |
 |![flowbtc](https://user-images.githubusercontent.com/1294454/28162465-cd815d4c-67cf-11e7-8e57-438bea0523a2.jpg)            | flowbtc            | [flowBTC](https://trader.flowbtc.com)                     | 1   | [API](http://www.flowbtc.com.br/api/)                                                       | Brazil                                  |
 |![foxbit](https://user-images.githubusercontent.com/1294454/27991413-11b40d42-647f-11e7-91ee-78ced874dd09.jpg)             | foxbit             | [FoxBit](https://foxbit.exchange)                         | 1   | [API](https://blinktrade.com/docs)                                                          | Brazil                                  |
@@ -77,6 +77,7 @@ The ccxt library currently supports the following 89 cryptocurrency exchange mar
 |![itbit](https://user-images.githubusercontent.com/1294454/27822159-66153620-60ad-11e7-89e7-005f6d7f3de0.jpg)              | itbit              | [itBit](https://www.itbit.com)                            | 1   | [API](https://api.itbit.com/docs)                                                           | US                                      |
 |![jubi](https://user-images.githubusercontent.com/1294454/27766581-9d397d9a-5edd-11e7-8fb9-5d8236c0e692.jpg)               | jubi               | [jubi.com](https://www.jubi.com)                          | 1   | [API](https://www.jubi.com/help/api.html)                                                   | China                                   |
 |![kraken](https://user-images.githubusercontent.com/1294454/27766599-22709304-5ede-11e7-9de1-9f33732e1509.jpg)             | kraken             | [Kraken](https://www.kraken.com)                          | 0   | [API](https://www.kraken.com/en-us/help/api)                                                | US                                      |
+|![kuna](https://user-images.githubusercontent.com/1294454/31697638-912824fa-b3c1-11e7-8c36-cf9606eb94ac.jpg)               | kuna               | [KUNA.IO](https://kuna.io)                                | 2   | [API](https://kuna.io/documents/api)                                                        | Ukraine                                 |
 |![lakebtc](https://user-images.githubusercontent.com/1294454/28074120-72b7c38a-6660-11e7-92d9-d9027502281d.jpg)            | lakebtc            | [LakeBTC](https://www.lakebtc.com)                        | 2   | [API](https://www.lakebtc.com/s/api_v2)                                                     | US                                      |
 |![livecoin](https://user-images.githubusercontent.com/1294454/27980768-f22fc424-638a-11e7-89c9-6010a54ff9be.jpg)           | livecoin           | [LiveCoin](https://www.livecoin.net)                      | *   | [API](https://www.livecoin.net/api?lang=en)                                                 | US, UK, Russia                          |
 |![liqui](https://user-images.githubusercontent.com/1294454/27982022-75aea828-63a0-11e7-9511-ca584a8edd74.jpg)              | liqui              | [Liqui](https://liqui.io)                                 | 3   | [API](https://liqui.io/api)                                                                 | Ukraine                                 |
@@ -271,7 +272,7 @@ Exchanges usually impose what is called a *rate limit*. Exchanges will remember 
 
 Most exchanges allow **up to 1 or 2 requests per second**. Exchanges may temporarily restrict your access to their API or ban you for some period of time if you are too aggressive with your requests.
 
-## DDoS Protection By Cloudflare / Incapsula
+### DDoS Protection By Cloudflare / Incapsula
 
 Some exchanges are [DDoS](https://en.wikipedia.org/wiki/Denial-of-service_attack)-protected by [Cloudflare](https://www.cloudflare.com) or [Incapsula](https://www.incapsula.com). Your IP can get temporarily blocked during periods of high load. Sometimes they even restrict whole countries and regions. In that case their servers usually return a page that states a HTTP 40x error or runs an AJAX test of your browser / captcha test and delays the reload of the page for several seconds. Then your browser/fingerprint is granted access temporarily and gets added to a whitelist or receives a HTTP cookie for further use.
 
@@ -284,11 +285,19 @@ If you encounter DDoS protection errors and cannot reach a particular exchange t
 - run your software in a distributed network of servers
 - ...
 
-The ccxt library will throw a DDoSProtectionError in case it hits a rate limit. A later retry is usually enough to handle that.
+In case your calls hit a rate limit or get nonce errors, the ccxt library will throw an exception of one of the following types:
+- DDoSProtectionError
+- ExchangeNotAvailable
+- ExchangeError
 
-```
-UNDER CONSTRUCTION
-```
+A later retry is usually enough to handle that. More on that here:
+- [Authentication](https://github.com/ccxt-dev/ccxt/wiki/Manual#authentication)
+- [Troubleshooting](https://github.com/ccxt-dev/ccxt/wiki/Manual#troubleshooting)
+- [Overriding The Nonce](https://github.com/ccxt-dev/ccxt/wiki/Manual#overriding-the-nonce)
+
+### Sequential requests
+
+
 
 # Markets
 
@@ -300,11 +309,24 @@ In terms of the ccxt library, every exchange offers multiple markets within itse
 
 ```JavaScript
 {
-    'id':     'btcusd',  // string literal for referencing within an exchange
-    'symbol': 'BTC/USD', // uppercase string literal of a pair of currencies
-    'base':   'BTC',     // uppercase string, base currency, 3 or more letters
-    'quote':  'USD',     // uppercase string, quote currency, 3 or more letters
-    'info':   { ... },   // the original unparsed market info from the exchange
+    'id':     'btcusd',   // string literal for referencing within an exchange
+    'symbol': 'BTC/USD',  // uppercase string literal of a pair of currencies
+    'base':   'BTC',      // uppercase string, base currency, 3 or more letters
+    'quote':  'USD',      // uppercase string, quote currency, 3 or more letters
+    'precision': {        // number of decimal digits "after the dot" (currently under development)
+        'price': 8,       // integer
+        'amount': 8,      // integer
+        'cost': 8,        // integer
+    },
+    'limits': {           // value limits when placing orders on this market
+        'amount': {
+            'min': 0.01,  // order amount should be > min
+            'max': 1000,  // order amount should be < max
+        },
+        'price': { ... }, // same min/max limits for the price of the order
+        'cost':  { ... }, // same limits for order cost = price * amount
+    }
+    'info':      { ... }, // the original unparsed market info from the exchange
 }
 ```
 
@@ -314,6 +336,10 @@ Each market is an associative array (aka dictionary) with the following keys:
 - `base`. An uppercase string code of base fiat or crypto currency.
 - `quote`. An uppercase string code of quoted fiat or crypto currency.
 - `info`. An associative array of non-common market properties, including fees, rates, limits and other general market information. The internal info array is different for each particular market, its contents depend on the exchange.
+- `precision`. The amounts of decimal digits accepted in order values by exchanges upon order placement for price, amount and cost.
+- `limits`. The minimums and maximums for prices, amounts (volumes) and costs (where cost = price * amount).
+
+*The `precision` and `limits` params are currently under heavy development, some of these fields may be missing here and there until the unification process is complete. This does not influence most of the orders but can be significant in extreme cases of very large or very small orders.*
 
 ## Loading Markets
 
