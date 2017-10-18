@@ -313,7 +313,7 @@ In terms of the ccxt library, every exchange offers multiple markets within itse
     'symbol': 'BTC/USD',  // uppercase string literal of a pair of currencies
     'base':   'BTC',      // uppercase string, base currency, 3 or more letters
     'quote':  'USD',      // uppercase string, quote currency, 3 or more letters
-    'precision': {        // number of decimal digits "after the dot" (currently under development)
+    'precision': {        // number of decimal digits "after the dot"
         'price': 8,       // integer
         'amount': 8,      // integer
         'cost': 8,        // integer
@@ -331,6 +331,7 @@ In terms of the ccxt library, every exchange offers multiple markets within itse
 ```
 
 Each market is an associative array (aka dictionary) with the following keys:
+
 - `id`. The string or numeric ID of the market or trade instrument within the exchange. Market ids are used inside exchanges internally to identify trading pairs during the request/response process.
 - `symbol`. An uppercase string code representation of a particular trading pair or instrument. This is usually written as `BaseCurrency/QuoteCurrency` with a slash as in `BTC/USD`, `LTC/CNY` or `ETH/EUR`, etc. Symbols are used to reference markets within the ccxt library (explained below).
 - `base`. An uppercase string code of base fiat or crypto currency.
