@@ -661,8 +661,12 @@ exchange.methodName ()  // camelcase pseudocode
 exchange.method_name () // underscore pseudocode
 ```
 
+To get a list of all available methods with an exchange instance, you can simply do the following:
+
 ```
-UNDER CONSTRUCTION
+console.log (new ccxt.kraken ())   // JavaScript
+print (dir (ccxt.hitbtc ()))        # Python
+var_dump (new \ccxt\okcoinusd ()); // PHP
 ```
 
 ## Unified API
