@@ -15,5 +15,4 @@
 - [Examples](https://github.com/kroitor/ccxt/tree/master/examples)
 - Knowledge Base (wip)
 - [Contributing](https://github.com/kroitor/ccxt/blob/master/CONTRIBUTING.md)
-- [Public Offer](https://github.com/kroitor/ccxt#public-offer)
 - API Reference (wip)
