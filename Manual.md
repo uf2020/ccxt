@@ -2,6 +2,47 @@
 
 The ccxt library is a collection of available crypto *exchanges* or exchange classes. Each class implements the public and private API for a particular crypto exchange. All exchanges are derived from the base Exchange class and share a set of common methods. To access a particular exchange from ccxt library you need to create an instance of corresponding exchange class. Supported exchanges are updated frequently and new exchanges are added regularly.
 
+The structure of the library can be outlined as follows:
+
+```
+                                 User
+    +-------------------------------------------------------------+
+    |                            CCXT                             |
+    +------------------------------+------------------------------+
+    |            Public            |           Private            |
+    +=============================================================+
+    │                              .                              |
+    │                    The Unified CCXT API                     |
+    │                              .                              |
+    |       loadMarkets            .           fetchBalance       |
+    |       fetchMarkets           .            createOrder       |
+    |       fetchTicker            .            cancelOrder       |
+    |       fetchTickers           .             fetchOrder       |
+    |       fetchOrderBook         .            fetchOrders       |
+    |       fetchOHLCV             .        fetchOpenOrders       |
+    |       fetchTrades            .      fetchClosedOrders       |
+    |                              .          fetchMyTrades       |
+    |                              .                deposit       |
+    |                              .               withdraw       |
+    │                              .                              |
+    +=============================================================+
+    │                              .                              |
+    |                     Custom Exchange API                     |
+    |                      (Derived Classes)                      |
+    │                              .                              |
+    |       publicGet...           .          privateGet...       |
+    |       publicPost...          .         privatePost...       |
+    |                              .          privatePut...       |
+    |                              .       privateDelete...       |
+    |                              .                   sign       |
+    │                              .                              |
+    +=============================================================+
+    │                              .                              |
+    |                      Base Exchange Class                    |
+    │                              .                              |
+    +=============================================================+
+```
+
 Full public and private HTTP REST APIs for all exchanges are implemented. WebSocket and FIX implementations in JavaScript, PHP, Python and other languages coming soon.
 
 - [Exchanges](#exchanges)
