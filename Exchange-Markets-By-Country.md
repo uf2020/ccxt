@@ -1,3 +1,5 @@
+# Exchanges By Country
+
 The ccxt library currently supports the following cryptocurrency exchange markets and trading APIs:
 
 |country / region       | logo                                                                                                                         | id                 | name                                                      | ver | doc                                                                                          |
