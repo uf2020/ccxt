@@ -596,6 +596,7 @@ API URLs are often grouped into two sets of methods called a *public API* for ma
 A public API is used to access market data and does not require any authentication whatsoever. Most exchanges provide market data openly to all (under their rate limit). With the ccxt library anyone can access market data out of the box without having to register with the exchanges and without setting up account keys and passwords.
 
 Public APIs include the following:
+
 - instruments/trading pairs
 - price feeds (exchange rates)
 - order books (L1, L2, L3...)
@@ -609,6 +610,7 @@ For trading with private API you need to obtain API keys from/to exchanges. It o
 If you want to trade you need to register yourself, this library will not create accounts or API keys for you. Some exchange APIs expose interface methods for registering an account from within the code itself, but most of exchanges don't. You have to sign up and create API keys with their websites.
 
 Private APIs allow the following:
+
 - manage personal account info
 - query account balances
 - trade by making market and limit orders
@@ -838,6 +840,7 @@ var_dump ($exchange->fetch_order_book ('BTC/USD', array (
 ```
 
 The levels of detail or levels of order book aggregation are often number-labelled like L1, L2, L3...
+
 - **L1**: less detail for quickly obtaining very basic info, namely, the market price only. It appears to look like just one order in the order book.
 - **L2**: most common level of aggregation where order volumes are grouped by price. If two orders have the same price, they appear as one single order for a volume equal to their total sum. This is most likely the level of aggregation you need for the majority of purposes.
 - **L3**: most detailed level with no aggregation where each order is separate from other orders. This LOD naturally contains duplicates in the output. So, if two orders have equal prices they are **not** merged together and it's up to the exchange's matching engine to decide on their priority in the stack. You don't really need L3 detail for successful trading. In fact, you most probably don't need it at all. Therefore some exchanges don't support it and always return aggregated order books.
