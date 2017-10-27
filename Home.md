@@ -23,7 +23,7 @@ Welcome to the ccxt wiki!
   - [Exchange Structure](https://github.com/kroitor/ccxt/wiki/Manual#exchange-structure)
   - [Exchange Properties](https://github.com/kroitor/ccxt/wiki/Manual#exchange-properties)
   - [Markets](https://github.com/kroitor/ccxt/wiki/Manual#markets)
-  - [Market Ids And Symbols](https://github.com/ccxt-dev/ccxt/wiki/Manual#market-ids-and-symbols)
+  - [Symbols And Market Ids](https://github.com/ccxt-dev/ccxt/wiki/Manual#symbols-and-market-ids)
   - [API Methods / Endpoints](https://github.com/kroitor/ccxt/wiki/Manual#api-methods--endpoints)
     - [Public/Private API](https://github.com/kroitor/ccxt/wiki/Manual#publicprivate-api)
     - [Synchronous vs Asynchronous Calls](https://github.com/kroitor/ccxt/wiki/Manual#synchronous-vs-asynchronous-calls)
