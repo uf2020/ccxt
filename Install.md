@@ -8,8 +8,8 @@ The easiest way to install the ccxt library is to use builtin package managers:
 This library is shipped as an all-in-one module implementation with minimalistic dependencies and requirements:
 
 - [`ccxt.js`](https://github.com/kroitor/ccxt/blob/master/ccxt.js) in JavaScript
-- [`ccxt/`](https://github.com/kroitor/ccxt/blob/master/ccxt/) in Python (generated from JS)
-- [`build/ccxt.php`](https://github.com/kroitor/ccxt/blob/master/build/ccxt.php) in PHP (generated from JS)
+- [`./python/`](https://github.com/kroitor/ccxt/blob/master/python/) in Python (generated from JS)
+- [`ccxt.php`](https://github.com/kroitor/ccxt/blob/master/ccxt.php) in PHP (generated from JS)
 
 You can also clone it into your project directory from [ccxt GitHub repository](https://github.com/kroitor/ccxt):
 
@@ -17,7 +17,7 @@ You can also clone it into your project directory from [ccxt GitHub repository](
 git clone https://github.com/kroitor/ccxt.git
 ```
 
-An alternative way of installing this library into your code is to copy a single file manually into your working directory with language extension appropriate for your environment. 
+An alternative way of installing this library into your code is to copy a single file manually into your working directory with language extension appropriate for your environment.
 
 ### JavaScript (NPM)
 
@@ -70,7 +70,7 @@ import ccxt.async as ccxt # link against the asynchronous version of ccxt
 
 ### PHP
 
-The ccxt library in PHP: [**`ccxt.php`**](https://raw.githubusercontent.com/kroitor/ccxt/master/build/ccxt.php)
+The ccxt library in PHP: [**`ccxt.php`**](https://raw.githubusercontent.com/kroitor/ccxt/master/ccxt.php)
 
 It requires common PHP modules:
 
@@ -88,7 +88,7 @@ var_dump (\cxxt\Exchange::$exchanges); // print a list of all available exchange
 
 In some specific cases you may want a proxy, if you experience issues with [DDoS protection by Cloudflare](https://github.com/kroitor/ccxt/wiki/Manual#ddos-protection-by-cloudflare) or your network / country / IP is rejected by their filters.
 
-If you need a proxy, use the `proxy` property (a string literal) containing base URL of http(s) proxy. It is for use with web browsers and from blocked locations. 
+If you need a proxy, use the `proxy` property (a string literal) containing base URL of http(s) proxy. It is for use with web browsers and from blocked locations.
 
 **Bear in mind that each added intermediary contributes to the overall latency and roundtrip time. Longer delays can result in price slippage.**
 
@@ -103,7 +103,7 @@ CORS is [Cross-Origin Resource Sharing](https://en.wikipedia.org/wiki/Cross-orig
 
 You can still use the ccxt library from your browser via a CORS-proxy, which is very easy to set up or install. There are also public CORS proxies on the internet, like [https://crossorigin.me](https://crossorigin.me).
 
-To run your own CORS proxy locally you can either set up one of the existing ones or make a quick script of your own, like shown below. 
+To run your own CORS proxy locally you can either set up one of the existing ones or make a quick script of your own, like shown below.
 
 ### Node.js CORS Proxy
 
@@ -111,7 +111,7 @@ To run your own CORS proxy locally you can either set up one of the existing one
 // JavaScript CORS Proxy
 // Save this in a file like cors.js and run with `node cors [port]`
 // It will listen for your requests on the port you pass in command line or port 8080 by default
-let port = (process.argv.length > 2) ? parseInt (process.argv[2]) : 8080; // default 
+let port = (process.argv.length > 2) ? parseInt (process.argv[2]) : 8080; // default
 require ('cors-anywhere').createServer ().listen (port, 'localhost')
 ```
 
