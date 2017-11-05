@@ -298,7 +298,7 @@ Below is a detailed description of each of the base exchange properties:
 
 - `proxy`: A string literal containing base URL of http(s) proxy, `''` by default. For use with web browsers and from blocked locations. An example of a proxy string is `'http://crossorigin.me/'`. The absolute exchange endpoint URL is appended to this string before sending the HTTP request.
 
-- `apiKey`: This is your public API key string literal. Most exchanges require this for trading ([see below](https://github.com/kroitor/ccxt/wiki/Manual#api-keys-setup)).
+- `apiKey`: This is your public API key string literal. Most exchanges require this for trading ([see below](https://github.com/ccxt/ccxt/wiki/Manual#api-keys-setup)).
 
 - `secret`: Your private secret API key string literal. Most exchanges require this as well together with the apiKey.
 
@@ -336,9 +336,9 @@ In case your calls hit a rate limit or get nonce errors, the ccxt library will t
 
 A later retry is usually enough to handle that. More on that here:
 
-- [Authentication](https://github.com/ccxt-dev/ccxt/wiki/Manual#authentication)
-- [Troubleshooting](https://github.com/ccxt-dev/ccxt/wiki/Manual#troubleshooting)
-- [Overriding The Nonce](https://github.com/ccxt-dev/ccxt/wiki/Manual#overriding-the-nonce)
+- [Authentication](https://github.com/ccxt/ccxt/wiki/Manual#authentication)
+- [Troubleshooting](https://github.com/ccxt/ccxt/wiki/Manual#troubleshooting)
+- [Overriding The Nonce](https://github.com/ccxt/ccxt/wiki/Manual#overriding-the-nonce)
 
 # Markets
 
@@ -739,13 +739,13 @@ Note, that most of methods of the unified API accept an optional `params` parame
 
 # Market Data
 
-- [Order Book / Market Depth](https://github.com/kroitor/ccxt/wiki/Manual#order-book--market-depth)
-  - [Market Price](https://github.com/kroitor/ccxt/wiki/Manual#market-price)
-- [Price Tickers](https://github.com/kroitor/ccxt/wiki/Manual#price-tickers)
-  - [Individually By Symbol](https://github.com/kroitor/ccxt/wiki/Manual#individually-by-symbol)
-  - [All At Once](https://github.com/kroitor/ccxt/wiki/Manual#all-at-once)
-- [OHLCV Candlestick Charts](https://github.com/kroitor/ccxt/wiki/Manual#ohlcv-candlestick-charts)
-- [Public Trades And Closed Orders](https://github.com/kroitor/ccxt/wiki/Manual#trades-orders-executions-transactions)
+- [Order Book / Market Depth](https://github.com/ccxt/ccxt/wiki/Manual#order-book--market-depth)
+  - [Market Price](https://github.com/ccxt/ccxt/wiki/Manual#market-price)
+- [Price Tickers](https://github.com/ccxt/ccxt/wiki/Manual#price-tickers)
+  - [Individually By Symbol](https://github.com/ccxt/ccxt/wiki/Manual#individually-by-symbol)
+  - [All At Once](https://github.com/ccxt/ccxt/wiki/Manual#all-at-once)
+- [OHLCV Candlestick Charts](https://github.com/ccxt/ccxt/wiki/Manual#ohlcv-candlestick-charts)
+- [Public Trades And Closed Orders](https://github.com/ccxt/ccxt/wiki/Manual#trades-orders-executions-transactions)
 
 ## Order Book / Market Depth
 
@@ -938,7 +938,7 @@ var_dump ($exchange->fetch_ticker ($symbols[$random])); // ticker for a random s
 
 ### All At Once
 
-Some markets (not all of them) also support fetching all tickers at once. See [their docs](https://github.com/kroitor/ccxt/wiki/Manual#exchanges) for details. You can fetch all tickers with a single call like so:
+Some markets (not all of them) also support fetching all tickers at once. See [their docs](https://github.com/ccxt/ccxt/wiki/Manual#exchanges) for details. You can fetch all tickers with a single call like so:
 
 ```JavaScript
 // JavaScript
@@ -1139,8 +1139,8 @@ The API credentials usually include the following:
 
 - `apiKey`. This is your public API Key and/or Token. This part is *non-secret*, it is included in your request header or body and sent over HTTPS in open text to identify your request. It is often a string in Hex or Base64 encoding or an UUID identifier.
 - `secret`. This is your private key. Keep it secret, don't tell it to anybody. It is used to sign your requests locally before sending them to exchanges. The secret key does not get sent over the internet in the request-response process and should not be published or emailed. It is used together with the nonce to generate a cryptographically strong signature. That signature is sent with your public key to authenticate your identity. Each request has a unique nonce and therefore a unique cryptographic signature.
-- `uid`. Some exchanges (not all of them) also generate a user id or *uid* for short. It can be a string or numeric literal. You should set it, if that is explicitly required by your exchange. See [their docs](https://github.com/kroitor/ccxt/wiki/Manual#exchanges) for details.
-- `password`. Some exchanges (not all of them) also require your password/phrase for trading. You should set this string, if that is explicitly required by your exchange. See [their docs](https://github.com/kroitor/ccxt/wiki/Manual#exchanges) for details.
+- `uid`. Some exchanges (not all of them) also generate a user id or *uid* for short. It can be a string or numeric literal. You should set it, if that is explicitly required by your exchange. See [their docs](https://github.com/ccxt/ccxt/wiki/Manual#exchanges) for details.
+- `password`. Some exchanges (not all of them) also require your password/phrase for trading. You should set this string, if that is explicitly required by your exchange. See [their docs](https://github.com/ccxt/ccxt/wiki/Manual#exchanges) for details.
 
 In order to create API keys find the API tab or button in your user settings on the exchange website. Then create your keys and copy-paste them to your config file. Your config file permissions should be set appropriately, unreadable to anyone except the owner.
 
@@ -1395,7 +1395,7 @@ A successful call to a unified method for placing market or limit orders returns
 }
 ```
 
-**Some exchanges will allow to trade with limit orders only.** See [their docs](https://github.com/kroitor/ccxt/wiki/Manual#exchanges) for details.
+**Some exchanges will allow to trade with limit orders only.** See [their docs](https://github.com/ccxt/ccxt/wiki/Manual#exchanges) for details.
 
 #### Market Orders
 
@@ -1499,7 +1499,7 @@ The withdraw method returns a dictionary containing the withdrawal id, which is 
 
 Some exchanges require a manual approval of each withdrawal by means of 2FA (2-factor authentication). In order to approve your withdrawal you usually have to either click their secret link in your email inbox or enter a Google Authenticator code or an Authy code on their website to verify that withdrawal transaction was requested intentionally.
 
-In some cases you can also use the withdrawal id to check withdrawal status later (whether it succeeded or not) and to submit 2FA confirmation codes, where this is supported by the exchange. See [their docs](https://github.com/kroitor/ccxt/wiki/Manual#exchanges) for details.
+In some cases you can also use the withdrawal id to check withdrawal status later (whether it succeeded or not) and to submit 2FA confirmation codes, where this is supported by the exchange. See [their docs](https://github.com/ccxt/ccxt/wiki/Manual#exchanges) for details.
 
 ### Ledger
 
@@ -1507,7 +1507,7 @@ In some cases you can also use the withdrawal id to check withdrawal status late
 
 ## Overriding The Nonce
 
-**The default nonce is a 32-bit Unix Timestamp in seconds. You should override it with a milliseconds-nonce if you want to make private requests more frequently than once per second! Most exchanges will throttle your requests if you hit their rate limits, read [API docs for your exchange](https://github.com/kroitor/ccxt/wiki/Exchanges) carefully!**
+**The default nonce is a 32-bit Unix Timestamp in seconds. You should override it with a milliseconds-nonce if you want to make private requests more frequently than once per second! Most exchanges will throttle your requests if you hit their rate limits, read [API docs for your exchange](https://github.com/ccxt/ccxt/wiki/Exchanges) carefully!**
 
 In case you need to reset the nonce it is much easier to create another pair of keys for using with private APIs. Creating new keys and setting up a fresh unused keypair in your config is usually enough for that.
 
@@ -1677,14 +1677,14 @@ Below is an outline of exception inheritance hierarchy:
 
 In case you experience any difficulty connecting to a particular exchange, do the following in order of precedence:
 
-1. Check the [CHANGELOG](https://github.com/kroitor/ccxt/blob/master/CHANGELOG.md) for recent updates.
+1. Check the [CHANGELOG](https://github.com/ccxt/ccxt/blob/master/CHANGELOG.md) for recent updates.
 2. Turn `verbose = true` to get more detail about it.
 3. Check you API credentials. Try a fresh new keypair if possible.
 4. Check your nonce. If you used your API keys with other software, you most likely should [override your nonce function](#overriding-the-nonce) to match your previous nonce value. A nonce usually can be easily reset by generating a new unused keypair.
-5. Check your request rate if you are getting nonce errors. Your private requests should not follow one another quickly. You should not send them one after another in a split second or in short time. The exchange will most likely ban you if you don't make a delay before sending each new request. In other words, you should not hit their rate limit by sending unlimited private requests too frequently. Add a delay to your subsequent requests, like show in the long-poller [examples](https://github.com/ccxt-dev/ccxt/tree/master/examples), also [here](https://github.com/ccxt-dev/ccxt/wiki/Manual#order-book--market-depth).
-6. Read the [docs for your exchange](https://github.com/kroitor/ccxt/wiki/Exchanges) and compare your verbose output to the docs.
+5. Check your request rate if you are getting nonce errors. Your private requests should not follow one another quickly. You should not send them one after another in a split second or in short time. The exchange will most likely ban you if you don't make a delay before sending each new request. In other words, you should not hit their rate limit by sending unlimited private requests too frequently. Add a delay to your subsequent requests, like show in the long-poller [examples](https://github.com/ccxt/ccxt/tree/master/examples), also [here](https://github.com/ccxt/ccxt/wiki/Manual#order-book--market-depth).
+6. Read the [docs for your exchange](https://github.com/ccxt/ccxt/wiki/Exchanges) and compare your verbose output to the docs.
 7. Check your connectivity with the exchange by accessing it with your browser.
-8. Check your connection with the exchange through a proxy. Read the [Proxy](https://github.com/kroitor/ccxt/wiki/Install#proxy) section for more details.
+8. Check your connection with the exchange through a proxy. Read the [Proxy](https://github.com/ccxt/ccxt/wiki/Install#proxy) section for more details.
 9. Try accesing the exchange from a different computer or a remote server, to see if this is a local or global issue with the exchange.
 10. Check if there were any news from the exchange recently regarding downtime for maintenance. Some exchanges go offline for updates regularly (like once a week).
 
