@@ -1057,7 +1057,7 @@ The fetchOHLCV method shown above returns a list (a flat array) of OHLCV candles
 You can call the unified `fetchTrades` / `fetch_trades` method to get the list of most recent trades for a particular symbol. The `fetchTrades` method is declared in the following way:
 
 ```
-async fetchTrades (symbol, params = {})
+async fetchTrades (symbol, since = undefined, limit = undefined, params = {})
 ```
 
 For example, if you want to print recent trades for all symbols one by one sequentially (mind the rateLimit!) you would do it like so:
@@ -1317,19 +1317,19 @@ var_dump ($order);
 #### All Orders
 
 ```JavaScript
-exchange.fetchOrders (symbol = undefined, params = {})
+exchange.fetchOrders (symbol = undefined, since = undefined, limit = undefined, params = {})
 ```
 
 #### Open Orders
 
 ```JavaScript
-exchange.fetchOpenOrders (symbol = undefined, params = {})
+exchange.fetchOpenOrders (symbol = undefined, since = undefined, limit = undefined, params = {})
 ```
 
 #### Closed Orders
 
 ```JavaScript
-exchange.fetchClosedOrders (symbol = undefined, params = {})
+exchange.fetchClosedOrders (symbol = undefined, since = undefined, limit = undefined, params = {})
 ```
 
 #### Trades / Transactions / Fills / Executions
