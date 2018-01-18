@@ -26,6 +26,7 @@ Welcome to the ccxt wiki!
   - [Markets](https://github.com/kroitor/ccxt/wiki/Manual#markets)
   - [Symbols And Market Ids](https://github.com/ccxt-dev/ccxt/wiki/Manual#symbols-and-market-ids)
   - [API Methods / Endpoints](https://github.com/kroitor/ccxt/wiki/Manual#api-methods--endpoints)
+    - [Implicit API Method](https://github.com/ccxt/ccxt/wiki/Manual#implicit-api-methods)
     - [Public/Private API](https://github.com/kroitor/ccxt/wiki/Manual#publicprivate-api)
     - [Synchronous vs Asynchronous Calls](https://github.com/kroitor/ccxt/wiki/Manual#synchronous-vs-asynchronous-calls)
     - [Unified API](https://github.com/kroitor/ccxt/wiki/Manual#unified-api)
