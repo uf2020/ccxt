@@ -26,7 +26,6 @@ Welcome to the ccxt wiki!
   - [Markets](https://github.com/kroitor/ccxt/wiki/Manual#markets)
   - [Symbols And Market Ids](https://github.com/ccxt-dev/ccxt/wiki/Manual#symbols-and-market-ids)
   - [API Methods / Endpoints](https://github.com/kroitor/ccxt/wiki/Manual#api-methods--endpoints)
-    - [Implicit API Methods](https://github.com/ccxt/ccxt/wiki/Manual#implicit-api-methods)
     - [Public/Private API](https://github.com/kroitor/ccxt/wiki/Manual#publicprivate-api)
     - [Synchronous vs Asynchronous Calls](https://github.com/kroitor/ccxt/wiki/Manual#synchronous-vs-asynchronous-calls)
     - [Unified API](https://github.com/kroitor/ccxt/wiki/Manual#unified-api)
@@ -53,8 +52,8 @@ Welcome to the ccxt wiki!
         - [Custom Params](https://github.com/kroitor/ccxt/wiki/Manual#custom-order-params)
       - [Cancelling Orders](https://github.com/kroitor/ccxt/wiki/Manual#cancelling-orders)
     - [Funding Your Account](https://github.com/kroitor/ccxt/wiki/Manual#funding-your-account)
-      - [Deposit](https://github.com/ccxt/ccxt/wiki/Manual#deposit)
-      - [Withdraw](https://github.com/ccxt/ccxt/wiki/Manual#withdraw)
+      - Deposit *(wip)*
+      - [Withdraw](https://github.com/kroitor/ccxt/wiki/Manual#withdraw)
       - Transaction History (Ledger)
     - Fees *(wip)*
       - Maker / Taker Order Fees
