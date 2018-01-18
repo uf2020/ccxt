@@ -53,7 +53,7 @@ Welcome to the ccxt wiki!
         - [Custom Params](https://github.com/kroitor/ccxt/wiki/Manual#custom-order-params)
       - [Cancelling Orders](https://github.com/kroitor/ccxt/wiki/Manual#cancelling-orders)
     - [Funding Your Account](https://github.com/kroitor/ccxt/wiki/Manual#funding-your-account)
-      - Deposit *(wip)*
+      - [Deposit](https://github.com/kroitor/ccxt/wiki/Manual#deposit)
       - [Withdraw](https://github.com/kroitor/ccxt/wiki/Manual#withdraw)
       - Transaction History (Ledger)
     - Fees *(wip)*
