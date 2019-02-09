@@ -23,12 +23,12 @@ The exchange is required to implement the following list of methods and structur
   - [`fetchOrder`](https://github.com/ccxt/ccxt/wiki/Manual#querying-orders) – one order by order id
   - [`fetchOpenOrders`](https://github.com/ccxt/ccxt/wiki/Manual#querying-orders) – a list of all open orders
   - [`fetchAllOrders`](https://github.com/ccxt/ccxt/wiki/Manual#querying-orders) – a list of all orders
-  - [`fetchMyTrades`](https://github.com/ccxt/ccxt/wiki/Manual#personal-trades) – filled trades (personal history of trades for the account)
+  - [`fetchMyTrades`](https://github.com/ccxt/ccxt/wiki/Manual#personal-trades) – the personal history of filled trades for the account
 - **Funding**
   - [`fetchDepositAddress`](https://github.com/ccxt/ccxt/wiki/Manual#funding-your-account) – deposit address(es) + [address structure](https://github.com/ccxt/ccxt/wiki/Manual#address-structure)
   - [`fetchDeposits`](https://github.com/ccxt/ccxt/wiki/Manual#transactions)
   - [`fetchWithdrawals`](https://github.com/ccxt/ccxt/wiki/Manual#transactions)
   - [`fetchTransactions`](https://github.com/ccxt/ccxt/wiki/Manual#transactions) + [transaction structure](https://github.com/ccxt/ccxt/wiki/Manual#transaction-structure)
-  - [`fetchLedger`](https://github.com/ccxt/ccxt/wiki/Manual#ledger) - asset movement history including referral payments, cashbacks + [ledger entry structure](https://github.com/ccxt/ccxt/wiki/Manual#ledger-entry-structureccccccigfrubcntngfuhein)
+  - [`fetchLedger`](https://github.com/ccxt/ccxt/wiki/Manual#ledger) - including transactions, transfers, referral payments, cashbacks + [ledger entry structure](https://github.com/ccxt/ccxt/wiki/Manual#ledger-entry-structureccccccigfrubcntngfuhein)
   - [`withdraw`](https://github.com/ccxt/ccxt/wiki/Manual#withdraw)
   - `transfer` - required if exchange has sub-accounts to transfer assets between them
