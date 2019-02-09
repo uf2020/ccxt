@@ -4,7 +4,7 @@ The structure of CCXT defines a good, portable and cross-compatible standard for
 
 ## Requirements
 
-Getting integrated and certified requires the exchange to implement a quality API. Please, see the full list of technical requirements here: https://github.com/ccxt/ccxt/wiki/Requirements.
+Getting integrated and certified requires the exchange to implement a quality API. Please, see the full list of technical requirements here: https://github.com/ccxt/ccxt/wiki/Requirements
 
 ## Contact Us
 
