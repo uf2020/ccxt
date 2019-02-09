@@ -14,8 +14,8 @@ The exchange is required to implement the following list of methods and structur
 
 #### Market Data
 
-- [`fetchTicker`](https://github.com/ccxt/ccxt/wiki/Manual#price-tickers) – 24h volumes and stats
-- [`fetchOrderBook`](https://github.com/ccxt/ccxt/wiki/Manual#order-book) – l2, l3 + [orderbook structure](https://github.com/ccxt/ccxt/wiki/Manual#order-book-structure)
+- [`fetchTicker`](https://github.com/ccxt/ccxt/wiki/Manual#price-tickers) – 24h volumes and stats + [ticker structure](https://github.com/ccxt/ccxt/wiki/Manual#ticker-structure)
+- [`fetchOrderBook`](https://github.com/ccxt/ccxt/wiki/Manual#order-book) – L2/L3 + [orderbook structure](https://github.com/ccxt/ccxt/wiki/Manual#order-book-structure)
 - [`fetchTrades`](https://github.com/ccxt/ccxt/wiki/Manual#trades-executions-transactions) – a list of recent public trades + [trade structure](https://github.com/ccxt/ccxt/wiki/Manual#trade-structure)
 
 ## Private API
@@ -24,7 +24,7 @@ The exchange is required to implement the following list of methods and structur
 
 - [`fetchBalance`](https://github.com/ccxt/ccxt/wiki/Manual#querying-account-balance) - for all types of accounts + [balance structure](https://github.com/ccxt/ccxt/wiki/Manual#balance-structure)
 - `fetchAccounts` - required if exchange allows to manage user accounts / sub-accounts
-- [`createOrder`](https://github.com/ccxt/ccxt/wiki/Manual#placing-orders) (limit, market, etc)
+- [`createOrder`](https://github.com/ccxt/ccxt/wiki/Manual#placing-orders) – *limit/market* orders
 - [`cancelOrder`](https://github.com/ccxt/ccxt/wiki/Manual#canceling-orders)
 - `editOrder` – change the price/amount of an open order
 
