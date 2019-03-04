@@ -17,4 +17,5 @@
 - [Contributing](https://github.com/ccxt/ccxt/blob/master/CONTRIBUTING.md)
 - API Reference (wip)
 - [Frequently Asked Questions](https://github.com/ccxt/ccxt/wiki/FAQ)
+- [Requirements For Exchanges](https://github.com/ccxt/ccxt/wiki/Requirements)
 - [Certification Program](https://github.com/ccxt/ccxt/wiki/Certification)
