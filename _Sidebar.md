@@ -18,5 +18,5 @@
 - API Reference (wip)
 - [Frequently Asked Questions](https://github.com/ccxt/ccxt/wiki/FAQ)
 - New Exchanges
-  - [Integration Requirements](https://github.com/ccxt/ccxt/wiki/Requirements)
+  - [Requirements](https://github.com/ccxt/ccxt/wiki/Requirements)
   - [Certification Program](https://github.com/ccxt/ccxt/wiki/Certification)
