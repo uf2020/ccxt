@@ -5,8 +5,8 @@
 ![npm Weekly Downloads](https://img.shields.io/npm/dw/ccxt.svg)
 ![npm Monthly Downloads](https://img.shields.io/npm/dm/ccxt.svg)
 ![npm Yearly Downloads](https://img.shields.io/npm/dy/ccxt.svg)
-![Dependent repos (via libraries.io)](https://img.shields.io/librariesio/dependent-repos/npm/ccxt.svg)
-![Dependents (via libraries.io)](https://img.shields.io/librariesio/dependents/npm/ccxt.svg)
+<!-- ![Dependent repos (via libraries.io)](https://img.shields.io/librariesio/dependent-repos/npm/ccxt.svg) -->
+<!-- ![Dependents (via libraries.io)](https://img.shields.io/librariesio/dependents/npm/ccxt.svg) -->
 <!-- ![npm bundle size](https://img.shields.io/bundlephobia/min/ccxt.svg) -->
 <!-- ![npm bundle size](https://img.shields.io/bundlephobia/minzip/ccxt.svg) -->
 
