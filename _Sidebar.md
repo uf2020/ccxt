@@ -1,11 +1,11 @@
-# CCXT Pro
+### CCXT Pro
 
 - [https://ccxt.pro](https://ccxt.pro)
 - [CCXT Pro Wiki](ccxt.pro)
   - [CCXT Pro Install](ccxt.pro.install)
   - [CCXT Pro Manual](ccxt.pro.manual)
 
-# CCXT
+### CCXT
 
 - [Supported Exchanges](https://github.com/ccxt/ccxt/wiki/Exchange-Markets)
 - [Exchanges By Country](https://github.com/ccxt/ccxt/wiki/Exchange-Markets-By-Country)
