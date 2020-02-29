@@ -1,6 +1,6 @@
 # CCXT Pro Wiki
 
-- [Install](Install)
+- [Install](CCXT-Pro-Install)
 - [User Manual](https://github.com/ccxt/ccxt/wiki)
   - [Architecture Overview](https://github.com/ccxt/ccxt/wiki/ccxt.pro/Manual#overview)
   - [Prerequisites](https://github.com/ccxt/ccxt/wiki/ccxt.pro/Manual#prerequisites)
