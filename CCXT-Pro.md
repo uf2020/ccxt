@@ -1,4 +1,4 @@
-# CCXT Pro Wiki <sup>[https://ccxt.pro](https://ccxt.pro)</sup>
+# [https://ccxt.pro](https://ccxt.pro)
 
 - [Install](CCXT-Pro-Install)
 - [User Manual](CCXT-Pro-Manual)
