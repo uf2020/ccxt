@@ -1,7 +1,7 @@
 ### CCXT Pro
 
 - [https://ccxt.pro](https://ccxt.pro)
-- [CCXT Pro Wiki](ccxt.pro)
+- [Wiki](ccxt.pro)
   - [Install](ccxt.pro.install)
   - [Manual](ccxt.pro.manual)
 
