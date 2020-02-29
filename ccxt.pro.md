@@ -1,4 +1,8 @@
-# CCXT Pro – [https://ccxt.pro](https://ccxt.pro)
+# CCXT Pro
+
+Get your licensed access to the CCXT Pro repository at: [https://ccxt.pro](https://ccxt.pro).
+
+## Docs
 
 - [Install](ccxt.pro-install)
 - [User Manual](ccxt.pro-manual)
