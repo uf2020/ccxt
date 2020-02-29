@@ -1,7 +1,7 @@
 # CCXT Pro Wiki
 
-- [Install](https://github.com/ccxt/ccxt/wiki/ccxt.pro/Install.md)
-- [User Manual](https://github.com/ccxt/ccxt/wiki/ccxt.pro/Manual.md)
+- [Install](Install)
+- [User Manual](Manual)
   - [Architecture Overview](https://github.com/ccxt/ccxt/wiki/ccxt.pro/Manual#overview)
   - [Prerequisites](https://github.com/ccxt/ccxt/wiki/ccxt.pro/Manual#prerequisites)
   - [Streaming Specifics](https://github.com/ccxt/ccxt/wiki/ccxt.pro/Manual#streaming-specifics)
