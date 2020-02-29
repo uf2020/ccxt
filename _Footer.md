@@ -1,2 +1,2 @@
-[![CCXT Pro](https://user-images.githubusercontent.com/1294454/75616592-d9ab6600-5b63-11ea-8dcb-6c04c1e050dd.jpg)](https://ccxt.pro)
+[![CCXT Pro](https://user-images.githubusercontent.com/1294454/75616612-373fb280-5b64-11ea-8e72-2fddcdd75b02.png)](https://ccxt.pro)
 
