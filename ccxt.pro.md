@@ -1,6 +1,4 @@
-## Get access to CCXT Pro
-
-### [https://ccxt.pro](https://ccxt.pro)
+## Get access to CCXT Pro – [https://ccxt.pro](https://ccxt.pro)
 
 ## Docs
 
