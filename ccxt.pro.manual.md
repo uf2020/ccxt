@@ -1,6 +1,4 @@
-# [CCXT Pro](ccxt.pro)
-
-# Overview
+# Manual
 
 The CCXT Pro stack is built upon [CCXT](https://ccxt.trade) and extends the core CCXT classes, using:
 
@@ -226,7 +224,7 @@ All of that functionality is handled by CCXT Pro for the user. To work with CCXT
 
 Each incoming update says which parts of the data have changed and the receiving side "increments" local state S by merging the update on top of current state S and moves to next local state S'. In terms CCXT Pro that is called _"incremental state"_ and the structures involved in the process of storing and updating the cached state are called _"incremental structures"_. CCXT Pro introduces several new base classes to handle the incremental state where necessary.
 
-## Linking Against CCXT Pro
+## Linking
 
 The process of including the CCXT Pro library into your script is pretty much the same as with the standard CCXT, the only difference is the name of the actual JavaScript module, Python package, or PHP namespace.
 
@@ -602,17 +600,49 @@ In most cases the authentication logic is borrowed from CCXT since the exchanges
 
 ```JavaScript
 // JavaScript
-watchBalance (params = {})
+if (exchange.has['watchBalance']) {
+    while (true) {
+        try {
+            const balance = await exchange.watchBalance (params)
+            console.log (new Date (), balance)
+        } catch (e) {
+            console.log (e)
+            // stop the loop on exception or leave it commented to retry
+            // throw e
+        }
+    }
+}
 ```
 
 ```Python
 # Python
-watch_balance(params={})
+if exchange.has['watchBalance']:
+    while True:
+        try:
+            balance = await exchange.watch_balance(params)
+            print(exchange.iso8601(exchange.milliseconds()), balance)
+        except Exception as e:
+            print(e)
+            # stop the loop on exception or leave it commented to retry
+            # rasie e
 ```
 
 ```PHP
 // PHP
-watch_balance($params = array());
+if ($exchange->has['watchBalance']) {
+    $main = function () use (&$exchange, &$main, $params) {
+        $exchange->watch_balance($params)->then(function($balance) use (&$main) {
+            echo date('c'), ' ', json_encode($balance), "\n";
+            $main();
+        })->otherwise(function (\Exception $e) use (&$main) {
+            echo get_class ($e) . ' ' . $e->getMessage (). "\n";
+            $main();
+            // stop the loop on exception or leave it commented to retry
+            // throw $e;
+        })
+    };
+    $loop->futureTick($main);
+}
 ```
 
 ##### watchOrders
@@ -634,6 +664,10 @@ watch_balance($params = array());
 ```
 
 ##### watchMyTrades
+
+```diff
+- work in progress now
+```
 
 ```JavaScript
 // JavaScript
@@ -660,4 +694,4 @@ watch_my_trades($symbol = null, $since = null, $lmit = null, $params = array());
 
 ## Error Handling
 
-In case of an error the CCXT Pro will throw a standard CCXT exception,
+In case of an error the CCXT Pro will throw a standard CCXT exception, see [Error Handling](https://github.com/ccxt/ccxt/wiki/Manual#error-handling) for more details.
