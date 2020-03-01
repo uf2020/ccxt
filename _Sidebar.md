@@ -3,7 +3,7 @@
 
 <p align="center">
     <a href="https://ccxt.pro">https://ccxt.pro</a><br />
-    <a href="ccxt.pro">Exchanges</a><br />
+    <a href="ccxt.pro.manual#exchanges">Exchanges</a><br />
     <a href="ccxt.pro.install">Install</a><br />
     <a href="ccxt.pro">Manual</a>
 </p>
