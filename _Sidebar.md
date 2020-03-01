@@ -11,7 +11,7 @@
 
 ---
 
-### CCXT
+<h4 align="center">CCXT Documentation</h4>
 
 - [Supported Exchanges](https://github.com/ccxt/ccxt/wiki/Exchange-Markets)
 - [Exchanges By Country](https://github.com/ccxt/ccxt/wiki/Exchange-Markets-By-Country)
