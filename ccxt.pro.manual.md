@@ -1,6 +1,4 @@
-# [CCXT Pro](ccxt.pro)
-
-# Overview
+# Manual
 
 The CCXT Pro stack is built upon [CCXT](https://ccxt.trade) and extends the core CCXT classes, using:
 
@@ -226,7 +224,7 @@ All of that functionality is handled by CCXT Pro for the user. To work with CCXT
 
 Each incoming update says which parts of the data have changed and the receiving side "increments" local state S by merging the update on top of current state S and moves to next local state S'. In terms CCXT Pro that is called _"incremental state"_ and the structures involved in the process of storing and updating the cached state are called _"incremental structures"_. CCXT Pro introduces several new base classes to handle the incremental state where necessary.
 
-## Linking Against CCXT Pro
+## Linking
 
 The process of including the CCXT Pro library into your script is pretty much the same as with the standard CCXT, the only difference is the name of the actual JavaScript module, Python package, or PHP namespace.
 
@@ -290,7 +288,7 @@ Every CCXT Pro instance contains all properties of the underlying CCXT instance.
 ```JavaScript
 {
     'has': { // an associative array of extended exchange capabilities
-        'ws': true,
+        'ws': true, // only available in CCXT Pro
         'watchOrderBook': true,
         'watchTicker': true,
         'watchTrades': true,
@@ -490,34 +488,100 @@ if ($exchange->has['watchTickers']) {
 
 ```JavaScript
 // JavaScript
-watchOHLCV (symbol, timeframe = '1m', since = undefined, limit = undefined, params = {})
+if (exchange.has['watchOHLCV']) {
+    while (true) {
+        try {
+            const candles = await exchange.watchOHLCV (symbol, since, limit, params)
+            console.log (new Date (), candles)
+        } catch (e) {
+            console.log (e)
+            // stop the loop on exception or leave it commented to retry
+            // throw e
+        }
+    }
+}
 ```
 
 ```Python
 # Python
-watch_ohlcv(symbol, timeframe='1m', since=None, limit=None, params={})
+if exchange.has['watchOHLCV']:
+    while True:
+        try:
+            candles = await exchange.watch_ohlcv(symbol, since, limit, params)
+            print(exchange.iso8601(exchange.milliseconds()), candles)
+        except Exception as e:
+            print(e)
+            # stop the loop on exception or leave it commented to retry
+            # rasie e
 ```
 
 ```PHP
 // PHP
-watch_ohlcv($symbol, $timeframe = '1m', $since = null, $lmit = null, $params = array());
+if ($exchange->has['watchOHLCV']) {
+    $main = function () use (&$exchange, &$main, $symbol, $timeframe, $since, $limit, $params) {
+        $exchange->watch_ohlcv($symbol, $timeframe, $since, $limit, $params)->then(
+            function($candles) use (&$main, $symbol, $timeframe) {
+                echo date('c'), ' ', $symbol, ' ', $timeframe, ' ', json_encode($candles), "\n";
+                $main();
+            }
+        )->otherwise(function (\Exception $e) use (&$main) {
+            echo get_class ($e) . ' ' . $e->getMessage (). "\n";
+            $main();
+            // stop the loop on exception or leave it commented to retry
+            // throw $e;
+        })
+    };
+    $loop->futureTick($main);
+}
 ```
 
 ##### watchTrades
 
 ```JavaScript
 // JavaScript
-watchTrades (symbol, since = undefined, limit = undefined, params = {})
+if (exchange.has['watchTrades']) {
+    while (true) {
+        try {
+            const trades = await exchange.watchTrades (symbol, since, limit, params)
+            console.log (new Date (), trades)
+        } catch (e) {
+            console.log (e)
+            // stop the loop on exception or leave it commented to retry
+            // throw e
+        }
+    }
+}
 ```
 
 ```Python
 # Python
-watch_trades(symbol, since=None, limit=None, params={})
+if exchange.has['watchTrades']:
+    while True:
+        try:
+            trades = await exchange.watch_trades(symbol, since, limit, params)
+            print(exchange.iso8601(exchange.milliseconds()), trades)
+        except Exception as e:
+            print(e)
+            # stop the loop on exception or leave it commented to retry
+            # rasie e
 ```
 
 ```PHP
 // PHP
-watch_trades($symbol, $since = null, $lmit = null, $params = array());
+if ($exchange->has['watchTrades']) {
+    $main = function () use (&$exchange, &$main, $symbol, $since, $limit, $params) {
+        $exchange->watch_trades($symbol, $since, $limit, $params)->then(function($trades) use (&$main) {
+            echo date('c'), ' ', json_encode($trades), "\n";
+            $main();
+        })->otherwise(function (\Exception $e) use (&$main) {
+            echo get_class ($e) . ' ' . $e->getMessage (). "\n";
+            $main();
+            // stop the loop on exception or leave it commented to retry
+            // throw $e;
+        })
+    };
+    $loop->futureTick($main);
+}
 ```
 
 ### Private Methods
@@ -527,23 +591,58 @@ watch_trades($symbol, $since = null, $lmit = null, $params = array());
 ```
 
 #### Authentication
+
+In most cases the authentication logic is borrowed from CCXT since the exchanges use the same keypairs and signing algorithms for REST APIs and WebSocket APIs. See [API Keys Setup](https://github.com/ccxt/ccxt/wiki/Manual#api-keys-setup) for more details.
+
 #### Trading
 
 ##### watchBalance
 
 ```JavaScript
 // JavaScript
-watchBalance (params = {})
+if (exchange.has['watchBalance']) {
+    while (true) {
+        try {
+            const balance = await exchange.watchBalance (params)
+            console.log (new Date (), balance)
+        } catch (e) {
+            console.log (e)
+            // stop the loop on exception or leave it commented to retry
+            // throw e
+        }
+    }
+}
 ```
 
 ```Python
 # Python
-watch_balance(params={})
+if exchange.has['watchBalance']:
+    while True:
+        try:
+            balance = await exchange.watch_balance(params)
+            print(exchange.iso8601(exchange.milliseconds()), balance)
+        except Exception as e:
+            print(e)
+            # stop the loop on exception or leave it commented to retry
+            # rasie e
 ```
 
 ```PHP
 // PHP
-watch_balance($params = array());
+if ($exchange->has['watchBalance']) {
+    $main = function () use (&$exchange, &$main, $params) {
+        $exchange->watch_balance($params)->then(function($balance) use (&$main) {
+            echo date('c'), ' ', json_encode($balance), "\n";
+            $main();
+        })->otherwise(function (\Exception $e) use (&$main) {
+            echo get_class ($e) . ' ' . $e->getMessage (). "\n";
+            $main();
+            // stop the loop on exception or leave it commented to retry
+            // throw $e;
+        })
+    };
+    $loop->futureTick($main);
+}
 ```
 
 ##### watchOrders
@@ -565,6 +664,10 @@ watch_balance($params = array());
 ```
 
 ##### watchMyTrades
+
+```diff
+- work in progress now
+```
 
 ```JavaScript
 // JavaScript
@@ -591,4 +694,4 @@ watch_my_trades($symbol = null, $since = null, $lmit = null, $params = array());
 
 ## Error Handling
 
-In case of an error the CCXT Pro will throw a standard CCXT exception,
+In case of an error the CCXT Pro will throw a standard CCXT exception, see [Error Handling](https://github.com/ccxt/ccxt/wiki/Manual#error-handling) for more details.
