@@ -4,9 +4,8 @@
 <p align="center">
     <a href="https://ccxt.pro">https://ccxt.pro</a><br />
     <a href="ccxt.pro">Exchanges</a><br />
-    <a href="ccxt.pro">Docs</a><br />
     <a href="ccxt.pro.install">Install</a><br />
-    <a href="ccxt.pro.manual">Manual</a>
+    <a href="ccxt.pro">Manual</a>
 </p>
 
 ---
