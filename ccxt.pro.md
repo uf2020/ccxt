@@ -1,6 +1,4 @@
-# CCXT Pro
-
-## [https://ccxt.pro](https://ccxt.pro)
+# [CCXT Pro](https://ccxt.pro)
 
 - [Install](ccxt.pro.install)
 - [User Manual](ccxt.pro.manual)
