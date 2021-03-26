@@ -14,6 +14,9 @@
 
 <h4 align="center">CCXT Documentation</h4>
 
+&nbsp;
+[![CCXT](https://user-images.githubusercontent.com/1294454/112665225-e0da9b80-8e6b-11eb-9aea-4087bf11852d.png)](https://ccxt.trade)
+
 - [Supported Exchanges](https://github.com/ccxt/ccxt/wiki/Exchange-Markets)
 - [Exchanges By Country](https://github.com/ccxt/ccxt/wiki/Exchange-Markets-By-Country)
 - [Install](https://github.com/ccxt/ccxt/wiki/Install)
