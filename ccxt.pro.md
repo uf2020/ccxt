@@ -3,6 +3,7 @@
 - [Install](ccxt.pro.install)
 - [User Manual](ccxt.pro.manual)
   - [Architecture Overview](ccxt.pro.manual#overview)
+  - [Exchanges Supported in CCXT Pro](ccxt.pro.manual#exchanges)
   - [Prerequisites](ccxt.pro.manual#prerequisites)
   - [Streaming Specifics](ccxt.pro.manual#streaming-specifics)
   - [Linking](ccxt.pro.manual#linking)
